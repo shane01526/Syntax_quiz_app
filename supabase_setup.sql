@@ -12,8 +12,9 @@
 --     個人複習用足夠，請設一組夠長、別人猜不到的密語。
 -- =====================================================================
 
--- 需要 digest()（雜湊）函式
-create extension if not exists pgcrypto;
+-- 需要 digest()（雜湊）函式。Supabase 會把 pgcrypto 裝在 extensions schema，
+-- 所以下面一律用 extensions.digest(...) 完整限定，避免 search_path 找不到。
+create extension if not exists pgcrypto with schema extensions;
 
 -- 進度表：一列 = 一組同步碼的全部進度
 create table if not exists public.quiz_progress (
@@ -33,11 +34,11 @@ create or replace function public.quiz_pull(p_code text)
 returns jsonb
 language sql
 security definer
-set search_path = public
+set search_path = public, extensions
 as $$
   select coalesce(
     (select data from public.quiz_progress
-       where code_hash = encode(digest(p_code, 'sha256'), 'hex')),
+       where code_hash = encode(extensions.digest(p_code, 'sha256'), 'hex')),
     '{}'::jsonb);
 $$;
 
@@ -49,10 +50,10 @@ create or replace function public.quiz_push(p_code text, p_data jsonb)
 returns jsonb
 language plpgsql
 security definer
-set search_path = public
+set search_path = public, extensions
 as $$
 declare
-  h text := encode(digest(p_code, 'sha256'), 'hex');
+  h text := encode(extensions.digest(p_code, 'sha256'), 'hex');
 begin
   insert into public.quiz_progress as q (code_hash, data, updated_at)
   values (h, p_data, now())
