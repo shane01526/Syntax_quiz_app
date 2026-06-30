@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch.7 功能範疇 II — DP（逐頁逐例句詳解 + 英文對照）— Adger (2003)</title>
+<style>
+  :root{--ink:#1b1b22;--muted:#5d5d6b;--line:#e3e3ec;--bg:#faf9f6;--accent:#7b2d3b;--accent2:#7b2d3b;--chip:#f0ece4;--card:#fff;--box:#f6f2ec;}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Noto Serif TC","Songti TC",Georgia,"Times New Roman",serif;color:var(--ink);background:var(--bg);line-height:1.9}
+  header{background:linear-gradient(135deg,#7b2d3b,#43202a);color:#fff;padding:54px 24px 36px}
+  header .inner{max-width:900px;margin:0 auto}
+  header .ch{font-family:system-ui,sans-serif;font-size:.8rem;letter-spacing:2px;color:#e3bcc4}
+  header h1{margin:6px 0 4px;font-size:2rem}
+  header .en{color:#f0d9de;font-style:italic}
+  header .pg{margin-top:10px;font-size:.85rem;color:#e3bcc4;font-family:system-ui,sans-serif}
+  nav.bc{max-width:900px;margin:0 auto;padding:14px 24px 0;font-family:system-ui,sans-serif;font-size:.85rem}
+  nav.bc a{color:var(--accent);text-decoration:none}
+  .tabbar{max-width:900px;margin:14px auto 0;padding:0 24px;display:flex;gap:10px;font-family:system-ui,sans-serif}
+  .tab{cursor:pointer;border:1px solid var(--line);border-bottom:0;background:#f1ece9;color:#7a4350;padding:11px 22px;border-radius:10px 10px 0 0;font-weight:700;font-size:.95rem;transition:.15s}
+  .tab:hover{background:#ece3e0}
+  .tab.active{background:var(--card);color:var(--accent);box-shadow:0 -2px 6px rgba(0,0,0,.04)}
+  .panel{display:none}.panel.active{display:block}
+  .toc{max-width:900px;margin:0 auto 10px;padding:18px 24px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+  .toc h2{margin:0 0 10px;font-size:1.05rem;color:var(--accent);border:0}
+  .toc ul{columns:2;column-gap:30px;margin:0;padding-left:18px;font-family:system-ui,sans-serif;font-size:.9rem}
+  .toc a{color:#333;text-decoration:none}.toc a:hover{color:var(--accent)}
+  .wrap{max-width:900px;margin:0 auto;padding:10px 24px 80px}
+  h2{color:var(--accent);border-bottom:2px solid var(--line);padding-bottom:6px;margin-top:48px;font-size:1.45rem;scroll-margin-top:14px}
+  h3{color:#43202a;margin-top:34px;font-size:1.18rem;border-left:5px solid var(--accent);padding-left:12px}
+  .pgmark{display:inline-block;font-family:system-ui,sans-serif;font-size:.72rem;font-weight:700;color:#fff;background:var(--accent);padding:2px 10px;border-radius:12px;margin:24px 0 4px}
+  p{margin:13px 0}
+  .lead{font-size:1.05rem;background:var(--box);border-left:4px solid var(--accent);padding:16px 20px;border-radius:0 10px 10px 0}
+  .term{font-family:system-ui,sans-serif;font-weight:700;color:var(--accent)}
+  .en-term{font-style:italic;color:var(--muted)}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:.93rem}
+  th,td{border:1px solid var(--line);padding:8px 11px;text-align:left;vertical-align:top}
+  th{background:var(--chip);font-family:system-ui,sans-serif}
+  .ex{background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 0;margin:16px 0;overflow:hidden}
+  .ex .row{padding:9px 18px;border-bottom:1px dashed #eee}
+  .ex .row:last-child{border-bottom:0}
+  .ex .sent{font-family:"Times New Roman",serif;font-size:1.05rem}
+  .ex .num{display:inline-block;min-width:40px;color:var(--muted);font-family:system-ui,sans-serif;font-size:.85rem}
+  .ex i{color:#444}
+  .g{color:#1a7a3a;font-weight:bold}.ung{color:#b32020;font-weight:bold}.qm{color:#b88a00;font-weight:bold}
+  .gloss{display:block;margin:4px 0 0 40px;font-size:.92rem;color:#555}
+  .ana{display:block;margin:5px 0 0 40px;font-size:.92rem;color:#6a3340;background:#f8eef1;border-radius:6px;padding:8px 12px}
+  .ana::before{content:"▸ 詳解　";color:var(--accent);font-weight:bold;font-family:system-ui,sans-serif}
+  .concept{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:16px 0;border-top:3px solid var(--accent)}
+  .concept h4{margin:0 0 8px;color:var(--accent);font-family:system-ui,sans-serif;font-size:1rem}
+  .key{background:#fdf6e3;border:1px solid #e9dcae;border-radius:10px;padding:14px 18px;margin:18px 0}
+  .key b{color:#8a6d00}
+  ul.plain{margin:13px 0;padding-left:24px}ul.plain li{margin:6px 0}
+  pre.tree{background:#f7f4ef;border:1px solid var(--line);border-radius:8px;padding:14px 16px;overflow-x:auto;font-family:"Consolas","Menlo","DejaVu Sans Mono",monospace;font-size:.9rem;line-height:1.5;color:#33232a;margin:14px 0}
+  .brk{font-family:"Consolas","Menlo",monospace;font-size:.95rem;background:#f4eff2;padding:2px 6px;border-radius:5px}
+  #en p{margin:12px 0}
+  #en .enpg{display:inline-block;font-family:system-ui,sans-serif;font-size:.72rem;font-weight:700;color:#fff;background:#888;padding:2px 9px;border-radius:12px;margin:20px 0 2px}
+  #en blockquote{margin:10px 0;padding:8px 16px;border-left:3px solid var(--line);background:#fbfbfb;font-family:"Times New Roman",serif}
+  #en .num{color:var(--muted);font-family:system-ui,sans-serif;font-size:.8rem;display:inline-block;min-width:40px}
+  .nav-bottom{display:flex;justify-content:space-between;margin-top:54px;font-family:system-ui,sans-serif;font-size:.9rem}
+  .nav-bottom a{color:var(--accent);text-decoration:none;border:1px solid var(--line);padding:10px 16px;border-radius:8px}
+  footer{text-align:center;color:var(--muted);font-size:.8rem;padding:20px;font-family:system-ui,sans-serif}
+  .back-top{position:fixed;right:18px;bottom:18px;background:var(--accent);color:#fff;text-decoration:none;padding:8px 13px;border-radius:20px;font-family:system-ui,sans-serif;font-size:.8rem;box-shadow:0 3px 10px rgba(0,0,0,.2)}
+</style>
+</head>
+<body id="top">
+<header><div class="inner">
+  <div class="ch">CHAPTER 7 · 逐頁逐例句詳解 + 英文原文對照</div>
+  <h1>功能範疇 II — DP</h1>
+  <div class="en">Functional Categories II — the DP</div>
+  <div class="pg">書頁 244–289 · 涵蓋例句 (1)–(173) 與全部練習題 · DP 假設、D 中心語、限定詞與代名詞、撒克遜屬格、little n、構式狀態</div>
+</div></header>
+<nav class="bc"><a href="index.html">← 全書導覽</a> ／ 第 7 章</nav>
+
+<div class="tabbar">
+  <div class="tab active" id="tab-zh" onclick="showTab('zh')">中文逐頁詳解</div>
+  <div class="tab" id="tab-en" onclick="showTab('en')">English Original（整章英文對照）</div>
+</div>
+
+<!-- ===================== 中文 PANEL ===================== -->
+<div class="panel active" id="zh">
+<div class="toc">
+  <h2>本章導覽</h2>
+  <ul>
+    <li><a href="#intro">引言：名詞片語也有功能投射</a></li>
+    <li><a href="#s71">7.1 範疇 D</a></li>
+    <li><a href="#s711">7.1.1 D 的類型</a></li>
+    <li><a href="#s712">7.1.2 D 的語意</a></li>
+    <li><a href="#s72">7.2 D 作為中心語</a></li>
+    <li><a href="#s721">7.2.1 D 的互補分布</a></li>
+    <li><a href="#s722">7.2.2 捕捉互補分布</a></li>
+    <li><a href="#s723">7.2.3 此分析的後果</a></li>
+    <li><a href="#s724">7.2.4 進一步問題：光桿名詞與代名詞</a></li>
+    <li><a href="#s725">7.2.5 領屬語 — DP 的指示語</a></li>
+    <li><a href="#s726">7.2.6 更多空 D</a></li>
+    <li><a href="#s73">7.3 DP 內的 θ 角色指派</a></li>
+    <li><a href="#s74">7.4 little n 與 DP 的底層結構</a></li>
+    <li><a href="#s741">7.4.1 little n 的論據</a></li>
+    <li><a href="#s742">7.4.2 DP 內的格位檢核</a></li>
+    <li><a href="#s743">7.4.3 領屬語</a></li>
+    <li><a href="#s75">7.5 DP 中的 AP 修飾</a></li>
+    <li><a href="#s76">7.6 DP 的語序與移位</a></li>
+    <li><a href="#s77">7.7 本章摘要</a></li>
+    <li><a href="#ex">練習題</a></li>
+  </ul>
+</div>
+
+<div class="wrap">
+  <p class="lead" id="intro">本章把前幾章對<strong>子句（clause）</strong>建立的整套架構——功能投射、Merge、Move、特徵檢核——平行地搬到<strong>名詞片語</strong>。Adger 的核心主張是：就像動詞之上層層疊著功能投射、最上層是 T，名詞之上也疊著功能投射、最上層是<strong>限定詞（D）</strong>。因此「名詞片語」其實是<span class="term">限定詞片語（Determiner Phrase, DP）</span>，由功能範疇 D 統領。這就是著名的 <span class="term">DP 假設（DP Hypothesis）</span>。本章將論證：D 是中心語、NP 是其補語；DP 還有更豐富的內部結構（little n、Poss）、負責格位檢核、並為中心語與片語移位提供「降落點」。</p>
+
+  <div class="concept"><h4>本章的核心類比：子句 ↔ 名詞片語</h4>
+  <table>
+    <tr><th>子句領域（clausal）</th><th>名詞領域（nominal）</th></tr>
+    <tr><td>T 是最上層功能中心語</td><td>D 是最上層功能中心語</td></tr>
+    <tr><td>little v 引介施事（Agent）</td><td>little n 引介施事（Agent）</td></tr>
+    <tr><td>V 上移併入 v</td><td>N 上移併入 n</td></tr>
+    <tr><td>主語移至 Spec-TP（EPP）</td><td>領屬語／施事移至 Spec-DP（[gen*]）</td></tr>
+    <tr><td>T 檢核主格 nominative</td><td>D 檢核屬格 genitive</td></tr>
+    <tr><td>投射層級 T &gt; (Neg) &gt; … &gt; v &gt; V</td><td>投射層級 D &gt; (Poss) &gt; n &gt; N</td></tr>
+  </table>
+  <p>抓住這張對照表，本章一切技術細節都只是把子句的工具「換個範疇名稱」再用一次。</p></div>
+
+  <span class="pgmark">書頁 244</span>
+  <p>到目前為止本書多半關注子句的結構。本章改為聚焦<strong>以名詞為詞彙核心</strong>的片語結構。論點是：名詞之上也有一系列功能投射，這些投射加入<strong>非 θ 相關</strong>的語意，並在句法上為中心語移位與片語移位提供位置。由此推得：名詞片語真正的中心語其實是個<strong>功能範疇</strong>，它是一連串功能範疇中最頂端者，恰如 T 在子句中位居最頂端。</p>
+  <p>更具體地說，名詞片語最頂端的功能範疇，在英語裡通常由<strong>限定詞</strong>填充。也就是說，名詞片語其實是<strong>限定詞片語</strong>，具有 <span class="brk">[DP …]</span> 這樣的結構——DP 代表「由 D 範疇成分統領的片語」。我們也會看到：就像 TP 含有 T 以外的功能成分，DP 也有更豐富的功能結構，負責檢核格位特徵、並為片語移位與中心語移位提供「降落點」。</p>
+
+  <!-- 7.1 -->
+  <h2 id="s71">7.1 範疇 D</h2>
+  <span class="pgmark">書頁 245</span>
+  <p>本節先觀察<strong>限定詞</strong>的句法行為，作為「限定詞是名詞片語中心語」這個論證的前置作業。</p>
+
+  <h3 id="s711">7.1.1 D 的類型</h3>
+  <p>從一個簡單片語 the letter 出發。the 有一組<span class="term">分布等價詞（distributional equivalents）</span>——能填入同一位置的詞：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(1)</span> The letter</span></div>
+    <div class="row"><span class="sent"><span class="num">(2)</span> The / a / this / that / some / every / each letter</span></div>
+    <div class="row"><span class="sent"><span class="num">(3)</span> <span class="ung">*</span> Letter the / a / this / that / some / every / each</span>
+      <span class="ana">(2) 列出與 the 同分布的詞，全都<strong>必須出現在名詞之前</strong>；(3) 把它們放到名詞後就不合語法。這些與 the 分布等價的詞，傳統稱<span class="term">限定詞（determiners）</span>，假設帶有一個新的範疇特徵——<strong>D 特徵</strong>。</span></div>
+  </div>
+  <p>除此之外，英語還有不帶任何顯性限定詞的複數名詞，稱<span class="term">光桿複數（bare plurals）</span>；但單數名詞不能這樣單獨出現：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(4)</span> <span class="g">✓</span> Letters (are on the table).</span></div>
+    <div class="row"><span class="sent"><span class="num">(5)</span> <span class="ung">*</span> Letter (is on the table).</span>
+      <span class="ana">(4) 複數 letters 可單獨成立、(5) 單數 letter 不行。這個對比暗示：光桿複數之所以合法，是因為英語有一個<strong>空複數限定詞（null plural determiner）</strong>，但沒有空單數限定詞。若主張「名詞片語中限定詞是強制的」，(5) 就被排除——此提案 7.2.6 會回頭處理。</span></div>
+  </div>
+
+  <span class="pgmark">書頁 246</span>
+  <p>不同的 D 傳統上再分子類。the 稱<span class="term">定冠詞（definite article）</span>，a 稱<span class="term">不定冠詞（indefinite article）</span>。定冠詞單複數皆可，不定冠詞 a 只能配單數：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(6)</span> a. <span class="g">✓</span> the letter / the letters</span></div>
+    <div class="row"><span class="sent"><span class="num">(6b)</span> b. <span class="g">✓</span> a letter / <span class="ung">*</span> a letters</span>
+      <span class="ana">這顯示 D 與名詞的<strong>數（number）</strong>特徵之間有一種表面的<span class="term">一致關係（agreement）</span>。a 的複數對應物似乎是 some。</span></div>
+  </div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(7)</span> some letters</span></div>
+    <div class="row"><span class="sent"><span class="num">(8)</span> We need some technician to help us.（some 也能配單數）</span></div>
+    <div class="row"><span class="sent"><span class="num">(9)</span> Show me letters!（光桿複數像是不定詞的複數形）</span>
+      <span class="ana">some 配複數時像是 a 的複數版，但 some 也可配單數 (8)，而光桿複數 (9) 又像不定的複數——可見對應關係並不乾淨。</span></div>
+  </div>
+  <p>除了冠詞，還有<span class="term">指示詞（demonstratives）</span>this/that 及其複數 these/those。它們依「與說話者的遠近」挑出世界中的事物，分為<span class="term">近指（proximal）</span> this/these 與<span class="term">遠指（distal）</span> that/those：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(10)</span> this chair; that chair</span></div>
+    <div class="row"><span class="sent"><span class="num">(11)</span> these chairs; those chairs</span>
+      <span class="ana">區分遠近的特徵與<strong>人稱（person）特徵</strong>相關：人稱特徵挑出說話者或受話者；近指則挑出「被視為靠近說話者與否」的成分。</span></div>
+  </div>
+  <p>就像有「既非說話者也非受話者」的第三人稱代名詞，有些語言也有「既不近說話者、也不近受話者」的指示詞。蘇格蘭蓋爾語區分三種：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(12)</span> an duine seo　<i>the man this</i>　「這個人」</span></div>
+    <div class="row"><span class="sent"><span class="num">(13)</span> an duine sin　<i>the man that</i>　「那個人」</span></div>
+    <div class="row"><span class="sent"><span class="num">(14)</span> an duine siud　<i>the man yonder</i>　「那邊那個人」</span>
+      <span class="ana">三分系統：近說話者 / 近受話者 / 兩者皆遠（siud）。對應於人稱的三分。</span></div>
+  </div>
+  <p>與冠詞不同，指示詞可以<strong>不帶後接名詞</strong>單獨出現，此時傳統上稱<span class="term">指示代名詞（demonstrative pronouns）</span>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(15)</span> I hate that.（that 後無名詞）</span></div>
+  </div>
+  <p>最後是 all、each、every 等<span class="term">量詞（quantifiers）</span>（第 6 章已談過含量詞的 DP）。each、every 只配單數：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(16)</span> <span class="g">✓</span> every chair; <span class="ung">*</span> every chairs</span></div>
+    <div class="row"><span class="sent"><span class="num">(17)</span> <span class="g">✓</span> each chair; <span class="ung">*</span> each chairs</span>
+      <span class="ana">量化的語意功能是挑出整個集合：every 把它當「總和一團」、each 當「各別的個體集合」。其他量詞還有 both、most、many。</span></div>
+  </div>
+  <p>在理論化之前，先指出：限定詞與一個（可能很複雜的）<strong>片語成分</strong>結合。用替代測試可看出：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(18)</span> These expensive and illegal bottles of absinthe are to be smuggled from Hungary.</span></div>
+    <div class="row"><span class="sent"><span class="num">(19)</span> These ones are to be smuggled from Hungary.</span>
+      <span class="ana">單一詞 ones 取代了 expensive and illegal bottles of absinthe 整串字，顯示這串字是個<strong>成分（constituent）</strong>。圖示結構（最大投射先用 ? 標記，稍後再定其範疇）：</span></div>
+  </div>
+  <pre class="tree">(20)        ?P
+          /    \
+      these     ?P
+                |
+   expensive and illegal bottles of absinthe</pre>
+  <span class="pgmark">書頁 247</span>
+  <p>還要指出：雖然英語限定詞在名詞前，但並非所有語言皆然。蘇丹語系的 Madi 語限定詞跟在名詞後：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(21)</span> ebi re/di　<i>fish the/this</i>　「那條／這條魚」</span>
+      <span class="ana">這呼應 VP 中 <strong>head-initial vs head-final</strong>（VO vs OV）的變異：D 與 N 的線性順序可跨語言變動。</span></div>
+  </div>
+  <p>小結：有一類詞出現在名詞前，可再分為<strong>冠詞、指示詞、量詞</strong>；我們以共享範疇特徵 <strong>D</strong> 表達其共通性。下一節看 D 與其餘部分的語意關係——這關係<strong>不是 θ 角色指派</strong>，暗示 D 像助動詞一樣是功能範疇。</p>
+
+  <h3 id="s712">7.1.2 D 的語意</h3>
+  <span class="pgmark">書頁 247–248</span>
+  <p>對 D 做語意分析最重要的事實是：它們<strong>不帶 θ 相關語意</strong>，不像 N 或 V 那樣對論元指派 θ 角色。它們的語意是<strong>限制名詞所挑出的指涉範圍</strong>。</p>
+  <p>以定冠詞為例：<span class="term">定指性（definiteness）</span>把名詞片語與<strong>言談語境</strong>連結——關乎說話者能否假定聽者已熟悉所指事物。若可假定聽者已遇過，就用定指 the，否則用不定 a：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(22)</span> A: Are you having a party this year? — B: Yeah, tonight. I'm just off to buy <i>the new cocktail shaker</i>.</span>
+      <span class="ana">B 用 the new cocktail shaker 很<strong>怪</strong>——但<strong>不是不合語法</strong>。若改用 a 就完全可接受。怪的原因在於：沒人先提過「新調酒器」，用定冠詞造成<span class="term">不恰當（infelicity，語用不可接受）</span>。</span></div>
+  </div>
+  <span class="pgmark">書頁 249</span>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(23)</span> A: Did you buy a new cocktail shaker and some gin? — B: Yeah, <i>the</i> new cocktail shaker was really expensive.</span>
+      <span class="ana">這裡 the 完全恰當（已被提及）。反過來若把 (23) 的 the 換成 a 又會脫節：不定詞表示指涉物是言談中的「新事物」。</span></div>
+    <div class="row"><span class="sent"><span class="num">(24)</span> A: Did you buy stuff for the party? — B: Yeah, <i>the cocktail shaker</i> was really expensive.</span>
+      <span class="ana">即使該物未被明說，但其存在可從前文<strong>推得</strong>，定冠詞仍可用——此現象稱<span class="term">調適／容納（accommodation）</span>。</span></div>
+  </div>
+  <p>因此定指性是把話語整合進對話的工具，靠的是給聽者「說話者認為他已知什麼」的線索——這種<span class="term">語用效果（pragmatic effect）</span>。指示詞語意類似冠詞：指示說話者要把聽者注意力導向（空間或言談上的）近處或遠處。</p>
+  <span class="pgmark">書頁 249–250</span>
+  <p>但<strong>量化（quantification）</strong>的語意目的不同：定指性標記指涉物的言談屬性，量化卻<strong>根本不挑出指涉物</strong>。</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(25)</span> No vampire can survive sunrise.</span>
+      <span class="ana">no vampire 沒有指涉物——你無法指著「no vampire 挑出的那個東西」。each vampire、every vampire 同理。</span></div>
+  </div>
+  <p>那量詞的語意是什麼？放進整句看最清楚：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(26)</span> No vampire slept.</span></div>
+    <div class="row"><span class="sent"><span class="num">(27)</span> Every vampire slept.</span>
+      <span class="ana">(26)「沒有吸血鬼睡覺」＝ 述語 vampire 挑出的集合與「睡覺者」集合<strong>互斥（disjoint）</strong>，無任何共同元素。(27) every＝「吸血鬼集合<strong>完全包含於</strong>睡覺者集合」。量化說的是<strong>集合之間的關係</strong>。</span></div>
+  </div>
+  <div class="key"><b>關鍵結論：</b>定指（熟悉性）與量化是<strong>兩種完全不同的語意功能</strong>，卻由<strong>同一句法範疇 D</strong> 承載。對本章而言，真正關鍵的是：D 範疇成分的語意<strong>不是 θ 相關</strong>。我們已見過帶非 θ 相關語意的範疇——例如 T 與 vP 的關係。類比之下，<strong>D 就像 T，是個功能範疇</strong>。</div>
+
+  <!-- 7.2 -->
+  <h2 id="s72">7.2 D 作為中心語</h2>
+  <span class="pgmark">書頁 250</span>
+
+  <h3 id="s721">7.2.1 D 的互補分布</h3>
+  <p>關於這組詞，第一個重要的句法事實是它們處於<span class="term">互補分布（complementary distribution）</span>：因為分布完全相同，它們在片語結構中<strong>競爭同一個位置</strong>。</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(28)</span> <span class="ung">*</span> The this man</span></div>
+    <div class="row"><span class="sent"><span class="num">(29)</span> <span class="ung">*</span> Each a man</span></div>
+    <div class="row"><span class="sent"><span class="num">(30)</span> <span class="ung">*</span> Some those letters</span></div>
+    <div class="row"><span class="sent"><span class="num">(31)</span> <span class="ung">*</span> The the man</span>
+      <span class="ana">任兩個 D 都不能同現——因為只有一個 D 位置可填。</span></div>
+  </div>
+
+  <h3 id="s722">7.2.2 捕捉互補分布</h3>
+  <span class="pgmark">書頁 251</span>
+  <p>早期生成語法用<strong>片語結構規則（PS-rules）</strong>給片語安排「槽位」來處理此事：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(32)</span> NP → Det N</span></div>
+    <div class="row"><span class="sent"><span class="num">(34)</span> PP → P NP</span></div>
+  </div>
+  <pre class="tree">(33)     NP              (35)     PP
+        /  \                    /  \
+     Det    N               P     NP
+                                  / \
+                               Det   N</pre>
+  <p>因樹中單一節點只能容一個成分，NP 只能有一個 Det、一個 N，互補分布就<strong>自動</strong>被處理。但本書發展的取向<strong>不用</strong>這類結構特定規則，而訴諸普遍原則——<span class="term">投射層級（Hierarchy of Projections）</span>與 Merge / Move。我們要用這些工具來分析 D。</p>
+  <span class="pgmark">書頁 252</span>
+  <div class="key"><b>我們要捕捉的 D 性質（彙整）：</b><br>
+  ① D 與 N 在<strong>數</strong>上有一致關係；<br>
+  ② D 可出現在 N 兩側（跨語言），讓人聯想到中心語與補語的線性化；<br>
+  ③ D 與一個複雜成分結合；<br>
+  ④ 其語意關乎<strong>熟悉性、量化、遠近</strong>，而非 θ 角色指派；<br>
+  ⑤ 英語中 D 處於互補分布。先處理第 ⑤ 項。</div>
+  <p>互補分布在子句中是靠投射層級處理的：modal 與非限定 to 互補，是因為兩者都是範疇 T，而層級只給 T 一個槽位。把這想法從子句搬到名詞域——D 既已被論證是功能範疇（像 T、Neg、Perf、Prog、Pass），就該由「名詞版的層級」決定其位置：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(38)</span> 投射層級 Hierarchy of Projections</span></div>
+    <div class="row"><span class="sent">　a. 子句：T &gt; (Neg) &gt; (Perf) &gt; (Prog) &gt; (Pass) &gt; v &gt; V</span></div>
+    <div class="row"><span class="sent">　b. 名詞：D &gt; N</span>
+      <span class="ana">如同子句層級從簡單逐步發展到複雜，名詞層級稍後也會加入 (Poss) 與 n。</span></div>
+  </div>
+
+  <span class="pgmark">書頁 253</span>
+  <p>若此想法正確，名詞表達式就有這個結構，<strong>立即</strong>捕捉互補分布（只有一個 D 槽）、也捕捉非 θ 語意（層級成分間無 θ 選擇關係）、還解釋 D 與複雜成分結合（NP 是片語、不再投射）：</p>
+  <pre class="tree">(39)       DP               (40)         DP
+          /  \                          /    \
+        D     NP                  those[D]    NP
+                                              |
+                          expensive and illegal bottles of absinthe</pre>
+  <p>由於 NP 是 D 的補語，D 與 N 的線序自然可跨語言變動（DN 或 ND，如 Madi 為 ND）。</p>
+
+  <h3 id="s723">7.2.3 此分析的後果</h3>
+  <span class="pgmark">書頁 253–255</span>
+  <p>這威脅到第 3 章以來的一個想法——「N 是名詞片語的中心語」。後果是：所有先前當作 NP 的東西都得<strong>重新歸類為 DP</strong>，而選擇性的 N 特徵（包括 T 的 EPP 特徵）要改成選擇性的 D 特徵（EPP 從 <span class="brk">[uN*]</span> 改為 <span class="brk">[uD*]</span>）。動詞、介系詞的選擇特徵也從 N 改 D。例如 burn the letter to Peter 的典型樹從 (41) 改畫成 (42)：</p>
+  <pre class="tree">(42)  ...  V
+          / \
+       burn  DP
+            /  \
+      the[D,acc] NP
+                / \
+              N    PP
+            letter / \
+              to[P,#D] Peter[D]</pre>
+  <p>這個重新歸類<strong>沒有失去任何實質東西</strong>：分布動機可用 D 特徵陳述。NP 仍存在，但成了 D 的補語（我們有 N 特徵的形態學動機，N 也會與 PP 結合成更大片語）。結論：先前把名詞片語只當 NP 太簡化；<strong>NP 存在，但它是功能範疇的補語；D 才是名詞片語的中心語</strong>。（此時宜把上一章習題的樹全部重畫成 DP。）</p>
+
+  <h3 id="s724">7.2.4 進一步問題：光桿名詞與代名詞</h3>
+  <span class="pgmark">書頁 255–256</span>
+  <p><strong>光桿名詞片語。</strong>若光桿複數 letters 只是名詞，就無法滿足動詞的（現已是 D 的）選擇要求，會錯誤預測 (43) 不合語法：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(43)</span> a. I wrote letters.　b. We ate jellyfish.</span></div>
+    <div class="row"><span class="sent"><span class="num">(44)</span> I wrote the letters.</span>
+      <span class="ana">write 在 (44) c-選擇一個 DP；那它在 (43) 也該 c-選擇 DP。故光桿名詞 letters、jellyfish 即使無顯性 D，<strong>也是 DP</strong>。</span></div>
+  </div>
+  <p>許多語言對應的光桿名詞確實不合語法，如法語：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(45)</span> <span class="ung">*</span> J'ai écrit lettres　<i>I-have written letters</i></span></div>
+    <div class="row"><span class="sent"><span class="num">(46)</span> <span class="g">✓</span> J'ai écrit des lettres　<i>I-have written some letters</i></span>
+      <span class="ana">法語沒有可用的空 D，故光桿名詞不行。英語光桿複數則帶<strong>空限定詞</strong>（呼應 7.1.1）：</span></div>
+  </div>
+  <pre class="tree">(47)        DP
+          /     \
+       ∅[D]   letters[N]</pre>
+  <p><strong>代名詞（Pronouns）。</strong>把代名詞直接當作 D，即可納入新系統。代名詞 Merge 進樹時取得 θ 角色並被選擇，自動具片語地位：</p>
+  <pre class="tree">(48)         DP
+           /     \
+       these[D]   NP
+                /    \
+       letters[N,#P]  PP
+                     /  \
+                  to[P,#D] him[D]</pre>
+  <p>這也說明下列例子——代名詞（一個 D）<strong>例外地</strong>帶 NP 補語：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(49)</span> [We linguists] love to argue.</span></div>
+    <div class="row"><span class="sent"><span class="num">(50)</span> [You friends of the king] are all the same.</span>
+      <span class="ana">we、you 是 D，後接 NP linguists / friends of the king。</span></div>
+  </div>
+
+  <h3 id="s725">7.2.5 領屬語 — DP 的指示語</h3>
+  <span class="pgmark">書頁 256–257</span>
+  <p>D 是中心語，理應像有補語一樣也能有<strong>指示語（specifier）</strong>。本節主張：某些<strong>領屬語（possessor）</strong>就出現在 Spec-DP。英語領屬語意有兩種句法實現：介系詞 (51) 與<span class="term">撒克遜屬格（Saxon Genitive）</span> (52)：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(51)</span> An idea of Evan's.</span></div>
+    <div class="row"><span class="sent"><span class="num">(52)</span> Evan's idea.</span></div>
+  </div>
+  <p>撒克遜屬格與顯性冠詞互斥：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(53)</span> <span class="ung">*</span> The Evan's idea</span></div>
+    <div class="row"><span class="sent"><span class="num">(54)</span> <span class="ung">*</span> Evan's the idea</span>
+      <span class="ana">一種解讀是「冠詞與撒克遜屬格互補分布、競爭同位」。但這與既有立場矛盾：D 是 X⁰，撒克遜屬格卻顯然是 XP（如 (55)）：</span></div>
+    <div class="row"><span class="sent"><span class="num">(55)</span> [One of our oldest friend's] idea.</span></div>
+  </div>
+  <p>更好的做法：把撒克遜屬格當<strong>空 D 的指示語</strong>：</p>
+  <pre class="tree">(56)         DP
+           /      \
+       Evan's      D'
+                 /    \
+              ∅[D]     NP
+                       |
+                      idea</pre>
+  <p>有何證據？事實上英語有一個顯性限定詞<strong>不</strong>與撒克遜屬格互斥——every：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(57)</span> Evan's every idea was completely insane.</span></div>
+    <div class="row"><span class="sent"><span class="num">(58)</span> The Emperor's every wish was immediately carried out.</span>
+      <span class="ana">屬格與 every 同現，顯示 DP 內<strong>須有足夠結構空間</strong>同時容納顯性 D 與撒克遜屬格——屬格在 Spec-DP，every 在 D：</span></div>
+  </div>
+  <pre class="tree">(59)            DP
+             /        \
+           DP          D'
+       The emperor's  /  \
+                  every    NP
+                           |
+                          wish</pre>
+  <span class="pgmark">書頁 258</span>
+  <p>此 every 分析自然延伸到一般撒克遜屬格（皆含空 D）。匈牙利語提供跨語言佐證：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(60)</span> Peter minden kalap-ja　<i>Peter's every hat-[DEF]</i>　「Peter 的所有帽子」</span></div>
+    <div class="row"><span class="sent"><span class="num">(61)</span> Peter ezen/azon kalap-ja　<i>Peter's this/that hat-[DEF]</i>　「Peter 的這／那頂帽子」</span></div>
+    <div class="row"><span class="sent"><span class="num">(62)</span> Peter valamennyi kalap-ja　<i>Peter's each hat-[DEF]</i>　「Peter 的每一頂帽子」</span>
+      <span class="ana">匈牙利語所有 D 都允許指示語，英語則只有 every 與空 D 允許。把名詞前領屬語放在 Spec-DP，這些資料就一目了然。</span></div>
+  </div>
+
+  <h3 id="s726">7.2.6 更多空 D</h3>
+  <span class="pgmark">書頁 258–259</span>
+  <p>已見兩種空 D：與複數名詞同現、與屬格領屬語同現：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(63)</span> I have sent ∅ letters to Environmental Health.</span></div>
+    <div class="row"><span class="sent"><span class="num">(64)</span> The microphone-salesman's ∅ irritating patter was relentless.</span></div>
+    <div class="row"><span class="sent"><span class="num">(65)</span> <span class="ung">*</span> I have sent ∅ letter to Environmental Health.</span>
+      <span class="ana">(65) 被排除：send c-選擇 DP，但英語沒有與<strong>單數</strong>名詞結合的空 D。這是英語特有事實——蓋爾語就允許單數空 D：</span></div>
+    <div class="row"><span class="sent"><span class="num">(66)</span> Chuir mi litir dha　<i>send-[PAST] I letter to-him</i>　「我寄了一封信給他」</span></div>
+  </div>
+  <p><strong>物質名詞 vs 可數名詞（Mass and count）。</strong>英語確實有一類名詞帶<strong>單數空 D</strong>——<span class="term">物質名詞（mass nouns）</span>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(67)</span> Andrew likes lard on his sandwiches.</span></div>
+    <div class="row"><span class="sent"><span class="num">(68)</span> Oil spread over the sea-shore.</span></div>
+    <div class="row"><span class="sent"><span class="num">(69)</span> The wizard turned the beetle into beer.</span></div>
+    <div class="row"><span class="sent"><span class="num">(70)</span> lards; oils; beers（＝種類，而非數量）</span>
+      <span class="ana">lard、oil、beer 是物質名詞，與可數名詞 letter、beetle、sandwich 對比；不易複數化，複數化只得到「種類」義。物質 vs 可數是<strong>句法敏感的語意特徵</strong>。空 D 與其補語在「物質性」上一致：</span></div>
+  </div>
+  <pre class="tree">(71) D[umass]
+
+(72)       DP
+         /    \
+   ∅[D,umass]  lard[N,mass]</pre>
+  <span class="pgmark">書頁 260</span>
+  <p><strong>專有名詞（Proper nouns）。</strong>第四種空 D 與專名同現。專名其實可帶限定詞（有「多個指涉之一」的特殊解讀）：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(73)</span> The Peter we all like was at the party.</span></div>
+    <div class="row"><span class="sent"><span class="num">(74)</span> The Paris I used to know is no more.</span></div>
+    <div class="row"><span class="sent"><span class="num">(75)</span> Peter was at the party.　<span class="num">(76)</span> Paris is no more.</span>
+      <span class="ana">主語可用裸專名替代 (75)(76)，顯示 Peter 與 the Peter I used to know 都是 DP。故假設 (77) 有空 D 取專名為補語：</span></div>
+  </div>
+  <pre class="tree">(77)        DP
+          /     \
+       ∅[D]    Peter</pre>
+  <p>希臘語專名須帶冠詞，提供佐證；可把該空 D 的補語 NP 特徵設為 [proper]：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(78)</span> O Giorgos ephuge　<i>The George left</i>　「George 離開了」</span></div>
+    <div class="row"><span class="sent"><span class="num">(79)</span> D[uproper]</span></div>
+  </div>
+  <span class="pgmark">書頁 261–262</span>
+  <p><strong>拼出空 D（Spelling out null Ds）。</strong>所謂「空 D」其實是：特定特徵束的<strong>拼出規則（spellout rules）</strong>產生了<strong>空音韻</strong>。空 D 和系統中其他東西一樣，只是特徵束的拼出，只是拼出時缺乏音韻值。以「只配複數補語」的空 D 為例：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(80)</span> a. <span class="ung">*</span> ∅ man arrived　b. <span class="g">✓</span> ∅ Men arrived.</span>
+      <span class="ana">如何確保 (a) 不被生成？首先，必須有 D：兩例主語都在 Spec-TP，T 帶 EPP [uD*]，故指示語須是 DP。其次要確保沒有「配單數的空 D」。</span></div>
+  </div>
+  <p>用既有的 <strong>Agree 機制</strong>即可：不定詞的特徵設為 <span class="brk">D[indef, unum: ]</span>。當它與 N(P) 結合，N(P) 的可解讀數特徵會檢核並賦值 D 的 [unumber]：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(82)</span> a. D[indef, unum:sing] man[sing]　b. D[indef, unum:pl] men[pl]</span>
+      <span class="ana">拼出規則套用時：帶<strong>複數</strong>值的 D 拼成<strong>空</strong>；帶<strong>單數</strong>值的 D 拼成不定詞 <strong>a</strong>。系統中根本沒有「單數不定詞拼成空」這條規則，因此「光桿單數」不可能存在。</span></div>
+  </div>
+  <p>此分析與<strong>主謂一致</strong>正確互動：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(83)</span> a. <span class="g">✓</span> People like lard.　b. <span class="ung">*</span> People likes lard.</span>
+      <span class="ana">兩例的空 D 都帶已賦值的 [pl]；雖已被檢核，它仍能去賦值 T 上的 φ 特徵，最終拼在 little v 或助動詞上。</span></div>
+  </div>
+  <pre class="tree">(84)          TP
+           /       \
+   T[nom,φ:pl,uD*]   ...
+         DP            v
+       /    \        / \
+ D[unum:pl,nom] people  like ... lard
+   (∅)      [N,pl]</pre>
+  <span class="pgmark">書頁 262–263</span>
+  <p><strong>浮游量詞（floating quantifiers）的紅利。</strong>上一章簡化地把可被「滯留（stranding）」的量詞當作不投射的中心語 (85)，留下「為何不投射」的難題。DP 取向解決之：這些量詞其實會投射，且<strong>例外地取 DP 補語</strong> (86)：</p>
+  <pre class="tree">(85)     NP            (86)     DP
+        /  \                  /   \
+       Q    NP            Q[D]     DP</pre>
+  <p>取 DP 補語讓量詞能在補語上移至 Spec-TP（滿足 EPP）時被滯留。代價是：此結構有兩個 D 節點，不嚴格符合投射層級——量詞片語的句法確有特殊處，本章不解決。接著轉向 DP 較底層的部分：N 的論元如何投射、特徵如何檢核。</p>
+
+  <!-- 7.3 -->
+  <h2 id="s73">7.3 DP 內的 θ 角色指派</h2>
+  <span class="pgmark">書頁 263–264</span>
+  <p>本節看 N 的論元如何分布於 DP 內，與動詞作比較。許多英語名詞與動詞有相同語意關係。以雙位述語動詞 analyse 為例：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(87)</span> The therapist analysed Morticia.</span></div>
+    <div class="row"><span class="sent"><span class="num">(88)</span> The therapist's analysis of Morticia</span>
+      <span class="ana">名詞 analysis 直覺上指派<strong>相同的 θ 角色</strong>，但句法不同：動詞結構有主格＋賓格 DP（She analysed her），名詞結構則是：<strong>受事（Theme）以 PP 實現、施事（Agent）像領屬語一樣用撒克遜屬格</strong>。施事為代名詞時用屬格形。</span></div>
+  </div>
+  <p>子句與 DP 的格位對比：子句有主格／賓格，DP 則不可能，只有<strong>屬格與 of-PP</strong>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(89)</span> <span class="ung">*</span> He analysis her (was flawed)</span></div>
+    <div class="row"><span class="sent"><span class="num">(90)</span> <span class="g">✓</span> His analysis of her (was flawed).</span></div>
+  </div>
+  <p>θ 角色指派還有些<strong>意外的彈性</strong>：受事可作 PP，也可作撒克遜屬格：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(91)</span> The analysis of the problem was flawed.（受事＝PP）</span></div>
+    <div class="row"><span class="sent"><span class="num">(92)</span> This problem's analysis…（受事＝撒克遜屬格）</span></div>
+    <div class="row"><span class="sent"><span class="num">(93)</span> Morticia's analysis was the most successful.（施事＝屬格）</span></div>
+    <div class="row"><span class="sent"><span class="num">(94)</span> The analysis of Morticia took longer than that of Gomez.</span>
+      <span class="ana">(94) 中 of-PP 的 Morticia <strong>只能</strong>解讀為受事。<strong>若 DP 中施事與受事兼具，施事必為撒克遜屬格、受事必為 PP</strong>。</span></div>
+  </div>
+  <p>表面反例 (95) 其實不違反此通則：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(95)</span> <span class="qm">?</span> The shooting of the hunters</span></div>
+    <div class="row"><span class="sent"><span class="num">(96)</span> a. The shooting of the hunters was very loud.　b. The shooting of the hunters took a long time.</span>
+      <span class="ana">(96b) 把 shooting 解作<strong>事件</strong>時，the hunters 只能是受事，<strong>不能</strong>是施事。(95) 看似施事，其實是「射擊歸屬於獵人」的鬆散關係，非真正施事。通則成立。</span></div>
+  </div>
+  <span class="pgmark">書頁 265</span>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(97)</span> 通則表：</span></div>
+  </div>
+  <table>
+    <tr><th></th><th>（撒克遜）屬格 Genitive</th><th>PP（of-）</th></tr>
+    <tr><td>施事 Agent</td><td style="text-align:center;color:#1a7a3a;font-weight:bold">✓</td><td style="text-align:center;color:#b32020;font-weight:bold">*</td></tr>
+    <tr><td>受事 Theme</td><td style="text-align:center;color:#1a7a3a;font-weight:bold">✓</td><td style="text-align:center;color:#1a7a3a;font-weight:bold">✓</td></tr>
+  </table>
+  <p>並非所有名詞都指派 θ 角色。wallet、goldfish 等簡單名詞無論元，但可帶<strong>領屬語</strong>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(98)</span> Morticia's goldfish　<span class="num">(99)</span> Gomez's wallet</span></div>
+    <div class="row"><span class="sent"><span class="num">(100)</span> The goldfish of Morticia's　<span class="num">(101)</span> The wallet of Gomez's</span>
+      <span class="ana">這些專名都解讀為<strong>領屬語</strong>，非施事或受事。(100)(101) 用 PP 標領屬，PP 中的名詞帶一種「看似撒克遜屬格」的標記，但其實不同——代名詞在此位置形態不同：</span></div>
+    <div class="row"><span class="sent"><span class="num">(102)</span> My book　<span class="num">(103)</span> <span class="ung">*</span> A goldfish of my　<span class="num">(104)</span> <span class="g">✓</span> A goldfish of mine</span>
+      <span class="ana">這種出現在領屬 of-PP 的特殊標記稱<span class="term">獨立屬格（independent genitive）</span>（mine, yours…），只標領屬語、不標受事 (105)：</span></div>
+    <div class="row"><span class="sent"><span class="num">(105)</span> <span class="ung">*</span> The therapist's analysis of Morticia's</span></div>
+  </div>
+  <span class="pgmark">書頁 266</span>
+  <p>另外的限制：不能有兩個撒克遜屬格修飾同一名詞 (106)；也不能在同一 DP 同時表達施事與領屬語：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(106)</span> <span class="ung">*</span> Morticia's Gomez's wallet</span></div>
+    <div class="row"><span class="sent"><span class="num">(107)</span> Morticia's photograph of Pugsley（前置屬格＝施事）</span></div>
+    <div class="row"><span class="sent"><span class="num">(108)</span> That photograph of Pugsley of Morticia's（後置獨立屬格＝領屬）</span></div>
+    <div class="row"><span class="sent"><span class="num">(109)</span> <span class="ung">*</span> Gomez's photograph of Pugsley of Morticia's（施事＋領屬兼具）</span>
+      <span class="ana">(109) 不行——是純<strong>句法</strong>限制（非語意），因為可用 by-PP 表施事 (110) 或用額外修飾語表領屬 (111) 來迴避：</span></div>
+    <div class="row"><span class="sent"><span class="num">(110)</span> That photograph by Gomez of Pugsley of Morticia's</span></div>
+    <div class="row"><span class="sent"><span class="num">(111)</span> Gomez's photograph of Pugsley belonging to Morticia</span></div>
+  </div>
+
+  <!-- 7.4 -->
+  <h2 id="s74">7.4 little n 與 DP 的底層結構</h2>
+  <span class="pgmark">書頁 266–267</span>
+  <p>本節開始解釋「為何施事不能作 of-PP」。做法是把子句結構搬到名詞：就像 VP 被包在 little v 投射裡，NP 也被包在 <span class="term">little n（小 n）</span>裡。於是名詞投射層級變成：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(112)</span> 名詞投射層級　D &gt; n &gt; N</span></div>
+  </div>
+  <p>主要理論動機：上面那些「論元出現於 DP」的通則，正是把 <span class="term">UTAH（θ 角色指派一致性假說）</span>推廣到名詞時所預測的。回想施事不能作後置 of-片語：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(113)</span> <span class="ung">*</span> The imposition of the government of a fine</span></div>
+    <div class="row"><span class="sent"><span class="num">(114)</span> <span class="g">✓</span> The government's imposition of a fine</span>
+      <span class="ana">這平行於 VP：施事不能當後置賓語。UTAH 規定：Merge 為 VP 女兒者解讀為受事；要得施事解讀，須 Merge 為 v 的指示語。推廣到名詞：Merge 為 NP 女兒＝受事，Merge 為 little n 指示語＝施事。</span></div>
+  </div>
+  <pre class="tree">(115)        DP
+           /    \
+          D      nP
+               /    \
+           Agent     n'
+                   /    \
+                  n      NP
+                       /    \
+                      N    ...(N)...</pre>
+  <p>這就部分解釋了施事為何不作 of-PP：與「施事為何不作賓語」同一原因——位置錯了，無法得該解讀。但目前還沒看到 little n 存在的<strong>證據</strong>。</p>
+
+  <h3 id="s741">7.4.1 little n 的論據</h3>
+  <span class="pgmark">書頁 268</span>
+  <p>就像論證 VP 中施事 Merge 為 little v 指示語，這裡用<strong>約束（binding）與並列（co-ordination）</strong>同類證據，論證 NP 中施事 Merge 為 little n 指示語。約束方面（脈絡：角鬥士是奴隸，主人可把他們贈給他們自己以釋放）：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(116)</span> <span class="g">✓</span> The consul's gift of the gladiator to himself.</span></div>
+    <div class="row"><span class="sent"><span class="num">(117)</span> <span class="ung">*</span> The consul's gift of himself to the gladiator</span>
+      <span class="ana">受事 c-統制目標（Goal），如同 vP 中一樣。並列證據更明顯：</span></div>
+    <div class="row"><span class="sent"><span class="num">(118)</span> Richard's gift [of the helicopter to the hospital] and [of the bus to the school]</span>
+      <span class="ana">NP 內並列模式與 VP 內相同。被並列的正是 little n 投射。</span></div>
+  </div>
+  <pre class="tree">(119)            DP
+             /        \
+        Richard's      D'
+                     /    \
+                    D      nP
+                         /    \
+                  (Richard)    n'
+                             /    \
+                         n+gift    NP
+                                 /    \
+                            (gift)    Goal</pre>
+  <p>如同 V 移位併入 v，N 移位併入 n；Richard's 也從 Spec-nP 移到 Spec-DP（如主語移到 Spec-TP）。</p>
+  <span class="pgmark">書頁 269–270</span>
+  <p><strong>n 是否在所有 DP 都投射？</strong>gift 可無施事，似乎可說 little n 投射是選擇性的。但即使無施事，名詞仍<strong>先於</strong>受事與目標——若上面結構正確，gift 必須上移到 n 才能得正確語序，顯示 <strong>n 即使無施事也投射</strong>：</p>
+  <pre class="tree">(120)         DP
+            /     \
+          the      n'
+                 /    \
+                n      NP
+            n+gift    /    \
+                  (gift)   PP
+                        to the children</pre>
+  <p>因此假設：就像 little v 是強制投射但可缺指示語，little n 亦然。連最簡單的名詞 cat 都有此結構：</p>
+  <pre class="tree">(121)       DP
+          /     \
+         D       nP
+               /    \
+              n      NP
+          n+cat     |
+                  (cat)</pre>
+
+  <h3 id="s742">7.4.2 DP 內的格位檢核</h3>
+  <span class="pgmark">書頁 270–271</span>
+  <p>代名詞依位置帶不同格位特徵：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(122)</span> <span class="g">✓</span> He loves him.　<span class="num">(123)</span> <span class="ung">*</span> Him loves him.　<span class="num">(124)</span> <span class="ung">*</span> His loves him.</span></div>
+    <div class="row"><span class="sent"><span class="num">(125)</span> <span class="g">✓</span> His book.　<span class="num">(126)</span> <span class="ung">*</span> He book.　<span class="num">(127)</span> <span class="ung">*</span> Him book.</span>
+      <span class="ana">主語位（Spec-TP）只容主格；DP 中領屬位只容<strong>屬格</strong>，主格賓格皆禁。DP 格位與其句法位置內在相連。子句中 T 檢核主格；類比地，<strong>DP 中 D 中心語檢核屬格</strong>。</span></div>
+  </div>
+  <p>把這想法套到撒克遜屬格：受事 Merge 為 NP 女兒、施事 Merge 為 Spec-n。需解釋「受事可作撒克遜屬格或 of-PP，施事只能作撒克遜屬格」。做法：<strong>n 檢核 of-片語的 [of] 格位</strong>，而 7.2.5 的<strong>零限定詞檢核施事的 [gen] 格位</strong>：</p>
+  <pre class="tree">(128)            DP
+             /        \
+       John[gen]        D'
+                      /    \
+                     D      nP
+                          /    \
+                  analysis+n     ...
+                          (analysis)   Gomez[D,of]</pre>
+  <p>n 上的 [of] 是<strong>弱特徵</strong>，故 of-片語留在原位。但施事確實移到 Spec-DP——回想 every 允許撒克遜屬格且屬格<strong>在限定詞之前</strong> (129)，顯示施事 DP 越過限定詞升到 Spec-DP (130)：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(129)</span> Evan's every desire</span></div>
+    <div class="row"><span class="sent"><span class="num">(130)</span> Evan's every (Evan's) desire</span>
+      <span class="ana">這移位由特徵強度驅動。子句中相關特徵是 EPP 而非格位；但 DP 中無此證據，故假設 <strong>D 的 [gen] 特徵（選擇性）是強的</strong>，施事移位以滿足其局部性要求。</span></div>
+  </div>
+  <pre class="tree">(131)            DP
+             /        \
+       John[gen]      D'[agent]
+                    /     \
+              D[gen*]       nP
+                          /    \
+                  (John)        n'
+                              /    \
+                      analysis+n[of]  NP
+                                    /    \
+                             (analysis)  Gomez[D,of]</pre>
+  <p>D 的 [gen*] 與 John 的格位 Agree 並賦值；為達其強度要求的局部性，它投射到 D 層，John 升到 Spec-DP。此樹再經特殊形態音韻規則拼出，尤其是 [gen] 與 [of]：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(132)</span> 拼出 [DP, gen]：先念出 DP 內一切，再念 's。</span></div>
+    <div class="row"><span class="sent"><span class="num">(133)</span> 拼出 [DP, of]：先念 of，再念出 DP 內一切。</span></div>
+  </div>
+  <span class="pgmark">書頁 272</span>
+  <p>由於空 D 賦值領屬語／施事的格位，該 DP 須現為屬格：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(134)</span> <span class="g">✓</span> The girl's book　<span class="num">(135)</span> <span class="ung">*</span> The girl book</span></div>
+    <div class="row"><span class="sent"><span class="num">(136)</span> <span class="g">✓</span> Her book　<span class="num">(137)</span> <span class="ung">*</span> She book</span></div>
+  </div>
+  <p><strong>撒克遜屬格也可解讀為受事</strong>——因 little n 只選擇性地投射指示語。若 n 不投指示語，D 的 [gen*] 就與生成為受事的 DP 的格位相配，正確預測受事可升到 Spec-D 並現為屬格：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(138)</span> The enemy's destruction (by the troops)</span>
+      <span class="ana">推導平行於非賓格動詞：enemy 帶未賦值 [case]，Merge 進 destruction 得受事 θ 角色；無顯性施事，故 n Merge 但不選指示語；零 D Merge，其強 [gen*] 配對並賦值受事格位，吸引它到整個 DP 指示語。</span></div>
+  </div>
+  <pre class="tree">(139)            DP
+             /        \
+      DP[gen]          D'[gen*]
+     the enemy        /    \
+                     D      nP
+                          /    \
+                  destruction+n  NP
+                              /    \
+                      (destruction) (the enemy)</pre>
+  <span class="pgmark">書頁 273</span>
+  <p>系統正確預測<strong>施事永不作 of-片語</strong>：因施事在帶 [of] 的 n <strong>之後</strong>才 Merge；n 在其補語（c-統制域）內尋找配對的 [of]，故搜不到施事。於是排除 (140)（of-片語作施事解）與 (141)（前置施事＋顯性 D）：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(140)</span> The destruction of the enemy（the enemy 只能是受事）</span></div>
+    <div class="row"><span class="sent"><span class="num">(141)</span> <span class="ung">*</span> [DP the [nP the enemy [n destruction…]]]</span>
+      <span class="ana">(141) 兩處錯：n 的 [of] 未被檢核、施事格位未賦值。</span></div>
+  </div>
+  <pre class="tree">(142)          DP
+            /     \
+           D       nP
+                 /    \
+        destruction+n  NP
+              [of]    /    \
+              (destruction) the enemy[of]</pre>
+
+  <h3 id="s743">7.4.3 領屬語（Possessors）</h3>
+  <span class="pgmark">書頁 274</span>
+  <p>無論元結構的名詞仍可帶領屬語：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(143)</span> Jenny's cat　<span class="num">(144)</span> My penknife.</span></div>
+  </div>
+  <p>領屬語的表層句法與其他撒克遜屬格相同（在 Spec-DP、由 D 賦格）。但其 Merge 位置不明：若 UTAH 推廣正確，領屬語<strong>不能</strong> Merge 為 NP 女兒或 Spec-n（這些位置保留給特定 θ 角色）。替代方案：假設有個<strong>選擇性功能範疇 Poss</strong>，領屬語 Merge 為其指示語：</p>
+  <pre class="tree">(145)            DP
+             /        \
+        Possessor      D'
+                     /    \
+                    D      PossP
+                         /    \
+                 (Possessor)   Poss'
+                             /    \
+                          Poss     nP</pre>
+  <p>Poss 中心語的功能是在其指示語成分與 nP 之間引入<strong>語意關係</strong>——通常是領屬，但不必然。(146) Anson's book 可有眾多解讀（屬於 Anson、他正拿著、他畫了封面…）。本書不再深入領屬語與獨立屬格的分析（文獻無共識）。</p>
+  <div class="key"><b>DP 內論元分析的最終立場：</b><br>
+  ① UTAH 推廣到名詞域：施事生成於 little n 指示語（補語為 NP），N 升到 n（如 V 升到 v）；little n 選擇性選指示語。<br>
+  ② 填入屬格 D（'s 與 every）指示語的屬格 DP，是由下方移上來的，由已賦值屬格的強度驅動。<br>
+  ③ 領屬語 Merge 於專門的選擇性功能中心語 Poss 的指示語，建立一個未確定的語意關係；領屬語以 D 的 [gen] 檢核其 [case] 並移位。</div>
+
+  <!-- 7.5 -->
+  <h2 id="s75">7.5 DP 中的 AP 修飾</h2>
+  <span class="pgmark">書頁 275–276</span>
+  <p>本節看 DP 中的<strong>附加語（adjuncts）</strong>，聚焦形容詞片語（AP）：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(147)</span> The complicated analysis</span></div>
+    <div class="row"><span class="sent"><span class="num">(148)</span> A stunning photograph of Jenny</span></div>
+    <div class="row"><span class="sent"><span class="num">(149)</span> Mary's striking resemblance to Sue</span></div>
+    <div class="row"><span class="sent"><span class="num">(150)</span> The [very complicated] analysis</span></div>
+    <div class="row"><span class="sent"><span class="num">(151)</span> An [extremely stunning] photograph of Jenny</span></div>
+    <div class="row"><span class="sent"><span class="num">(152)</span> Mary's [quite striking] resemblance to Sue</span>
+      <span class="ana">形容詞可被 very、extremely、quite 修飾成 AP。AP 語意上是<strong>修飾語</strong>，不被指派 θ 角色。兩種可能處理：附接（adjoin）到某投射，或居功能中心語指示語。本書採前者（與一般附加語處理一致）。</span></div>
+  </div>
+  <p>因 AP 出現在 D 與 N（最終位置）之間，合理假設它<strong>附接到 nP</strong>（如副詞附接到 vP）：</p>
+  <pre class="tree">(153)            DP
+             /        \
+           DP          D'
+        Mary's       /    \
+                    ∅      nP
+                         /    \
+                   striking    nP
+                             /    \
+                    resemblance    to Sue</pre>
+  <p>此分析預測 AP 是<strong>選擇性的</strong>（Adjoin 非特徵驅動）且<strong>可遞迴</strong>（附接輸出仍是 nP）——兩預測皆獲證實：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(154)</span> Mary's resemblance to Sue（無 AP）</span></div>
+    <div class="row"><span class="sent"><span class="num">(155)</span> Ron's sleepy little rat（多個 AP）</span></div>
+    <div class="row"><span class="sent"><span class="num">(156)</span> Jenny's scraggy extremely demonic cat</span></div>
+  </div>
+  <p>PP 也標示對 nP 的語意修飾：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(157)</span> The gryphon in the dungeon howled loudly.</span></div>
+    <div class="row"><span class="sent"><span class="num">(158)</span> Ron's sleepy mouse in his pocket sneezed.</span>
+      <span class="ana">關鍵：PP 若是名詞的<strong>論元</strong>，須在補語位；若<strong>非論元</strong>，須附接。(157)(158) 的 PP 僅標位置、非論元，故附接到名詞。</span></div>
+  </div>
+  <pre class="tree">(159)         DP
+            /     \
+           D       nP
+                 /    \
+                nP     PP
+              /   \   in the dungeon
+       n+gryphon  (gryphon)</pre>
+  <span class="pgmark">書頁 277</span>
+  <p>AP 與 PP 同時附接到 nP 時，句法上常無法判定誰附得低，但語意（＝修飾範圍）能區分：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(160)</span> [the [dangerous gryphon] in the dungeon]（在地牢裡的是「危險的鷹頭獅」）</span></div>
+    <div class="row"><span class="sent"><span class="num">(161)</span> [the dangerous [gryphon in the dungeon]]（危險的是「地牢裡的鷹頭獅」）</span></div>
+  </div>
+  <p>這些附接 PP 不同於<strong>論元 PP</strong>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(162)</span> Mary's resemblance to Sue</span></div>
+    <div class="row"><span class="sent"><span class="num">(163)</span> Lucy's disdain for Edmund</span></div>
+    <div class="row"><span class="sent"><span class="num">(164)</span> Our discussion of porcupines</span>
+      <span class="ana">這些 PP 是名詞的<strong>論元</strong>，是 N 的補語，因 N 的選擇性 P 特徵而 Merge：</span></div>
+  </div>
+  <pre class="tree">(165)            DP
+             /        \
+        Lucy's         D'
+                     /    \
+              ∅[D,gen*]     nP
+                          /    \
+                   (Lucy)       n'
+                              /    \
+                       disdain+n    NP
+                                  /    \
+                          (disdain)    PP
+                                     for Edmund</pre>
+  <span class="pgmark">書頁 277</span>
+  <p>最後要注意：PP 可作動詞或名詞的補語／附加語。句末一串 PP 時要判斷它屬於賓語還是動詞：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(166)</span> Ron heard a discussion in the foyer.</span>
+      <span class="ana">in the foyer 非 discussion 的論元，故須附接——但附到 NP 還是 VP？此句歧義：discussion 本身在門廳（附接 NP），或 Ron 的「聽」發生在門廳（附接 VP）。修飾名詞→附 NP；修飾動詞→附 VP。</span></div>
+  </div>
+
+  <!-- 7.6 -->
+  <h2 id="s76">7.6 DP 的語序與移位</h2>
+  <span class="pgmark">書頁 278–279</span>
+  <p>本分析對 DP 的跨語言變異有特定預期。第 5、6 章已見：有些語言把 v 升到 T（法語）、有些不（英語、瑞典語）；有些主語留原位（蘇格蘭蓋爾語）、有些須升（英語、法語）。這些差異由功能中心語上<strong>特徵強度</strong>不同來編碼。英語 DP 的結構示意（略去領屬語）：</p>
+  <pre class="tree">(167)            DP
+             /        \
+         Agent          D'
+                      /    \
+          D[gen*,unum: ]    nP
+                          /    \
+                  (Agent)       n'
+                              /    \
+                          N+n       NP
+                                  /    \
+                                (N)    Theme</pre>
+  <p>D 的 [gen*] 是<strong>強</strong>的，迫使最近的、被它賦值格位的 DP 移位（此處為施事，也可能是領屬語或受事）。[unum: ] 編碼 D 與 N 的數一致（如 each 配單數、many 配複數），透過 Agree，在英語中是<strong>弱</strong>的。</p>
+  <p>若改變這兩個特徵強度，就該找到「[unum] 強、[gen] 弱」的語言——預測 N+n 複合體升到 D、施事留原位。這種語言確實存在，其構式傳統稱<span class="term">構式狀態（construct state）</span>，見於閃語族。現代希伯來語例：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(168)</span> harisat ha-oyev 'et ha-'ir　<i>destruction the-enemy OM the-city</i>　「敵人對城市的摧毀」</span></div>
+    <div class="row"><span class="sent"><span class="num">(169)</span> tipul ha-Siltonot ba-ba'aya　<i>treatment the-authorities in-the-problem</i>　「當局對問題的處理」</span>
+      <span class="ana">整個 DP 解讀為定指，卻無定冠詞作中心語。名詞中心語<strong>在施事之前</strong>，施事<strong>在賓語之前</strong>（OM＝賓語標記，希伯來語實現賓格的類介系詞成分）。</span></div>
+  </div>
+  <span class="pgmark">書頁 280</span>
+  <p>構式狀態最有趣的是：<strong>不能有任何限定詞</strong>，且施事與受事的順序嚴格：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(170)</span> <span class="ung">*</span> ha-harisat ha-oyev 'et ha-'ir（不能加冠詞 ha-）</span></div>
+    <div class="row"><span class="sent"><span class="num">(171)</span> <span class="ung">*</span> harisat 'et ha-'ir ha-oyev（順序不能變）</span>
+      <span class="ana">這兩性質立即被解釋：N+n 升到 D（因 [unum] 強），故 N+n「填滿」D 位置（或 D 帶 [unum*] 為空），這就解釋無 D；[gen] 弱故施事在名詞後；UTAH 規定施事受事的實現位置，故順序嚴格。</span></div>
+  </div>
+  <pre class="tree">(172)              DP
+              /          \
+       D[gen]             nP
+   destruction+n+D    /        \
+   [unum:sing*]   the enemy     n'
+                  [gen]       /    \
+                   (destruction+n)  NP
+                                  /    \
+                          (destruction) DP[acc]
+                                       the city</pre>
+  <p>little n 上的 [acc] 類比於英語的 [of]。D 的 [gen] 檢核並賦值 the enemy 的格位，但因 [gen] 弱不觸發移位；[unum] 強，觸發 little n（及其內一切）移到 D。此分析僅觸及 DP 跨語言變異複雜性的表面，但展示了框架如何導出對變異種類的預期。</p>
+
+  <!-- 7.7 -->
+  <h2 id="s77">7.7 本章摘要</h2>
+  <span class="pgmark">書頁 281–283</span>
+  <ul class="plain">
+    <li>本章發展了「子句與名詞片語顯著平行」的提案：名詞片語的中心語<strong>不是名詞，而是範疇 D</strong>。</li>
+    <li>即使表面缺限定詞的名詞片語也有 D；發展了<strong>空 D 理論</strong>（複數、物質、屬格、專名四型），捕捉 DP 內選擇性質、維持一致特徵理論。</li>
+    <li>D 是 DP 內論元的<strong>格位檢核點</strong>（如 T 在 TP）；英語 D 帶強 [gen*]，使某些 D 的指示語被撒克遜屬格填充。</li>
+    <li><strong>UTAH 推廣到 DP 內 θ 角色指派</strong>：DP 含 little n（類比 little v），其指示語得施事解讀；little n 負責 DP 內受事的格位檢核。由此捕捉「施事不能作 of-PP、施事與受事皆可作撒克遜屬格」。</li>
+    <li>真正的領屬 DP 暫定生成於選擇性功能中心語 <strong>Poss</strong>（位於 little nP 之上）的指示語。</li>
+    <li>擴充後的投射層級 (173)：<br>子句：T &gt; (Neg) &gt; (Perf) &gt; (Prog) &gt; (Pass) &gt; v &gt; V；<br>名詞：<strong>D &gt; (Poss) &gt; n &gt; N</strong>。</li>
+    <li>AP 與 PP 修飾語<strong>附接到 little n 投射</strong>。</li>
+    <li>分析延伸到希伯來語<strong>構式狀態</strong>——差異化約為層級中中心語特徵強度（[gen] 與 [unum]）的<strong>參數設定</strong>。</li>
+  </ul>
+  <div class="concept"><h4>(173 表) 現象與解釋對照</h4>
+  <table>
+    <tr><th>現象 Phenomenon</th><th>解釋 Explanation</th></tr>
+    <tr><td>D 的互補分布</td><td>投射層級延伸到名詞域</td></tr>
+    <tr><td>D 與 N 的選擇關係</td><td>D 上的不可解讀特徵，由 N 或 n 的特徵賦值</td></tr>
+    <tr><td>名詞論元的出現與位置</td><td>UTAH 延伸到名詞域 ＋ 功能中心語賦格</td></tr>
+    <tr><td>DP 內論元的格位</td><td>某些 D 帶 [gen*]、little n 帶 [of]</td></tr>
+    <tr><td>AP 與 PP 修飾</td><td>這些成分是 nP 附加語</td></tr>
+    <tr><td>構式狀態現象</td><td>[gen] 與 [unum] 強度的參數變異</td></tr>
+  </table></div>
+  <p>本章刻意留下許多未竟之處：領屬語與施事的互動、獨立屬格的句法、修飾的替代分析、層級中更豐富功能結構的可能——這些留待習題與延伸閱讀。</p>
+  <div class="key"><b>本章關鍵詞彙：</b>DP 假設（DP Hypothesis）、限定詞 D / determiner、定冠詞 / 不定冠詞（definite/indefinite article）、指示詞（demonstrative）、近指 / 遠指（proximal/distal）、量詞（quantifier）、分布等價（distributional equivalents）、光桿複數（bare plural）、互補分布（complementary distribution）、投射層級（Hierarchy of Projections）、非 θ 相關語意 / 功能範疇、定指性（definiteness）、調適（accommodation）、語用不恰當（infelicity）、空 D（null D：plural/mass/genitive/proper）、拼出規則（spellout rules）、代名詞作 D（pronouns as D）、撒克遜屬格（Saxon Genitive）、獨立屬格（independent genitive）、領屬語（possessor）、Spec-DP、little n（小 n）、UTAH、施事 / 受事 / 目標（Agent/Theme/Goal）、[gen*] / [of] 格位特徵、Agree、Poss 中心語、AP/PP 附接、構式狀態（construct state）、參數變異（feature strength）。</div>
+
+  <!-- 練習 -->
+  <h2 id="ex">練習題（Exercises）</h2>
+  <span class="pgmark">書頁 283–287</span>
+  <div class="concept"><h4>練習 1：動名詞（Gerunds）</h4>
+  <p>假設英語 -ing 在「帶 [of] 格的 little n」與「帶 [acc] 格的 little v」之間歧義。</p>
+  <p><strong>Part A — Task 1：</strong>為下列粗體片語畫出完整標註格位特徵的樹（粗體片語必為 DP，因在主語位）：(1) <i>The reading of Shakespeare</i> satisfied me. (2) <i>Reading Shakespeare</i> satisfied me.</p>
+  <p><strong>Part B — Task 2：</strong>判斷各資料集是否支持你的樹：</p>
+  <ul class="plain">
+    <li>資料集1：(3) The constant reading of Shakespeare ✓ (4) Constantly reading Shakespeare ✓ (5) *The constantly reading Shakespeare (6) *Constant reading Shakespeare（n 配形容詞 constant＋of；v 配副詞 constantly＋裸賓語）</li>
+    <li>資料集2：(7) The readings of Shakespeare ✓ (8) *Readings Shakespeare（n 可複數、v 不可）</li>
+    <li>資料集3：(9) No reading of Shakespeare ✓ (10) *No reading Shakespeare</li>
+    <li>(11) *Not reading of Shakespeare (12) Not reading Shakespeare ✓</li>
+    <li>資料集4：(13) Every reading of Shakespeare ✓ (14) *Every reading Shakespeare（限定詞 every/no 選 n 版）</li>
+    <li>資料集5：(17) *Having read of Shakespeare (18) Having read Shakespeare ✓（(17) 在「read about」解讀下合法；星號針對 Shakespeare 為 read 受事的解讀）</li>
+  </ul>
+  <p><strong>Part C — Task 3（Data set 6）：</strong>(19) Bill's reading of Shakespeare ✓ (20) Bill's reading Shakespeare ✓——說明主語如何加到 Part A 的結構，並指出樹中意外處。</p>
+  <p><strong>Part D — Task 4（Data set 7）：</strong>(21) *Bill reading of Shakespeare (22) Bill reading Shakespeare ✓——little v 版 -ing 可帶賓格主語；用空限定詞捕捉，說明其選擇與格位性質。</p>
+  <p><strong>Part E — Task 5（Data set 8）：</strong>(23) *Bill's reading Shakespeare and Maureen's singing Schubert satisfies me (24) ✓ …satisfy me (25) Bill reading… and Maureen singing… satisfies me ✓ (26) *…satisfy me——解釋為何 (25)(26) 對空 D 取向構成問題。</p></div>
+  <div class="concept"><h4>練習 2：D 的樹</h4>
+  <p>為下列 DP 畫完整標註格位特徵的樹：(1) Her every wish (2) That book's cover (3) Each picture of Hermione's aunt's fish (4) The sultan's every desire's fulfilment (5) That girl's best friend's fluffy moustache。</p></div>
+  <div class="concept"><h4>練習 3：P 的診斷測試</h4>
+  <p>測試：在介系詞前可插入 right（I climbed <i>right</i> up the tree）。對 (3)–(10) 粗體詞套用此測試，找出不通過者的共通點（注意句中 θ 角色）：(3) compared Ginger <i>to</i> Fred (4) took the car <i>to</i> the town (5) book <i>about</i> Harry (6) arrived <i>about</i> six (7) depend <i>on</i> Mary (8) sat <i>on</i> Mary (9) thought <i>of</i> the moon (10) picture <i>of</i> the hippogryph。of 有何特別？</p></div>
+  <div class="concept"><h4>練習 4：附加語還是論元？</h4>
+  <p>判斷句末 PP 較可能與動詞還是賓語結合（歧義則說明意義差異）：(1) brought the hat to the teacher (2) remove the blood from the wall (3) remove the blood on the wall (4) hit the tree in the air (5) hidden in a hole in the ground。</p></div>
+  <div class="concept"><h4>練習 5：更多畫樹</h4>
+  <p><strong>Task 1：</strong>為下列畫樹（標槓階與片語地位，略去選擇／格位特徵；可假設形容詞附接低於 PP 附加語）：(1) Our discussion of previous students' failures in exams traumatized every nervous student in the class yesterday. (2) The continual implementation of modularization in this University demands constant attention. (3) Merlin's remarkable recovery from his hideous disease surprised the evil warlock's chief curser.　<strong>Task 2：</strong>為其中一句給出推導。</p></div>
+
+  <div class="nav-bottom">
+    <a href="index.html">← 全書導覽</a>
+    <a href="Ch08_CP.html">第 8 章：功能範疇 III — CP →</a>
+  </div>
+</div><!-- /.wrap -->
+</div><!-- /#zh -->
+
+<!-- ===================== ENGLISH PANEL ===================== -->
+<div class="panel" id="en">
+<div class="wrap">
+  <p class="lead">Condensed page-by-page paraphrase of Chapter 7 of Adger (2003), <em>Core Syntax</em>, pp. 244–289 (OUP). Key terms are <strong>bolded</strong>; numbered examples are given (short ones verbatim) in blockquotes. This is a study paraphrase, not the full verbatim text.</p>
+
+  <span class="enpg">p.244</span>
+  <p><strong>Functional Categories II — the DP.</strong> So far the book focused on the clause. This chapter turns to phrases with a <strong>nominal</strong> lexical core. The claim: just as a verb is surmounted by functional projections (topped by T), a noun is too — and the topmost functional category, usually filled in English by a <strong>determiner</strong>, is the real head. So noun phrases are really <strong>Determiner Phrases (DPs)</strong>, headed by category <strong>D</strong>. DPs, like TPs, have rich functional structure, check case features, and provide landing sites for head and phrasal movement.</p>
+
+  <span class="enpg">p.245</span>
+  <p><strong>7.1 The category D. 7.1.1 Types of D.</strong> The word <em>the</em> has <strong>distributional equivalents</strong> — words filling the same slot. All precede the noun (the determiner class, bearing a <strong>D-feature</strong>). English also has <strong>bare plurals</strong>, but not bare singulars.</p>
+  <blockquote><span class="num">(1)</span> The letter<br><span class="num">(2)</span> The/a/this/that/some/every/each letter<br><span class="num">(3)</span> *Letter the/a/this/that/some/every/each<br><span class="num">(4)</span> Letters (are on the table). <span class="num">(5)</span> *Letter (is on the table).</blockquote>
+
+  <span class="enpg">p.246</span>
+  <p>Subclasses: <strong>definite article</strong> <em>the</em> (sing. &amp; pl.), <strong>indefinite article</strong> <em>a</em> (sing. only) — an apparent <strong>number agreement</strong> between D and N. Plural of <em>a</em> ≈ <em>some</em> (but <em>some</em> also takes singulars). Also <strong>demonstratives</strong> this/that, these/those (<strong>proximal</strong> vs <strong>distal</strong>), related to <strong>person features</strong>.</p>
+  <blockquote><span class="num">(6)</span> the letter/letters; a letter/*a letters<br><span class="num">(7)</span> some letters <span class="num">(8)</span> some technician <span class="num">(9)</span> Show me letters!<br><span class="num">(10)</span> this/that chair <span class="num">(11)</span> these/those chairs</blockquote>
+
+  <span class="enpg">p.246–247</span>
+  <p>Scottish Gaelic has a three-way demonstrative system (near speaker / near hearer / yonder). Demonstratives can stand alone (<strong>demonstrative pronouns</strong>). <strong>Quantifiers</strong> all/each/every (each, every: singular only). Determiners combine with a (complex) phrasal constituent (shown by <em>ones</em> replacement). Cross-linguistically D may follow N (Madi, an ND language) — like head-initial vs head-final variation.</p>
+  <blockquote><span class="num">(12)–(14)</span> an duine seo/sin/siud "this/that/yonder man"<br><span class="num">(15)</span> I hate that.<br><span class="num">(16)</span> every chair/*every chairs <span class="num">(17)</span> each chair/*each chairs<br><span class="num">(18)</span> These expensive and illegal bottles of absinthe… <span class="num">(19)</span> These ones…<br><span class="num">(20)</span> [these [expensive…absinthe]]<br><span class="num">(21)</span> ebi re/di "the/this fish" (Madi, ND order)</blockquote>
+
+  <span class="enpg">p.247–249</span>
+  <p><strong>7.1.2 The semantics of Ds.</strong> Crucially, Ds have <strong>no θ-related semantics</strong>; they restrict the range of referents. <strong>Definiteness</strong> links the phrase to discourse context (familiarity); using <em>the</em> for something not yet introduced is <strong>infelicitous</strong> (pragmatic, not grammatical). Inferred existence licenses <em>the</em> via <strong>accommodation</strong>. Demonstratives are similar (directing attention near/far).</p>
+  <blockquote><span class="num">(24)</span> …buy <em>the</em> new cocktail shaker. (odd, not yet mentioned)<br><span class="num">(25)</span> …<em>the</em> new cocktail shaker was expensive. (felicitous)<br><span class="num">(26)</span> …<em>the</em> cocktail shaker… (accommodation)</blockquote>
+
+  <span class="enpg">p.249–250</span>
+  <p><strong>Quantification</strong> serves a different purpose: it picks out <em>no referent at all</em>. <em>No vampire</em> has no referent. Quantifiers express relations between <strong>sets</strong>: <em>no</em> → disjoint sets; <em>every</em> → one set included in another. So two different semantic functions (familiarity vs quantification) share one category, <strong>D</strong> — and D's semantics is non-θ-related. Like T (which relates non-θ to vP), <strong>D is a functional category</strong>.</p>
+  <blockquote><span class="num">(27)</span> No vampire can survive sunrise.<br><span class="num">(28)</span> No vampire slept. <span class="num">(29)</span> Every vampire slept.</blockquote>
+
+  <span class="enpg">p.250</span>
+  <p><strong>7.2 Ds as heads. 7.2.1 Complementary distribution.</strong> Ds are in <strong>complementary distribution</strong> — they compete for one position.</p>
+  <blockquote><span class="num">(30)</span> *The this man <span class="num">(31)</span> *Each a man <span class="num">(32)</span> *Some those letters <span class="num">(33)</span> *The the man</blockquote>
+
+  <span class="enpg">p.251–252</span>
+  <p><strong>7.2.2 Capturing it.</strong> Early grammar used <strong>PS-rules</strong> (NP → Det N; PP → P NP) with fixed slots. But this framework uses general principles instead — the <strong>Hierarchy of Projections</strong>, Merge and Move. Properties to capture: (1) D–N number agreement; (2) D on either side of N cross-linguistically; (3) D combines with a complex constituent; (4) semantics = familiarity/quantification/proximity, not θ; (5) complementary distribution. We extend the Hierarchy to nominals.</p>
+  <blockquote><span class="num">(34)</span> NP → Det N <span class="num">(36)</span> PP → P NP<br><span class="num">(38)</span> Clausal: T&gt;(Neg)&gt;(Perf)&gt;(Prog)&gt;(Pass)&gt;v&gt;V. Nominal: D&gt;N.</blockquote>
+
+  <span class="enpg">p.253</span>
+  <p><strong>7.2.3 Implications.</strong> Structure (39) <strong>[DP D [NP …]]</strong> captures complementary distribution (one D slot), non-θ semantics, and complexity of NP (NP is the complement of D). DN/ND order follows. But this means <strong>D, not N, heads nominal phrases</strong>; all former NPs are recategorized as DPs, and selectional N-features (incl. T's EPP) become D-features ([uN*] → [uD*]).</p>
+  <blockquote><span class="num">(39)</span> [DP D NP] <span class="num">(40)</span> [DP those[D] [NP expensive…absinthe]]<br><span class="num">(41)/(42)</span> burn [DP the[D,acc] [NP letter [PP to[P,#D] Peter[D]]]]</blockquote>
+
+  <span class="enpg">p.255–256</span>
+  <p><strong>7.2.4 Bare nominals &amp; pronouns.</strong> Since <em>write</em> c-selects a DP, bare plurals (<em>letters, jellyfish</em>) must be DPs with a <strong>null D</strong>. French lacks such a null D (so bare nouns are ungrammatical). <strong>Pronouns</strong> are simply Ds; they may exceptionally take an NP complement (<em>we linguists</em>).</p>
+  <blockquote><span class="num">(43)</span> I wrote letters./We ate jellyfish. <span class="num">(44)</span> I wrote the letters.<br><span class="num">(45)</span> *J'ai écrit lettres <span class="num">(46)</span> J'ai écrit des lettres<br><span class="num">(47)</span> [DP ∅[D] letters[N]] <span class="num">(48)</span> [DP these[D] [NP letters [PP to him[D]]]]<br><span class="num">(49)</span> [We linguists] love to argue. <span class="num">(50)</span> [You friends of the king]…</blockquote>
+
+  <span class="enpg">p.256–258</span>
+  <p><strong>7.2.5 Possessors — specifiers of DP.</strong> Possession via PP (51) or the <strong>Saxon Genitive</strong> (52). Saxon genitives are blocked by overt articles (53,54), but they are XPs not X⁰ — so treat the Saxon genitive as <strong>specifier of a null D</strong> (56). Evidence: <em>every</em> is NOT in complementary distribution with the genitive (57,58), so DP has room for both (genitive in Spec-DP, every in D). Hungarian backs this up.</p>
+  <blockquote><span class="num">(51)</span> An idea of Evan's. <span class="num">(52)</span> Evan's idea.<br><span class="num">(53)</span> *The Evan's idea <span class="num">(54)</span> *Evan's the idea <span class="num">(55)</span> [One of our oldest friend's] idea.<br><span class="num">(56)</span> [DP Evan's [D' ∅[D] [NP idea]]]<br><span class="num">(57)</span> Evan's every idea… <span class="num">(58)</span> The Emperor's every wish…<br><span class="num">(59)</span> [DP [DP The emperor's] [D' every [NP wish]]]<br><span class="num">(60)–(62)</span> Peter minden/ezen/valamennyi kalap-ja (Hungarian)</blockquote>
+
+  <span class="enpg">p.258–260</span>
+  <p><strong>7.2.6 More null Ds.</strong> Null D types so far: <strong>plural</strong> (63), <strong>genitive</strong> (64). No null D with singulars in English (65) — an English-specific fact (Gaelic allows it, 66). But a singular null D occurs with <strong>mass nouns</strong> (67–69), which contrast with <strong>count nouns</strong> and don't pluralize (lards = "types"). The null D agrees with its complement in <strong>mass</strong> status: D[umass]. A fourth null D occurs with <strong>proper nouns</strong> (proper names can take <em>the</em> with special readings; bare names = DPs with null D). Greek requires D with names: D[uproper].</p>
+  <blockquote><span class="num">(63)</span> sent ∅ letters <span class="num">(64)</span> the salesman's ∅ patter <span class="num">(65)</span> *sent ∅ letter<br><span class="num">(66)</span> Chuir mi litir dha (Gaelic, null sing. D)<br><span class="num">(67)</span> Andrew likes lard… <span class="num">(70)</span> lards/oils/beers (= types)<br><span class="num">(71)</span> D[umass] <span class="num">(72)</span> [DP ∅[D,umass] lard[N,mass]]<br><span class="num">(73)</span> The Peter we all like… <span class="num">(75)</span> Peter was at the party.<br><span class="num">(77)</span> [DP ∅[D] Peter] <span class="num">(78)</span> O Giorgos ephuge (Greek) <span class="num">(79)</span> D[uproper]</blockquote>
+
+  <span class="enpg">p.261–262</span>
+  <p><strong>Spelling out null Ds.</strong> "Null D" = <strong>spellout rules</strong> giving a feature bundle null phonology. The indefinite D has [indef, unum: ]; the N values [unumber] via <strong>Agree</strong>. The plural-valued D spells out null, the singular-valued one spells out <em>a</em> — so no bare singular is possible. Plural null Ds bear valued [pl] that values φ on T (subject-verb agreement).</p>
+  <blockquote><span class="num">(80)</span> *∅ man arrived / ∅ Men arrived.<br><span class="num">(81)</span> D[indef, unum: ] <span class="num">(82)</span> a. unum:sing→a; b. unum:pl→∅<br><span class="num">(83)</span> People like/*likes lard. <span class="num">(84)</span> [TP T[φ:pl,uD*] [DP ∅[pl] people]…]</blockquote>
+
+  <span class="enpg">p.262–263</span>
+  <p><strong>Floating quantifiers.</strong> The DP analysis fixes last chapter's puzzle: stranded quantifiers <em>do</em> project, taking a <strong>DP complement</strong> (86), so they can be stranded when the complement raises to Spec-TP. (Caveat: this gives two D nodes, not strictly conforming to the Hierarchy.) Then we turn to the lower DP.</p>
+  <blockquote><span class="num">(85)</span> [NP Q NP] <span class="num">(86)</span> [DP Q[D] DP]</blockquote>
+
+  <span class="enpg">p.263–265</span>
+  <p><strong>7.3 θ-role assignment in DP.</strong> Deverbal nouns assign the same θ-roles as their verbs (analyse → analysis), but with different syntax: in clauses we get NOM/ACC; in DPs we get <strong>genitive and of-PP</strong>. The <strong>Theme</strong> is a PP; the <strong>Agent</strong> is a Saxon genitive. There's flexibility: Themes can be PP or Saxon genitive, but if both Agent and Theme appear, <strong>Agent must be Saxon genitive, Theme must be PP</strong>. (95) <em>?the shooting of the hunters</em> is only an apparent counterexample — under an event reading the hunters can only be Theme.</p>
+  <blockquote><span class="num">(87)</span> The therapist analysed Morticia. <span class="num">(88)</span> The therapist's analysis of Morticia<br><span class="num">(89)</span> *He analysis her <span class="num">(90)</span> His analysis of her<br><span class="num">(91)</span> The analysis of the problem… <span class="num">(92)</span> This problem's analysis…<br><span class="num">(93)</span> Morticia's analysis… <span class="num">(94)</span> The analysis of Morticia… (Theme only)<br><span class="num">(95)</span> ?The shooting of the hunters <span class="num">(96)</span> a/b loud vs took-long</blockquote>
+
+  <span class="enpg">p.265–266</span>
+  <p>Generalization (97): Agent = ✓genitive, *PP; Theme = ✓genitive, ✓PP. Argumentless nouns (wallet, goldfish) take <strong>possessors</strong>, realized as Saxon genitive or as a PP with the <strong>independent genitive</strong> (mine, not *of my). Independent genitive marks only possessors (105). Constraints: no two Saxon genitives on one noun (106); can't have Agent + possessor together in one DP (109) — a purely syntactic restriction (avoidable via by-PP or <em>belonging to</em>).</p>
+  <blockquote><span class="num">(97)</span> Agent: gen ✓/PP *; Theme: gen ✓/PP ✓<br><span class="num">(98)–(101)</span> Morticia's goldfish; the wallet of Gomez's<br><span class="num">(102)</span> My book <span class="num">(104)</span> A goldfish of mine <span class="num">(105)</span> *…analysis of Morticia's<br><span class="num">(106)</span> *Morticia's Gomez's wallet<br><span class="num">(107)–(109)</span> Morticia's photograph of Pugsley / *Gomez's photograph of Pugsley of Morticia's<br><span class="num">(110)</span> photograph by Gomez… <span class="num">(111)</span> …belonging to Morticia</blockquote>
+
+  <span class="enpg">p.266–267</span>
+  <p><strong>7.4 Little n and the low structure of DP.</strong> Just as VP sits in a <strong>little v</strong>, NP sits in a <strong>little n</strong>: Nominal Hierarchy = <strong>D &gt; n &gt; N</strong>. Motivation: extend the <strong>UTAH</strong> to nominals. Agents Merge as Spec-n; Themes Merge as daughters of NP — explaining why Agents can't be post-nominal of-PPs (parallel to Agents not being objects).</p>
+  <blockquote><span class="num">(112)</span> Nominal Hierarchy: D &gt; n &gt; N.<br><span class="num">(113)</span> *The imposition of the government of a fine <span class="num">(114)</span> The government's imposition of a fine<br><span class="num">(115)</span> [DP D [nP Agent [n' n [NP N …]]]]</blockquote>
+
+  <span class="enpg">p.268–270</span>
+  <p><strong>7.4.1 Motivation for little n.</strong> Binding (Theme c-commands Goal, 116 vs 117) and <strong>co-ordination</strong> (118) show Agents are in Spec-n; N raises to n (like V→v); the genitive raises to Spec-DP. Is n always projected? Even agentless <em>gift</em> precedes Theme/Goal, so N must raise to n — n is projected even without an Agent (like little v: obligatory, may lack specifier). Even <em>cat</em> has [DP D [nP n+cat [NP (cat)]]].</p>
+  <blockquote><span class="num">(116)</span> The consul's gift of the gladiator to himself. <span class="num">(117)</span> *…of himself to the gladiator<br><span class="num">(118)</span> Richard's gift [of the helicopter to the hospital] and [of the bus to the school]<br><span class="num">(119)/(120)/(121)</span> trees with N→n raising</blockquote>
+
+  <span class="enpg">p.270–272</span>
+  <p><strong>7.4.2 Case checking in DP.</strong> Pronoun case tracks position: Spec-TP = NOM only; DP possessor slot = GEN only. As T checks NOM, <strong>D checks genitive</strong>. <strong>n checks [of]</strong> on the of-Phrase (weak → stays in situ); the <strong>null D checks [gen]</strong> on the Agent. Since <em>every</em>'s genitive precedes the determiner (129), the Agent raises past D to Spec-DP, driven by a <strong>strong optional [gen*]</strong> on D. Spellout: [DP,gen] → DP+'s; [DP,of] → of+DP.</p>
+  <blockquote><span class="num">(122)–(127)</span> He/*Him/*His loves him; His/*He/*Him book<br><span class="num">(128)/(131)</span> [DP John[gen] [D' D[gen*] [nP (John) [n' analysis+n[of] [NP (analysis) Gomez[of]]]]]]<br><span class="num">(129)</span> Evan's every desire <span class="num">(130)</span> Evan's every (Evan's) desire<br><span class="num">(132)</span> [DP,gen]→…'s <span class="num">(133)</span> [DP,of]→of…</blockquote>
+
+  <span class="enpg">p.272–273</span>
+  <p>Null D values the possessor/Agent → it must be genitive (134–137). A Saxon genitive can also be a <strong>Theme</strong> (since little n optionally projects a specifier): with no Agent, [gen*] matches the Theme's case and raises it (parallel to unaccusatives). System correctly rules out Agent-as-of-PP (140 only Theme; 141 doubly ill-formed) and rules in (142) the destruction of the enemy (Theme).</p>
+  <blockquote><span class="num">(134)–(137)</span> The girl's/*girl book; Her/*She book<br><span class="num">(138)</span> The enemy's destruction (by the troops)<br><span class="num">(139)</span> [DP the enemy[gen] [D'[gen*] D [nP n+destruction [NP (destr.) (the enemy)]]]]<br><span class="num">(140)</span> The destruction of the enemy <span class="num">(141)</span> *the [the enemy [destruction…]]<br><span class="num">(142)</span> [DP D [nP destruction+n[of] [NP (destr.) the enemy[of]]]]</blockquote>
+
+  <span class="enpg">p.274</span>
+  <p><strong>7.4.3 Possessors.</strong> Argumentless nouns still take possessors (143,144), surface-identical to other Saxon genitives (Spec-DP, GEN from D). But by UTAH they can't Merge as NP daughters or Spec-n. Proposal: an <strong>optional functional head Poss</strong>; possessors Merge in its specifier, establishing an <strong>underdetermined semantic relation</strong> (Anson's book = many readings). Final position summarized: UTAH generalizes; genitive DPs raise driven by valued GEN strength; possessors Merge in Spec-Poss.</p>
+  <blockquote><span class="num">(143)</span> Jenny's cat <span class="num">(144)</span> My penknife.<br><span class="num">(145)</span> [DP Possessor [D' D [PossP (Poss.) [Poss' Poss nP]]]] <span class="num">(146)</span> Anson's book.</blockquote>
+
+  <span class="enpg">p.275–276</span>
+  <p><strong>7.5 AP modification in DP.</strong> APs (modifiable by very/extremely/quite) are <strong>modifiers</strong>, not assigned θ-roles. Two options: adjunction, or specifier of a functional head. The book chooses <strong>adjunction to nP</strong> (like adverbs to vP). Predictions confirmed: APs are <strong>optional</strong> and <strong>recursive</strong> (155,156).</p>
+  <blockquote><span class="num">(147)–(149)</span> The complicated analysis; A stunning photograph…; Mary's striking resemblance…<br><span class="num">(150)–(152)</span> [very complicated]/[extremely stunning]/[quite striking]…<br><span class="num">(153)</span> [DP Mary's [D' ∅ [nP striking [nP resemblance to Sue]]]]<br><span class="num">(154)–(156)</span> recursion: Ron's sleepy little rat; Jenny's scraggy extremely demonic cat</blockquote>
+
+  <span class="enpg">p.276–277</span>
+  <p>PPs also modify nPs. Crucial: <strong>argument PP → complement; non-argument PP → adjunct</strong>. Locative PPs (157,158) are adjuncts. With AP+PP both adjoined, scope is fixed semantically (160 vs 161). Argument PPs (162–164) are complements of N (165). Watch out: a final PP may attach to V or N — (166) is ambiguous.</p>
+  <blockquote><span class="num">(157)</span> The gryphon in the dungeon howled. <span class="num">(159)</span> [DP D [nP [nP n+gryphon (gryphon)] in the dungeon]]<br><span class="num">(160)</span> the [dangerous gryphon] in the dungeon <span class="num">(161)</span> the dangerous [gryphon in the dungeon]<br><span class="num">(162)–(164)</span> Mary's resemblance to Sue; Lucy's disdain for Edmund; Our discussion of porcupines<br><span class="num">(165)</span> [DP Lucy's [∅[gen*] [nP (Lucy) [disdain+n [NP (disdain) PP for Edmund]]]]]<br><span class="num">(166)</span> Ron heard a discussion in the foyer. (ambiguous: NP- vs VP-adjunction)</blockquote>
+
+  <span class="enpg">p.278–280</span>
+  <p><strong>7.6 Order and movement in DPs.</strong> Cross-linguistic variation reduces to <strong>feature strength</strong> on heads. English DP (167): D's <strong>[gen*] is strong</strong> (forces movement of closest valued DP), D's <strong>[unum] is weak</strong>. Vary these → predict a language with strong [unum], weak [gen]: N+n raises to D, Agent stays in situ. This is the <strong>construct state</strong> (Semitic; Modern Hebrew). It is interpreted as definite with no overt determiner; N precedes Agent precedes object (OM = object marker).</p>
+  <blockquote><span class="num">(167)</span> [DP Agent [D[gen*,unum: ] [nP (Agent) [N+n [NP (N) Theme]]]]]<br><span class="num">(168)</span> harisat ha-oyev 'et ha-'ir "the enemy's destruction of the city"<br><span class="num">(169)</span> tipul ha-Siltonot ba-ba'aya "the authorities' treatment of the problem"</blockquote>
+
+  <span class="enpg">p.280–281</span>
+  <p>Construct state: <strong>no determiner possible</strong> (170) and <strong>strict Agent–Theme order</strong> (171). Explained: N+n raises to D (strong [unum]) → "fills" D (so no overt D); weak [gen] → Agent follows the noun; UTAH → strict argument order. n bears [acc] (≈ English [of]). This barely scratches the surface but shows how the framework predicts variation types.</p>
+  <blockquote><span class="num">(170)</span> *ha-harisat ha-oyev 'et ha-'ir <span class="num">(171)</span> *harisat 'et ha-'ir ha-oyev<br><span class="num">(172)</span> [DP destruction+n+D[unum:sing*] [nP the enemy[gen] [(destr+n) [NP (destr.) DP[acc] the city]]]]</blockquote>
+
+  <span class="enpg">p.281–283</span>
+  <p><strong>7.7 Summary.</strong> Significant clause–nominal parallelism: nominals are headed by <strong>D</strong>, not N. <strong>Null D theory</strong> (plural, mass, genitive, proper) preserves selectional and agreement features. <strong>D checks case</strong> ([gen*] strong in English → Saxon genitive in Spec-DP). <strong>UTAH extends</strong> to DPs via <strong>little n</strong> (Spec = Agent; n checks [of] on Themes). True possessors generated in Spec of optional <strong>Poss</strong>. Extended Hierarchy (173): Clausal T&gt;(Neg)&gt;(Perf)&gt;(Prog)&gt;(Pass)&gt;v&gt;V; Nominal <strong>D&gt;(Poss)&gt;n&gt;N</strong>. AP/PP modifiers adjoin to nP. Construct state = parametric feature-strength variation. Many loose ends left deliberately.</p>
+  <blockquote><span class="num">(173)</span> Hierarchy of Projections. Nominal: D &gt; (Poss) &gt; n &gt; N.<br>Phenomena/explanation table: complementary distribution (Hierarchy); D–N selection (uninterpretable features valued by N/n); argument appearance/position (UTAH + functional-head case valuing); argument case ([gen*] on D, [of] on n); AP/PP (nP adjuncts); construct state ([gen]/[unum] strength).</blockquote>
+
+  <span class="enpg">p.283–289</span>
+  <p><strong>Exercises.</strong> <strong>Ex.1 Gerunds:</strong> -ing ambiguous between little n ([of]) and little v ([acc]); draw trees for <em>the reading of Shakespeare</em> vs <em>reading Shakespeare</em>; test against data sets 1–8 (adjective+of vs adverb+bare object, plurals, determiners, gerund subjects, co-ordination). <strong>Ex.2 Trees for Ds:</strong> Her every wish; That book's cover; Each picture of Hermione's aunt's fish; The sultan's every desire's fulfilment; That girl's best friend's fluffy moustache. <strong>Ex.3 Diagnostics for P:</strong> the <em>right</em>-insertion test; which Ps fail (think about θ-roles); is <em>of</em> special? <strong>Ex.4 Adjunct or argument?:</strong> decide whether a final PP attaches to V or object. <strong>Ex.5 More trees:</strong> draw trees + give a derivation. <strong>Further reading:</strong> §7.1 Jackendoff (1977), Haegeman &amp; Guéron (1999), Lyons (1997), Heim (1982); §7.2 Abney (1987), Giorgi &amp; Longobardi (1991), Szabolcsi (1983/1994), Longobardi (1994), Cardinaletti &amp; Starke (1999); §7.3 Chomsky (1970), Grimshaw (1990), Barker (1991); §7.4 Abney (1987), Alexiadou &amp; Wilder (1998); §7.5 Valois (1991), Cinque (1994); §7.6 Borer (1999), Ouhalla (1991), Ritter (1991), Duffield (1996), Rouveret (1991).</p>
+
+  <div class="nav-bottom">
+    <a href="index.html">← Index</a>
+    <a href="Ch08_CP.html">Ch.8 CP →</a>
+  </div>
+</div><!-- /.wrap -->
+</div><!-- /#en -->
+
+<a href="#top" class="back-top">↑ 回頂端</a>
+<footer>Adger, D. (2003) <em>Core Syntax</em>, Ch.7 DP（書頁 244–289）· Oxford University Press · DOI:10.1093/oso/9780199243709.003.0007</footer>
+
+<script>
+function showTab(which){
+  document.getElementById('zh').classList.toggle('active', which==='zh');
+  document.getElementById('en').classList.toggle('active', which==='en');
+  document.getElementById('tab-zh').classList.toggle('active', which==='zh');
+  document.getElementById('tab-en').classList.toggle('active', which==='en');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+</script>
+</body>
+</html>

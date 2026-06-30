@@ -1,0 +1,20 @@
+# Render Blueprint — Core Syntax 題庫測驗（靜態網站）
+# 部署方式：Render 後台 → New → Blueprint → 連結此 repo，Render 會自動讀取本檔。
+# 也可用 New → Static Site 手動設定（Build Command 留空、Publish Directory = .）。
+services:
+  - type: web
+    name: core-syntax-quiz
+    runtime: static
+    # 純靜態檔，無建置步驟
+    buildCommand: ""
+    # 直接發佈 repo 根目錄（quiz.html / questions.json / Ch*.html / index.html）
+    staticPublishPath: .
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: "public, max-age=0, must-revalidate"
+    routes:
+      # 進站導向全書導覽頁
+      - type: rewrite
+        source: /
+        destination: /index.html

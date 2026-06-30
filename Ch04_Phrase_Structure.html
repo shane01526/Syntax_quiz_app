@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch.4 表徵詞組結構 Representing Phrase Structure（逐頁逐例句詳解 + 英文對照）— Adger (2003)</title>
+<style>
+  :root{--ink:#1b1b22;--muted:#5d5d6b;--line:#e3e3ec;--bg:#faf9f6;--accent:#7b2d3b;--accent2:#7b2d3b;--chip:#f0ece4;--card:#fff;--box:#f6f2ec;}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Noto Serif TC","Songti TC",Georgia,"Times New Roman",serif;color:var(--ink);background:var(--bg);line-height:1.9}
+  header{background:linear-gradient(135deg,#7b2d3b,#43202a);color:#fff;padding:54px 24px 36px}
+  header .inner{max-width:900px;margin:0 auto}
+  header .ch{font-family:system-ui,sans-serif;font-size:.8rem;letter-spacing:2px;color:#e3bcc4}
+  header h1{margin:6px 0 4px;font-size:2rem}
+  header .en{color:#f0d9de;font-style:italic}
+  header .pg{margin-top:10px;font-size:.85rem;color:#e3bcc4;font-family:system-ui,sans-serif}
+  nav.bc{max-width:900px;margin:0 auto;padding:14px 24px 0;font-family:system-ui,sans-serif;font-size:.85rem}
+  nav.bc a{color:var(--accent);text-decoration:none}
+  .tabbar{max-width:900px;margin:14px auto 0;padding:0 24px;display:flex;gap:10px;font-family:system-ui,sans-serif}
+  .tab{cursor:pointer;border:1px solid var(--line);border-bottom:0;background:#f1ece9;color:#7a4350;padding:11px 22px;border-radius:10px 10px 0 0;font-weight:700;font-size:.95rem;transition:.15s}
+  .tab:hover{background:#ece3e0}
+  .tab.active{background:var(--card);color:var(--accent);box-shadow:0 -2px 6px rgba(0,0,0,.04)}
+  .panel{display:none}.panel.active{display:block}
+  .toc{max-width:900px;margin:0 auto 10px;padding:18px 24px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+  .toc h2{margin:0 0 10px;font-size:1.05rem;color:var(--accent);border:0}
+  .toc ul{columns:2;column-gap:30px;margin:0;padding-left:18px;font-family:system-ui,sans-serif;font-size:.9rem}
+  .toc a{color:#333;text-decoration:none}.toc a:hover{color:var(--accent)}
+  .wrap{max-width:900px;margin:0 auto;padding:10px 24px 80px}
+  h2{color:var(--accent);border-bottom:2px solid var(--line);padding-bottom:6px;margin-top:48px;font-size:1.45rem;scroll-margin-top:14px}
+  h3{color:#43202a;margin-top:34px;font-size:1.18rem;border-left:5px solid var(--accent);padding-left:12px}
+  .pgmark{display:inline-block;font-family:system-ui,sans-serif;font-size:.72rem;font-weight:700;color:#fff;background:var(--accent);padding:2px 10px;border-radius:12px;margin:24px 0 4px}
+  p{margin:13px 0}
+  .lead{font-size:1.05rem;background:var(--box);border-left:4px solid var(--accent);padding:16px 20px;border-radius:0 10px 10px 0}
+  .term{font-family:system-ui,sans-serif;font-weight:700;color:var(--accent)}
+  .en-term{font-style:italic;color:var(--muted)}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:.93rem}
+  th,td{border:1px solid var(--line);padding:8px 11px;text-align:left;vertical-align:top}
+  th{background:var(--chip);font-family:system-ui,sans-serif}
+  .ex{background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 0;margin:16px 0;overflow:hidden}
+  .ex .row{padding:9px 18px;border-bottom:1px dashed #eee}
+  .ex .row:last-child{border-bottom:0}
+  .ex .sent{font-family:"Times New Roman",serif;font-size:1.05rem}
+  .ex .num{display:inline-block;min-width:34px;color:var(--muted);font-family:system-ui,sans-serif;font-size:.85rem}
+  .ex i{color:#444}
+  .g{color:#1a7a3a;font-weight:bold}.ung{color:#b32020;font-weight:bold}.qm{color:#b88a00;font-weight:bold}
+  .gloss{display:block;margin:4px 0 0 34px;font-size:.92rem;color:#555}
+  .ana{display:block;margin:5px 0 0 34px;font-size:.92rem;color:#6a3340;background:#f8eef1;border-radius:6px;padding:8px 12px}
+  .ana::before{content:"▸ 詳解　";color:var(--accent);font-weight:bold;font-family:system-ui,sans-serif}
+  .concept{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:16px 0;border-top:3px solid var(--accent)}
+  .concept h4{margin:0 0 8px;color:var(--accent);font-family:system-ui,sans-serif;font-size:1rem}
+  .key{background:#fdf6e3;border:1px solid #e9dcae;border-radius:10px;padding:14px 18px;margin:18px 0}
+  .key b{color:#8a6d00}
+  ul.plain{margin:13px 0;padding-left:24px}ul.plain li{margin:6px 0}
+  pre.tree{background:#1f2430;color:#e8e8ee;border-radius:10px;padding:14px 18px;margin:14px 0 14px 34px;font-family:"Cascadia Code","Consolas","Courier New",monospace;font-size:.9rem;line-height:1.5;overflow-x:auto}
+  .bkt{font-family:"Cascadia Code","Consolas",monospace;background:#f3eef0;border-radius:5px;padding:1px 6px;font-size:.92rem;color:#43202a}
+  #en p{margin:12px 0}
+  #en .enpg{display:inline-block;font-family:system-ui,sans-serif;font-size:.72rem;font-weight:700;color:#fff;background:#888;padding:2px 9px;border-radius:12px;margin:20px 0 2px}
+  #en blockquote{margin:10px 0;padding:8px 16px;border-left:3px solid var(--line);background:#fbfbfb;font-family:"Times New Roman",serif}
+  #en .num{color:var(--muted);font-family:system-ui,sans-serif;font-size:.8rem;display:inline-block;min-width:34px}
+  .nav-bottom{display:flex;justify-content:space-between;margin-top:54px;font-family:system-ui,sans-serif;font-size:.9rem}
+  .nav-bottom a{color:var(--accent);text-decoration:none;border:1px solid var(--line);padding:10px 16px;border-radius:8px}
+  footer{text-align:center;color:var(--muted);font-size:.8rem;padding:20px;font-family:system-ui,sans-serif}
+  .back-top{position:fixed;right:18px;bottom:18px;background:var(--accent);color:#fff;text-decoration:none;padding:8px 13px;border-radius:20px;font-family:system-ui,sans-serif;font-size:.8rem;box-shadow:0 3px 10px rgba(0,0,0,.2)}
+</style>
+</head>
+<body id="top">
+<header><div class="inner">
+  <div class="ch">CHAPTER 4 · 逐頁逐例句詳解 + 英文原文對照</div>
+  <h1>表徵詞組結構</h1>
+  <div class="en">Representing Phrase Structure</div>
+  <div class="pg">書頁 104–154 · 涵蓋例句 (1)–(135) 與 X-bar、c-command、小寫 v、UTAH、推導架構</div>
+</div></header>
+<nav class="bc"><a href="index.html">← 全書導覽</a> ／ 第 4 章</nav>
+
+<div class="tabbar">
+  <div class="tab active" id="tab-zh" onclick="showTab('zh')">中文逐頁詳解</div>
+  <div class="tab" id="tab-en" onclick="showTab('en')">English Original（整章英文摘要）</div>
+</div>
+
+<!-- ===================== 中文 PANEL ===================== -->
+<div class="panel active" id="zh">
+<div class="toc">
+  <h2>本章導覽</h2>
+  <ul>
+    <li><a href="#s41">4.1 導論</a></li>
+    <li><a href="#s42">4.2 詞組的結構</a></li>
+    <li><a href="#s421">4.2.1 第一次 Merge — 補語</a></li>
+    <li><a href="#s422">4.2.2 第二次 Merge — 指定語</a></li>
+    <li><a href="#s423">4.2.3 附加（Adjunction）</a></li>
+    <li><a href="#s424">4.2.4 動詞詞組的結構</a></li>
+    <li><a href="#s425">4.2.5 X-bar 理論</a></li>
+    <li><a href="#s43">4.3 C-command（成分統御）</a></li>
+    <li><a href="#s431">4.3.1 定義關係</a></li>
+    <li><a href="#s432">4.3.2 反身代詞約束</a></li>
+    <li><a href="#s433">4.3.3 否定極性詞 NPI</a></li>
+    <li><a href="#s434">4.3.4 小結</a></li>
+    <li><a href="#s44">4.4 雙賓結構（Ditransitives）</a></li>
+    <li><a href="#s441">4.4.1 三論元述語</a></li>
+    <li><a href="#s442">4.4.2 三分枝還是二分枝？</a></li>
+    <li><a href="#s443">4.4.3 二分枝替代方案</a></li>
+    <li><a href="#s444">4.4.4 使役與小寫 v</a></li>
+    <li><a href="#s45">4.5 連結（Linking）與 UTAH</a></li>
+    <li><a href="#s46">4.6 系統的整體架構</a></li>
+    <li><a href="#s47">4.7 本章摘要</a></li>
+  </ul>
+</div>
+
+<div class="wrap">
+  <p class="lead" id="s41">本章把第 3 章引入的<strong>合併操作 Merge</strong> 落實成一套完整的<strong>詞組結構表徵</strong>。核心主張是：句子的階層結構並非任意，而是由<strong>中心語（head）的選擇性質（selectional properties）</strong>驅動而成。我們會看到三個結構位置——<span class="term">補語（complement）</span>、<span class="term">指定語（specifier）</span>、<span class="term">附加語（adjunct）</span>——如何從 Merge 的先後與特徵核檢自然導出，並由此重建傳統的 <span class="term">X-bar 理論</span>。接著引入新的句法關係 <span class="term">c-command（成分統御）</span> 作為診斷工具，用它分析雙賓結構，導出<strong>小寫 v（little v）</strong>與 <strong>VP-shell（動詞殼層）</strong>分析；最後以 <strong>UTAH</strong>（題旨指派一致性假設）與整個系統的<strong>推導（derivation）架構</strong>收尾。</p>
+
+  <div class="concept"><h4>本章的核心問題意識</h4>
+  <p>第 3 章告訴我們「句子是 Merge 一層層蓋起來的階層結構」。但這還不夠：我們需要知道<strong>這些階層如何組織成「詞組（phrase）」</strong>、為什麼某個位置叫補語、某個叫指定語、又如何用獨立的證據（c-command、構成性測試、移位測試）去<strong>判定</strong>一個句子的真實結構。Adger 的關鍵立場是：<strong>詞組層級（XP / X′ / X）不是理論硬塞進去的原始概念，而是「特徵核檢」這件事的副產品</strong>——一個節點若再無待核檢的選擇特徵，它就自動是 maximal（最大投射，XP）。</p></div>
+
+  <!-- 4.2 -->
+  <h2 id="s42">4.2 詞組的結構</h2>
+  <span class="pgmark">書頁 104–105</span>
+  <p>句子是用二元操作 Merge 把句法物件結合而成。<strong>中心語的性質會「投射（project）」到更高的結構</strong>，使得結構中最重要的元素決定了整個結構的分布。本節聚焦：中心語的性質究竟<strong>能往上投射多遠</strong>。</p>
+
+  <h3 id="s421">4.2.1 第一次 Merge — 補語</h3>
+  <p>系統的一個重要預測：一個元素的所有 <span class="term">c-選擇特徵（c-selectional features）</span>必須在它與一個「選擇它的中心語」合併<strong>之前</strong>就被核檢掉。這正排除了 (1)：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(1)</span> <span class="ung">*</span> letters to</span>
+      <span class="ana">介詞 <i>to</i> 帶有未被核檢的 c-選擇特徵 <span class="bkt">[uN]</span>（需要一個名詞補語）。由於特徵只能在 Merge 時、且 Merge 永遠發生在<strong>根節點（root node）</strong>核檢，這個 <span class="bkt">[uN]</span> 被「困（trapped）」在結構內部，永遠無法核檢 → 不合語法。</span></div>
+    <div class="row"><span class="sent"><span class="num">(2)</span> <span class="g">✓</span> letters to Peter</span>
+      <span class="ana">先把名詞 Peter 與 <i>to</i> 合併，核檢掉 <span class="bkt">[uN]</span>，就合語法了。<i>to Peter</i> 這個成分已無待核檢的選擇特徵，無法再投射，稱為 <span class="term">maximal（最大投射）</span>。範疇為 X 的最大物件縮寫為 <strong>XP</strong>，即「X 詞組」。</span></div>
+  </div>
+  <pre class="tree">         N(letters)
+        ╱        ╲
+  letters[N,…]    PP
+              ╱      ╲
+        to[P,uN]   Peter[N]</pre>
+  <p>注意：作者<strong>不在根節點標 XP</strong>（因為還不知道 letters 是否會再被選擇，特徵束裡留了「…」）；也不把終端的 Peter 標成 phrase——雖然技術上 Peter 既是 maximal（無選擇特徵）也是 minimal（它就是個詞項）。</p>
+  <span class="pgmark">書頁 106</span>
+  <table>
+    <tr><th>節點</th><th>Minimal?</th><th>Maximal?</th><th>說明</th></tr>
+    <tr><td>Peter</td><td>是</td><td>是</td><td>詞項，且無 c-選擇特徵</td></tr>
+    <tr><td>to</td><td>是</td><td>否</td><td>詞項，但帶一個待核檢特徵</td></tr>
+    <tr><td>to Peter</td><td>否</td><td>是</td><td>非詞項，且無待核檢特徵</td></tr>
+    <tr><td>letters</td><td>是</td><td>否</td><td>詞項，帶待核檢特徵</td></tr>
+    <tr><td>letters to Peter</td><td>否</td><td>?</td><td>非詞項；可能仍有待核檢特徵（故 maximal 與否未定）</td></tr>
+  </table>
+  <div class="key"><b>關鍵原則：</b>一個節點的<strong>詞組地位（phrasal status）是從它的特徵構成「導出」的</strong>——若無 c-選擇特徵待核檢，它就是 maximal。由此得出：<strong>只有最大投射能當「選擇性中心語」的姊妹</strong>；若把非最大投射合併進去，其未核檢特徵會被困住而導致不合語法。</p></div>
+  <p>以動詞 <i>burn</i> 為例（兩個 θ-角色、各帶一個 c-選擇 N-特徵）。先處理 Theme，把 letters 的投射與 burn 合併：</p>
+  <span class="pgmark">書頁 107</span>
+  <pre class="tree">          V(burn)
+        ╱        ╲
+  burn[V,uN,…]    NP(letters to Peter)
+                ╱        ╲
+          letters         PP
+                       ╱      ╲
+                 to[P,uN]   Peter[N]</pre>
+  <p>合併後 <i>letters to Peter</i> 的所有選擇特徵都已核檢，故此刻變成 phrasal（NP），並滿足 burn 的 c-選擇特徵。動詞的投射暫不標 phrasal（要等它再合併別的東西才確定）。構成性測試（替代測試）證明這結構正確：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(6)</span> Burn letters to Peter!</span></div>
+    <div class="row"><span class="sent"><span class="num">(7)</span> Burn letters to him!</span></div>
+    <div class="row"><span class="sent"><span class="num">(8)</span> Burn them!</span>
+      <span class="ana">用代詞 <i>him</i> 替換 <i>Peter</i>、用 <i>them</i> 替換整個 <i>letters to Peter</i> 都成立 → 證明 <i>letters to Peter</i> 是一個構成成分（constituent）。這種「中心語 + 投射的複雜詞組」結構稱為 <span class="term">中心語-補語結構（head-complement structure）</span>，由 Merge 的<strong>第一次</strong>應用（滿足中心語第一個選擇特徵）產生。</span></div>
+  </div>
+  <p>術語：(5) 中 NP <i>letters to Peter</i> 是 burn 的<strong>補語</strong>；PP <i>to Peter</i> 是 letters 的補語；NP Peter 是 to 的補語。英語裡補語在中心語<strong>右側</strong>（法、蓋爾、阿拉伯語亦然）；日、韓、土耳其語則補語在中心語<strong>左側</strong>。</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(9)</span> Hanako ga Taro o tataku（日語）</span>
+      <span class="gloss">Hanako 主格　Taro 賓格　打　／「Hanako 正在打 Taro。」</span>
+      <span class="ana">補語 Taro（受詞）在英語中跟在動詞後，在日語中卻在動詞<strong>前</strong>。</span></div>
+    <div class="row"><span class="sent"><span class="num">(10)</span> buturigaku no gakusei（日語）</span>
+      <span class="gloss">物理　屬格　學生　／「物理學的學生」 — 名詞的補語也在左側。</span></div>
+    <div class="row"><span class="sent"><span class="num">(11)</span> Michael left Meg.</span>
+      <span class="ana">動詞補語的傳統名稱是<strong>受詞（object）</strong>；Meg 既是 met 的受詞也是補語。受詞在動詞後 = <span class="term">VO 語言</span>；受詞在動詞前 = <span class="term">OV 語言</span>。</span></div>
+  </div>
+  <p>當中心語 X 只與單一補語結合時，基本中心語-補語結構有兩種線性化：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(12)</span> <span class="bkt">[XP X YP]</span>（中心語在前，如英語）</span></div>
+    <div class="row"><span class="sent"><span class="num">(13)</span> <span class="bkt">[XP YP X]</span>（中心語在後，如日語）</span>
+      <span class="ana">本書假設不同詞序源自中心語-補語結構<strong>不同的線性化性質</strong>；其他分析（如 Kayne 的「皆源自移位」）見延伸閱讀。</span></div>
+  </div>
+
+  <h3 id="s422">4.2.2 第二次 Merge — 指定語</h3>
+  <span class="pgmark">書頁 109</span>
+  <p>burn 的 θ-grid 上還有第二個元素：<span class="term">施事（Agent）</span>角色。補語合併後，動詞仍有一個未滿足的選擇特徵，需再合併一個名詞當施事：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(14)</span> Paul burns letters to Peter.</span>
+      <span class="ana">Paul 得到 Agent、letters to Peter 得到 Theme。</span></div>
+  </div>
+  <pre class="tree">           VP
+        ╱       ╲
+   NP(Paul)      V′
+              ╱      ╲
+   burn[V,uN,uN]      NP(letters to Peter)</pre>
+  <p>動詞的一個 c-選擇特徵未核檢，會<strong>投射到上一個節點</strong>，在那裡由作為姊妹的 NP <i>Paul</i> 核檢。這給出動詞的<strong>三個投射層級</strong>：</p>
+  <div class="key"><b>三層投射（皆由特徵核檢「導出」，而非額外原始概念）：</b><br>
+  ① <span class="term">最小投射 minimal projection</span>（X<sup>min</sup>，此處 V）：就是詞項本身，其實不算「投射」。<br>
+  ② <span class="term">最大投射 maximal projection</span>（XP，即 VP）：所有選擇特徵核檢完畢時產生。<br>
+  ③ <span class="term">中間投射 intermediate / bar 投射</span>（X′，即 V′）：非詞項，但仍有待核檢特徵。</div>
+  <p>定義：<strong>補語</strong>＝詞項的姊妹（第一次 Merge 的產物）；<strong>指定語（specifier）</strong>＝ X′ 投射的姊妹（第二次 Merge 的產物）。英語指定語線性化在中心語<strong>左側</strong>。某些語言（如 Malagasy，例 (16)）的指定語似乎在右側，但這分析有爭議。</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(16)</span> Manasa lamba ho an'ny ankizy ny lehilahy（Malagasy）</span>
+      <span class="gloss">現在式-洗　衣服　為　兒童　那　男人　／「那男人為小孩洗衣服。」（施事看似在右）</span></div>
+  </div>
+
+  <h3 id="s423">4.2.3 附加（Adjunction）</h3>
+  <span class="pgmark">書頁 110–112</span>
+  <p>有些成分不接受中心語指派的 θ-角色，而是<strong>修飾</strong>整個情境：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(17)</span> Anson demonized David every day.</span></div>
+    <div class="row"><span class="sent"><span class="num">(18)</span> Anson demonized David at the club.（PP 附加語）</span></div>
+    <div class="row"><span class="sent"><span class="num">(19)</span> Anson demonized David almost constantly.（AdvP 附加語）</span></div>
+    <div class="row"><span class="sent"><span class="num">(20)</span> Anson very happily demonized David.</span>
+      <span class="ana">demonize 把兩個 θ-角色指派給 Anson 與 David；而 every day / at the club / constantly / happily <strong>不接受任何 θ-角色</strong>，純為修飾。這類成分稱 <span class="term">附加語（adjuncts）</span>——它們被納入句子，但<strong>不是透過選擇特徵核檢</strong>。附加語不是範疇名稱，而是「樹中佔據某種位置」的句法物件（可為 AP、PP、AdvP 等）。</span></div>
+  </div>
+  <div class="concept"><h4>三者的平行性（皆為「姊妹」關係）</h4>
+  <p>本書採保守立場：<strong>補語</strong>是詞項（X）的姊妹；<strong>指定語</strong>是 X′ 節點的姊妹；<strong>附加語</strong>是 XP 節點的姊妹。例 (21)：</p>
+  <pre class="tree">              XP
+           ╱      ╲
+         XP      Adjunct
+        ╱   ╲
+   Specifier   X′
+            ╱     ╲
+           X    Complement</pre>
+  <p>附加時 <strong>XP 的詞組層級不變</strong>，因為沒有滿足任何選擇特徵。</p></div>
+  <p>為什麼附加語能進入樹？Merge 須由選擇特徵觸發，但這裡沒有特徵被滿足；又不能把選擇特徵放在附加語上（否則它就成了中心語）。證據顯示<strong>附加語從不是其構造的中心語</strong>：帶附加語的成分，其分布與沒有附加語時完全相同（例 (22) <i>(quickly)</i> 加不加，VP 的分布不變）。</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(22)</span> a. Burn the letters (quickly)!　b. I burnt the letters (quickly).　c. I plan to burn the letters (quickly).　d. <span class="ung">*</span>Burn the letters (quickly) is the best thing to do.　e. Burning the letters (quickly) is the best thing to do.</span>
+      <span class="ana">加不加 quickly，可接受性完全一樣 → 附加語不改變 VP 的分布。</span></div>
+  </div>
+  <p>因此附加語<strong>不是由 Merge</strong> 納入，而由另一基本操作 <span class="term">Adjoin（附加）</span>——它<strong>不需要觸發</strong>，把一個詞組物件插入另一個詞組物件的最外層，不創造新物件，只把舊物件最外層「撐開」兩半再插入：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(23)</span> <span class="bkt">[XP XP YP]</span>（YP 附加到 XP；英語附加語<strong>不線性化</strong>，可在兩側）</span></div>
+    <div class="row"><span class="sent"><span class="num">(24)</span> Kiss Anson quickly! / <span class="num">(26)</span> Quickly kiss Anson!</span>
+      <span class="ana">祈使句有不發音的施事（標為 e）。(25)/(27) 顯示 quickly 可附加在 VP 右側或左側：<span class="bkt">[VP [VP e [V′ kiss Anson]] quickly]</span> 或 <span class="bkt">[VP quickly [VP e [V′ kiss Anson]]]</span>。</span></div>
+  </div>
+  <p>附加元素的性質：永遠在補語與指定語的<strong>階層外側</strong>、可在兩側出現、不接受 θ-角色、（經規定）為 phrasal。一個遺留問題（留待第 5 章）：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(28)</span> Julie quickly answered the question.</span>
+      <span class="ana">副詞夾在主語與動詞之間，但若主語在 VP 指定語、附加語又必在指定語外側，這就矛盾了。此問題下一章解決。</span></div>
+  </div>
+
+  <h3 id="s424">4.2.4 動詞詞組的結構</h3>
+  <span class="pgmark">書頁 113–114</span>
+  <p>及物動詞詞組的概要結構（例 (29)）：動詞先與補語合併成 V′，再與指定語合併成 VP，附加語可再附加到 VP。指定語與補語都必須是 phrasal（無 c-選擇特徵）。</p>
+  <pre class="tree">              VP
+           ╱      ╲
+         VP      Adjunct
+        ╱   ╲
+   Specifier   V′
+            ╱     ╲
+         verb    Complement</pre>
+  <p>系統允許一個詞項帶多個選擇特徵，這引出<strong>核檢順序</strong>問題。為什麼重要？因為語意要正確。(30) Jenny poked Jonathan 沒有歧義（誰戳誰是固定的）；但若先核檢「錯的」特徵，θ-角色會指派反了（變成 Jonathan 戳 Jenny）。此問題留待 4.5 解決。</p>
+
+  <h3 id="s425">4.2.5 X-bar 理論</h3>
+  <span class="pgmark">書頁 115–116</span>
+  <p>我們發展出的系統，大致就是傳統的 <span class="term">X-bar 理論（X-bar theory）</span>。它原本被設想成對詞組結構的一組<strong>約束</strong>：所有詞組都必須有中心語；兩個關鍵結構是中心語-補語、指定語-X。常見格式：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(31)</span> XP → ZP X′</span></div>
+    <div class="row"><span class="sent"><span class="num">(32)</span> X′ → X WP</span></div>
+    <div class="row"><span class="sent"><span class="num">(33)</span> <span class="bkt">[XP ZP [X′ X WP]]</span>，ZP = 指定語，WP = 補語。</span></div>
+  </div>
+  <p>傳統 X-bar 樹與本書的差異有二：(1) 傳統 X-bar 把詞項<strong>支配於</strong>最小投射層之下（而非「就是」那層）；(2) 傳統 X-bar <strong>強制每一層都投射</strong>——即使沒有指定語或補語，每個 XP 都直接支配 X′、X′ 支配 X、X 支配詞項。例 (15) 在傳統 X-bar 下會變成 (34) 那種<strong>層層填滿、極為冗長</strong>的樹（每個 NP 都展開成 N′、N）。</p>
+  <div class="key"><b>本書 vs 傳統 X-bar 的根本差異：</b>本書的詞組層級<strong>由詞項性質導出</strong>，所以 <span class="term">bar 投射（X′）只有在「有指定語」時才出現</span>。若中心語只與補語結合且特徵都滿足，補語自動 phrasal；若中心語既無補語也無指定語，它<strong>自動同時是 maximal 與 minimal</strong>（如專有名詞、代詞）。傳統 X-bar 樹更整齊統一，但多出大量冗餘結構層。</p></div>
+
+  <!-- 4.3 -->
+  <h2 id="s43">4.3 C-command（成分統御）</h2>
+  <span class="pgmark">書頁 116–117</span>
+  <p>除了「姊妹關係（sisterhood）」外，引入另一個重要句法關係 <span class="term">c-command（constituent-command，成分統御）</span>。它能診斷結構，並在反身代詞、否定極性詞的分析中扮演關鍵角色，最後用來在雙賓結構的多個假設間做抉擇。</p>
+
+  <h3 id="s431">4.3.1 定義關係</h3>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(35)</span> 節點 A c-command 節點 B，<strong>當且僅當（iff）</strong> A 的姊妹：a. 就是 B，或 b. 包含（contains）B。</span></div>
+  </div>
+  <p>「當且僅當」＝兩條件任一成立 A 就 c-command B，反之 A c-command B 則必有一條件成立。第二條件可想成指令：「想知道某節點是否 c-command 另一節點，就看它的<strong>姊妹</strong>是否包含後者」。</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(36)</span> <span class="bkt">[T [Z X Y] [S W R]]</span></span>
+      <span class="ana">X 只 c-command Y（Y 是 X 姊妹，且 Y 不含其他節點）。Z c-command S（姊妹），也 c-command W 與 R（含於 S）。S c-command Z、X、Y（定義不涉及<strong>線性順序</strong>，故可統御「前面」的節點）。T 既不 c-command 任何東西、也不被任何東西 c-command（它含全樹、無姊妹）。</span></div>
+  </div>
+
+  <h3 id="s432">4.3.2 反身代詞約束</h3>
+  <span class="pgmark">書頁 117–119</span>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(37)</span> <span class="g">✓</span> I shaved myself.</span></div>
+    <div class="row"><span class="sent"><span class="num">(38)</span> <span class="ung">*</span> Myself shaved me.</span>
+      <span class="ana">第 2 章的「反身代詞概括」（(39)：反身代詞須與句中另一表達式同指；(40)：同指須共享 φ-特徵）<strong>無法</strong>區分 (37)/(38)——兩句都有共享 φ-特徵的反身代詞。</span></div>
+  </div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(41)</span> 反身代詞概括（修訂）：反身代詞必須與一個 <strong>c-command 它的</strong>表達式同指。</span>
+      <span class="ana">主語 c-command 受詞（受詞含於主語姊妹 V′ 內），但反之不然。(38) 中反身代詞 Myself 在主語位置，me 不 c-command 它 → 排除。例 (42) <span class="bkt">[VP myself [V′ shaved me]]</span> 顯示 me 不 c-command myself。</span></div>
+  </div>
+  <p>能否改用<strong>線性「前置（precedence）」</strong>取代 c-command？(43) 用「須與前置表達式同指」也能解釋 (37)/(38)，但無法推廣：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(44)</span> The man I saw left.</span></div>
+    <div class="row"><span class="sent"><span class="num">(45)</span> <span class="ung">*</span> The man I saw shaved myself.</span>
+      <span class="ana">I 雖<strong>前置</strong>於 myself，句子卻不合法。因 the man I saw 是構成成分（(46)–(49) 的替代/分裂測試證明），I 被包在裡面，所以 <strong>I 不 c-command myself</strong>（I 上方有個不含反身代詞的節點）。結構 (51) <span class="bkt">[VP [NP The man I saw] [V′ shaved myself]]</span>。→ 我們需要的是 <strong>c-command 而非 precedence</strong>。</span></div>
+    <div class="row"><span class="sent"><span class="num">(52)</span> <span class="ung">*</span> My mother hated myself.</span>
+      <span class="ana">所有格 my 在主語 my mother 內部，不 c-command 反身代詞 → 違反概括，同樣排除。</span></div>
+  </div>
+
+  <h3 id="s433">4.3.3 否定極性詞 NPI</h3>
+  <span class="pgmark">書頁 120–121</span>
+  <p><span class="term">否定極性詞（Negative Polarity Items, NPIs）</span>如 any、ever，需要句中出現否定元素：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(53)</span> <span class="ung">*</span> I wanted any cake. / <span class="num">(54)</span> I didn't want any cake.</span></div>
+    <div class="row"><span class="sent"><span class="num">(55)</span> <span class="ung">*</span> I saw him ever. / <span class="num">(56)</span> I didn't see him ever.</span></div>
+    <div class="row"><span class="sent"><span class="num">(57)</span> NPI 概括：NPI 必須出現在否定句中。</span></div>
+  </div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(58)</span> <span class="g">✓</span> No one wanted any cake.</span></div>
+    <div class="row"><span class="sent"><span class="num">(59)</span> <span class="ung">*</span> Any boy saw no one.</span>
+      <span class="ana">(58)(59) 都是「含 no one 的否定句 + any」，但只有 (58) 合法 → 純「否定句」概括不夠。</span></div>
+    <div class="row"><span class="sent"><span class="num">(60)</span> NPI 概括（修訂）：NPI 必須被否定元素 <strong>c-command</strong>。</span>
+      <span class="ana">(59) 中 any boy 在主語位置，不被 no one（受詞）c-command → 排除。再驗證 (61) <span class="ung">*</span>The picture of no one hung upon any wall：no one 在構成成分 the picture of no one 內部（(62) 替代測試證明），不 c-command any → 排除。關鍵：相關的是<strong>結構概念（c-command）</strong>，而非純線性（precedence）或純語意（negativity）。</span></div>
+  </div>
+
+  <h3 id="s434">4.3.4 小結</h3>
+  <span class="pgmark">書頁 122</span>
+  <p>c-command 同時解釋反身代詞與 NPI 的分布（練習中還會解釋代詞與其他 NP）。若解釋正確，c-command 就成了<strong>診斷句子結構的工具</strong>：把反身代詞或 NPI 放進感興趣的位置，用合語法性模式檢測 c-command 關係。這為句法工具箱（除構成性測試外）增添新利器，下一節用它分析雙賓動詞詞組。</p>
+
+  <!-- 4.4 -->
+  <h2 id="s44">4.4 雙賓結構（Ditransitives）</h2>
+  <span class="pgmark">書頁 122–123</span>
+  <p>到目前為止「補語（第一次 Merge）+ 指定語（第二次 Merge）」的及物結構，遇到<strong>三論元述語</strong>就出問題。</p>
+
+  <h3 id="s441">4.4.1 三論元述語</h3>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(63)</span> Benjamin gave the cloak to Nathan.</span></div>
+    <div class="row"><span class="sent"><span class="num">(64)</span> Nathan received the cloak from Benjamin.</span>
+      <span class="ana">give、receive（如同上章的 donate）都是<strong>三位述語（three-place predicates）</strong>，事件中有三個參與者，各 NP/PP 由述語指派 θ-角色。</span></div>
+  </div>
+
+  <h3 id="s442">4.4.2 三分枝還是二分枝？</h3>
+  <span class="pgmark">書頁 123–126</span>
+  <p>三位述語的構成性問題：雙賓 VP 怎麼結構？兩個分析——三分枝 vs 二分枝。</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(65)</span> <span class="bkt">[V′ gave [NP the cloak] [PP to Nathan]]</span>（<strong>三分枝</strong>）</span>
+      <span class="ana">但若只保留二元 Merge，這結構不可得——須引入能造三元結構的操作。</span></div>
+    <div class="row"><span class="sent"><span class="num">(66)</span> <span class="bkt">[V′ [V′ gave[V,uN,uN,uP] [NP the cloak]] [PP to Nathan]]</span>（<strong>V-遞迴的二分枝</strong>）</span>
+      <span class="ana">give 帶三特徵 [uN, uN, uP]：一個 N 由受詞核檢、另一個由主語、P 由 Goal 核檢。此分析涉及 <strong>V 層級的遞迴</strong>（先前只在附加語見過遞迴，但 Goal 不像附加語，它有 θ-角色，所以有點令人不安）。</span></div>
+  </div>
+  <p>核檢順序此時更迫切：若 P 比 N 先核檢，PP 會成為動詞姊妹，預測錯誤詞序 (67) <span class="qm">?</span>Benjamin gave to Lee the cloak（除非特殊語調，假設是受詞右移）。代詞更明顯：(68) a.<span class="ung">*</span>Benjamin gave to Lee it　b. Benjamin gave it to Lee。</p>
+  <p><strong>三分枝 vs V-遞迴對構成性主張不同</strong>：V-遞迴下「動詞+受詞」是構成成分，三分枝則否。哪個對？移位測試（VP-Preposing）：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(69)</span> Benjamin said he would run away and [run away] he did.</span></div>
+    <div class="row"><span class="sent"><span class="num">(71)</span> <span class="g">✓</span> …and [give the cloak to Lee] he did.（動詞+受詞+Goal 可前移）</span></div>
+    <div class="row"><span class="sent"><span class="num">(72)</span> <span class="ung">*</span> …and [give the cloak] he did to Lee.（只前移動詞+受詞 → 不行）</span>
+      <span class="ana">二分枝把 give the cloak 當成分，理應可前移，但 (72) 不行 → <strong>沒有證據</strong>支持「動詞+受詞」是成分。</span></div>
+    <div class="row"><span class="sent"><span class="num">(73)</span> a. Who gave the cloak to Lee?　b. <span class="ung">*</span>Benjamin (did) to Lee.（替代/省略測試同樣失敗）</span></div>
+  </div>
+  <p>並列（co-ordination）測試：(74)–(77) 顯示 and 可連接兩 NP、兩 NP、兩動詞投射、兩 AP；(78)(79) 非成分不能並列。但並列須小心：(80) [Lee's youngest] and [Dawn's oldest] son ran away 看似連接非成分，實則是 (81) 名詞 son 被省略的構成成分並列（特殊語調為證）。回到雙賓：(82) Benjamin [gave the cloak] and [sent the book] to Lee 處於可接受邊緣，且須長停頓 → (83) 其實是 gave the cloak <strong>0</strong>（刪略）。</p>
+  <div class="key"><b>4.4.2 結論：</b>沒有任何構成性證據支持「動詞與受詞（排除 PP）構成一個成分」。這似乎傾向<strong>三分枝</strong>——即便我們只採二元 Merge。但下一節會發現另有證據支持<strong>另一種二分枝模式</strong>：受詞與 PP 構成一個單位。</p></div>
+
+  <h3 id="s443">4.4.3 二分枝替代方案</h3>
+  <span class="pgmark">書頁 126–130</span>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(84)</span> Sam gave [the cloak to Lee] and [the magic chalice to Matthew].</span>
+      <span class="ana">並列「受詞+Goal」且<strong>無特殊語調停頓</strong>（不像 (82)）→ 暗示 the cloak to Lee 是真正的構成成分。給出 (86) 的結構：PP 是某中心語（暫標「?」）的補語，受詞在其指定語，整個 ?P 是動詞的補語。</span></div>
+  </div>
+  <pre class="tree">         V′
+       ╱    ╲
+   gave[V]   ?P
+          ╱     ╲
+   NP(the cloak)  ?′
+               ╱    ╲
+              ?      PP(to Lee)</pre>
+  <p>此結構與「無動詞-受詞成分」的事實相容（不主張動詞+受詞成分）。但移位無證據支持 ?P 存在（(87) <span class="ung">*</span>…and [the cloak to Lee] he gave）——不過可能有獨立因素排除它（VP-preposing 對範疇敏感）。三個假設並陳：三分枝、Goal 右附加 V 的二分枝、含 ?P 的二分枝。<strong>唯一與並列證據一致的是第三個（?P）</strong>。</p>
+  <p>用 c-command 進一步抉擇：<span class="term">雙賓構式（double object construction）</span>＝缺介詞的雙賓：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(88)</span> a. Benjamin gave Lee the cloak.　b. Calum sent Nathan the binoculars.　c. Lee showed Benjamin the unicorn.</span>
+      <span class="ana">無介詞的 Goal 稱<strong>間接受詞（indirect object）</strong>；各有對應介詞句 (89)。並列 (90) 也支持「間接+直接受詞」成構。</span></div>
+    <div class="row"><span class="sent"><span class="num">(91)</span> <span class="ung">*</span> Emily showed himself Benjamin in the mirror.</span></div>
+    <div class="row"><span class="sent"><span class="num">(92)</span> <span class="g">✓</span> Emily showed Benjamin himself in the mirror.</span>
+      <span class="ana">反身代詞約束的<strong>不對稱</strong>！要解釋這個，三分枝 (93) 與「右附加」(94) 都<strong>錯誤地預測</strong> (91) 合法（因 Benjamin c-command himself）；只有 <strong>?P 二分枝 (95)</strong> 正確：<span class="bkt">[V′ show [?P himself [?′ ? Benjamin]]]</span> 中 Benjamin <strong>不</strong> c-command himself → 正確排除 (91)。</span></div>
+  </div>
+  <p>帶介詞 Goal 的簡單雙賓無法做同樣論證（介詞永遠阻擋 c-command，(96)–(98) 在三分枝/二分枝下都排除）。只有雙賓構式能用此法。最終為簡單雙賓也採 ?P 結構 (99)：<span class="bkt">[V′ show [?P Benjamin [?′ ? [PP to himself]]]]</span>。</p>
+  <div class="key"><b>4.4.3 結論：</b>雖然構成性（並列）證據較弱，但用反身代詞的 c-command 不對稱，可確定 VP 內部的 c-command 關係，從而<strong>判定 ?P 結構優於三分枝</strong>。</p></div>
+
+  <h3 id="s444">4.4.4 使役與小寫 v（little v）</h3>
+  <span class="pgmark">書頁 131–136</span>
+  <p>那個標「?」的中心語到底是什麼？採用的假設：它模擬一種語意關係——<strong>使役（causality）</strong>。許多語言有<span class="term">使役結構（causatives）</span>，英語也有類似的：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(100)</span> a. Emily caused Benjamin to see himself in the mirror.　b. Benjamin caused Lee to have the cloak.　c. Benjamin caused the book to go to Ross.</span></div>
+    <div class="row"><span class="sent"><span class="num">(101)</span> a. Emily showed Benjamin himself in the mirror.　b. Benjamin gave Lee the cloak.　c. Benjamin sent the book to Ross.</span>
+      <span class="ana">(100) 的 cause 改寫，幾乎就是 (101) 簡單雙賓的釋義 → 直覺：雙賓的底層結構很像「使役」結構。(102) 顯示透過「刪 to → 移動 see 到 caused 旁 → caused-see 換成 showed」就能從使役導出雙賓。</span></div>
+  </div>
+  <p>其他語言更清楚地顯示這些操作。法語使役中<strong>動詞前移到主語前</strong>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(103)</span> Georges mange.（「Georges 吃。」主語在動詞前）</span></div>
+    <div class="row"><span class="sent"><span class="num">(104)</span> Pascale fait manger Georges.（使役中動詞 manger 在主語 Georges 前）</span></div>
+    <div class="row"><span class="sent"><span class="num">(105)</span> Pascale fait manger Georges &lt;manger&gt;.</span>
+      <span class="ana">出現 <span class="term">移位（Movement）</span>操作：把 Merge 形成的結構中某元素移到另一位置；留下的位置用尖括號 &lt;…&gt; 標記為 <span class="term">語跡（trace）</span>。</span></div>
+    <div class="row"><span class="sent"><span class="num">(106)/(107)</span> Chichewa（班圖語）：-chit-its-（do-cause）與動詞 -gw-（fall）並現；(107) 動詞 -gw- 移入較高複合，構成形態複雜的「make-fall」。</span></div>
+  </div>
+  <div class="concept"><h4>小寫 v、VP-shell、語跡</h4>
+  <p>採用假設：「?」其實是動詞的投射，會<strong>移入一個編碼「使役」的較高位置</strong>。這個新使役範疇記為 <span class="term">小寫 v（little v）</span>。show 的底層意義是「see」，但須移入意義為「cause」的動詞。移位前後 (108)/(109)：</p>
+  <pre class="tree">(108) 移位前              (109) 移位後
+      vP                      vP
+     ╱  ╲                    ╱   ╲
+    v    VP            v+show     VP
+        ╱  ╲                    ╱   ╲
+   himself  V′           himself    V′
+          ╱   ╲                  ╱     ╲
+       show   Benjamin     &lt;show&gt;   Benjamin</pre>
+  <p>那個移入較高位置的使役動詞稱 <span class="term">輕動詞（light verb）</span>，整套分析叫 <span class="term">VP-shell（VP 殼層）分析</span>。奇特後果：標 VP 的成分裡<strong>沒有外顯動詞</strong>，只有移走範疇的「鬼影」——即<strong>語跡（traces）</strong>（用尖括號標記），不發音、不餵養形態/音韻規則。</p></div>
+  <p>(110) 同樣分析延伸到 PP-Goal。選擇特徵如何運作？show 標為 [V, uN, uP]，little v 標為 [v, uN]。(111) 顯示在姊妹關係下核檢：V 先以 PP 核檢 [uP]，未核檢的 [uN] 投射到 V′、由 V 的指定語 NP 核檢；little v 與整個 VP 合併並投射其 [uN] 到 v，再由施事 NP 核檢。</p>
+  <div class="key"><b>投射層級（Hierarchy of Projections）：</b>怎麼確保 little v 一定投射？不說「v c-選擇 VP」（因為 v 不對 VP 指派 θ-角色，與「選擇＝θ」的緊密關係不符）。改用一個獨立的<strong>投射層級</strong>：(112) <span class="bkt">v &gt; V</span>——只要有 little v，它必有一個 VP 補語。直觀上 vP 是 VP 投射的<strong>延伸</strong>（仍是動詞性、但加入更多語意）。違反層級的結構（如 (113) 直接 [vP v NP]）不被生成。</p></div>
+  <p>此分析的好處：維持單一版本的 Merge（只允許二分枝）、把雙賓結構與一般使役結構連結起來。<strong>代價</strong>：除 Merge 外多了新操作 <span class="term">Move（移位）</span>。理論上「二元 Merge + Move」是否優於「二元+三元 Merge」並不顯然，但本書採 Merge+Move 路線並探索其後果（第 5、6、7 章會看到更多移位證據，移位將變得無所不在）。結論：雙賓比表面複雜得多——受詞與 PP 含於單一成分內，且前者 c-command 後者。</p>
+
+  <!-- 4.5 -->
+  <h2 id="s45">4.5 連結（Linking）與 UTAH</h2>
+  <span class="pgmark">書頁 136–138</span>
+  <p>回到 4.2.4 的遺留問題：<strong>如何約束核檢順序</strong>，使句法-語意介面正確？以 show（兩選擇特徵）為例，(114) 是正確核檢，(115) 是「反過來」核檢，後者會生成不合法的 (116) <span class="ung">*</span>Nathan showed to Benjamin it。由於 PP 比受詞更靠近動詞的句子只能靠（代詞無法使用的）移位產生，(116) 唯一可能的剖析是論元都在基底位置 → 證明<strong>受詞的基底位置是動詞的指定語，而非補語</strong>。</p>
+  <div class="concept"><h4>連結問題（Linking Problem）與 UTAH</h4>
+  <p>VP-shell 分析把三位述語的施事放在 little v 指定語、Theme 放在 VP 指定語；但及物分析把施事放 VP 指定語、Theme 放 V 補語。兩者相容，卻意味<strong>同一個 θ-角色（Theme）沒有統一的句法表徵</strong>（時而補語、時而指定語）。這讓兒童得逐一學習「哪個述語配哪種結構」——此即 <span class="term">連結問題（Linking Problem）</span>。若每個 θ-角色都對應固定句法配置，兒童就能<strong>從 θ-角色預測句法結構</strong>。據此提出：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(117)</span> <strong>UTAH（題旨指派一致性假設，Uniformity of Theta Assignment Hypothesis）</strong>：述語與其論元之間<strong>相同的題旨關係</strong>，在 Merge 時由<strong>相同的結構關係</strong>句法表徵。</span></div>
+  </div>
+  <p>UTAH 是<strong>引導性假設</strong>（可能被推翻，如二分枝假設），功能是排除一整類分析；若它排除的分析確實較差，它就獲支持。</p></div>
+  <p>假設 UTAH，如何讓兩個分析相容？讓<strong>所有施事都在 little v 指定語</strong>。簡單及物動詞 burn 也變成 (118)：</p>
+  <pre class="tree">(118)         vP
+           ╱      ╲
+       Agent       v′
+                ╱      ╲
+               v        VP
+                     ╱      ╲
+            burn[V,uN]      Theme</pre>
+  <p>可粗略釋義為 (119) 「X causes Y to burn」。施事是 vP 指定語；Theme 在及物時是補語、三位述語時是指定語——但兩者都是 <strong>VP 的女兒（daughter）</strong>。再把 Goal 定義為 V 的女兒。於是各 θ-角色對應唯一句法配置：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(120)</span> a. NP 為 vP 的女兒 → 詮釋為 <strong>Agent</strong>　b. NP 為 VP 的女兒 → 詮釋為 <strong>Theme</strong>　c. PP 為 V′ 的女兒 → 詮釋為 <strong>Goal</strong></span></div>
+  </div>
+  <p>UTAH 也解答核檢順序：若特徵「反過來」核檢（如 (121)＝重複的 (115)），UTAH 被違反——PP 不是 V′ 女兒就無法詮釋。</p>
+  <p>UTAH 對<span class="term">非作格（unergative）</span>與<span class="term">非賓格（unaccusative）</span>述語做出明確預測：非作格（run, laugh, jump）單一論元是施事 → 在 vP 女兒 (122)；非賓格（fall, collapse, wilt）單一論元是 Theme → 在 VP 女兒 (123)。</p>
+  <pre class="tree">(122) 非作格 laugh          (123) 非賓格 fall
+        vP                         vP
+       ╱  ╲                       ╱   ╲
+   Agent   v′                    v     VP
+          ╱  ╲                        ╱   ╲
+         v   laugh[V]          fall[V,uN]  Theme</pre>
+  <p>(122) 約略意為「X 是某笑事件的起因」；(123) 約略意為「X 經歷一個無起因的墜落事件」（這裡「cause」用得很抽象，只標示事件是否涉及施事）。本書假設非賓格也有 vP，只是其 v 語意上非使役、無施事指定語（為維持投射層級）。</p>
+  <p>義大利語提供證據：telefonare「打電話」是非作格（單一論元為施事），arrivare「抵達」是非賓格（單一論元為 Theme）。最著名的差異是<strong>助動詞選擇</strong>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(124)</span> Molte ragazze telefonano.「許多女孩在打電話。」</span></div>
+    <div class="row"><span class="sent"><span class="num">(125)</span> Molte ragazze arrivano.「許多女孩在抵達。」</span></div>
+    <div class="row"><span class="sent"><span class="num">(126)</span> Molte ragazze <strong>hanno</strong> telefonato.（非作格用 have 類助動詞，過去分詞不與主語一致）</span></div>
+    <div class="row"><span class="sent"><span class="num">(127)</span> Molte ragazze <strong>sono</strong> arrivate.（非賓格用 be 類助動詞，過去分詞<strong>與主語一致</strong>）</span>
+      <span class="ana">完成式中兩類動詞用<strong>不同助動詞</strong>、過去分詞<strong>一致模式不同</strong>——正是 UTAH 所預測：非賓格與非作格因唯一論元的句法位置不同而展現句法差異（第 6 章續論）。</span></div>
+  </div>
+
+  <!-- 4.6 -->
+  <h2 id="s46">4.6 系統的整體架構</h2>
+  <span class="pgmark">書頁 141–146</span>
+  <p>整個方法依賴 <span class="term">推導（derivation）</span>：把句法操作（Merge、Adjoin、Move）相繼應用到句法物件上，形成越來越大的物件。每次操作推進推導一步；當無法再應用任何操作時推導<strong>停止</strong>，最終物件由心智的概念/語意系統詮釋。一個句子的推導包含許多<strong>子推導</strong>（分別構造各成分）。</p>
+  <p>推導的輸入是<strong>詞項</strong>（含音韻、語意、句法特徵）；一組詞項稱 <span class="term">編號集（numeration）</span>。第一步是從編號集 <span class="term">Select（選取）</span>一個元素；因單一詞項無法應用操作，再 Select 第二個，然後 Merge/Adjoin 成新物件。抽象範例 (128)–(130)：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(128)</span> a. 步驟1 Select A　b. 步驟2 Select B</span></div>
+    <div class="row"><span class="sent"><span class="num">(129)</span> 步驟3 Merge A、B → <span class="bkt">[A A B]</span>；再 Select C、D，步驟6 Merge C、D → <span class="bkt">[C C D]</span></span></div>
+    <div class="row"><span class="sent"><span class="num">(130)</span> 步驟7 Adjoin 步驟3 與步驟6 的輸出。</span></div>
+  </div>
+  <div class="key"><b>收斂 vs 崩潰：</b>當推導順利終止、所有<strong>不可詮釋特徵都被核檢</strong>，稱為 <span class="term">收斂（converge）</span>；若終止但仍有未核檢的不可詮釋特徵，則 <span class="term">崩潰（crash）</span>（借電腦程式之喻）。</p></div>
+  <p>具體範例：編號集 {saw, v, Sam, Benjamin}。</p>
+  <pre class="tree">步驟1 Select saw、Benjamin，Merge，核檢 saw 的 uN：
+        VP
+       ╱  ╲
+  saw[V,uN]  Benjamin[N]
+
+步驟2 Select v，與步驟1輸出 Merge（遵守投射層級）；
+      v 的 c-選擇特徵 [uN] 投射到 v 母節點：
+         v′
+       ╱    ╲
+   v[uN]     VP
+          ╱     ╲
+   saw[V,uN]   Benjamin
+
+步驟3 Move saw 到 v（此移位是強制的）：
+         v′[uN]
+       ╱      ╲
+   v+saw       VP
+            ╱     ╲
+       &lt;saw&gt;    Benjamin
+
+步驟4 Select Sam，與步驟3輸出 Merge，核檢 v 的 uN：
+            vP
+          ╱    ╲
+     Sam[N]     v′
+             ╱     ╲
+         v+saw      VP
+                 ╱     ╲
+             &lt;saw&gt;   Benjamin</pre>
+  <p>Merge 很單純（取詞項或先前輸出為輸入）；<strong>Move 較複雜</strong>：它鎖定先前已建好的樹中某部分（如詞項 saw），<strong>複製</strong>該項，再與樹的另一部分（little v）Merge，並留下被抽取項的<strong>語跡</strong>。此例是詞項移位；後續會看到詞組移位。</p>
+  <div class="concept"><h4>兩個介面層：LF 與 PF</h4>
+  <p>推導的某個句法物件與心智中管「意義」的部分介接——稱 <span class="term">概念-意圖系統（Conceptual-Intentional, CI）</span>；這個物件稱 <span class="term">邏輯形式（Logical Form, LF）</span>，是一個<strong>介面層（Interface Level）</strong>（通常即終端物件）。另一邊與管「物理實現（聲音/手勢）」的 <span class="term">發音-知覺系統（Articulatory-Perceptual, AP）</span>介接；但介接 AP 的不是純句法物件，而是某句法物件作為額外（音韻/形態）操作的輸入——這個物件稱 <span class="term">拼讀點（point of Spellout）</span>，產出的表徵稱 <span class="term">語音形式（Phonetic Form, PF）</span>。要分清「拼讀點（仍是樹）」與「PF（與外部系統介接的層）」。</p></div>
+  <p>整體架構：編號集（取自詞庫）→ Select 把詞項放上「句法桌面（workspace）」→ Merge / Move / Adjoin <strong>遞迴</strong>應用 → 一個物件介接 CI（LF），另一個介接 AP（拼讀點）。本系統假設句法是<strong>高度推導性的</strong>；其他理論則主張無推導、而是「互相作用的約束集」——學界仍在辯論孰優。</p>
+
+  <!-- 4.7 -->
+  <h2 id="s47">4.7 本章摘要</h2>
+  <span class="pgmark">書頁 146–149</span>
+  <ul class="plain">
+    <li>句法物件由 Merge + 中心語選擇性質建構，導出複雜結構；發展出<strong>補語、指定語、附加語</strong>三個位置的標註工具，基本詞組結構 (131)：<span class="bkt">[XP [XP [Spec [X′ X Comp]]] Adjunct]</span>。</li>
+    <li>引入新句法關係 <strong>c-command</strong>（延伸版的姊妹關係）：(132) A c-command B 當且僅當 A 的姊妹「是 B」或「包含 B」。反身代詞與 NPI 對它敏感，並用作雙賓結構的診斷工具。</li>
+    <li>結合並列與 c-command 證據，主張雙賓並非三分枝，而是<strong>層狀/殼層 VP（VP-shell）</strong>：小寫 v 取 VP 為補語。v 與 VP 的關係不靠選擇，而靠<strong>投射層級</strong> (133) <span class="bkt">v &gt; V</span>。</li>
+    <li>引入 <strong>UTAH</strong> (134)：相同題旨關係 → 相同結構關係；具體連結 (135)：vP 女兒=Agent、VP 女兒=Theme、V′ 女兒=Goal。這解釋兒童如何從 θ-角色預測句法結構（連結問題的解答）。</li>
+    <li>據 UTAH 重估及物/不及物：<strong>所有 VP 都有同樣骨架</strong>——little v 取 VP 補語。兩種 v：有指定語的（使役/施事語意）、無指定語的（語意空，配非賓格動詞，以維持投射層級）。</li>
+    <li>整個系統是<strong>推導性</strong>的：能建出合式推導（最終物件無未核檢的不可詮釋特徵）→ 合語法；否則不合語法（但仍可能因語意或剖析而不可接受）。新增操作 <strong>Move</strong>（複製 + 留語跡）；介面層 LF（CI）與 PF（AP，經拼讀點）。</li>
+  </ul>
+  <table>
+    <tr><th>現象</th><th>解釋</th></tr>
+    <tr><td>詞序變異</td><td>中心語-補語、中心語-指定語結構的線性化</td></tr>
+    <tr><td>反身代詞分布</td><td>C-command + 反身代詞概括</td></tr>
+    <tr><td>NPI 分布</td><td>C-command + NPI 概括</td></tr>
+    <tr><td>雙賓的並列與反身代詞</td><td>VP-shell 結構</td></tr>
+    <tr><td>雙賓詞序</td><td>V 移入 little v + 投射層級</td></tr>
+    <tr><td>非賓格與非作格的差異</td><td>UTAH</td></tr>
+  </table>
+  <div class="key"><b>本章關鍵詞彙：</b>Merge / Adjoin / Move、c-selectional feature、checking / trapped、complement / specifier / adjunct、minimal / intermediate (bar) / maximal projection（X / X′ / XP）、head-complement structure、project / label、VO vs OV、X-bar theory、c-command（constituent-command）、sisterhood、reflexive binding、Reflexive Generalization、Negative Polarity Item (NPI)、ditransitive、double object construction、indirect object、ternary vs binary branching、Binary Branching、VP-Preposing / co-ordination（constituency tests）、?P、causative / light verb / VP-shell、little v (vP)、trace（&lt;…&gt;）、Hierarchy of Projections (v &gt; V)、Linking Problem、UTAH（Uniformity of Theta Assignment Hypothesis）、Agent / Theme / Goal、unergative / unaccusative、auxiliary selection、derivation / numeration / Select、converge vs crash、LF / CI、PF / AP、point of Spellout、Interface Level。</div>
+
+  <div class="nav-bottom">
+    <a href="index.html">← 全書導覽</a>
+    <a href="Ch05_TP.html">第 5 章：功能範疇 I — TP →</a>
+  </div>
+</div><!-- /.wrap -->
+</div><!-- /#zh -->
+
+<!-- ===================== ENGLISH PANEL ===================== -->
+<div class="panel" id="en">
+<div class="wrap">
+  <p class="lead">Condensed page-by-page summary of Chapter 4 of Adger (2003), <em>Core Syntax</em>, pp. 104–154 (OUP). Running prose is paraphrased substantively (not reproduced verbatim); short numbered examples are quoted with their grammaticality marks.</p>
+
+  <span class="enpg">p.104</span>
+  <p><strong>4.1 Introduction.</strong> Ch.3 introduced <strong>Merge</strong>, combining lexical items into ever-larger hierarchical objects. This chapter shows those hierarchies are organized into <strong>phrases</strong>, an organization that derives from the items' <strong>selectional properties</strong>. The focus is the structure built around the verb (the <strong>verb phrase</strong>), arising from the interaction of selectional properties with how phrase structure is built. A new relation, <strong>c-command</strong>, is introduced as a diagnostic for VP-internal structure. The chapter closes with an overview of the overall architecture.</p>
+
+  <span class="enpg">p.105</span>
+  <p><strong>4.2 The structure of phrases.</strong> Sentences are built by binary <strong>Merge</strong>; the selecting head's properties <strong>project</strong> upward, so the most important element determines the structure's distribution. The section asks how far a head's properties project. <strong>4.2.1 First Merge — Complements.</strong> All c-selectional features must be checked before an element Merges with a c-selecting head; Merge always applies at the <strong>root node</strong>.</p>
+  <blockquote><span class="num">(1)</span> *letters to<br><span class="num">(2)</span> letters to Peter</blockquote>
+  <p>(1) is out: <em>to</em>'s <strong>[uN]</strong> feature is "trapped" and can never be checked. In (2), merging a noun first checks it. Objects with no c-selectional features left (e.g. <em>to Peter</em>) are <strong>maximal</strong> — they project no further. A maximal object of category X is abbreviated <strong>XP</strong>, a phrase of category X.</p>
+
+  <span class="enpg">p.106</span>
+  <p>A node's <strong>phrasal status is derived from its featural composition</strong>: no c-selectional features left ⇒ maximal. A table classifies each node of <em>letters to Peter</em> as minimal/maximal. It follows that <strong>only maximal projections can be sisters of c-selecting heads</strong>; merging a non-maximal projection traps unchecked features ⇒ ungrammaticality. Example head <em>burn</em>: two θ-roles, each with a c-selectional N-feature.</p>
+
+  <span class="enpg">p.107</span>
+  <p>Merging the projection of <em>letters</em> (now phrasal, all features checked) with <em>burn</em> gives a <strong>head-complement structure</strong> — the product of the first Merge satisfying a head's selectional feature. The replacement test confirms constituency:</p>
+  <blockquote><span class="num">(6)</span> Burn letters to Peter!<br><span class="num">(7)</span> Burn letters to him!<br><span class="num">(8)</span> Burn them!</blockquote>
+  <p>NP <em>letters to Peter</em> is the <strong>complement</strong> of <em>burn</em>; <em>to Peter</em> of <em>letters</em>; <em>Peter</em> of <em>to</em>. English complements follow their head (also French, Gaelic, Arabic); Japanese, Korean, Turkish put complements first.</p>
+
+  <span class="enpg">p.108</span>
+  <blockquote><span class="num">(9)</span> Hanako ga Taro o tataku ('Hanako is hitting Taro') — complement precedes verb<br><span class="num">(10)</span> buturigaku no gakusei ('the student of physics')<br><span class="num">(11)</span> Michael left Meg.</blockquote>
+  <p>A verb's complement is traditionally the <strong>object</strong>. Object-after-verb = <strong>VO</strong> languages; object-before-verb = <strong>OV</strong>. For a single complement, two linearizations:</p>
+  <blockquote><span class="num">(12)</span> [XP X YP]　<span class="num">(13)</span> [XP YP X]</blockquote>
+  <p>The book attributes the orders to different <strong>linearization properties</strong> of head-complement structures (alternatives in Further Reading).</p>
+
+  <span class="enpg">p.109</span>
+  <p><strong>4.2.2 Second Merge — Specifiers.</strong> <em>burn</em>'s second θ-grid element is the <strong>Agent</strong>. After the complement merges, an unsatisfied selectional feature remains; another nominal merges to check it and is assigned Agent.</p>
+  <blockquote><span class="num">(14)</span> Paul burns letters to Peter.</blockquote>
+  <p>The unchecked feature projects to the next node up, checked by sister NP <em>Paul</em>. Three projection levels emerge: <strong>minimal</strong> (X<sup>min</sup>, the lexical item), <strong>maximal</strong> (XP, all features checked), and <strong>intermediate / bar-level</strong> (X′, not lexical but with features still to check).</p>
+
+  <span class="enpg">p.110</span>
+  <p>Crucially, projection levels are <strong>derived from feature checking</strong>, not extra primitives. A <strong>complement</strong> = sister of a lexical item (first Merge); a <strong>specifier</strong> = sister of an X′ projection (second Merge). English specifiers linearize to the <strong>left</strong> of the head. Malagasy seems to put the Agent on the right (controversial):</p>
+  <blockquote><span class="num">(16)</span> Manasa lamba ho an'ny ankizy ny lehilahy ('The man is washing clothes for the children').</blockquote>
+
+  <span class="enpg">p.111</span>
+  <p><strong>4.2.3 Adjunction.</strong> Some constituents take a <strong>modificational</strong>, not argumental, role and receive no θ-role:</p>
+  <blockquote><span class="num">(17)</span> Anson demonized David every day.<br><span class="num">(18)</span> …at the club.　<span class="num">(19)</span> …almost constantly.　<span class="num">(20)</span> Anson very happily demonized David.</blockquote>
+  <p>These are <strong>adjuncts</strong> — incorporated without checking selectional features. "Adjunct" names a structural position, not a category (AP, PP, AdvP, etc.). The book's conservative position: complements are sisters of lexical items, specifiers sisters of X′, <strong>adjuncts sisters of XP</strong> (21). Adjoining an XP does not change the XP level.</p>
+
+  <span class="enpg">p.112</span>
+  <p>Adjuncts cannot be triggered by a selectional feature (that would make them heads), and the evidence is they are <strong>never heads</strong>: a constituent with an adjunct distributes exactly as without it.</p>
+  <blockquote><span class="num">(22)</span> a. Burn the letters (quickly)! … d. *Burn the letters (quickly) is the best thing to do. e. Burning the letters (quickly) is the best thing to do.</blockquote>
+  <p>So adjuncts enter via a separate, <strong>untriggered</strong> operation, <strong>Adjoin</strong>, which inserts a phrasal object at the outermost level of another, stretching its top layer:</p>
+  <blockquote><span class="num">(23)</span> [XP XP YP]</blockquote>
+  <p>English adjunction is not linearized (adjuncts on either side).</p>
+
+  <span class="enpg">p.113</span>
+  <p>Adjoined elements: always hierarchically outside complements/specifiers, can appear on either side, get no θ-role, and (by stipulation) are phrasal.</p>
+  <blockquote><span class="num">(24)</span> Kiss Anson quickly!　<span class="num">(26)</span> Quickly kiss Anson!</blockquote>
+  <p>Imperatives have an unpronounced Agent (notated <em>e</em>) in Spec-VP; (25)/(27) show <em>quickly</em> adjoined on the right or left of VP.</p>
+
+  <span class="enpg">p.114</span>
+  <blockquote><span class="num">(28)</span> Julie quickly answered the question.</blockquote>
+  <p>A problem (deferred to Ch.5): the adverb comes between subject and verb, yet adjuncts should be external to specifiers. <strong>4.2.4 The structure of the verb phrase.</strong> A transitive VP (29): verb + complement ⇒ V′; + specifier ⇒ VP; adjuncts adjoin to VP. Specifiers and complements must be phrasal. With multiple selectional features the <strong>order of checking</strong> matters for semantics.</p>
+
+  <span class="enpg">p.115</span>
+  <blockquote><span class="num">(30)</span> Jenny poked Jonathan.</blockquote>
+  <p>No ambiguity about agent/theme; checking the wrong feature first would reverse θ-roles (addressed in 4.5). <strong>4.2.5 X-bar Theory.</strong> The system reconstructs much of traditional <strong>X-bar theory</strong> — constraints requiring all phrases to have heads, the two key types being head-complement and specifier-X:</p>
+  <blockquote><span class="num">(31)</span> XP → ZP X′　<span class="num">(32)</span> X′ → X WP　<span class="num">(33)</span> [XP ZP [X′ X WP]]</blockquote>
+
+  <span class="enpg">p.116</span>
+  <p>Two differences from traditional X-bar: (1) it has lexical items <strong>dominated by</strong> the minimal level rather than being it; (2) it <strong>enforces projection through all levels</strong> regardless of specifier/complement — yielding the bloated tree (34). In the book's system, phrasal status is <strong>derived</strong>, so <strong>bar-levels appear only with a specifier</strong>; a head with neither complement nor specifier (proper names, pronouns) is automatically both maximal and minimal. <strong>4.3 C-command.</strong> A new relation beyond sisterhood, implicated in reflexives.</p>
+
+  <span class="enpg">p.117</span>
+  <p>The most basic relation is <strong>sisterhood</strong> (built by Merge); in addition there is <strong>c-command</strong> (constituent-command):</p>
+  <blockquote><span class="num">(35)</span> A node A c-commands a node B iff A's sister either: a. is B, or b. contains B.</blockquote>
+  <blockquote><span class="num">(36)</span> [T [Z X Y] [S W R]]</blockquote>
+  <p>X c-commands only Y; Z c-commands S, W, R; S c-commands Z, X, Y (no reference to precedence); T c-commands nothing (no sister). Reflexives must share φ-features with an <strong>antecedent</strong>; one required relation turns out to be c-command.</p>
+
+  <span class="enpg">p.118</span>
+  <p><strong>4.3.2 Reflexive binding.</strong></p>
+  <blockquote><span class="num">(37)</span> I shaved myself.<br><span class="num">(38)</span> *Myself shaved me.</blockquote>
+  <p>The old Reflexive Generalization (39: coreferential with another expression; 40: same φ-features) cannot distinguish them. Revised:</p>
+  <blockquote><span class="num">(41)</span> A reflexive must be coreferential with a <strong>c-commanding</strong> expression.</blockquote>
+  <p>An object is c-commanded by the subject, but not vice versa — so (38) is out (42).</p>
+
+  <span class="enpg">p.119</span>
+  <p>Could it be <strong>precedence</strong> instead (43)? No:</p>
+  <blockquote><span class="num">(44)</span> The man I saw left.<br><span class="num">(45)</span> *The man I saw shaved myself.</blockquote>
+  <p><em>I</em> precedes <em>myself</em> but the sentence is bad. <em>The man I saw</em> is a constituent ((46)–(49) tests), so <em>I</em> is inside it and does <strong>not</strong> c-command <em>myself</em> (50/51).</p>
+
+  <span class="enpg">p.120</span>
+  <p><em>I</em> does not c-command <em>myself</em> (a node above it excludes the reflexive), though it precedes it. We therefore reject the precedence version and keep the c-command version.</p>
+  <blockquote><span class="num">(52)</span> *My mother hated myself.</blockquote>
+  <p><em>My</em> is inside subject <em>my mother</em>, so it doesn't c-command the reflexive. <strong>4.3.3 NPIs.</strong> Words like <em>any</em>, <em>ever</em> need a negative element:</p>
+  <blockquote><span class="num">(53)</span> *I wanted any cake.　<span class="num">(54)</span> I didn't want any cake.</blockquote>
+
+  <span class="enpg">p.121</span>
+  <blockquote><span class="num">(55)</span> *I saw him ever.　<span class="num">(56)</span> I didn't see him ever.<br><span class="num">(57)</span> NPIs must occur in a negative sentence.<br><span class="num">(58)</span> No one wanted any cake.　<span class="num">(59)</span> *Any boy saw no one.</blockquote>
+  <p>Both are negative sentences with <em>any</em>, but (59) is ungrammatical. Revised:</p>
+  <blockquote><span class="num">(60)</span> NPIs must be <strong>c-commanded</strong> by a negative element.<br><span class="num">(61)</span> *The picture of no one hung upon any wall.</blockquote>
+  <p>(59): subject <em>any boy</em> isn't c-commanded by <em>no one</em>. (61): <em>no one</em> is inside the constituent (62) so doesn't c-command <em>any</em>. The relevant notion is <strong>structural (c-command)</strong>, not linear or semantic.</p>
+
+  <span class="enpg">p.122</span>
+  <p><strong>4.3.4 Summary.</strong> C-command explains reflexives and NPIs (and pronouns in the exercises). It is a <strong>diagnostic tool</strong> for structure, added to the constituency tests. <strong>4.4 Ditransitives.</strong> The transitive structure (complement = first Merge, specifier = second) is in trouble with three-argument predicates.</p>
+
+  <span class="enpg">p.123</span>
+  <p><strong>4.4.1 Three-argument predicates.</strong></p>
+  <blockquote><span class="num">(63)</span> Benjamin gave the cloak to Nathan.<br><span class="num">(64)</span> Nathan received the cloak from Benjamin.</blockquote>
+  <p>Three participants ⇒ three-place predicates. <strong>4.4.2 Ternary or binary branching?</strong> Two analyses of the ditransitive VP.</p>
+
+  <span class="enpg">p.124</span>
+  <blockquote><span class="num">(65)</span> [V′ gave [NP the cloak] [PP to Nathan]] (ternary — unavailable under binary Merge)<br><span class="num">(66)</span> binary V-recursion: gave [V,uN,uN,uP]</blockquote>
+  <p>For (66), <em>give</em> has [uN, uN, uP]; involves <strong>recursion of the V level</strong> (worrying, since previously only adjuncts recursed, and Goals — unlike adjuncts — get a θ-role). Order of checking is urgent: if P checks first, wrong order predicted:</p>
+  <blockquote><span class="num">(67)</span> ??Benjamin gave to Lee the cloak.</blockquote>
+
+  <span class="enpg">p.125</span>
+  <blockquote><span class="num">(68)</span> a. *Benjamin gave to Lee it.　b. Benjamin gave it to Lee.</blockquote>
+  <p>The two analyses differ on constituency: V-recursion treats verb+object as a constituent, ternary doesn't. <strong>VP-Preposing</strong> test:</p>
+  <blockquote><span class="num">(69)</span> …and [run away] he did.<br><span class="num">(71)</span> …and [give the cloak to Lee] he did.<br><span class="num">(72)</span> *…and [give the cloak] he did to Lee.</blockquote>
+  <p>(72) is bad ⇒ no evidence verb+object is a constituent.</p>
+
+  <span class="enpg">p.126</span>
+  <blockquote><span class="num">(73)</span> a. Who gave the cloak to Lee? b. *Benjamin (did) to Lee.<br><span class="num">(74)–(77)</span> co-ordination of NPs / verbal projections / APs<br><span class="num">(78)/(79)</span> *non-constituents co-ordinated</blockquote>
+  <p>Co-ordination must be used carefully: (80) [Lee's youngest] and [Dawn's oldest] son — special intonation suggests ellipsis (81). For ditransitives (82) [gave the cloak] and [sent the book] to Lee is marginal with a pause ⇒ deletion (83). <strong>No constituency evidence for verb+object</strong>, favouring ternary — yet another binary pattern (object+PP a unit) emerges next.</p>
+
+  <span class="enpg">p.127</span>
+  <p><strong>4.4.3 A binary alternative.</strong> Co-ordination provides evidence:</p>
+  <blockquote><span class="num">(84)</span> Sam gave [the cloak to Lee] and [the magic chalice to Matthew].</blockquote>
+  <p>No phonological pause (unlike before), so <em>the cloak to Lee</em> looks like a plain constituent. Structure (86): PP is complement of a head "?" whose specifier is the object; "?P" is the verb's complement.</p>
+
+  <span class="enpg">p.128</span>
+  <blockquote><span class="num">(87)</span> *…and [the cloak to Lee] he gave.</blockquote>
+  <p>No movement evidence for "?P", but independent factors (VP-preposing sensitive to category) may rule (87) out. Three hypotheses: ternary, Goal right-adjoined to V (binary), and the "?P" (binary). Only the third is consistent with the co-ordination evidence. To distinguish further: <strong>double object constructions</strong> (ditransitives lacking a preposition).</p>
+
+  <span class="enpg">p.129</span>
+  <blockquote><span class="num">(88)</span> a. Benjamin gave Lee the cloak. b. Calum sent Nathan the binoculars. c. Lee showed Benjamin the unicorn.<br><span class="num">(89)</span> corresponding prepositional sentences<br><span class="num">(90)</span> Benjamin gave [Lee the cloak] and [Nathan the chalice].<br><span class="num">(91)</span> *Emily showed himself Benjamin in the mirror.<br><span class="num">(92)</span> Emily showed Benjamin himself in the mirror.</blockquote>
+  <p>An <strong>asymmetry</strong> in reflexive binding. Ternary (93) and V-adjoined (94) wrongly predict (91) good, because <em>Benjamin</em> c-commands <em>himself</em>.</p>
+
+  <span class="enpg">p.130</span>
+  <p>The "?P" structure (95) makes the right prediction: <em>Benjamin</em> does <strong>not</strong> c-command <em>himself</em>. PP-goal cases can't decide (the preposition always blocks c-command), so (96) is consistent with either analysis ((97)/(98)). Only Double Object constructions discriminate, supporting the extra "?" constituent.</p>
+
+  <span class="enpg">p.131</span>
+  <p>For simple ditransitives we adopt the "?P" too (99). <strong>4.4.4 Causatives and little v.</strong> What is "?"? The approach: a syntactic relation mimicking <strong>causality</strong>. English has causative-like structures:</p>
+  <blockquote><span class="num">(100)</span> a. Emily caused Benjamin to see himself in the mirror. … <span class="num">(101)</span> a. Emily showed Benjamin himself in the mirror.</blockquote>
+  <p>The <em>cause</em> paraphrases resemble the simple ditransitives.</p>
+
+  <span class="enpg">p.132</span>
+  <blockquote><span class="num">(102)</span> delete <em>to</em> → move <em>see</em> next to <em>caused</em> → replace caused-see with <em>showed</em>.<br><span class="num">(103)</span> Georges mange.　<span class="num">(104)</span> Pascale fait manger Georges.</blockquote>
+  <p>French: verb precedes subject in causatives — a <strong>Movement</strong> operation; trace marked with angled brackets.</p>
+
+  <span class="enpg">p.133</span>
+  <blockquote><span class="num">(105)</span> Pascale fait manger Georges &lt;manger&gt;.<br><span class="num">(106)</span> Chichewa -chit-its- (do-cause) … <span class="num">(107)</span> verb -gw- moves into the higher complex (make-fall).</blockquote>
+  <p>"?" is really a projection of the verb that <strong>moves into a higher causal head</strong>, notated <strong>little v</strong>. Trees (108)/(109) show movement of <em>show</em> to v.</p>
+
+  <span class="enpg">p.134</span>
+  <p><em>show</em> means "see" but must move into a verb meaning "cause". The causal verb is a <strong>light verb</strong>; the analysis is a <strong>VP-shell</strong>. The VP has no overt verb, only a <strong>trace</strong> (a "ghost", not pronounced). Extends to PP goals (110).</p>
+
+  <span class="enpg">p.135</span>
+  <p>Selectional features: <em>show</em> = [V, uN, uP], little v = [v, uN] (111). V checks [uP] via PP; the unchecked [uN] projects to V′ and is checked by the specifier; little v merges with the whole VP and projects [uN] to v, checked by the Agent NP. We ensure little v projects not via selection (v assigns no θ-role to VP) but via a <strong>Hierarchy of Projections</strong>.</p>
+
+  <span class="enpg">p.136</span>
+  <blockquote><span class="num">(112)</span> v &gt; V　<span class="num">(113)</span> *[vP v NP] (ruled out)</blockquote>
+  <p>Whenever there is a little v, it has a VP complement; vP is an <strong>extension</strong> of the VP projection. The analysis keeps a single binary Merge and links ditransitives to causatives, at the cost of a new operation <strong>Move</strong>. The book adopts Merge + Move and explores its consequences (more movement evidence in Chs.5–7).</p>
+
+  <span class="enpg">p.137</span>
+  <p><strong>4.5 Linking.</strong> How to constrain the order of checking? With <em>show</em> (two features), (114) is correct; the reversed (115) would generate:</p>
+  <blockquote><span class="num">(116)</span> *Nathan showed to Benjamin it.</blockquote>
+  <p>Since PP-closer-to-verb requires movement unavailable to pronouns, the only parse has arguments in base position ⇒ the object's <strong>base position is Spec of the verb</strong>, not complement.</p>
+
+  <span class="enpg">p.138</span>
+  <p>VP-shell puts Agent in Spec-vP, Theme in Spec-VP; transitives put Agent in Spec-VP, Theme in complement-of-V. Compatible, but the Theme has <strong>no uniform syntactic representation</strong> — the <strong>Linking Problem</strong> (children would have to learn structures per predicate). If each θ-role had a fixed configuration, children could predict structure from θ-roles. Hence the <strong>UTAH</strong>:</p>
+  <blockquote><span class="num">(117)</span> UTAH: Identical thematic relationships between predicates and their arguments are represented syntactically by identical structural relationships when items are Merged.</blockquote>
+
+  <span class="enpg">p.139</span>
+  <p>UTAH rules out classes of analyses; a guiding hypothesis (like Binary Branching). Assuming all Agents are in Spec-vP, transitive <em>burn</em> becomes (118), paraphrasable as (119) "X causes Y to burn". The Theme is the <strong>daughter of VP</strong> in both cases; the Goal = daughter of V:</p>
+  <blockquote><span class="num">(120)</span> a. NP daughter of vP → Agent; b. NP daughter of VP → Theme; c. PP daughter of V → Goal.</blockquote>
+
+  <span class="enpg">p.140</span>
+  <p>UTAH also fixes the order of checking: the reversed structure (121=115) gives no interpretation for the PP (not a daughter of V). It predicts distinct structures for <strong>unergatives</strong> and <strong>unaccusatives</strong>:</p>
+  <blockquote><span class="num">(122)</span> Unergatives (run, laugh, jump): single Agent, daughter of vP.<br><span class="num">(123)</span> Unaccusatives (fall, collapse, wilt): single Theme, daughter of VP.</blockquote>
+
+  <span class="enpg">p.141</span>
+  <p>Unaccusatives are assumed to have a vP whose v is semantically non-causal (no Agent specifier), to maintain the Hierarchy of Projections. Italian evidence:</p>
+  <blockquote><span class="num">(124)</span> Molte ragazze telefonano. (unergative)<br><span class="num">(125)</span> Molte ragazze arrivano. (unaccusative)</blockquote>
+  <p><em>telefonare</em> = Agent; <em>arrivare</em> = single Theme.</p>
+
+  <span class="enpg">p.142</span>
+  <p>The famous diagnostic is <strong>auxiliary selection</strong>:</p>
+  <blockquote><span class="num">(126)</span> Molte ragazze hanno telefonato. ('have')<br><span class="num">(127)</span> Molte ragazze sono arrivate. ('be', participle agrees with subject)</blockquote>
+  <p>Different auxiliaries and different participle agreement — exactly what UTAH predicts (returned to in Ch.6).</p>
+
+  <span class="enpg">p.143</span>
+  <p><strong>4.6 The architecture of the system.</strong> A <strong>derivation</strong> successively applies Merge, Adjoin, Move to syntactic objects. Inputs are lexical items (phonological, semantic, syntactic features); a collection is a <strong>numeration</strong>. <strong>Select</strong> takes items onto a workspace.</p>
+  <blockquote><span class="num">(128)</span> Step 1 Select A; Step 2 Select B.<br><span class="num">(129)</span> Step 3 Merge A&amp;B; Steps 4–6 Select C, D, Merge.<br><span class="num">(130)</span> Step 7 Adjoin outputs of Steps 3 &amp; 6.</blockquote>
+
+  <span class="enpg">p.144</span>
+  <p>A derivation that terminates with all uninterpretable features checked <strong>converges</strong>; otherwise it <strong>crashes</strong>. Concrete numeration {saw, v, Sam, Benjamin}: Step 1 Merge <em>saw</em>+<em>Benjamin</em>; Step 2 Merge <em>v</em> (Hierarchy of Projections), v's [uN] projects; Step 3 <strong>Move</strong> <em>saw</em> to v (obligatory); Step 4 Merge <em>Sam</em>, checking v's [uN].</p>
+
+  <span class="enpg">p.145</span>
+  <p>Merge is simple; <strong>Move</strong> copies part of the tree and merges the copy elsewhere, leaving a <strong>trace</strong>. One output interfaces with meaning — the <strong>Conceptual-Intentional (CI)</strong> system — via <strong>Logical Form (LF)</strong>, an <strong>Interface Level</strong> (usually the terminal object). The object feeding the <strong>Articulatory-Perceptual (AP)</strong> system is reached through the <strong>point of Spellout</strong>, yielding <strong>Phonetic Form (PF)</strong> (distinct from the Spellout point).</p>
+
+  <span class="enpg">p.146</span>
+  <p>Architecture: numeration → Select → workspace → recursive Merge/Move/Adjoin → one object to CI (LF), another to AP (Spellout). The system is <strong>highly derivational</strong>; rival theories use interacting constraints instead. <strong>4.7 Summary.</strong></p>
+
+  <span class="enpg">p.147</span>
+  <blockquote><span class="num">(131)</span> [XP [XP [Spec [X′ X Complement]]] Adjunct]<br><span class="num">(132)</span> A c-commands B iff A's sister is B or contains B.<br><span class="num">(133)</span> v &gt; V (Hierarchy of Projections fragment)</blockquote>
+  <p>Ditransitives are a layered/shell VP with a little v taking VP as complement; v–VP is governed by the Hierarchy of Projections, not selection.</p>
+
+  <span class="enpg">p.148</span>
+  <blockquote><span class="num">(134)</span> UTAH (as above).<br><span class="num">(135)</span> a. NP daughter of vP → Agent; b. NP daughter of VP → Theme; c. PP daughter of V → Goal.</blockquote>
+  <p>Children associate verbal semantics with situations, then use UTAH to determine syntactic structures. All VPs share a skeleton: a little v + VP complement; two v's — one with a specifier (causal/agentive), one vacuous (unaccusatives), kept to maintain the Hierarchy of Projections.</p>
+
+  <span class="enpg">p.149</span>
+  <p>The system is derivational: a sentence is grammatical iff a well-formed derivation exists whose final object has no unchecked uninterpretable features (though it may still be unacceptable for semantic or parsing reasons). A summary table maps phenomena (word-order variation, reflexives, NPIs, ditransitive co-ordination, ditransitive word order, unaccusative/unergative differences) to explanations (linearization, c-command, VP-shell, V-to-v movement + Hierarchy of Projections, UTAH).</p>
+
+  <span class="enpg">p.150–154</span>
+  <p><strong>Exercises &amp; Further reading.</strong> Exercise 1 (UTAH: derivations for <em>Romeo sent letters to Juliet</em> / <em>Romeo sent Juliet letters</em>); Exercise 2 (Pronouns and c-command — Pronoun Generalization revised to "cannot be coreferential with a c-commanding NP"); Exercise 3 (R-expressions, and the <strong>Binding</strong> definition: A binds B iff A c-commands B and they are coreferential; reflexive must be bound, pronoun/R-expression cannot be bound); Exercise 4 (NPIs); Exercise 5 (Derivations). <strong>Further reading</strong>: §4.2 Chomsky (1995b) ch.4, Chomsky (1970), Jackendoff (1977), Stowell (1981), Kayne (1994), Travis (1984), Zwart (1993), Cinque (1996, 1999); §4.3 Reinhart (1976), Chomsky (1980, 1995b), Radford (1981), Dougherty (1970); §4.4 Larson (1987, 1990), Pesetsky (1995), Jackendoff (1990), Barss &amp; Lasnik (1986); §§4.4.4/4.5 Baker (1988, 1996), Pinker (1984), Grimshaw (1981), Kratzer (1996); §4.6 Chomsky (1995b).</p>
+
+  <div class="nav-bottom">
+    <a href="index.html">← Index</a>
+    <a href="Ch05_TP.html">Ch.5 TP →</a>
+  </div>
+</div><!-- /.wrap -->
+</div><!-- /#en -->
+
+<a href="#top" class="back-top">↑ 回頂端</a>
+<footer>Adger, D. (2003) <em>Core Syntax</em>, Ch.4 Representing Phrase Structure（書頁 104–154）· Oxford University Press · DOI:10.1093/oso/9780199243709.003.0004</footer>
+
+<script>
+function showTab(which){
+  document.getElementById('zh').classList.toggle('active', which==='zh');
+  document.getElementById('en').classList.toggle('active', which==='en');
+  document.getElementById('tab-zh').classList.toggle('active', which==='zh');
+  document.getElementById('tab-en').classList.toggle('active', which==='en');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+</script>
+</body>
+</html>

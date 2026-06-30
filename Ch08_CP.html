@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch.8 功能範疇 III — CP（逐頁逐例句詳解 + 英文對照）— Adger (2003)</title>
+<style>
+  :root{--ink:#1b1b22;--muted:#5d5d6b;--line:#e3e3ec;--bg:#faf9f6;--accent:#7b2d3b;--accent2:#2d5a7b;--chip:#f0ece4;--card:#fff;--box:#f6f2ec;}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Noto Serif TC","Songti TC",Georgia,"Times New Roman",serif;color:var(--ink);background:var(--bg);line-height:1.9}
+  header{background:linear-gradient(135deg,#2d5a7b,#1a3347);color:#fff;padding:54px 24px 36px}
+  header .inner{max-width:900px;margin:0 auto}
+  header .ch{font-family:system-ui,sans-serif;font-size:.8rem;letter-spacing:2px;color:#bcd6e3}
+  header h1{margin:6px 0 4px;font-size:2rem}
+  header .en{color:#d9ecf0;font-style:italic}
+  header .pg{margin-top:10px;font-size:.85rem;color:#a9c9d8;font-family:system-ui,sans-serif}
+  nav.bc{max-width:900px;margin:0 auto;padding:14px 24px 0;font-family:system-ui,sans-serif;font-size:.85rem}
+  nav.bc a{color:var(--accent2);text-decoration:none}
+  /* tabs */
+  .tabbar{max-width:900px;margin:14px auto 0;padding:0 24px;display:flex;gap:10px;font-family:system-ui,sans-serif}
+  .tab{cursor:pointer;border:1px solid var(--line);border-bottom:0;background:#eef1f4;color:#43607a;
+    padding:11px 22px;border-radius:10px 10px 0 0;font-weight:700;font-size:.95rem;transition:.15s}
+  .tab:hover{background:#e3e9ee}
+  .tab.active{background:var(--card);color:var(--accent2);box-shadow:0 -2px 6px rgba(0,0,0,.04)}
+  .panel{display:none}
+  .panel.active{display:block}
+  .toc{max-width:900px;margin:0 auto 10px;padding:18px 24px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+  .toc h2{margin:0 0 10px;font-size:1.05rem;color:var(--accent2);border:0}
+  .toc ul{columns:2;column-gap:30px;margin:0;padding-left:18px;font-family:system-ui,sans-serif;font-size:.9rem}
+  .toc a{color:#333;text-decoration:none}.toc a:hover{color:var(--accent2)}
+  .wrap{max-width:900px;margin:0 auto;padding:10px 24px 80px}
+  h2{color:var(--accent2);border-bottom:2px solid var(--line);padding-bottom:6px;margin-top:48px;font-size:1.45rem;scroll-margin-top:14px}
+  h3{color:#1a3347;margin-top:34px;font-size:1.18rem;border-left:5px solid var(--accent2);padding-left:12px}
+  .pgmark{display:inline-block;font-family:system-ui,sans-serif;font-size:.72rem;font-weight:700;color:#fff;background:var(--accent2);padding:2px 10px;border-radius:12px;margin:24px 0 4px}
+  p{margin:13px 0}
+  .lead{font-size:1.05rem;background:var(--box);border-left:4px solid var(--accent2);padding:16px 20px;border-radius:0 10px 10px 0}
+  .term{font-family:system-ui,sans-serif;font-weight:700;color:var(--accent2)}
+  .en-term{font-style:italic;color:var(--muted)}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:.93rem}
+  th,td{border:1px solid var(--line);padding:8px 11px;text-align:left;vertical-align:top}
+  th{background:var(--chip);font-family:system-ui,sans-serif}
+  .ex{background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 0;margin:16px 0;overflow:hidden}
+  .ex .row{padding:9px 18px;border-bottom:1px dashed #eee}
+  .ex .row:last-child{border-bottom:0}
+  .ex .sent{font-family:"Times New Roman",serif;font-size:1.05rem}
+  .ex .num{display:inline-block;min-width:34px;color:var(--muted);font-family:system-ui,sans-serif;font-size:.85rem}
+  .ex i{color:#444}
+  .g{color:#1a7a3a;font-weight:bold}.ung{color:#b32020;font-weight:bold}.qm{color:#b88a00;font-weight:bold}
+  .gloss{display:block;margin:4px 0 0 34px;font-size:.92rem;color:#555}
+  .ana{display:block;margin:5px 0 0 34px;font-size:.92rem;color:#33506a;background:#eef4f8;border-radius:6px;padding:8px 12px}
+  .ana::before{content:"▸ 詳解　";color:var(--accent2);font-weight:bold;font-family:system-ui,sans-serif}
+  .concept{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:16px 0;border-top:3px solid var(--accent2)}
+  .concept h4{margin:0 0 8px;color:var(--accent2);font-family:system-ui,sans-serif;font-size:1rem}
+  .key{background:#fdf6e3;border:1px solid #e9dcae;border-radius:10px;padding:14px 18px;margin:18px 0}
+  .key b{color:#8a6d00}
+  .tree{background:#1f2933;color:#e6edf3;border-radius:10px;padding:14px 18px;margin:16px 0;font-family:"Consolas","Menlo",monospace;font-size:.86rem;line-height:1.5;overflow-x:auto;white-space:pre}
+  .deriv{counter-reset:d;margin:14px 0;padding:0;list-style:none}
+  .deriv li{counter-increment:d;background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent2);border-radius:0 8px 8px 0;padding:8px 14px 8px 40px;margin:8px 0;position:relative}
+  .deriv li::before{content:counter(d);position:absolute;left:10px;top:8px;background:var(--accent2);color:#fff;width:20px;height:20px;border-radius:50%;text-align:center;font-size:.78rem;line-height:20px;font-family:system-ui,sans-serif}
+  ul.plain{margin:13px 0;padding-left:24px}ul.plain li{margin:6px 0}
+  /* english panel */
+  #en p{margin:12px 0}
+  #en .enpg{display:inline-block;font-family:system-ui,sans-serif;font-size:.72rem;font-weight:700;color:#fff;background:#888;padding:2px 9px;border-radius:12px;margin:20px 0 2px}
+  #en blockquote{margin:10px 0;padding:8px 16px;border-left:3px solid var(--line);background:#fbfbfb;font-family:"Times New Roman",serif}
+  #en .num{color:var(--muted);font-family:system-ui,sans-serif;font-size:.8rem;display:inline-block;min-width:34px}
+  .nav-bottom{display:flex;justify-content:space-between;margin-top:54px;font-family:system-ui,sans-serif;font-size:.9rem}
+  .nav-bottom a{color:var(--accent2);text-decoration:none;border:1px solid var(--line);padding:10px 16px;border-radius:8px}
+  footer{text-align:center;color:var(--muted);font-size:.8rem;padding:20px;font-family:system-ui,sans-serif}
+  .back-top{position:fixed;right:18px;bottom:18px;background:var(--accent2);color:#fff;text-decoration:none;padding:8px 13px;border-radius:20px;font-family:system-ui,sans-serif;font-size:.8rem;box-shadow:0 3px 10px rgba(0,0,0,.2)}
+</style>
+</head>
+<body id="top">
+<header><div class="inner">
+  <div class="ch">CHAPTER 8 · 逐頁逐例句詳解 + 英文原文對照</div>
+  <h1>功能範疇 III — CP</h1>
+  <div class="en">Functional Categories III — CP</div>
+  <div class="pg">書頁 289–340 · 涵蓋例句 (1)–(228) 與全部樹狀推導</div>
+</div></header>
+<nav class="bc"><a href="index.html">← 全書導覽</a> ／ 第 8 章</nav>
+
+<div class="tabbar">
+  <div class="tab active" id="tab-zh" onclick="showTab('zh')">中文逐頁詳解</div>
+  <div class="tab" id="tab-en" onclick="showTab('en')">English Original（整章英文原文）</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- ===================== 中文詳解 PANEL ============================ -->
+<!-- ================================================================ -->
+<div class="panel active" id="zh">
+<div class="toc">
+  <h2>本章導覽</h2>
+  <ul>
+    <li><a href="#open">開場：第三個子句層</a></li>
+    <li><a href="#s811">8.1.1 標句詞 that</a></li>
+    <li><a href="#s812">8.1.2 陳述句與疑問句</a></li>
+    <li><a href="#s813">8.1.3 主語子句</a></li>
+    <li><a href="#s82">8.2 非限定 CP 補語</a></li>
+    <li><a href="#s821">8.2.1 PRO 與控制子句</a></li>
+    <li><a href="#s822">8.2.2 ECM 子句</a></li>
+    <li><a href="#s823">8.2.3 非限定子句中的 C（for）</a></li>
+    <li><a href="#s824">8.2.4 空格位與 PRO</a></li>
+    <li><a href="#s825">8.2.5 跨子句格位檢核與 ECM</a></li>
+    <li><a href="#s826">8.2.6 提升 Raising</a></li>
+    <li><a href="#s827">8.2.7 賓語控制</a></li>
+    <li><a href="#s828">8.2.8 小結與延伸</a></li>
+    <li><a href="#s83">8.3 附加語子句</a></li>
+    <li><a href="#s84">8.4 跨語言：V2</a></li>
+    <li><a href="#s85">8.5 本章摘要與練習</a></li>
+  </ul>
+</div>
+
+<div class="wrap">
+
+  <span class="pgmark">書頁 289</span>
+  <p class="lead" id="open">本章引入子句的<strong>第三層、也是最高層</strong>結構。第 5、6 章已把子句切成兩半：下半部（本質上是 VP）負責述語的<strong>題旨性質（thematic properties）</strong>，屬於詞彙投射；上半部（TP）負責<strong>語氣、時制、體（mood, tense, aspect）</strong>等非題旨語意，屬於功能投射。本章再加一層比 T 更高的<span class="term">功能投射 CP</span>，它與 T 層性質相近，但所負責的語意不是「事件」本身，而是<strong>整個命題的語意地位</strong>——這個命題該被當成「陳述」還是「提問」。</p>
+
+  <div class="concept"><h4>為什麼要再加一層？——本章的核心問題意識</h4>
+  <p>到第 6 章為止，我們建立的最高層是 TP。但有一個現象 TP 解釋不了：當一個句子被「裝進」另一個句子裡（內嵌 embedding）時，往往會冒出一個 <i>that</i>。例如「I claimed <u>she was pregnant</u>」整句是一個 TP，但內嵌的部分前面可以加 <i>that</i>。這個 <i>that</i> 不屬於任何 VP 或 TP 的成員，也不分派題旨角色，那它在結構上是什麼？本章主張它是一個新的功能中心語 <b>C（標句詞）</b>，投射出 <b>CP</b>，位於 TP 之上。整章就是在論證 CP 層的存在、它的內部特徵（子句類型 [Q]/[Decl]），以及它如何解釋一連串看似無關的現象：主句問句的倒裝、PRO、ECM、提升、德語 V2 等。</p></div>
+
+  <!-- ===================== 8.1.1 that ===================== -->
+  <h2 id="s811">8.1.1 標句詞 <i>that</i></h2>
+  <p>支持「子句頂端還有一層」的證據其實很容易找到。在先前討論子句內嵌時，許多例句都有一個帶 <i>that</i> 的替代式。這個 <i>that</i> 是<strong>選擇性</strong>出現在內嵌子句的開頭：</p>
+
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(1)</span> I claimed she was pregnant.</span>
+      <span class="gloss">我聲稱她懷孕了。（無 that）</span></div>
+    <div class="row"><span class="sent"><span class="num">(2)</span> I claimed <i>that</i> she was pregnant.</span>
+      <span class="gloss">我聲稱她懷孕了。（有 that）</span>
+      <span class="ana">(1)(2) 意義完全相同，差別只在 that 的有無。這帶出一個結構問題：that 究竟是<strong>跟前面的動詞 claimed 黏在一起</strong>（屬於主句的東西），還是<strong>跟後面的子句 she was pregnant 黏在一起</strong>（屬於內嵌子句的東西）？這個問題不能靠直覺回答，必須用客觀的<span class="term">成分測試</span>來判定。Adger 接下來用三種測試（假分裂、被動移位、右向外置）一致地證明：that 屬於後面的子句。</span></div>
+  </div>
+
+  <span class="pgmark">書頁 290</span>
+  <p><strong>測試一：假分裂（pseudoclefting）。</strong>假分裂句的結構是「What … was ＿＿」，能放進那個空格的字串必為一個成分。</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(3)</span> <span class="g">✓</span> What she thought was <i>that</i> the poison was neutralized.</span>
+      <span class="gloss">她所想的是「毒已被中和」。</span>
+      <span class="ana">「that the poison was neutralized」整串可以放進假分裂的焦點位（was 之後）。既然能被假分裂凸顯，它就是一個<strong>單一成分</strong>——也就是說 that 和後接的 TP「the poison was neutralized」綁在一起，構成我們即將命名的 CP。</span></div>
+    <div class="row"><span class="sent"><span class="num">(4)</span> <span class="ung">*</span> What she thought <i>that</i> was the poison was neutralized.</span>
+      <span class="ana">這句嘗試把 that <strong>留在前面</strong>（緊跟 thought）、只把 TP 推到焦點位。結果不合法。這正說明 that 無法和它的 TP 拆開——若 that 真的屬於前面的動詞，這句應該要合法才對。(3) 合法、(4) 不合法的對比，第一次證明 that 與 TP 同屬一個成分。</span></div>
+  </div>
+
+  <p><strong>測試二：被動移位（passivization）。</strong>被動句會把受詞子句搬到句首。觀察 that 是否「跟著一起搬」。</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(5)</span> Everyone claimed <i>that</i> the poison was neutralized.</span>
+      <span class="gloss">每個人都聲稱毒已被中和。（主動原句）</span></div>
+    <div class="row"><span class="sent"><span class="num">(6)</span> <span class="qm">?</span>That the poison was neutralized was claimed by everyone.</span>
+      <span class="ana">被動化把整個子句移到句首時，that <strong>一起被帶到句首</strong>。如果 that 屬於主句動詞，它就不會跟著子句跑。標 ? 是因為這種主語位的子句稍嫌沉重、語感略勉強，但結構上合法——關鍵是 that 與 TP 不可分離地一起移動。</span></div>
+    <div class="row"><span class="sent"><span class="num">(7)</span> <span class="ung">*</span> The poison was neutralized was claimed <i>that</i> by everyone.</span>
+      <span class="ana">這句反過來嘗試：只把 TP 移到句首，把 that「擱留（strand）」在原處。完全不合法。移位測試的邏輯是「只有成分能整體移動」，而 (7) 顯示你不能把 that 從它的 TP 上剝下來——再次坐實 that 與 TP 是一個不可分割的成分。</span></div>
+  </div>
+
+  <p><strong>測試三：右向外置（rightward movement / extraposition）。</strong>that+TP 也能整體越過介系詞片語向右移。</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(8)</span> <span class="g">✓</span> It was claimed by everyone <i>that</i> the poison was neutralized.</span>
+      <span class="ana">that+TP 整體被外置到 PP「by everyone」之後，且 that 仍在子句最前端 → 三度證明它是一個可整體移動的成分。</span></div>
+    <div class="row"><span class="sent"><span class="num">(9)</span> <span class="ung">*</span> It was claimed <i>that</i> by everyone the poison was neutralized.</span>
+      <span class="ana">這句把 that 單獨留在 by everyone 之前、TP 移到更後面 → 不合法。又一次顯示 that 不能脫離它的 TP。三種測試結論一致：that 與後接子句構成一個成分。</span></div>
+  </div>
+
+  <p>像 <i>claim, think, believe, say, decide</i> 等許多動詞都可接由 <i>that</i> 引介的子句補語。這種<strong>引介子句</strong>的詞，就叫做<span class="term">標句詞（complementizer）</span>。對某些動詞而言，標句詞是<strong>強制</strong>的：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(10)</span> <span class="ung">*</span> Jason whispered the phoenix had escaped.</span></div>
+    <div class="row"><span class="sent"><span class="num">(11)</span> <span class="g">✓</span> Jason whispered <i>that</i> the phoenix had escaped.</span>
+      <span class="ana">whisper 這類動詞（不同於 claim）<strong>不允許</strong>省略標句詞：(10) 沒有 that 就壞了，(11) 有 that 才合法。這顯示 that 的「選擇性 vs 強制性」是<strong>由選擇它的動詞決定的詞庫性質</strong>，不是一條一律的句法規則。這個觀察為後面「零標句詞 ∅」的論證鋪路。</span></div>
+  </div>
+
+  <p>在其他語言裡，<strong>所有</strong>子句補語都強制要有標句詞。蓋爾語（Gaelic）：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(12)</span> <span class="g">✓</span> Thuirt mi gu bheil i tinn. (Gaelic)　“I said that she was ill.”</span>
+      <span class="gloss">say-[過去] 我 that 是 她 病 → 我說她病了。</span></div>
+    <div class="row"><span class="sent"><span class="num">(13)</span> <span class="ung">*</span> Thuirt mi bheil i tinn. (Gaelic)</span>
+      <span class="ana">蓋爾語的標句詞 gu 是強制的：缺了就不合法。這說明「標句詞」不是英語特有的怪現象，而是跨語言普遍存在的句法成分；只是各語言對它「可不可省」的參數設定不同。</span></div>
+  </div>
+
+  <span class="pgmark">書頁 291</span>
+  <p>法語亦然：標句詞 <i>que</i> 強制出現。</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(14)</span> <span class="g">✓</span> J'ai dit qu' elle était malade. (French)　“I said that she was ill.”</span></div>
+    <div class="row"><span class="sent"><span class="num">(15)</span> <span class="ung">*</span> J'ai dit elle était malade. (French)</span>
+      <span class="ana">法語缺 que 不合法 → 與蓋爾語一樣是「標句詞強制」型語言。三種語言（英、蓋、法）合起來建立了「標句詞」這個跨語言範疇的經驗基礎。</span></div>
+  </div>
+
+  <div class="concept"><h4>關鍵概念：that 是哪一個範疇？——它不是指示詞 D</h4>
+  <p>確定了 that 與 TP 構成成分後，下一個問題是：that 屬於哪個句法範疇？一個直覺的猜測是 <b>D（限定詞）</b>，因為英語的 that 也能當指示詞（that book）。但 Adger 用三個論證推翻這個猜測，主張它是一個<strong>全新的範疇 C</strong>。</p></div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(16)</span> <span class="ung">*</span> I said <i>this</i> he left.</span></div>
+    <div class="row"><span class="sent"><span class="num">(17)</span> <span class="ung">*</span> Jason knew <i>those</i> Medea had cast the spell.</span>
+      <span class="ana"><strong>論證①：</strong>如果標句詞 that 真的是指示詞 D，那麼其他指示詞（this、those）應該也能出現在同一位置。但 (16)(17) 顯示它們完全不行。這代表標句詞位置上的 that 並非指示詞——它只是「碰巧長得跟指示詞 that 一樣」的同音詞。</span></div>
+  </div>
+  <ul class="plain">
+    <li><strong>論證②（跨語言）：</strong>其他語言的標句詞與其指示詞系統毫無關係。法語標句詞是 <i>que</i>，但其指示詞是 ce/cela/ça；蓋爾語標句詞是 <i>gu</i>，指示詞卻是 seo/sin。若標句詞普遍是 D，這種「標句詞與指示詞長得完全不同」就難以解釋。</li>
+    <li><strong>論證③（語言內部）：</strong>英語還有別的標句詞（如 whether、for，下面會看到），它們與限定詞系統毫無相似之處——更說明標句詞是獨立範疇。</li>
+  </ul>
+  <p>基於這三點，多數語言學家把 <i>that</i> 及其他標句詞分析為一個新範疇 <span class="term">C（Complementizer）</span>。C 與 TP <strong>合併（Merge）</strong>並投射，產生 (18) 的結構：</p>
+
+  <div class="tree">(18)            CP
+              /    \
+             C      TP
+                   /  \
+              Subject   T̄
+                       /  \
+                      T    vP</div>
+  <span class="ana" style="margin-left:0">這張樹要記牢：CP 是 C 的最大投射，C 取 TP 為<strong>補語（complement）</strong>。換言之，C 把整個 TP「包起來」成為更大的單位 CP。這就是子句的最高層結構，也是本章其餘所有分析的骨架——後面討論的問句倒裝、PRO、提升等，都發生在這個 C–T 的架構之內。</span>
+
+  <!-- ===================== 8.1.2 ===================== -->
+  <h2 id="s812">8.1.2 陳述句與疑問句</h2>
+  <span class="pgmark">書頁 292</span>
+  <p>C 必為<strong>功能範疇</strong>（functional category）而非詞彙範疇（lexical category），因為它<strong>不分派 θ-角色</strong>。標句詞的語意作用比較抽象，但直覺上是：它<strong>指示聽者該如何看待其子句所表達的命題</strong>——是當成一個單純的「事實陳述」，還是當成一個「對事實的提問」。於是除了陳述用的 that，也有引介問題的標句詞：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(19)</span> <span class="g">✓</span> Jason asked <strong>whether</strong> the potion was ready.</span>
+      <span class="gloss">Jason 問藥水是否好了。</span></div>
+    <div class="row"><span class="sent"><span class="num">(20)</span> <span class="g">✓</span> Medea wondered <strong>if</strong> the potion was ready.</span>
+      <span class="gloss">Medea 想知道藥水是否好了。</span>
+      <span class="ana">whether 和 if 引介的子句是「間接問句」。它們和 that 一樣站在子句最前端、引介整個子句，因此 Adger 接下來要證明它們也是標句詞 C，只是攜帶的子句類型特徵不同（問句 vs 陳述）。</span></div>
+  </div>
+
+  <p><strong>證據一：互補分布。</strong>whether/if 與 that 呈<span class="term">互補分布（complementary distribution）</span>——意思是同一個位置上只能有一個，不能並存：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(21)</span> <span class="ung">*</span> Jason asked whether <i>that</i> the potion was ready.</span></div>
+    <div class="row"><span class="sent"><span class="num">(22)</span> <span class="ung">*</span> Medea wondered if <i>that</i> the potion was ready.</span>
+      <span class="ana">whether/if 與 that 不能同時出現。在生成語法裡，「兩個成分互補分布」是它們<strong>競爭同一個句法位置</strong>的典型證據。既然 that 佔的是 C 位，whether/if 不能與它共存，就表示三者都搶同一個 C 位 → whether/if 也是 C。</span></div>
+  </div>
+  <p><strong>證據二：成分性（假分裂）。</strong>whether/if 與其後子句構成一個成分，正如 that 一樣：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(23)</span> <span class="g">✓</span> What Jason asked was whether the potion was ready.</span></div>
+    <div class="row"><span class="sent"><span class="num">(24)</span> <span class="ung">*</span> What Jason asked whether was the potion was ready.</span></div>
+    <div class="row"><span class="sent"><span class="num">(25)</span> <span class="qm">?</span>What Medea wondered was if the potion was ready.</span></div>
+    <div class="row"><span class="sent"><span class="num">(26)</span> <span class="ung">*</span> What Medea wondered if was the potion was ready.</span>
+      <span class="ana">(23)(25) 能整體假分裂（whether/if + 子句一起進焦點位），(24)(26) 不能把 whether/if 留在原處 → 與 that 的 (3)/(4) 行為完全平行。結論：whether 和 if 都是標句詞 C。</span></div>
+  </div>
+
+  <p>由於語意作用不同，我們用一個<strong>可詮釋句法特徵</strong>來區分它們。問句子句稱<span class="term">疑問（interrogative）</span>，非問句稱<span class="term">陳述（declarative）</span>，子句的這個身分就是它的<span class="term">子句類型（clause type）</span>。</p>
+  <div class="key"><b>特徵設定：</b>假設特徵 <b>[clause-type]</b>，其值為 <b>[Q]</b>（疑問，Q 是 question 的記號）或 <b>[Decl]</b>（陳述）。此特徵在 C 上是<strong>可詮釋的（interpretable）</strong>——意思是它對語意有貢獻，正是它讓陳述句被解讀成陳述、問句被解讀成提問。that 帶 [Decl]，whether/if 帶 [Q]。</div>
+
+  <span class="pgmark">書頁 293</span>
+  <p>接 C 補語的述語，可在<strong>詞庫條目</strong>中標記其 <span class="term">c-選擇（c-selection）</span>需求：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(27)</span> ask, [V, <i>u</i>C]</span></div>
+    <div class="row"><span class="sent"><span class="num">(28)</span> exclaim, [V, <i>u</i>C]</span>
+      <span class="ana">兩者都帶不可詮釋特徵 <b>[uC]</b>，意思是「我需要一個 CP 補語」。這個 u 特徵必須被一個真的 CP 檢核掉，否則推導崩潰——這就是「動詞要求子句補語」這件事在特徵理論裡的形式化。</span></div>
+  </div>
+  <p>但問題來了：述語似乎還能決定它的補語是<strong>疑問</strong>還是<strong>陳述</strong>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(29)</span> <span class="ung">*</span> Ron asked <i>that</i> the potion was ready.</span></div>
+    <div class="row"><span class="sent"><span class="num">(30)</span> <span class="ung">*</span> Medea exclaimed <i>if</i> the potion was ready.</span>
+      <span class="ana">ask 只能接疑問 [Q] 子句（接 that 就壞），exclaim 只能接陳述 [Decl] 子句（接 if 就壞）。問題是：這個「挑子句類型」的能力，該寫進<strong>句法的 c-選擇</strong>，還是只是<strong>語意的 s-選擇（s-selection）</strong>不相容造成的？（註：(30) 對某些母語者在「每當藥好，Medea 就驚呼」的解讀下可接受，但那是 8.3 的附加語結構，與此無關。）</span></div>
+  </div>
+  <p>Adger 論證答案是<strong>語意（s-選擇）</strong>。關鍵證據來自 maintain：它像 exclaim 一樣拒絕 [Q] 子句，但它的行為更能揭露問題的本質。</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(31)</span> <span class="g">✓</span> Julie maintained that the barman was sober.</span></div>
+    <div class="row"><span class="sent"><span class="num">(32)</span> <span class="ung">*</span> Julie maintained if the barman was sober.</span>
+      <span class="ana">maintain 接陳述 that 子句可以、接疑問 if 子句不行——表面上像是 maintain「c-選擇 [Decl]」。</span></div>
+    <div class="row"><span class="sent"><span class="num">(33)</span> <span class="g">✓</span> Julie maintained her own ideas over the course of the argument.</span>
+      <span class="gloss">maintain 也可以接一個 DP 補語（her own ideas）。</span></div>
+    <div class="row"><span class="sent"><span class="num">(34)</span> <span class="ung">*</span> Julie maintained her own questions over the course of the argument.</span>
+      <span class="ana"><strong>這是決定性的一步。</strong>her own ideas 和 her own questions 在<strong>句法上完全相同</strong>（都是 DP，結構一模一樣），差別<strong>只在語意</strong>——questions 的語意是「問題」。既然 (34) 不合法只能歸因於「maintain 不能與語意上指涉問題的東西結合」這個<strong>語意不相容</strong>，那麼同樣的語意解釋也能排除 (30)（exclaim 接疑問子句）。既然語意解釋在 (34) 是不可避免的，把它也用在 (30) 就最為精簡——故「挑子句類型」是 s-選擇而非 c-選擇。</span></div>
+  </div>
+
+  <span class="pgmark">書頁 294</span>
+  <p>有了「述語一律 c-選擇 CP」這個結論，可以進一步推論：連<strong>「可省略 that」</strong>的情形，其實底層也是一個 CP，只是 C 位被<strong>音韻空的標句詞（zero complementizer, ∅）</strong>佔據。這樣較高的述語就<strong>永遠</strong>選一個 CP，不必區分「有時選 CP、有時選 TP」：</p>
+  <div class="tree">(35)        VP
+           /    \
+        said     CP
+               /    \
+          that/∅    TP
+                 he was happy</div>
+  <span class="ana" style="margin-left:0">that 與 ∅（零標句詞）都佔 C 位 → said 永遠 c-選擇一個 CP。這個「零標句詞」的概念非常重要，它讓理論保持一致（述語一律選 CP），也預告了後面控制子句（空 C[null]）與 ECM 的分析手法。</span>
+
+  <div class="concept"><h4>關鍵問題：主句也是 CP 嗎？</h4>
+  <p>既然內嵌子句是 CP，那<strong>主句（matrix sentence）</strong>呢？它也是 CP，還是只是 TP？此問題<strong>沒有定論</strong>：有人為求精簡（economy）主張簡單句只是 TP（沒有更多結構的證據就別假設更多結構）；有人為求子句的一致性（uniformity，內嵌子句既然是 CP，主句也該是）主張主句也是 CP。Adger 的策略是：先證明<strong>至少某些主句確定是 CP</strong>，再推廣到全部。</p></div>
+  <p>確定是 CP 的主句：<strong>主句問句（yes/no questions）</strong>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(36)</span> Had the potion boiled over?</span></div>
+    <div class="row"><span class="sent"><span class="num">(37)</span> Did the magic work?</span>
+      <span class="ana">這類問句（因最自然的回答是 yes/no 而稱 yes/no questions）與其陳述對應句的差別很明顯：<strong>助動詞跑到主語之前</strong>。傳統稱<span class="term">主語–助動詞倒裝（Subject-Auxiliary Inversion, SAI）</span>。問題是：助動詞「往前跑」跑到哪裡去了？如果主句有 CP 層，答案就現成了——跑到 C 位。</span></div>
+  </div>
+
+  <span class="pgmark">書頁 295</span>
+  <p><strong>SAI 的分析 ＝ T-to-C 移位。</strong>若主句是 CP，分析就很漂亮：投射 T 的特徵束（即時制）整個<strong>移入 C 位</strong>，原理就跟「英語最高助動詞移入 T」「法語動詞群移入 T」一樣（第 5 章）。我們假設 Tense <strong>附加（adjoin）</strong>到 C。樹 (38) 顯示 <em>Had the potion boiled over?</em> 的推導：完成式助動詞 have 先移到 T 形成附加結構，T 再升入 C，全靠連續的<strong>中心語移位（head movement）</strong>達成。</p>
+  <p>但為什麼 T 裡的複合體要移到 C？答案再次是<strong>特徵強度（feature strength）</strong>——這正是本書解釋一切移位的統一手法：</p>
+  <ol class="deriv">
+    <li>假設 T 帶一個不可詮釋、未賦值的子句類型特徵 <b>[uclause-type: ]</b>（方括號裡空白表示「還沒拿到值」）。此時結構是：<br>(39) [TP Subject Perf+T[uclause-type: ] … ]</li>
+    <li>當 C[Q] 與這個 TP 合併，C 上可詮釋的 [Q] 把 T 的子句類型特徵<strong>賦值為強 Q</strong>（記為 Q*，星號＝強）。<br>(40) C[Q] [TP Subject Perf+T[uclause-type:Q*] … ]</li>
+  </ol>
+
+  <span class="pgmark">書頁 296</span>
+  <ol class="deriv" start="3" style="counter-reset:d 2">
+    <li>由於 T 上的 Q 是<strong>強的</strong>，依本書通則，強特徵會強制 T 升入、與它所 Agree 的特徵（C 上的 [Q]）形成局部關係，產生 (41) 的最終結構（T+C 合在 C 位），並帶著 T 內部的一切（含 have）一起上移。這就是倒裝的來源——助動詞之所以跑到主語前，是因為它隨 T 一起被吸進了 C。</li>
+  </ol>
+  <p>這個分析還順帶<strong>正確預測了 <span class="term">do-support（助動詞 do 插入）</span></strong>，這是它的一大優點：疑問 C 觸發 T-to-C 移位後，T 就<strong>不再 c-統制</strong>下方的小 v，兩者間無法形成「鏈（chain）」，使得「時制發音規則（Rule for Pronouncing Tense）」無法套用；於是 do 作為<strong>最後手段（last resort）</strong>插入，承載孤立的時制特徵：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(42)</span> Did the potion boil over?</span>
+      <span class="ana">(43) 樹：T[past, uclause-type:Q*] 升到 C 與 C[Q] 合併；TP 內主語 the potion 留在 spec-TP。T 升出後與下方 v 失去 c-統制關係 → 無法把 [past] 發音在主動詞上 → do 插入承載 [past]，發成 did。注意：do-support 不是另外規定的，而是「T 移走→鏈斷→最後手段」這一連串獨立機制的<strong>自動結果</strong>，這正是分析優美之處。</span></div>
+  </div>
+  <p>SAI 的存在強烈顯示<strong>至少主句 yes/no 問句</strong>有 CP 層。Adger 進一步假設<strong>所有</strong>主句都有 CP；陳述主句的 C 位被一個<strong>音韻空的標句詞</strong>佔據，它把 T 的 [uclause-type] 賦值為 Decl。Q 與 Decl 的關鍵差別是：<strong>Decl 是弱的</strong>，弱特徵不觸發移位，所以陳述句沒有倒裝。</p>
+
+  <span class="pgmark">書頁 297</span>
+  <div class="tree">(45)        CP
+          /     \
+       C[Decl]   TP
+               /    \
+        the potion   T̄
+                   /    \
+            T[past,uDecl]  vP
+                          (boil over)</div>
+  <span class="ana" style="margin-left:0">陳述主句的結構：C 帶弱的 [Decl]，T 留在原位，沒有倒裝。把這張 (45) 和問句的 (43) 對照看，整個「陳述 vs 疑問」的差異就被化約成單一參數——C 賦給 T 的子句類型值是強（Q*，→倒裝）還是弱（Decl，→不動）。</span>
+  <p><strong>特徵縮寫慣例 (46)：</strong>(a) 可詮釋的 [clause-type:Q]（C 上）→ 縮寫 <b>[Q]</b>；(b) 未檢核未賦值的 [uclause-type: ]（剛生成的 T 上）→ 縮寫 <b>[uclause-type]</b>；(c) 已檢核、賦強值的 → 縮寫 <b>[Q*]</b>。這套縮寫與第 6 章為「格位」設計的縮寫平行。英語通常忽略 [Decl] 不寫，因其句法效應微不足道（弱、不動）。</p>
+
+  <!-- ===================== 8.1.3 ===================== -->
+  <h2 id="s813">8.1.3 主語子句</h2>
+  <p>到目前為止，標句詞引介的子句都出現在<strong>補語位</strong>（動詞後）。但它們也出現在<strong>主語位</strong>——這就帶來新的分析難題：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(47)</span> [That Jason abandoned Medea] stinks!</span>
+      <span class="gloss">「Jason 拋棄了 Medea」這件事真糟糕！</span></div>
+    <div class="row"><span class="sent"><span class="num">(48)</span> [That the golden thread would show Jason his path through the labyrinth] was obvious.</span></div>
+    <div class="row"><span class="sent"><span class="num">(49)</span> [That I am here] proves [that I care].</span>
+      <span class="gloss">(49)：兩個論元<strong>都是</strong>子句——主語是子句、賓語也是子句（prove 是兩元述語）。</span></div>
+    <div class="row"><span class="sent"><span class="num">(50)</span> [That Zeus was so promiscuous] astounded the other gods.</span></div>
+    <div class="row"><span class="sent"><span class="num">(51)</span> [That Medea murdered Jason] didn't surprise anyone.</span>
+      <span class="ana">這組例句展示了子句作主語的各種搭配：(47)(48) 是一元述語（stink, be obvious，只有一個論元，就是這個子句主語）；(49) 是兩個論元都是子句；(50)(51) 是子句主語配上非子句賓語。共同點：句首那個 that 子句佔據了通常由主語 DP 佔的位置。問題是——它真的就站在 spec-TP（一般主語位）嗎？</span></div>
+  </div>
+
+  <span class="pgmark">書頁 298</span>
+  <p>有兩種競爭的分析：</p>
+  <div class="concept"><h4>兩種分析的對立</h4>
+  <ul class="plain">
+    <li><strong>分析一（(52)，直覺版）：</strong>子句主語就位於 <strong>spec-TP</strong>（標準主語位），且和一般主語一樣，由 VP 內部位置提升而來。簡單、符合直覺。</li>
+    <li><strong>分析二（(53)，Adger 採用）：</strong>子句位於 <strong>spec-CP</strong>（更高的位置），而真正的 spec-TP 主語位被一個<strong>空成分（empty element / null pronoun）</strong>佔據。這個空成分才是「真主語」，句首的 CP 只是在語意上與它連結。</li>
+  </ul>
+  <p>分析二乍看複雜、多假設了一個看不見的空成分，為何要採用它？因為下面一連串證據顯示：這些「子句主語」的行為<strong>根本不像</strong>普通主語。</p></div>
+
+  <span class="pgmark">書頁 299</span>
+  <p>Adger 把這些待考察的子句中性地稱為<span class="term">初始 CP（initial CPs）</span>（避免預設它們在哪個位置）。採分析二的理由如下：</p>
+  <p><strong>證據一：初始 CP 不做 SAI。</strong>普通 DP 主語能參與主語–助動詞倒裝，初始 CP 卻不行：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(54)</span> <span class="ung">*</span> Did that Medea killed her children upset Jason?</span></div>
+    <div class="row"><span class="sent"><span class="num">(55)</span> <span class="ung">*</span> Has that we have arrived back at our starting point proved that the world is round?</span>
+      <span class="ana">如果初始 CP 真的就站在 spec-TP（和普通主語同位），那麼把它做成問句（SAI）應該沒問題。但 (54)(55) 全壞。這暗示初始 CP 並不在普通主語位——它在別的地方，而那個地方與 SAI 不相容。</span></div>
+  </div>
+  <p><strong>證據二：初始 CP 內可有 DP 主語，但不能再嵌一個初始 CP。</strong></p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(56)</span> <span class="g">✓</span> [That [the answer] is obvious] upset Hermes.</span></div>
+    <div class="row"><span class="sent"><span class="num">(57)</span> <span class="ung">*</span> [That [that the world is round] is obvious] upset Hermes.</span></div>
+    <div class="row"><span class="sent"><span class="num">(58)</span> <span class="ung">*</span> [That [whether the world is round] is unknown] bothered Athena.</span>
+      <span class="ana">(56)：初始 CP 內部的主語可以是普通 DP（the answer），完全合法。(57)(58)：但初始 CP 內部的主語<strong>不能</strong>又是一個初始 CP（that…/whether…）。如果初始 CP 和 DP 真的同分布，這種不對稱就無法解釋。「普通 DP 主語」與「初始 CP」分布不同 → 它們在<strong>不同的句法位置</strong>。</span></div>
+  </div>
+  <p><strong>證據三（跨語言）：荷蘭語的特殊代名詞。</strong>在荷蘭語裡可以直接看到，初始 CP 不在主語位——因為主語位被一個特殊代名詞 <i>dat</i> 佔走了：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(59)</span> Dat hij komt, <strong>dat</strong> is duidelijk. (Dutch)　“That he will come is clear.”</span>
+      <span class="gloss">that 他 來，<strong>dat（那）</strong> 是 清楚 → 他會來，這是清楚的。</span></div>
+    <div class="row"><span class="sent"><span class="num">(60)</span> That he is coming <i>e</i> is clear.</span>
+      <span class="ana">荷蘭語在初始 CP 之後出現一個指示代名詞 dat（「那」），它才是真正佔主語位的東西。Adger 主張英語結構與荷蘭語<strong>完全相同</strong>，只是英語對應 dat 的成分是<strong>空的（null，記為 e）</strong>。(60) 就是英語的底層結構：初始 CP 在前、一個看不見的空代名詞 e 在主語位。荷蘭語把這個位置「念出來」，英語則不念。</span></div>
+  </div>
+
+  <span class="pgmark">書頁 300</span>
+  <p><strong>分析二的具體運作（推導）：</strong>空代名詞先在 spec-vP 合併（取得它需要的位置），升到 spec-TP 檢核格位與 EPP；接著 Merge C，再把<strong>先前已經建好的那個 CP</strong> Merge 進 <strong>spec-CP</strong>。這最後一步的合併由 C 的 <strong>[uC]</strong> 選擇特徵觸發（C 需要一個 CP 在它的指定語）：</p>
+  <div class="tree">(61)         CP
+          /        \
+        CP         C̄[uC]
+   "that he        /   \
+    is coming"    C     TP
+                       /  \
+                      e    T̄
+                          is clear</div>
+  <p>分析二的三大紅利（為什麼值得多假設一個空成分）：</p>
+  <ul class="plain">
+    <li><strong>紅利①：保住 EPP 的定義。</strong>可繼續主張「T 的 EPP 是一個 [uD] 特徵」（必須由一個 D/DP 來滿足）。因為滿足 spec-TP 的是空<strong>代名詞</strong>（一個 D），而不是 CP。若採分析一（讓 CP 直接進 spec-TP），就得重新定義 EPP 成「可被 DP 或 CP 滿足」，弄髒了理論。</li>
+    <li><strong>紅利②：解釋為何初始 CP 不做 SAI（(54)(55)）。</strong>規定初始 CP 結構所需的這個特殊 C[uC] 與 [Q] 特徵不相容，所以有初始 CP 就不能有 Q、也就不能 SAI。</li>
+    <li><strong>紅利③：解釋為何初始 CP 不能嵌初始 CP（(57)(58)）。</strong>見下。</li>
+  </ul>
+  <p>對照組——初始 CP 內部若是普通 DP 主語，該 DP 出現在標句詞<strong>之後</strong>（spec-TP），與初始 CP（在 spec-CP）位置明顯不同：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(62)</span> [That <strong>Jason</strong> arrived] infuriated Medea.</span></div>
+    <div class="row"><span class="sent"><span class="num">(63)</span> [Whether <strong>Agamemnon</strong> had triumphed] was unknown.</span>
+      <span class="ana">普通 DP 主語（Jason、Agamemnon）緊跟在標句詞 that/whether 之後 → 它在 spec-TP。初始 CP 則在更外層的 spec-CP。位置不同，分布自然不同。</span></div>
+  </div>
+
+  <span class="pgmark">書頁 301</span>
+  <p>初始 CP 既然是與一個特殊空 C[uC] 的投射合併，我們就<strong>永遠不會</strong>在 that 或 whether 之後找到初始 CP（紅利③）。但這也產生一個新謎題——下面這些也該被排除：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(64)</span> <span class="ung">*</span> [[That Jason had arrived] C e was obvious] C e infuriated Medea.</span></div>
+    <div class="row"><span class="sent"><span class="num">(65)</span> <span class="ung">*</span> I said that that Jason was jealous annoyed Medea.</span>
+      <span class="ana">解法：規定這個空 C[uC] <strong>只能出現在主句位置</strong>。(64)(65) 都在<strong>內嵌</strong>子句裡用到這個空 C → 違反限制，被正確排除。Adger 坦言這只是把描述形式化，尚非真正的解釋，但至少抓對了模式。</span></div>
+  </div>
+
+  <div class="concept"><h4>對照：Ross (1967) 的另一條途徑——Internal S Condition</h4>
+  <p>歷史上最早處理初始主語的途徑之一（Ross 1967 博論）採<strong>分析一</strong>（初始 CP 真的在 spec-TP），把它的怪異句法歸因於一條<strong>剖析原則</strong>：禁止一個 CP 被夾在另一個 CP 的音韻材料<strong>之間</strong>（兩側都有上層 CP 的語音材料，就叫「內部 internal」）。這條原則稱 <span class="term">Internal S Condition</span>。</p></div>
+  <p>看它怎麼運作 (66)：若初始 CP 在 spec-TP，而 T-to-C 移位發生（does 跑到 C），那麼初始 CP 兩側都有主句 CP 的語音材料（左邊 does、右邊 annoy Medea），它就「內部化」了 → 被禁止，於是預測 (54)(55) 不合法。</p>
+  <div class="tree">(66)         CP
+          /       \
+        C(does)    TP
+                  /    \
+       [CP that Jason   T̄
+        is jealous]   (T) ...annoy Medea</div>
+
+  <span class="pgmark">書頁 302</span>
+  <p>但 Internal S Condition 有<strong>致命反例</strong>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(68)</span> <span class="g">✓</span> Believing [that the world is flat] gives one some solace.</span>
+      <span class="ana">這裡主句 CP 的材料 believing 和 gives one some solace 分別在內部 CP「that the world is flat」的左右兩側，照 Internal S Condition 應該被排除，但這句<strong>完全合語法</strong>。一個會錯殺合法句子的原則就不可靠 → Adger 放棄 Ross 途徑，改採 spec-CP 分析（分析二）。</span></div>
+    <div class="row"><span class="sent"><span class="num">(69)</span> <span class="ung">*</span> e is obvious.</span>
+      <span class="ana">不過分析二也留下自己的遺留問題：如果主語位真有一個空代名詞 e，為何不能讓 e 單獨當主語、得到 *e is obvious？這個問題要等到 8.2.8（用 [null] 格位）才能解答。</span></div>
+  </div>
+
+  <!-- ===================== 8.2 ===================== -->
+  <h2 id="s82">8.2 非限定 CP 補語</h2>
+  <p>本節是全章篇幅最大、邏輯最環環相扣的一節，探討各類述語的<strong>非限定（non-finite）子句補語</strong>——也就是動詞接的「to do…」這類沒有時制的子句。Adger 的策略是：先回顧第 4 章 θ-理論的兩個鐵則，再用它們像手術刀一樣，把表面相似的四種結構（控制、ECM、for 子句、提升）一刀刀切開。</p>
+  <span class="pgmark">書頁 302–303</span>
+  <p>回顧的邏輯起點：由於所有不可詮釋特徵都必須被檢核，而 c-選擇特徵與 θ-角色相連，可推得述語的<strong>所有 θ-角色都會被分派出去</strong>。再加上 UTAH（題旨角色與句法位置的對應），可得：一個 DP 唯有在 UTAH 指定的<strong>論元位置（argument position）</strong>合併，才能被解讀為論元。這也解釋了虛主詞：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(70)</span> <span class="g">✓</span> There arrived a new actor.</span>
+      <span class="gloss">有個新演員到了。</span>
+      <span class="ana">虛主詞 there 不領 θ-角色，純粹是為了滿足 EPP 而插入。所有 θ-角色都在 unaccusative 動詞 arrive 的 vP 內分派完畢（a new actor 在那裡領到角色）。虛主詞插在「無 θ-角色的位置」（如 spec-TP）。</span></div>
+    <div class="row"><span class="sent"><span class="num">(71)</span> <span class="ung">*</span> The doctor arrived a new actor.</span>
+      <span class="ana">不能把一個真實 DP（the doctor）放在虛主詞該在的位置，因為那個位置沒有 θ-角色可領，而真實 DP <strong>必須</strong>領 θ-角色（見下 73b）。對照 (70)：there 可以待在無 θ 位是因為它不需要 θ-角色。</span></div>
+    <div class="row"><span class="sent"><span class="num">(72)</span> <span class="ung">*</span> Medea murdered.</span>
+      <span class="ana">murder 是兩元述語（施事＋受事）。若一個 DP 能領兩個 θ-角色，Medea 就能先在 murder 的姊妹位領 Theme、再升到 spec-vP 領 Agent，把兩個角色都包了，這句就該合法。但它不合法 → 證明一個 DP <strong>只能領一個</strong> θ-角色。</span></div>
+  </div>
+  <div class="key"><b>(73) 兩條 θ-理論鐵則（整節分析的基石，務必記牢）：</b><br>
+  a. 一個 DP <strong>只能</strong>領一個 θ-角色（θ-準則）。→ 用來論證「為何需要 PRO」「為何 Medea 不是提升來的」。<br>
+  b. 一個 DP <strong>必須</strong>領一個 θ-角色。→ 用來論證「為何 seem 句不能用 PRO」。<br>
+  <span style="font-size:.9em">Adger 特別提醒：整節分析的強度，取決於這兩條通則的正確性；若它們將來被推翻，分析就得重做（延伸閱讀有反 θ-理論的途徑）。</span></div>
+
+  <!-- 8.2.1 -->
+  <h3 id="s821">8.2.1 PRO 與控制子句</h3>
+  <span class="pgmark">書頁 304</span>
+  <p>第 5 章曾用非限定的 to 來論證 TP 的存在。現在看這類非限定子句補語：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(74)</span> Medea tried [to poison her children].</span>
+      <span class="gloss">Medea 試圖毒死她的孩子。</span></div>
+    <div class="row"><span class="sent"><span class="num">(75)</span> Odysseus planned [to hear the sirens].</span>
+      <span class="gloss">Odysseus 計畫聽海妖的歌聲。</span>
+      <span class="ana">注意內嵌動詞（poison, hear）都是<strong>兩元</strong>述語，需要一個施事。而那個施事在語意上<strong>被主句主語綁定</strong>：(74) 想下毒的人「就是 Medea，不會是別人」；(75) 要聽海妖的「就是 Odysseus」。問題是——這個施事在句法上是「誰」？它沒有出現任何字啊。</span></div>
+  </div>
+  <p>而且，下層子句的主語<strong>不能</strong>用任何外顯的詞填上去：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(76)</span> <span class="ung">*</span> Medea tried [Medea to poison her children].</span></div>
+    <div class="row"><span class="sent"><span class="num">(77)</span> <span class="ung">*</span> Medea tried [the nurse to poison her children].</span></div>
+    <div class="row"><span class="sent"><span class="num">(78)</span> <span class="ung">*</span> Odysseus attempted [Odysseus to hear the sirens].</span></div>
+    <div class="row"><span class="sent"><span class="num">(79)</span> <span class="ung">*</span> Odysseus attempted [the helmsman to hear the sirens].</span>
+      <span class="ana">無論填回主句主語本身（Medea/Odysseus）還是填別人（the nurse/the helmsman），全都不合法。所以下層主語位「必須是空的，但又必須存在」（因為 poison 要派施事角色出去）。</span></div>
+  </div>
+  <p><strong>推論出 PRO。</strong>poison 派 Agent 與 Theme。Theme 給了 her children。Agent 給誰？不能是主句的 Medea——她已經從 tried 領了一個 θ-角色，依鐵則 (73a) 不能再領第二個。因此下層 spec-v 必須有一個<strong>看不見的成分</strong>來領這個 Agent；整個子句再由主句動詞 tried 領一個 θ-角色。這個空主語就命名為 <span class="term">PRO</span>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(80)</span> Medea tried [to <strong>PRO</strong> poison her children].</span>
+      <span class="ana">PRO 在下層 spec-v 合併、領 Agent，並被主句主語 Medea <span class="term">控制（controlled）</span>（即解讀上與 Medea 同指）。含 PRO 的子句因此稱<span class="term">控制子句（control clause）</span>。注意：PRO 是被「θ-準則」逼出來的——不是憑空假設，而是「Agent 一定要派出去、Medea 又不能領第二角色」的邏輯必然結果。</span></div>
+  </div>
+  <span class="pgmark">書頁 305</span>
+  <p>PRO 也可以<strong>不</strong>被任何 DP 控制，此時得到<strong>任指（arbitrary）</strong>解讀，類似正式英語的 one（「人們、任何人」）：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(81)</span> PRO to steal hexes from witches is dangerous.</span>
+      <span class="gloss">（任何人）去偷女巫的咒語是危險的。</span></div>
+    <div class="row"><span class="sent"><span class="num">(82)</span> If one were to steal hexes from witches, then that would be dangerous.</span></div>
+    <div class="row"><span class="sent"><span class="num">(83)</span> It is not allowed to PRO perjure oneself.</span>
+      <span class="ana">(81)(83) 的 PRO 沒有先行語可控制，故解讀為「泛指任何人」。本章<strong>不</strong>深究 PRO 何時受控制、何時任指（那是語意/控制理論的問題），重點放在 PRO 的<strong>句法分布</strong>——它能出現在哪、不能出現在哪。這個分布問題會用「格位」來解答（8.2.4）。</span></div>
+  </div>
+
+  <!-- 8.2.2 -->
+  <h3 id="s822">8.2.2 ECM 子句</h3>
+  <p>控制子句不允許外顯 DP 主語（見 76–79）。但有另一類非限定補語<strong>恰恰相反</strong>——它們<strong>允許、甚至要求</strong>外顯主語：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(84)</span> We believed Zeus to be omnipotent.</span>
+      <span class="gloss">我們相信 Zeus 是全能的。</span></div>
+    <div class="row"><span class="sent"><span class="num">(85)</span> No one expected Agamemnon to win.</span></div>
+    <div class="row"><span class="sent"><span class="num">(86)</span> We believed that Zeus was omnipotent.</span></div>
+    <div class="row"><span class="sent"><span class="num">(87)</span> No one expected that Agamemnon would win.</span>
+      <span class="ana">believe/expect 是「個體–命題」兩元述語。限定版 (86)(87)（接 that 子句）證明了這一點：相信的是「Zeus 全能」這個<strong>命題</strong>，而 Zeus 是該命題內部的主語。假設 believe 的 θ-派發性質不變，則 (84)(85) 中 Zeus/Agamemnon 也應是<strong>下層子句的主語</strong>，而非主句的賓語。</span></div>
+    <div class="row"><span class="sent"><span class="num">(88)</span> We believed [Zeus to be omnipotent].</span></div>
+    <div class="row"><span class="sent"><span class="num">(89)</span> No one expected [Agamemnon to win].</span></div>
+    <div class="row"><span class="sent"><span class="num">(90)</span> We believed [him to be omnipotent].</span>
+      <span class="ana">關鍵觀察：把下層主語換成代名詞，得到的是<strong>賓格（accusative：him，而非主格 he）</strong>。這很奇怪——它明明是「下層子句的主語」，照理該是主格，怎麼會是賓格？這個「主語卻帶賓格」的矛盾，正是這個構造名稱的由來。</span></div>
+  </div>
+  <span class="pgmark">書頁 306</span>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(91)</span> No one expected [him to win].</span>
+      <span class="ana">傳統名稱 <span class="term">ECM（Exceptional Case Marking，例外格位標記）</span>——「例外」就在於：一個明明是下層主語的 DP，卻例外地拿到賓格。舊名 Raising-to-Object（賓語提升）。Adger 保留 ECM 這名稱，但他後面發展的分析其實會顯示，這個賓格的來源和一般「動詞–賓語」的賓格<strong>是同一個機制</strong>（v[acc]），並不真的那麼「例外」。</span></div>
+    <div class="row"><span class="sent"><span class="num">(92)</span> <span class="ung">*</span> We believed to PRO be omnipotent.</span></div>
+    <div class="row"><span class="sent"><span class="num">(93)</span> <span class="g">✓</span> No one expected to PRO win.</span>
+      <span class="ana">事情更複雜：有些允許外顯主語的動詞<strong>禁止</strong> PRO（believe，見 92），有些卻<strong>允許</strong> PRO（expect，見 93）。這逼我們區分三類動詞。</span></div>
+  </div>
+  <div class="key"><b>三類非限定補語動詞（本節要靠格位＋EPP 區分它們）：</b><br>
+  ① <strong>強制 PRO</strong>、禁外顯主語：try, attempt, endeavour。<br>
+  ② <strong>允許外顯主語、禁 PRO</strong>：believe, consider, think, assume。<br>
+  ③ <strong>PRO 與外顯主語皆可</strong>：want, expect, prefer。<br>
+  <span style="font-size:.9em">這三類在語意上各成一群，但 Adger 要問的是：它們的<strong>句法</strong>規格差在哪？答案將是「選 CP 還是 TP」「C 帶什麼格位」的差異。</span></div>
+
+  <!-- 8.2.3 -->
+  <h3 id="s823">8.2.3 非限定子句中的 C（標句詞 <i>for</i>）</h3>
+  <p>既然限定子句有標句詞（that），合理推測非限定子句也該有，以求平行。證據就是看似介系詞的 <i>for</i>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(94)</span> I intended [for Jenny to be present].</span>
+      <span class="gloss">我本意是要 Jenny 在場。</span></div>
+    <div class="row"><span class="sent"><span class="num">(95)</span> [For you to do that] would be a mistake.</span>
+      <span class="ana">非限定子句裡出現了外顯主語（Jenny / you），且其前有個看起來像介系詞 for 的成分。它到底是介系詞，還是非限定子句的標句詞？</span></div>
+  </div>
+  <span class="pgmark">書頁 306–307</span>
+  <p><strong>先排除「PP 分析」。</strong>初看可把 for Jenny 當成一個 PP (96)。若如此，這個 PP 應能被分裂或話題化 (97)(98)。這些句子<strong>確實合法</strong>——但語意<strong>不對</strong>：在 (97)(98) 裡 Jenny 被解讀成<strong>受惠者（benefactive）</strong>（「為了 Jenny 的好處」），而不是「在場的人」。</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(96)</span> I intended [for Jenny] [to be present].　（PP 分析）</span></div>
+    <div class="row"><span class="sent"><span class="num">(97)</span> It was for Jenny that I intended to be present.</span>
+      <span class="gloss">（受惠者解讀：為了 Jenny，我打算在場——在場的是「我」）</span></div>
+    <div class="row"><span class="sent"><span class="num">(98)</span> For Jenny, I intended to be present.</span>
+      <span class="ana">(97)(98) 合法但<strong>意思變了</strong>：for Jenny 變成受惠者 PP、在場的人是說話者「我」。這說明原句 (94) 其實是<strong>結構歧義</strong>的：一個讀法 for Jenny 是受惠者 PP；另一個讀法（我們要的）Jenny 是<strong>非限定子句的主語</strong>、在場的人是 Jenny。可見「PP 分析」只對應到受惠者那個讀法，抓不到主語那個讀法。</span></div>
+  </div>
+  <p><strong>假分裂證明 for Jenny 屬於內嵌子句</strong>（而非主句的獨立成分）：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(99)</span> <span class="g">✓</span> What I arranged was for Jenny to be present.</span>
+      <span class="ana">「for Jenny to be present」可整體進假分裂焦點位 → for + 主語 + to 子句是一個成分（CP）。</span></div>
+    <div class="row"><span class="sent"><span class="num">(100)</span> <span class="ung">*</span> What I arranged for Jenny was to be present.</span>
+      <span class="ana">（在「安排 Jenny 在場」的讀法下）不能把 for Jenny 切出來、只留 to be present。這顯示 for 緊接子句主語、與整個 CP 構成成分——與限定子句的 that 行為<strong>完全平行</strong>。結論：<strong>for 是非限定子句的標句詞 C</strong>。</span></div>
+  </div>
+  <span class="pgmark">書頁 308</span>
+  <div class="tree">(101)        CP
+          /       \
+       for[C]      TP
+                 /    \
+              Jenny    T̄
+                     (to be present)</div>
+  <p><strong>關鍵觀察：有 for 的非限定子句，主語<strong>必須是賓格</strong>，PRO 被排除：</strong></p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(102)</span> <span class="g">✓</span> Jason intended for <strong>him</strong> to learn magic.（賓格 him ✓）</span></div>
+    <div class="row"><span class="sent"><span class="num">(103)</span> <span class="ung">*</span> Jason intended for <strong>he</strong> to learn magic.（主格 he ✗）</span></div>
+    <div class="row"><span class="sent"><span class="num">(104)</span> <span class="ung">*</span> Jason intended for PRO to learn magic.（PRO ✗）</span></div>
+    <div class="row"><span class="sent"><span class="num">(105)</span> <span class="ung">*</span> For to do that would be a mistake.（主語不可省 ✗）</span>
+      <span class="ana">for 子句的主語必須外顯、且必須賓格（him 而非 he），PRO 不行。這個「for ↔ 賓格」的緊密關聯是下一步分析的核心：for 這個 C 帶有賦賓格的能力。</span></div>
+  </div>
+  <p><strong>C 如何決定下層主語的格位？</strong>延伸第 6 章已有的格位檢核機制即可：一個較高的功能中心語可與它 c-統制的最近 DP 建立格位檢核關係。假設 for 所選的<strong>非限定 T 根本沒有格位特徵</strong>，那麼賦格的工作就落到 for 身上：</p>
+  <ol class="deriv">
+    <li>(106) v[acc] V DP[3,sing,fem,case]　——小 v 帶 [acc]，賓語 DP 帶未賦值的 [case]。</li>
+    <li>(107) v 把賓格賦給賓語 DP（標準的賓語賦格）。</li>
+    <li>(108) 接著 Merge 主語（也是代名詞）、非限定 T、標句詞 for[acc]。</li>
+  </ol>
+  <span class="pgmark">書頁 309</span>
+  <ol class="deriv" start="4" style="counter-reset:d 3">
+    <li>(109) for 就像 v 賦賓語格位那樣，把<strong>賓格賦給子句主語</strong>。</li>
+    <li>(110) 拼讀結果：for … to him … see her（一個非限定子句裡<strong>兩個賓格</strong>：主語 him + 賓語 her）。</li>
+  </ol>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(111)</span> I arranged [for him to see her].</span>
+      <span class="ana">一個非限定子句裡有兩個賓格（him、her），分別由 for 和 v 賦予。這正是 (110) 推導的結果。</span></div>
+  </div>
+  <p>但 (110) 的<strong>詞序不對</strong>：照推導，非限定 T（to）會排在賓格主語<strong>之前</strong>（*to him），與正確的 for him to 不符。解法沿用第 6 章的關鍵區分：<strong>T 的格位特徵與 EPP 特徵是分離的，且驅動移位的是 EPP，不是格位</strong>。非限定 T 與限定 T 唯一的差別只是「沒有格位特徵」；它的 EPP 仍在，會把 him 吸到 spec-T，再 Merge for，就得到正確詞序：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(112)</span> [CP for [DP[acc] T[uD*]] … (him) v[acc] V DP[acc]] → for him to (him) see her</span>
+      <span class="ana"><strong>本小節的精髓：</strong>非限定子句主語的<strong>位置由 EPP 決定</strong>（him 升到 spec-T，故排在 to 前），<strong>格位由 C（for）決定</strong>（賓格）。位置與格位由兩個獨立特徵分管——這與第 6 章修訂後的限定子句分析完全平行。</span></div>
+  </div>
+
+  <!-- 8.2.4 -->
+  <h3 id="s824">8.2.4 空格位與 PRO</h3>
+  <span class="pgmark">書頁 309–310</span>
+  <p>現在回頭解決控制子句的問題：是什麼機制保證 try 類動詞的控制子句裡<strong>一定是 PRO</strong>？Adger 的核心直覺非常漂亮：<strong>正如「格位」調控 for 子句裡賓格 DP 的出現，「格位」也調控控制子句裡 PRO 的出現。</strong>PRO 不是特殊的神祕物，它只是「帶某種特殊格位的普通代名詞」。</p>
+  <p>為此，在英語格位系統（[nom]、[acc]、[gen]）之外新增第四種格位 <span class="term">[null]（空格位）</span>。它的<strong>形態效應</strong>是：讓帶它的代名詞<strong>不發音</strong>——正如 [nom] 的形態效應是讓 [3,sing,masc] 發成 he，[null] 的形態效應就是讓代名詞發成「空」。</p>
+  <p>於是主張：try 類動詞選一個帶 [null] 的<strong>空標句詞 C[null]</strong>。控制子句的推導：</p>
+  <ol class="deriv">
+    <li>(113) [vP pronoun v[acc] V Object[acc]]　——先建好 vP，spec-vP 裡有個普通代名詞。</li>
+    <li>(114) Merge 非限定 T（有 EPP、無格位）；EPP 把代名詞升到 spec-TP。</li>
+    <li>(115) Merge 空 C[null]，把代名詞的格位<strong>賦值為 [null]</strong>。</li>
+    <li>(116) Merge 動詞 try；拼讀時，帶 [null] 的代名詞發成空 → 結果就是我們寫成 PRO 的東西：try PRO to (PRO) see him。</li>
+  </ol>
+  <span class="pgmark">書頁 310</span>
+  <p>注意：所謂「PRO」其實是一個經 EPP 驅動移位、最終因 [null] 格位而<strong>不發音</strong>的代名詞特徵束。這個分析<strong>立刻</strong>解釋了一連串事實：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(117)</span> <span class="ung">*</span> Medea tried her to leave.</span>
+      <span class="ana">規定 [null] <strong>只能是代名詞的特徵</strong>（不能是全 DP 的）。所以 try 的空 C[null] 只能跟代名詞搭配。</span></div>
+    <div class="row"><span class="sent"><span class="num">(118)</span> <span class="ung">*</span> Medea tried ∅[null] Jason[case] to leave.</span>
+      <span class="ana">若放一個全 DP（Jason）當下層主語，它的 [case] 無法被只賦 [null] 給代名詞的空 C 檢核 → 格位沒檢核掉 → 崩潰。這解釋了「控制子句不能有外顯 DP 主語」（呼應 76–79）。</span></div>
+    <div class="row"><span class="sent"><span class="num">(119)</span> <span class="ung">*</span> I arranged for PRO to see her.</span>
+      <span class="ana">反過來，for 子句為何不能有 PRO？因為 for 會把任何代名詞主語賦成 <strong>[acc]</strong> 而非 [null]，帶 [acc] 的代名詞一定要發音（him），不可能發成空的 PRO → (119) 無法生成。「for ↔ 賓格外顯」與「null C ↔ PRO」是同一套格位邏輯的兩面。</span></div>
+  </div>
+  <span class="pgmark">書頁 311</span>
+  <p><strong>小結：</strong>非限定子句主語分布之謎的答案是——非限定 T <strong>不檢核格位</strong>；下層主語的格位改由「選它的 C」（控制的 C[null] 或 for[acc]）檢核，主語的<strong>位置</strong>則由非限定 T 的 EPP 決定。與限定子句的修訂分析一致。</p>
+
+  <!-- 8.2.5 -->
+  <h3 id="s825">8.2.5 跨子句格位檢核與 ECM</h3>
+  <p>還剩一類沒交代：那些<strong>沒有外顯標句詞、卻只能接外顯 NP 主語（不能 PRO）</strong>的 believe/assume 類：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(120)</span> We believed him to be the headmaster.</span></div>
+    <div class="row"><span class="sent"><span class="num">(121)</span> I assumed him to be innocent.</span></div>
+    <div class="row"><span class="sent"><span class="num">(122)</span> <span class="ung">*</span> We believed to be the headmaster.（不能省主語/不能 PRO）</span></div>
+    <div class="row"><span class="sent"><span class="num">(123)</span> <span class="ung">*</span> I assumed to be innocent.</span></div>
+  </div>
+  <p><strong>一個誘人但有問題的想法 (124)：</strong>說 believe 也像 try 一樣選一個空標句詞，只不過這個 C 帶 [acc]（而非 [null]）：believe, [V, uC[acc]]。這樣 C 賦賓格 → 主語必外顯。但 Adger 指出這違反理論假設：c-選擇特徵應該是<strong>沒有內部結構的單純範疇特徵</strong>，而 (124) 卻假設選擇一個「帶格位值的複合特徵束」，不夠精簡。</p>
+  <span class="pgmark">書頁 312</span>
+  <div class="concept"><h4>Adger 採用的替代分析：ECM 動詞選的是 TP，不是 CP</h4>
+  <p>與其讓 believe 選一個怪異的空 C[acc]，不如說 <strong>believe 直接選一個非限定 TP（沒有 CP 層）</strong>。這個裸 TP 的主語會與 believe 上方的<strong>小 v</strong> 建立格位檢核——由 v[acc] 賦賓格，<strong>跨過子句邊界</strong>。這就是「跨子句格位檢核」。注意：ECM 動詞本來就能接 DP 賓語（(126) Anson believed the report；(127) Ron expected the sack），其賓格本來就由 v[acc] 賦予 (128)。ECM 只是把同一個 v[acc] 賦給了「下層 TP 的主語」而已——所以 ECM 的賓格其實一點也不「例外」。</p></div>
+  <div class="tree">(129)        vP
+          /        \
+        Subj        v̄
+                  /    \
+              v[acc]    VP
+                       /  \
+                      V    TP   ← believe 選的是 TP（無 CP）
+                         /    \
+                    DP[acc]    T̄   ← 這個 DP 是下層主語，卻被上層 v[acc] 賦賓格
+                              / \
+                             T   vP</div>
+  <span class="pgmark">書頁 313</span>
+  <p>TP 分析的<strong>優勢與驗證</strong>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(130)</span> <span class="ung">*</span> Anson believed PRO to be happy.</span>
+      <span class="ana">為何 ECM 不能有 PRO？因為賦下層主語格位的是 v[acc]，給的是 [acc] 而非 [null]；PRO 需要 [null] 才能不發音。既然只能拿到 [acc]，下層主語就必須是外顯賓格 DP，不可能是 PRO。一句話解決了 believe 為何禁 PRO。</span></div>
+    <div class="row"><span class="sent"><span class="num">(131)</span> <span class="g">✓</span> What Medea arranged was for her children to be poisoned.（for 子句＝CP，可假分裂）</span></div>
+    <div class="row"><span class="sent"><span class="num">(132)</span> <span class="g">✓</span> What Medea attempted was to poison her children.（控制子句＝CP，可假分裂）</span></div>
+    <div class="row"><span class="sent"><span class="num">(133)</span> <span class="ung">*</span> What Medea believed was Jason to be a murderer.（ECM＝TP，不可假分裂）</span>
+      <span class="ana"><strong>第二個論證（假分裂）。</strong>控制子句、for 子句都能假分裂（131)(132)，但 ECM 子句不行 (133)。若三者結構相同（都是含空 C 的 CP），就該行為一致。它們不一致 → 證明<strong>控制/for 子句是 CP，ECM 子句是 TP</strong>。</span></div>
+    <div class="row"><span class="sent"><span class="num">(134)</span> <span class="g">✓</span> What I said was [CP that we would go].</span></div>
+    <div class="row"><span class="sent"><span class="num">(135)</span> <span class="ung">*</span> What I said that was [TP we would go].</span>
+      <span class="ana">獨立佐證：可以假分裂一個 CP（134），但無法假分裂一個 TP（135，把 that 留下、只切 TP）。這支持「不能假分裂 TP」這個假設，從而 (133) 的不合法就證明了 ECM 補語是 TP。</span></div>
+  </div>
+  <div class="key"><b>(136) 三類非限定子句的最終區分（本節的總結論）：</b><br>
+  1. <strong>控制子句</strong>＝由空 <b>C[null]</b> 引介的 CP；[null] 把代名詞主語賦為 [null] → 強制 PRO、禁外顯 DP。<br>
+  2. <strong>ECM 子句</strong>＝裸 <b>TP</b>，由較高動詞選；上層 <b>v[acc]</b> 跨子句賦下層主語賓格 → 禁 PRO（拿不到 [null]）。<br>
+  3. <strong>for 子句</strong>＝由 <b>for[acc]</b> 引介的 CP；for 賦賓格 → 主語外顯賓格、禁 PRO。<br>
+  <span style="font-size:.9em">三者的差異全歸結到「誰賦格位、賦哪種格位」這一個維度——這就是把表面雜亂現象統一到單一機制的威力。</span></div>
+  <span class="pgmark">書頁 314</span>
+  <p><strong>方言證據（Belfast / Dundee 英語）。</strong>某些英語方言有 for to 連用，甚至 for 出現在主語之後：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(137)</span> I went to the shop for to get bread.（Belfast）</span></div>
+    <div class="row"><span class="sent"><span class="num">(139)</span> I tried for to get them.（連 try 都能接 for）</span></div>
+    <div class="row"><span class="sent"><span class="num">(140)</span> I wanted Jimmy for to come with me.（for 在主語 Jimmy 之後）</span>
+      <span class="ana">這些方言的 for 與標準英語標句詞 for <strong>不同</strong>：它能跟通常不接 for 的動詞（try）搭配，且位置更低（在主語後）。Adger 推測它附著於 T，且缺賓格特徵——是另一個句法物，不威脅標準英語的分析。</span></div>
+  </div>
+  <p><strong>Adger 坦承的弱點：</strong>得規定 ECM 動詞「能選限定 CP <em>或</em> 非限定 TP」。在 s-選擇上沒問題（CP 與 TP 都是命題）；但 c-選擇上為何能兩者皆可，目前只是個<strong>佔位說法（placeholder）</strong>，尚待真正的解釋。本節最後強調：控制與 ECM 分析的理論核心全來自 θ-理論——θ-角色派給下層主語，整個子句再由上層述語領一個 θ-角色；控制子句語意上依附主句（PRO 受控）則是<strong>另一個獨立的語意過程</strong>，與 θ-派發分開。</p>
+
+  <!-- 8.2.6 -->
+  <h3 id="s826">8.2.6 提升（Raising）</h3>
+  <span class="pgmark">書頁 315</span>
+  <p>第四類非限定子句，與 seem / appear 這類<strong>單論元動詞</strong>共現（它們可接限定也可接非限定子句）：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(141)</span> It seems that Agamemnon is a maniac.</span></div>
+    <div class="row"><span class="sent"><span class="num">(142)</span> It appears that Hephaestus owns a dragon.</span></div>
+    <div class="row"><span class="sent"><span class="num">(143)</span> Agamemnon seems to be a maniac.</span></div>
+    <div class="row"><span class="sent"><span class="num">(144)</span> Hephaestus appears to own a dragon.</span>
+      <span class="ana">關鍵語意觀察：(141)=(143)、(142)=(144) 的題旨角色完全相同。seem 只把它唯一的 θ-角色派給<strong>整個命題</strong>。在 (143)(144) 裡，Agamemnon/Hephaestus 並沒有真的在「seeming（顯得）」這個動作中扮演角色——句子只是說「Agamemnon 是瘋子這個情況看來成立」。換言之，句首的 Agamemnon <strong>不是 seem 的論元</strong>。</span></div>
+  </div>
+  <p><strong>為何不能用 PRO 分析？</strong>表面上 (143) 很像控制句 (145)。但若硬套 PRO，會違反鐵則 (73b)：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(145)</span> Agamemnon attempted to behave well.（這是<strong>控制</strong>，attempt 派 θ-角色給 Agamemnon）</span></div>
+    <div class="row"><span class="sent"><span class="num">(146)</span> <span class="ung">*</span> Agamemnon seems [PRO to be a maniac].</span></div>
+    <div class="row"><span class="sent"><span class="num">(147)</span> <span class="ung">*</span> Hephaestus appears [PRO to own a dragon].</span>
+      <span class="ana">若用 PRO：PRO 在下層領 Agent、檢核 [null]，看似沒問題。但 seem 是<strong>單論元</strong>動詞，它唯一的 θ-角色已派給了非限定子句，<strong>沒有角色留給主句主語 Agamemnon</strong>。而 Agamemnon 又不能是虛主詞（它有實質指涉）→ 依鐵則 (73b)「DP 必須領 θ-角色」，Agamemnon 領不到角色 → 結構崩潰。所以提升句<strong>不能</strong>用 PRO 分析。這正是 (73b) 大顯身手之處。</span></div>
+  </div>
+  <span class="pgmark">書頁 316</span>
+  <p><strong>正解：主句主語是「移位（movement）」上來的。</strong>既然 Agamemnon 不能在主句位領角色，它一定是<strong>從下層它的 θ-位置移上來</strong>的——它在下層領到角色，再往上跳到主句主語位。先看 seem 接限定 CP 的情形 (148)：Agamemnon 在下層 vP 領 θ-角色、由下層限定 T 檢核 [nom]、被 EPP 吸到下層 spec-TP；Merge C；Merge seem（因 seem 無主語 θ-角色，用 unaccusative 小 v，(149)）；再 Merge 上層 T[uD,nom]。</p>
+  <span class="pgmark">書頁 317</span>
+  <p>此時結構裡<strong>沒有</strong>帶未檢核 [nom] 的東西（下層主語的 nom 已在下層檢核了）。怎麼滿足上層 T 的 EPP 與 nom？兩條路：</p>
+  <ul class="plain">
+    <li><strong>路一：</strong>Merge 虛主詞 <strong>it</strong>，用 it 檢核上層 T 的 [nom] 與 EPP（it 不領 θ-角色，合法）→ 得 (151) It seems that Agamemnon left。</li>
+    <li><strong>路二（提升）：</strong>讓 seem 改接<strong>非限定 TP</strong>。Adger 主張 seem 像 ECM 動詞一樣有「能選 TP」的例外性質。</li>
+  </ul>
+  <p>走路二，看非限定 TP 的情形 (153)：</p>
+  <div class="tree">(153)        T̄
+          /        \
+       to[uD]        vP
+                  /      \
+        Agamemnon[D,case]  v̄
+                          (leave)</div>
+  <span class="ana" style="margin-left:0">to 能用它的 EPP 吸引 Agamemnon 到 spec-T，但<strong>無法賦予 Agamemnon 格位</strong>（非限定 to 沒有格位特徵）。所以 Agamemnon 的 [case] 還懸著、沒檢核——這個「懸著的格位」正是驅動它繼續往上跳的原因。</span>
+  <span class="pgmark">書頁 318</span>
+  <p>Merge seem 與上層限定 T 之後，上層 T 的 [nom] 終於能檢核 Agamemnon 那個懸著的格位 (154)。又因 Agamemnon 的 [D] 特徵是<strong>可詮釋的</strong>（不會因檢核 EPP 而被刪），它還能<strong>再升一次</strong>到上層 spec-TP (155)：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(152)</span> Agamemnon seems to have left.</span>
+      <span class="ana">傳統名稱 <span class="term">主語提升（Subject-to-Subject Raising，常簡稱 Raising）</span>。整個推導裡 Agamemnon <strong>移位兩次</strong>，且兩次都由<strong>T 的 EPP</strong> 驅動：第一次從下層 spec-vP → 下層 spec-TP（下層 to 的 EPP）；第二次從下層 spec-TP → 上層 spec-TP（上層 T 的 EPP）。它在下層領 θ-角色（一次，符合 73a）、在上層檢核格位——θ-角色與格位由不同位置取得，這正是提升的本質。</span></div>
+  </div>
+
+  <h3 style="border-left-color:#b88a00">插曲：解決一個技術問題（書頁 319–321）</h3>
+  <p>提升分析有個漏洞要補。我們說 seem「能選 TP」。若它選的是<strong>限定</strong> TP（而非非限定 TP），推導竟也會<strong>錯誤地收斂（converge）</strong>，預測出不合法的 (158)：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(156)/(157)</span> 限定 T 帶 [nom]；Agamemnon 帶 [ucase:nom]。</span></div>
+    <div class="row"><span class="sent"><span class="num">(158)</span> <span class="ung">*</span> Agamemnon seems [TP (Agamemnon) has left].</span>
+      <span class="ana">問題的根源：依目前的 Agree 規則，即使 Agamemnon 的格位已在下層限定 T 檢核過，它的格位特徵<strong>仍能</strong>與上層 T 的格位 Agree（Agree 只要求特徵 match）。於是它又能滿足上層 EPP、提升上來 → 錯誤地讓「限定 TP 提升」變合法。我們需要一個機制阻止這件事。</span></div>
+  </div>
+  <p><strong>Adger 的解法</strong>（他不採「格位一檢核就刪」的標準解法，因為那要額外規定格位特徵與其他特徵行為不同）：改用限定 T 才有的 <strong>[uclause-type]</strong> 特徵。若 seem 選限定 TP，這個 [uclause-type] 必須被賦值，但<strong>沒有自己的 C 可以賦值給它</strong>（依假設 seem 選的是 TP，沒有 CP）：</p>
+  <ol class="deriv">
+    <li>(159) seem [TP … T[uclause-type: ] …]　——這個下層限定 T 的子句類型特徵沒有 C 來賦值。</li>
+    <li>(160) 繼續推導：上層 T[uclause-type: ] … seem [TP … T[uclause-type: ] …]。兩個特徵 match，但子句類型<strong>不是</strong>純有無特徵（privative）——它需要一個<strong>值</strong>，而現在沒有值可給，所以還無法檢核。</li>
+    <li>(161) Merge 上層 C[Decl]：C 把<strong>上層</strong> T 的 [uclause-type] 賦值為 Decl。</li>
+  </ol>
+  <span class="pgmark">書頁 320–321</span>
+  <p>關鍵的兩道封鎖：(a) 由<strong>特徵配對的局域性（Locality of Feature Matching）</strong>，上層 C[Decl] 只能管到上層 T，不能跨層去賦值下層 T；(b) 由 <strong>(162) 延伸條件（Extension Condition）</strong>——「句法操作只能作用於樹的<strong>根投射（root projection）</strong>」——已被賦值的上層 T 也不能回頭去賦值更深處的下層 T（因為上層 T 此刻已不在樹根）。結果：下層 T 的 [uclause-type] <strong>永遠檢核不掉</strong>，推導正確地<strong>崩潰</strong>。</p>
+  <div class="key"><b>這個插曲的重大結論：</b>限定 T 才有的 [uclause-type] 特徵，與格位機制互動，<strong>封鎖了「主語從限定 TP 提升」</strong>。推而廣之，這也封鎖了 seem（與 ECM 的 believe）接<strong>限定 TP</strong> 的可能。因此得到一條漂亮的普遍限制：<strong>子句補語只能是 CP，或非限定 TP——不能是限定 TP。</strong></div>
+
+  <h3 style="border-left-color:#b88a00">回到提升（書頁 321–323）</h3>
+  <p><strong>提升可層層串接</strong>（因為每個中間非限定 T 都只有 EPP、無格位，主語就一路被往上吸）：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(163)</span> Hephaestus appears to have turned out to have left.</span></div>
+    <div class="row"><span class="sent"><span class="num">(164)</span> Jason happens to appear to seem to be sick.</span></div>
+    <div class="row"><span class="sent"><span class="num">(165)</span> Jason happens (Jason) to appear (Jason) to seem (Jason) to (Jason) be sick.</span>
+      <span class="ana">(165) 標出 Jason 留下的一串痕跡（trace），顯示它如何層層上移。中間每個非限定 TP 都有 EPP、無格位 → 主語在每一層都被 EPP 往上吸一次。</span></div>
+    <div class="row"><span class="sent"><span class="num">(166)</span> It stinks that Zeus is omnipotent.</span></div>
+    <div class="row"><span class="sent"><span class="num">(167)</span> <span class="ung">*</span> Zeus stinks to be omnipotent.</span>
+      <span class="ana">並非所有單論元動詞都能當提升動詞。stink 接限定子句 (166) 可以，但不能接非限定 TP 做提升 (167)。處理方式：規定 stink 這類動詞<strong>不能選 TP</strong>（只有真正的提升動詞 seem/appear/happen 才能選 TP）。</span></div>
+  </div>
+  <p><strong>there 提升</strong>（提升動詞接非限定補語時，也允許 there 虛主詞）：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(168)</span> There seemed to be three men in the garden.</span></div>
+    <div class="row"><span class="sent"><span class="num">(169)</span> There appears to be a problem with this solution.</span></div>
+  </div>
+  <span class="pgmark">書頁 322</span>
+  <p>(168) 的推導（順帶帶出 Merge/Move 的一個重要原則）：be 為主動詞，取 PP 補語與 DP 主語 (170)；Merge unaccusative v 吸引 be，Merge to (171)。to 的 EPP 由 there 滿足——因 there 沒有格位特徵，可直接與無格位的非限定 T 合併 (172)。Merge seem 與上層限定 T (173)：上層 T 的 EPP 吸引 there，而其 [nom] 格位<strong>跨子句</strong>賦給留在原位的 three men (174)。</p>
+  <p>附帶收穫：T 與下層主語的這個檢核關係，也<strong>解釋了主謂一致</strong>——句中用 seem 而非 seems，動詞與複數的 three men 一致。一致（agreement）就是 φ-特徵的檢核，結構上與格位檢核<strong>是同一回事</strong>。</p>
+  <span class="pgmark">書頁 323</span>
+  <p><strong>Merge 優先於 Move（一條經濟原則）。</strong>在滿足下層非限定 T 的 EPP 時，為何不直接把 three men 提升上去（得到 (175)/(176)），而要插入 there？</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(175)</span> [DP three men] to be e [PP in the garden]（不該發生的提升）</span></div>
+    <div class="row"><span class="sent"><span class="num">(176)</span> <span class="ung">*</span> There seem three men to be in the garden.</span>
+      <span class="ana">解法是一條經濟條件：<strong>若能 Merge（從詞庫插入 there）就不要 Move（移動 three men）</strong>。在滿足下層 EPP 的那一步，既然可以直接 Merge there，就不准 Move three men，於是導致 (176) 的那個推導<strong>根本不會發生</strong>。「Merge＞Move」在文法各處都有微妙效應。</span></div>
+  </div>
+
+  <!-- 8.2.7 -->
+  <h3 id="s827">8.2.7 賓語控制（Object Control）</h3>
+  <p>轉向<strong>三元述語</strong>帶子句論元的情形：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(177)</span> Jason persuaded Medea to desert her family.</span>
+      <span class="gloss">Jason 說服 Medea 拋棄她的家庭。</span></div>
+    <div class="row"><span class="sent"><span class="num">(178)</span> Agamemnon forced Zeus to leave the school.</span></div>
+    <div class="row"><span class="sent"><span class="num">(179)</span> Jason persuaded [Medea] [to desert her family].　（三論元結構，正確）</span></div>
+    <div class="row"><span class="sent"><span class="num">(180)</span> Jason persuaded [Medea to desert her family].　（兩論元＝ECM 結構，錯誤）</span>
+      <span class="ana">從 θ-結構看，persuade/force 明顯是<strong>三元</strong>述語（Jason、Medea、to desert her family 三個論元）。所以結構必是 (179)（Medea 與後面子句分開、各為一論元），而非 (180)（Medea 與子句合成一個 ECM 式補語）。下面用兩個獨立的句法論證坐實這點。</span></div>
+  </div>
+  <span class="pgmark">書頁 324</span>
+  <p><strong>論證一：虛主詞分布。</strong>EPP 只在 T 上，故虛主詞只能出現在 spec-TP（主語位），不能當賓語：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(181)/(182)</span> <span class="ung">*</span> I found there. / <span class="ung">*</span> I destroyed there.（there 不能當賓語）</span></div>
+    <div class="row"><span class="sent"><span class="num">(184)</span> <span class="g">✓</span> I expected there to be a problem.（ECM：there 是下層主語，合法）</span></div>
+    <div class="row"><span class="sent"><span class="num">(185)</span> <span class="ung">*</span> I persuaded there to be a problem.（persuade：there 落在賓語位，不合法）</span></div>
+    <div class="row"><span class="sent"><span class="num">(186)</span> <span class="g">✓</span> I believed there to be three books on the subject.</span></div>
+    <div class="row"><span class="sent"><span class="num">(187)</span> <span class="ung">*</span> I ordered there to be three books on the subject.</span>
+      <span class="ana"><strong>對比的邏輯：</strong>ECM（expect/believe）後面那個 DP 是<strong>下層子句主語</strong>（spec-TP），所以可以是 there；persuade/order 後面那個 DP 是<strong>主句賓語</strong>（不是主語位），所以不能是 there。若兩者結構相同，就不該有這個對比。對比存在 → persuade 的 DP 是賓語、ECM 的 DP 是主語。</span></div>
+  </div>
+  <span class="pgmark">書頁 324–325</span>
+  <p><strong>論證二：被動化的釋義關係。</strong>把下層子句被動化，看意思變不變：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(188)</span> Jason expected the doctor to treat Medea.</span></div>
+    <div class="row"><span class="sent"><span class="num">(189)</span> Jason expected Medea to be treated by the doctor.</span>
+      <span class="ana">ECM：(188)≈(189) <strong>互為釋義</strong>。因為 expect 的補語是「一整個子句」，被動只發生在子句<strong>內部</strong>，expect 的補語（命題）內容沒變——主動子句與被動子句本來就大致同義。</span></div>
+    <div class="row"><span class="sent"><span class="num">(190)</span> Jason persuaded the doctor to treat Medea.（被說服的是 doctor）</span></div>
+    <div class="row"><span class="sent"><span class="num">(191)</span> Jason persuaded Medea to be treated by the doctor.（被說服的是 Medea）</span>
+      <span class="ana">persuade：(190)≠(191) <strong>釋義徹底崩解</strong>！(190) 是 Jason 說服「醫生」，(191) 是 Jason 說服「Medea」。原因：persuade 後的 DP 是<strong>主句賓語</strong>（是被說服的對象），(190)(191) 的賓語不同（doctor vs Medea），語意自然不同。這個鮮明對比是「persuade 的 DP 是賓語、不是下層主語」的有力證據。</span></div>
+  </div>
+  <p>於是 persuade 類是<strong>雙及物（ditransitive）</strong>結構 (192)（也適用於接限定 CP 的 (193) Jason persuaded Medea that…），採用 (194) 的 vP 殼結構（Jason 在 spec-vP、Medea 是 VP 內賓語、CP 是更內層補語）。</p>
+  <span class="pgmark">書頁 326</span>
+  <p><strong>下層主語是 PRO（由 θ-準則推出）。</strong>desert 是兩元述語，須給下層主語一個 θ-角色；該主語的解讀受<strong>主句賓語 Medea</strong> 控制（拋棄家庭的人是 Medea）。但 Medea 已從 persuade 領了一個 θ-角色，依鐵則 (73a) 不能再領第二個——所以 Medea <strong>不可能</strong>是從下層主語位提升上來的（若是，它會領到兩個角色）。因此下層主語必是 <strong>PRO</strong>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(195)</span> Jason persuaded Medea [PRO to desert her family].</span></div>
+  </div>
+  <div class="tree">(196)              vP
+              /          \
+           Jason          v̄
+                        /     \
+              persuade+v       VP
+                             /     \
+                          Medea     V̄      ← Medea 是賓語（領 persuade 的一個 θ-角色）
+                                  /    \
+                          (persuade)    CP
+                                      /    \
+                                  C[null]   TP
+                                          /    \
+                                    PRO[null]   T̄   ← PRO 受「賓語 Medea」控制
+                                              / \
+                                        to[uD*]  vP
+                                               (PRO) desert her family</div>
+  <span class="ana" style="margin-left:0">由於控制 PRO 的是<strong>賓語</strong>（Medea）而非主語（Jason），persuade/force 稱<span class="term">賓語控制述語（object control predicates）</span>。對照 8.2.1 的 try（主語 Medea 控制 PRO）是<strong>主語控制</strong>——兩者差別就在「誰是 PRO 的控制者」。</span>
+
+  <!-- 8.2.8 -->
+  <h3 id="s828">8.2.8 小結與延伸（書頁 327）</h3>
+  <p><strong>非限定 CP 補語的總原則：</strong>非限定 T 有 EPP、<strong>無</strong>格位特徵。下層主語的格位由以下之一決定——引介它的標句詞（控制的 C[null]、for 的 for[acc]），或子句外的元素（ECM 的 v[acc]、提升的上層 T[nom]）。主語的<strong>位置</strong>一律由非限定 T 的 EPP 決定。</p>
+  <p>有了這套技術，終於能回答 8.1.3 留下的謎題 (69)/(198)：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(197)</span> [That the world is round] e is obvious.</span></div>
+    <div class="row"><span class="sent"><span class="num">(198)</span> <span class="ung">*</span> e is obvious.</span>
+      <span class="ana">為何不能讓空主語 e 單獨當主語？答案現在清楚了：選初始 CP 的那個特殊 C <strong>帶 [null] 格位特徵</strong>。spec-TP 的空代名詞 e 需要這個 C[null] 來檢核它的格位（才能合法不發音）。(197) 有初始 CP、故有那個 C[null]，e 的格位被檢核 → 合法；(198) 沒有初始 CP、就沒有那個 C[null] 來賦 e 格位 → e 的格位無法檢核 → 崩潰。整個 8.1.3 的遺留問題，被 8.2 發展出的 [null] 格位機制一併解決。</span></div>
+  </div>
+
+  <!-- ===================== 8.3 ===================== -->
+  <h2 id="s83">8.3 附加語子句</h2>
+  <span class="pgmark">書頁 327–328</span>
+  <p>子句除了當補語、當主語，還能當<span class="term">附加語（adjunct）</span>，用來修飾主句所表達的命題。這裡有一個重要的<strong>機制對比</strong>：補語靠 <span class="term">Merge</span> 整合進結構（由特徵檢核需求觸發、<strong>強制</strong>的）；附加語則靠 <span class="term">Adjoin（附加）</span>整合（<strong>不</strong>由特徵檢核觸發，因此是<strong>選擇性</strong>的——句子沒有它照樣完整）。附加語 CP 分兩大語意類別：時間關係、因果／理由關係。</p>
+  <p><strong>第一類：時間附加語（before / when / after）：</strong></p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(199)</span> Before the executioner arrived, Hephaestus had escaped.</span>
+      <span class="gloss">劊子手到達之前，Hephaestus 已經逃走了。</span></div>
+    <div class="row"><span class="sent"><span class="num">(200)</span> When the executioner arrived, Hephaestus was asleep.</span></div>
+    <div class="row"><span class="sent"><span class="num">(201)</span> After the executioner left, Hephaestus wept.</span></div>
+    <div class="row"><span class="sent"><span class="num">(202)–(204)</span> Hephaestus had escaped, before the executioner arrived.（可移到主句之後）</span>
+      <span class="ana">時間附加語<strong>可以放在主句的任一側</strong>（句首或句尾），這種位置自由度正是「附加語」（而非補語）的典型特徵——補語的位置是固定的。</span></div>
+    <div class="row"><span class="sent"><span class="num">(205)</span> Medea thought that, after the executioner had left, Hephaestus would be relieved.</span>
+      <span class="ana"><strong>關鍵的定位證據：</strong>時間附加語可以出現在「內嵌標句詞 that」與「子句主語 Hephaestus」<strong>之間</strong>。這個夾縫位置正好是 TP 的邊緣（在 C 之下、在 spec-TP 之上）→ 證明時間附加語<strong>附加（adjoin）於 TP</strong>。</span></div>
+  </div>
+  <div class="tree">(206/207)   附加於 TP（外部結構）：     附加語子句內部結構：
+                TP                        CP
+              /    \                    /    \
+        [CP after…]  TP              after    TP
+                  Hephaestus…            the executioner had left</div>
+  <span class="ana" style="margin-left:0">兩張樹合起來看：附加語子句<strong>內部</strong>由時間標句詞（after 等，是一種 C）引介、取一個 TP 補語 (207)；這整個 CP 再<strong>附加</strong>到主句的 TP 上 (206)。「附加於 TP」既解釋了它能在主句兩側 (202–204)，也解釋了它能擠進 that 與主語之間 (205)。</span>
+
+  <span class="pgmark">書頁 328–329</span>
+  <p><strong>第二類：因果／理由附加語（because / since / so that）：</strong>句法行為與時間附加語幾乎相同。</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(208)</span> Medea was happy, because she had got the highest marks.</span></div>
+    <div class="row"><span class="sent"><span class="num">(209)</span> Because she had got the highest marks, Medea was happy.</span></div>
+    <div class="row"><span class="sent"><span class="num">(210)</span> Jason became invisible, so that he could escape.</span></div>
+    <div class="row"><span class="sent"><span class="num">(211)</span> So that he could escape, Jason became invisible.</span>
+      <span class="ana">同樣<strong>附加於 TP</strong>、可在主句兩側 (208/209、210/211)。唯一未處理的小問題是 so that 裡 so 的地位——直覺上 so 附加到標句詞 that，但 Adger 在此把 so that 簡單當作<strong>單一句法形符</strong>處理，不深究。</span></div>
+  </div>
+
+  <!-- ===================== 8.4 ===================== -->
+  <h2 id="s84">8.4 跨語言意涵：動詞第二（V2）</h2>
+  <span class="pgmark">書頁 329</span>
+  <p>前面 C 域的用途是構造問句（T-to-C）與內嵌子句。本節展示 C 域的另一個用途——出現在<strong>陳述主句</strong>裡，這就是日耳曼語系普遍的 <span class="term">動詞第二（Verb-Second, V2）</span>現象：限定動詞固定落在子句的<strong>第二個位置</strong>，緊接在第一個成分之後。德語例（斜體＝句首第一成分，粗體＝限定動詞）：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(212)</span> <i>Ich</i> <strong>las</strong> schon letztes Jahr diesen Roman.</span>
+      <span class="gloss">我 讀 已經 去年 這本 書 → 我去年就讀過這本書。（主語居首）</span></div>
+    <div class="row"><span class="sent"><span class="num">(213)</span> <i>Diesen Roman</i> <strong>las</strong> ich schon letztes Jahr.</span>
+      <span class="gloss">這本書 讀 我 已經 去年。（賓語居首，動詞 las 仍在第二位）</span></div>
+    <div class="row"><span class="sent"><span class="num">(214)</span> <i>Schon letztes Jahr</i> <strong>las</strong> ich diesen Roman.</span>
+      <span class="ana">（時間附加語居首，動詞仍第二）三句的<strong>題旨意義完全相同</strong>（誰讀什麼書沒變）；差別只在「資訊呈現方式」——居首的那個成分被理解為子句的<span class="term">話題（topic）</span>。無論誰居首，限定動詞 las 都死守第二位，這就是 V2。</span></div>
+  </div>
+  <span class="pgmark">書頁 330</span>
+  <p><strong>分析：把 V2 化約為已有機制（T-to-C ＋ 話題移位）。</strong>回憶英語：C 賦 T 的 [uclause-type] 時，Q 是強的（→倒裝）、Decl 是弱的（→不動）。<strong>德語的差別只在一個參數</strong>：德語主句 C 賦值時，<strong>連 Decl 也是強的</strong>。所以德語連陳述主句都發生 T-to-C：</p>
+  <ol class="deriv">
+    <li>(215) C[Decl] Subj T[Decl*] Adv Obj　——德語的 Decl 是強值（Decl*）。</li>
+    <li>(216) T[Decl*]+C[Decl] Subj (T) Adv Obj　——因為強，T（連同其中的動詞）升入 C。這解釋了「動詞為何往前跑」。</li>
+    <li>但這只解釋了一半（動詞到第二位）。還要解釋「為何第一位必有一個成分」。Adger 再假設：德語主句 C 帶一個<strong>強話題特徵 [utop*]</strong>，會把帶 [top] 特徵的任一成分吸到 spec-CP。</li>
+  </ol>
+  <p>依主語／賓語／附加語何者帶 [top]，分別得到 (217)/(218)/(219)——正好窮盡了德語前述三例的全部可能。第一位是話題（在 spec-CP）、第二位是升入 C 的限定動詞，V2 於是自然浮現。</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(220)</span> Er sagte dass ich schon letztes Jahr diesen Roman <strong>las</strong>.（內嵌子句<strong>不</strong> V2）</span>
+      <span class="ana"><strong>強力佐證：內嵌子句不 V2。</strong>內嵌子句由普通標句詞 dass 引介，dass 不觸發 V2，所以動詞 las 留在<strong>賓語的右側</strong>（句尾）。這透露兩件事：① V2 是主句 C 的特性（內嵌 dass 沒有那個強特徵）；② 動詞落在賓語右側，說明德語<strong>底層其實是 OV（賓語–動詞）語言</strong>。</span></div>
+    <div class="row"><span class="sent"><span class="num">(221)</span> Er sagte dass ich … [vP diesen Roman gelesen] habe.（VP 在助動詞 T 之前）</span></div>
+    <div class="row"><span class="sent"><span class="num">(222)</span> <i>Ich</i> <strong>habe</strong> schon letztes Jahr diesen Roman gelesen.</span>
+      <span class="ana"><strong>最漂亮的預測：有助動詞時，只有助動詞參與 V2。</strong>助動詞 habe 在 T，主動詞 gelesen 在更低處。T-to-C 只把 T 裡的東西（助動詞）帶到第二位，所以 <strong>habe 到第二位、gelesen 留在原位（賓語右側、句尾）</strong>。這正是 (222) 觀察到的，分析準確命中。</span></div>
+  </div>
+  <span class="pgmark">書頁 331</span>
+  <div class="tree">(223)              CP
+              /          \
+          Ich[top]        C̄[utop*]
+                        /          \
+                      C             TP
+                   /     \        /    \
+            T[Decl*]  C[Decl]  (Ich)   T̄[uD*]
+          habe[Pres*]+T              PerfP …
+                                  /    \
+                                vP    (habe)
+                              (Ich)   v̄
+                                    /   \
+                                  VP     v
+                              /       \
+                       diesen Roman  (gelesen) gelesen+v</div>
+  <span class="ana" style="margin-left:0">完整樹：德語是 OV、<strong>右中心語</strong>（VP/vP/PerfP/TP 的中心語都在右），只有 C 是<strong>左中心語</strong>、補語在右。Ich 走了三步：spec-vP →（EPP）spec-TP →（[utop*]）spec-CP；habe 從 Perf → T → C。第二位之所以是 habe（而非主動詞），就是因為只有在 T 的助動詞被 T-to-C 帶上去。</span>
+
+  <span class="pgmark">書頁 332</span>
+  <p><strong>歸納出新參數。</strong>T 的 [uclause-type] 賦值為強或弱，是一個參數：強 → 發生 T-to-C（英語 SAI、德語 V2）；弱 → T 留原位。英語的話題雖可移句首 (224)，卻<strong>非強制</strong> (225)；德語則強制每句都要有話題在 spec-CP：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(224)</span> His analysis, I never liked.（英語話題化：可以，但選擇性）</span></div>
+    <div class="row"><span class="sent"><span class="num">(225)</span> I never liked his analysis.（不話題化也完全合法）</span>
+      <span class="ana">英語的 [top] on C 是<strong>選擇性</strong>的（可有可無），德語是<strong>強制</strong>的（一定要填 spec-CP）→ 這正是 V2 語言與非 V2 語言的關鍵差異。</span></div>
+  </div>
+  <p><strong>(226) 參數表（把本書各章的參數整合起來）：</strong></p>
+  <table>
+    <tr><th>語言</th><th>Infl on Aux</th><th>Infl on v</th><th>EPP on T</th><th>Decl on T</th><th>[top] on C</th></tr>
+    <tr><td>English</td><td>強</td><td>弱</td><td>強</td><td>弱</td><td>選擇性</td></tr>
+    <tr><td>French</td><td>強</td><td>強</td><td>強</td><td>弱</td><td>?</td></tr>
+    <tr><td>Swedish</td><td>弱</td><td>弱</td><td>強</td><td>強</td><td>強</td></tr>
+    <tr><td>Scottish Gaelic</td><td>強</td><td>強</td><td>弱</td><td>弱</td><td>弱</td></tr>
+    <tr><td>German</td><td>強</td><td>強</td><td>強</td><td>強</td><td>強</td></tr>
+  </table>
+  <p>解讀此表：Swedish 因有 V2，故 Decl on T 與 [top] on C 標強；Scottish Gaelic 無 T-to-C、也無 spec-CP 話題，故兩者皆弱；French 沒有 V2 效應（問句除外），口語法語的強制話題化地位不明（標 ?）。Adger 最後拋出一個深刻的問題：參數選項愈多，「表中那些<strong>缺空的組合</strong>所對應的語言是否真實存在？」如果不存在，是偶然，還是 UG 不只限制句法組合與子句結構，<strong>連參數值之間的搭配關係</strong>也加以限制？這仍是待解的實證問題。</p>
+
+  <!-- ===================== 8.5 ===================== -->
+  <h2 id="s85">8.5 本章摘要與練習</h2>
+  <span class="pgmark">書頁 333</span>
+  <p>本章引入子句的第二大分界：在「VP 投射 vs TP 投射」之外，再把 <strong>TP 與 CP</strong> 切開。主張<strong>所有子句都含 C</strong>，因此<span class="term">投射階層（Hierarchy of Projections）</span>擴充為：</p>
+  <div class="key"><b>(227) 投射階層：</b><br>
+  子句層 Clausal：<b>C ≻ T ≻ (Neg) ≻ (Perf) ≻ (Prog) ≻ (Pass) ≻ v ≻ V</b><br>
+  名詞層 Nominal：<b>D ≻ (Poss) ≻ n ≻ N</b><br>
+  <span style="font-size:.9em">（≻ 表「高於」，括號表選擇性投射。C 現在被放在最頂端，凌駕第 5 章引入的 T。）</span></div>
+  <p>核心主張回顧：C 是<strong>可詮釋子句類型特徵</strong>的所在，決定 CP 被解讀成問句還是陳述；它同時負責賦值 T 上的<strong>不可詮釋子句類型特徵</strong>——當這個值是強的（如英語的 Q），就發生 T-to-C 移位（助動詞越過主語倒裝）。(228) 重申特徵縮寫 [Q] / [uclause-type] / [Q*]。</p>
+  <span class="pgmark">書頁 334</span>
+  <p><strong>本章現象彙整（一表掌握全章）：</strong></p>
+  <table>
+    <tr><th>現象</th><th>解釋</th></tr>
+    <tr><td>主語–助動詞倒裝 SAI（yes/no 問句）</td><td>T-to-C 移位，由 T 上 [uclause-type] 的強 Q 值（uQ*）驅動</td></tr>
+    <tr><td>主語子句</td><td>初始 CP 位於 C[uC, null] 的指定語（spec-CP），真主語位是空代名詞</td></tr>
+    <tr><td>控制子句</td><td>由空 C[null] 引介；[null] 賦代名詞 → 強制 PRO</td></tr>
+    <tr><td>ECM 子句</td><td>是裸 TP，由能選 TP 的動詞選；下層主語賓格由上層 v[acc] 跨子句檢核</td></tr>
+    <tr><td>提升子句</td><td>由能選 TP 的動詞選；主語提升由較高 T 的 EPP 驅動（在下層領 θ、在上層檢核格位）</td></tr>
+    <tr><td>V2 現象</td><td>T 上 Decl 值強弱、與 C 上 [top] 強弱的參數變異</td></tr>
+  </table>
+
+  <span class="pgmark">書頁 334–339</span>
+  <h3>練習（Exercises 概覽）</h3>
+  <ul class="plain">
+    <li><strong>Ex.1 強制 that：</strong>把 belief/believe/sure/important/indicate/signal/shout/claim/whisper/report/murmur/fax/email/certain/amazing/posit/exclaim/exclamation 分成「選擇性 that」與「強制 that」兩類，各舉例佐證，並（Part B）歸納其句法／語意通則。</li>
+    <li><strong>Ex.2 疑問句中的否定：</strong>Hasn't the potion worked? / Didn't the magic work? 對本章 SAI 分析造成什麼問題？提出解法並評其優劣。提示：比較 n't 與 not 的不同行為（(3) Has the potion not worked? ✓ vs (4) *Has not the potion worked）。</li>
+    <li><strong>Ex.3 內嵌倒裝：</strong>愛爾蘭英語的 He asked did I live there. / I wondered had he left yet. —— SAI 出現在內嵌子句，提出假設並畫樹。</li>
+    <li><strong>Ex.4 動詞類別組合：</strong>分析多層內嵌句（如 Medea tended to appear to be evil；Jason persuaded Medea to try to run away…）中控制／ECM／提升如何互動。</li>
+    <li><strong>Ex.5 prefer 的樹圖：</strong>為 prefer 接 for 子句／ECM／控制三種句子畫樹，推論 prefer 的詞庫條目。</li>
+    <li><strong>Ex.6 其他非限定補語：</strong>-ing 補語（refrain from casting…；stop Jason (from) casting…；deny poisoning…）盡量比照本章非限定結構分析。</li>
+    <li><strong>Ex.7 動詞分類：</strong>用虛主詞、被動等測試判定 nominate/allege/command/fail/guarantee/judge/happen/convince/choose/demonstrate/pick/remain/know 屬提升／ECM／主語控制／賓語控制。</li>
+    <li><strong>Ex.8 V2 樹圖：</strong>畫德語 V2 句的樹（標移位與檢核關係），含一個<strong>內嵌 V2</strong>（dass 缺席）的分析。</li>
+    <li><strong>Ex.9 綜合樹圖：</strong>為六個含 PRO／trace／空標句詞的複雜句畫樹並說明每個空範疇的動機（整合全章）。</li>
+    <li><strong>Ex.10 約束的局域性：</strong>用反身代名詞資料（*Anson thought that himself…；*Anson believed Jenny to have hurt himself…）把「反身詞須被約束」精煉為「反身詞的 φ-特徵須被<strong>同一 CP 內</strong>較高先行語檢核」，並把約束類比為特徵檢核。</li>
+  </ul>
+
+  <span class="pgmark">書頁 339–340</span>
+  <h3>延伸閱讀（Further Reading 重點）</h3>
+  <ul class="plain">
+    <li><strong>標句詞（8.1.1）：</strong>Bresnan (1970) 首探標句詞性質；「句子是 C 的投射」源自 Chomsky (1986a)，後續幾乎所有同框架研究皆採用。</li>
+    <li><strong>選擇性質（8.1.2）：</strong>Grimshaw (1979) 詳論各類動詞的句法/語意選擇；選 [Q] CP 的動詞見 Adger &amp; Quer (2001)、Nakajima (1996)。</li>
+    <li><strong>主語子句兩分析（8.1.3）：</strong>本章對比的是 Ross (1967) 與 Koster (1978) 的更新版。</li>
+    <li><strong>PRO / [null] 格位（8.2）：</strong>PRO 分布源自 Chomsky (1981)；[null] 格位途徑見 Chomsky &amp; Lasnik (1993)；反 θ-理論的替代途徑見 Hornstein (1999)、Manzini &amp; Roussou (2000)。ECM 見 Postal (1974)、Lasnik &amp; Saito (1991)、Lasnik (2001)；提升與虛主詞互動見 Chomsky (1995b, 2000)。</li>
+    <li><strong>V2（8.4）：</strong>den Besten (1983)；另見 Travis (1984)、Zwart (1993)；本章例句改編自 Roberts (2001)；Roberts &amp; Roussou (2002) 主張 spec-CP 須填是 C 的 EPP 特徵（而非話題特徵）所致；話題位置見 Rizzi (1997)。</li>
+  </ul>
+
+  <div class="nav-bottom">
+    <a href="Ch07_DP.html">← 第 7 章：DP</a>
+    <a href="Ch09_Wh_movement.html">第 9 章：Wh- 移位 →</a>
+  </div>
+</div><!-- /.wrap -->
+</div><!-- /#zh panel -->
+
+<!-- ================================================================ -->
+<!-- ===================== ENGLISH ORIGINAL PANEL =================== -->
+<!-- ================================================================ -->
+<div class="panel" id="en">
+<div class="wrap">
+  <p class="lead">English original of Chapter 8, reproduced page by page from Adger (2003), <em>Core Syntax</em>, pp. 289–340 (OUP). Running prose is given in full; numbered examples are listed with their grammaticality marks.</p>
+
+  <span class="enpg">p.289</span>
+  <p>In Chapters 5 and 6 we saw that the clause splits roughly into two parts: the lower part has to do with the thematic properties of the predicate (essentially the VP), and is associated with the lexical projection, while the upper part seems to have to do with non-thematic semantic properties such as mood, tense, and aspect. This upper part is associated with functional projections.</p>
+  <p>In this chapter we will introduce one further clausal layer, which is higher still than T and its associated projections. This layer is also functional in nature, and bears close affinities to the T layer. However, the semantic properties associated with this higher level do not have to do with tense/aspect and other properties of the event picked out by the verb. Rather they have to do with the semantic status of the whole proposition.</p>
+  <p><strong>8.1 Complementizers — 8.1.1 <i>that</i></strong></p>
+  <p>The evidence for the syntactic presence of this higher layer is actually fairly easy to come by. You may have noticed, whenever we have discussed the embedding of one clause inside another, that many of the examples given had an alternative. So, in addition to (1), we have (2):</p>
+  <blockquote><span class="num">(1)</span> I claimed she was pregnant.<br><span class="num">(2)</span> I claimed that she was pregnant.</blockquote>
+  <p>The word <i>that</i> in these examples optionally occurs at the start of the embedded clause. We can use simple constituency tests to show that this word forms a constituent with the following clause, rather than with the embedding verb.</p>
+
+  <span class="enpg">p.290</span>
+  <p>For example, pseudoclefting shows that <i>that</i> forms a constituent with the following TP, rather than with the preceding verb:</p>
+  <blockquote><span class="num">(3)</span> What she thought was that the poison was neutralized.<br><span class="num">(4)</span> *What she thought that was the poison was neutralized.</blockquote>
+  <p>Similarly, movement tests show that it is possible to raise <i>that</i> plus its following TP, once again suggesting they are in constituency. Interestingly, it is not possible to strand <i>that</i>, leaving it behind by moving the TP on its own. The simple active sentence in (5), for example, can be passivized as in (6). When this happens, note that the <i>that</i> is carried along with the rest of the clause to the front of the sentence:</p>
+  <blockquote><span class="num">(5)</span> Everyone claimed that the poison was neutralized.<br><span class="num">(6)</span> ?That the poison was neutralized was claimed by everyone.<br><span class="num">(7)</span> *The poison was neutralized was claimed that by everyone.</blockquote>
+  <p>It is also possible to move <i>that</i> plus its TP to the right, across a prepositional phrase:</p>
+  <blockquote><span class="num">(8)</span> It was claimed by everyone that the poison was neutralized.<br><span class="num">(9)</span> *It was claimed that by everyone the poison was neutralized.</blockquote>
+  <p>Verbs like <i>claim, think, believe, say, decide,</i> and many more take a clausal complement that may be introduced by the word <i>that</i> in English. Words which introduce clauses in this way are called <strong>complementizers</strong>. With some verbs, there is no option: the complementizer is obligatory:</p>
+  <blockquote><span class="num">(10)</span> *Jason whispered the phoenix had escaped.<br><span class="num">(11)</span> Jason whispered that the phoenix had escaped.</blockquote>
+  <p>In other languages, complementizers are obligatory for all clausal complements:</p>
+  <blockquote><span class="num">(12)</span> Thuirt mi gu bheil i tinn. (Gaelic) “I said that she was ill.”<br><span class="num">(13)</span> *Thuirt mi bheil i tinn. (Gaelic)</blockquote>
+
+  <span class="enpg">p.291</span>
+  <blockquote><span class="num">(14)</span> J'ai dit qu' elle était malade. (French) “I said that she was ill.”<br><span class="num">(15)</span> *J'ai dit elle était malade. (French)</blockquote>
+  <p>The appearance of the word <i>that</i> in English in constituency with the embedded clause motivates the idea that it is a syntactic element which merges with TP, but does not tell us anything about the category of this element. An obvious possibility is that the relevant category is D, since, in English, the word <i>that</i> also serves as a demonstrative. However, this approach fails for a number of reasons. First, no other demonstrative can occur in this position with the appropriate reading:</p>
+  <blockquote><span class="num">(16)</span> *I said this he left.<br><span class="num">(17)</span> *Jason knew those Medea had cast the spell.</blockquote>
+  <p>This strongly suggests that the word <i>that</i> is not a demonstrative in these contexts; secondly, other languages have complementizer elements that are nothing like any element of their demonstrative system. As can be seen from the examples above, in French, the complementizer is <i>que</i>. However, the demonstratives are ce/cela/ça; similarly, in Gaelic the demonstratives are seo/sin, but the complementizer is <i>gu</i>. The third argument against treating <i>that</i> as a D is that there are other complementizers in English, which look nothing like any part of the determiner system. We will look at these in more detail below.</p>
+  <p>For these reasons, most linguists analyse the word <i>that</i>, and other complementizers, as elements of a new syntactic category, C (for Complementizer). C merges with TP and projects, giving structures like (18): [CP C [TP Subject [T̄ T vP]]].</p>
+
+  <span class="enpg">p.292</span>
+  <p><strong>8.1.2 Declaratives and interrogatives</strong></p>
+  <p>It is clear that C must be a functional rather than a lexical category, as it does not assign a θ-role. The semantic function of complementizers is a complex matter, but intuitively, a complementizer indicates how the hearer should think of the proposition expressed by its clause: the two main possibilities are whether the clause should be thought of as a simple statement of fact, or as a question about the facts. So we find complementizers introducing questions, as well as the cases with simple propositions that we have already met:</p>
+  <blockquote><span class="num">(19)</span> Jason asked whether the potion was ready.<br><span class="num">(20)</span> Medea wondered if the potion was ready.</blockquote>
+  <p>We can see that <i>whether</i> and <i>if</i> are in complementary distribution to <i>that</i> in English:</p>
+  <blockquote><span class="num">(21)</span> *Jason asked whether that the potion was ready.<br><span class="num">(22)</span> *Medea wondered if that the potion was ready.</blockquote>
+  <p>and that they are in constituency with their following clause:</p>
+  <blockquote><span class="num">(23)</span> What Jason asked was whether the potion was ready.<br><span class="num">(24)</span> *What Jason asked whether was the potion was ready.<br><span class="num">(25)</span> ?What Medea wondered was if the potion was ready.<br><span class="num">(26)</span> *What Medea wondered if was the potion was ready.</blockquote>
+  <p>This suggests that <i>if/whether</i> are also complementizers. Given their different semantic function, we can distinguish <i>that</i> from <i>whether/if</i> by means of an interpretable syntactic feature. The common term used for clauses which are questions is <strong>interrogative</strong> while clauses which are non-questions are said to be <strong>declarative</strong>. The status of a clause as interrogative or declarative is its <strong>clause type</strong>. We will assume a feature [clause-type] whose values are either [Q] (interrogative) or [Decl] (declarative). These features are interpretable on C.</p>
+
+  <span class="enpg">p.293</span>
+  <p>We can state the c-selectional requirements of predicates which take a clausal complement in the lexical entries for the predicates as follows:</p>
+  <blockquote><span class="num">(27)</span> ask, [V, uC]<br><span class="num">(28)</span> exclaim, [V, uC]</blockquote>
+  <p>However, we still need to distinguish between these two classes of predicates, since the predicate seems to be able to determine whether its complement is interrogative or declarative:</p>
+  <blockquote><span class="num">(29)</span> *Ron asked that the potion was ready.<br><span class="num">(30)</span> *Medea exclaimed if the potion was ready.</blockquote>
+  <p>The question is whether this information should be built into the c-selectional properties of the selecting predicate, or whether it is a simple s-selectional fact. There is some evidence that the semantic (s-selectional) approach is the correct one. There are verbs like <i>maintain</i> which behave just like <i>exclaim</i> in rejecting a [Q] complement clause:</p>
+  <blockquote><span class="num">(31)</span> Julie maintained that the barman was sober.<br><span class="num">(32)</span> *Julie maintained if the barman was sober.<br><span class="num">(33)</span> Julie maintained her own ideas over the course of the argument.<br><span class="num">(34)</span> *Julie maintained her own questions over the course of the argument.</blockquote>
+  <p>Since, from a syntactic point of view <i>her own ideas</i> and <i>her own questions</i> are identical, we need to appeal to a semantic incompatibility to rule out (34). Since we need to appeal to this semantic explanation in other cases, it makes sense to appeal to it to rule out examples like (30) as well.</p>
+
+  <span class="enpg">p.294</span>
+  <p>Given these lexical entries, we are led to assume that the cases with an optional <i>that</i> are actually cases with a zero complementizer, so that the higher predicate always selects a CP (35) [VP said [CP that/∅ [TP he was happy]]].</p>
+  <p>This position naturally leads to another question: do simple matrix sentences contain complementizers? There is no agreed-upon answer. Some linguists have argued that, in the interests of economy, a simple sentence is just a TP; others have argued, on the basis of uniformity across clauses, that simple sentences must be CPs. It is certainly the case that some simple sentences are CPs. We can see this with matrix questions:</p>
+  <blockquote><span class="num">(36)</span> Had the potion boiled over?<br><span class="num">(37)</span> Did the magic work?</blockquote>
+  <p>These simple interrogatives (often termed <strong>yes/no questions</strong>) contrast with their declarative counterparts: the auxiliary appears, not after the subject, but before it. Traditionally, this construction is known as <strong>Subject-Auxiliary Inversion (SAI)</strong>. If we assume that matrix sentences are CPs, then we have a simple analysis: the collection of features that projects T (i.e., tense) moves into the C position.</p>
+
+  <span class="enpg">p.295</span>
+  <p>We will assume that tense adjoins to C (38). What we have here is a situation where the perfect auxiliary is moved to T, creating an adjunction structure with T. Tense has then raised into C, again creating an adjunction structure. The resulting structure is created by successive steps of head movement. To motivate movement, we appeal to strength of features. If we assume that T bears an uninterpretable unvalued clause-type feature [uclause-type: ], then this feature can check with a [Q] feature on matrix C. On the assumption that the clause-type feature on T when valued as Q is strong in English, T will move to C, carrying along everything inside it.</p>
+  <blockquote><span class="num">(39)</span> [TP Subject Perf+T[uclause-type: ] … ]<br><span class="num">(40)</span> C[Q] [TP Subject Perf+T[uclause-type:Q*] … ]</blockquote>
+
+  <span class="enpg">p.296</span>
+  <p>Given that Q on T is strong, it raises into a local relation with the feature that it Agrees with, giving (41) as the final structure. Interestingly, this analysis also predicts the correct occurrence of <i>do</i>-support: Interrogative C triggers movement of T to C. Once this movement has taken place, T no longer c-commands little v. This means that a chain cannot be formed between them, and so the Rule for Pronouncing Tense cannot apply; <i>do</i>-support applies as a last resort instead.</p>
+  <blockquote><span class="num">(42)</span> Did the potion boil over?</blockquote>
+  <p>The existence of SAI structures strongly suggests that a CP layer is present in at least matrix yes/no questions. We will assume further that CP layers are present in all matrix sentences, but that, for matrix declaratives, the topmost C position is occupied by a phonologically null complementizer, which values the uninterpretable clause-type feature on T as Decl. The difference between Q and Decl is that the latter is weak, and so no movement takes place.</p>
+
+  <span class="enpg">p.297</span>
+  <blockquote><span class="num">(44)</span> The potion boiled over.</blockquote>
+  <p>In future structures we'll abbreviate clause-type features as: (46a) [clause-type:Q] → [Q]; (46b) [uclause-type: ] → [uclause-type]; (46c) [uclause-type:Q*] → [Q*]. We will usually ignore [Decl] since its syntactic effects are trivial in English.</p>
+  <p><strong>8.1.3 Subject clauses.</strong> The examples we have seen so far of clauses introduced by complementizers have all been in complement position. We also find clauses in subject positions:</p>
+  <blockquote><span class="num">(47)</span> [That Jason abandoned Medea] stinks!<br><span class="num">(48)</span> [That the golden thread would show Jason his path through the labyrinth] was obvious.<br><span class="num">(49)</span> [That I am here] proves [that I care].<br><span class="num">(50)</span> [That Zeus was so promiscuous] astounded the other gods.<br><span class="num">(51)</span> [That Medea murdered Jason] didn't surprise anyone.</blockquote>
+
+  <span class="enpg">p.298</span>
+  <p>The first two examples here are cases of one-place predicates: <i>stink</i> and <i>be obvious</i>. Example (49) is a case where a two-place predicate allows both of its arguments to be clausal, while (50) and (51) show cases where we have a clausal subject but a non-clausal object. A natural analysis (52) assumes that the clausal subject is in the specifier of TP, raised from a VP internal position. An alternative analysis (53) treats the first clause as being in the specifier of CP, with an empty element in the subject position. The empty element is the true subject, and the CP is associated with it semantically.</p>
+
+  <span class="enpg">p.299</span>
+  <p>In order not to prejudge the analysis, let us call the CPs we are interested in here <strong>initial CPs</strong>. The reason that the second analysis has been proposed is that these CPs do not behave like other subjects. For example, they do not undergo Subject Auxiliary Inversion:</p>
+  <blockquote><span class="num">(54)</span> *Did that Medea killed her children upset Jason?<br><span class="num">(55)</span> *Has that we have arrived back at our starting point proved that the world is round?</blockquote>
+  <p>Similarly, while it is possible to have a DP subject in an initial CP, it is not possible to have an initial CP in an initial CP:</p>
+  <blockquote><span class="num">(56)</span> [That [the answer] is obvious] upset Hermes.<br><span class="num">(57)</span> *[That [that the world is round] is obvious] upset Hermes.<br><span class="num">(58)</span> *[That [whether the world is round] is unknown] bothered Athena.</blockquote>
+  <p>Finally, in other languages, it is clear that an initial CP is not in subject position, because a special pronoun form appears (Dutch):</p>
+  <blockquote><span class="num">(59)</span> Dat hij komt, dat is duidelijk. “That he will come is clear.”<br><span class="num">(60)</span> That he is coming e is clear.</blockquote>
+
+  <span class="enpg">p.300</span>
+  <p>The null pronoun Merges with the bar-level projection of little v and then raises to the specifier of TP, checking case and the EPP feature of T. We then Merge C, and then a previously constructed CP. This Merger needs to be triggered by a selectional feature of C, so the matrix C itself has to have a uC feature (61). One theoretical advantage is that it allows us to maintain our idea that the EPP feature on T is an uninterpretable [D] feature of T. We also have a way of encoding the fact that SAI does not occur with initial CPs. The proposal also predicts why initial CPs can't occur inside other initial CPs:</p>
+  <blockquote><span class="num">(62)</span> [That Jason arrived] infuriated Medea.<br><span class="num">(63)</span> [Whether Agamemnon had triumphed] was unknown.</blockquote>
+
+  <span class="enpg">p.301</span>
+  <blockquote><span class="num">(64)</span> *[[That Jason had arrived] C e was obvious] C e infuriated Medea.<br><span class="num">(65)</span> *I said that that Jason was jealous annoyed Medea.</blockquote>
+  <p>If we say that the null C[uC] is restricted to matrix-clause positions, then (64) and (65) will be ruled out. An alternative approach (Ross 1967) argued that the odd syntax of initial CPs was due to a general parsing principle which prohibited CPs from being <strong>internal</strong> to other CPs — the <strong>Internal S Condition</strong> (66).</p>
+
+  <span class="enpg">p.302</span>
+  <p>However, there are sentences which seem to fall foul of the Internal S Condition, but which are perfectly well formed:</p>
+  <blockquote><span class="num">(68)</span> Believing [that the world is flat] gives one some solace.<br><span class="num">(69)</span> *e is obvious.</blockquote>
+  <p>For this reason, we will adopt the specifier of CP analysis for initial CPs. The most worrying problem is how to rule out (69); we will return to this in section 8.2.8.</p>
+  <p><strong>8.2 Non-finite CP complementation.</strong> Recall that lexical items are specified with c-selectional features, associated with θ-roles. Since all uninterpretable features have to be checked, all the θ-roles of a particular predicate will be assigned.</p>
+
+  <span class="enpg">p.303</span>
+  <p>This theory made sense of expletive elements (70) There arrived a new actor; (71) *The doctor arrived a new actor. A DP can never be interpreted as an argument unless it has Merged in an <strong>argument position</strong>. A DP is assigned only a single θ-role (72) *Medea murdered. Let us sum up:</p>
+  <blockquote><span class="num">(73)</span> a. A DP may receive only one θ-role. b. A DP must receive a θ-role.</blockquote>
+
+  <span class="enpg">p.304</span>
+  <p><strong>8.2.1 PRO and control clauses.</strong></p>
+  <blockquote><span class="num">(74)</span> Medea tried [to poison her children].<br><span class="num">(75)</span> Odysseus planned [to hear the sirens].<br><span class="num">(76)</span> *Medea tried [Medea to poison her children].<br><span class="num">(77)</span> *Medea tried [the nurse to poison her children].<br><span class="num">(78)</span> *Odysseus attempted [Odysseus to hear the sirens].<br><span class="num">(79)</span> *Odysseus attempted [the helmsman to hear the sirens].</blockquote>
+  <p>There must be a null element Merged in the specifier of little v. For convenience, we term this null subject <strong>PRO</strong>:</p>
+  <blockquote><span class="num">(80)</span> Medea tried [to PRO poison her children].</blockquote>
+
+  <span class="enpg">p.305</span>
+  <p>In sentences like (80) PRO is said to be <strong>controlled</strong> by the matrix subject. Clauses with PRO are <strong>Control Clauses</strong>. PRO may also occur where it is not controlled, in which case it is arbitrary in interpretation:</p>
+  <blockquote><span class="num">(81)</span> PRO to steal hexes from witches is dangerous.<br><span class="num">(82)</span> If one were to steal hexes from witches, then that would be dangerous.<br><span class="num">(83)</span> It is not allowed to PRO perjure oneself.</blockquote>
+  <p><strong>8.2.2 ECM clauses.</strong> There are non-finite complement clauses which allow overt subjects:</p>
+  <blockquote><span class="num">(84)</span> We believed Zeus to be omnipotent.<br><span class="num">(85)</span> No one expected Agamemnon to win.<br><span class="num">(86)</span> We believed that Zeus was omnipotent.<br><span class="num">(87)</span> No one expected that Agamemnon would win.<br><span class="num">(88)</span> We believed [Zeus to be omnipotent].<br><span class="num">(89)</span> No one expected [Agamemnon to win].<br><span class="num">(90)</span> We believed [him to be omnipotent].</blockquote>
+
+  <span class="enpg">p.306</span>
+  <blockquote><span class="num">(91)</span> No one expected [him to win].<br><span class="num">(92)</span> *We believed to PRO be omnipotent.<br><span class="num">(93)</span> No one expected to PRO win.</blockquote>
+  <p>The traditional name is <strong>ECM (Exceptional Case Marking)</strong>. We must distinguish three types of verb: obligatory PRO (try, attempt, endeavour); overt subject but no PRO (believe, consider, think, assume); both PRO and overt subjects (want, expect, prefer).</p>
+  <p><strong>8.2.3 C in non-finite clauses.</strong> Given that finite clauses can be headed by complementizers, non-finite clauses may be as well:</p>
+  <blockquote><span class="num">(94)</span> I intended [for Jenny to be present].<br><span class="num">(95)</span> [For you to do that] would be a mistake.</blockquote>
+
+  <span class="enpg">p.307</span>
+  <p>At first blush, a plausible approach treats <i>for Jenny</i> as a PP (96). This predicts clefting/topicalization (97)(98), which are well formed but have a benefactive reading. The sentence is structurally ambiguous. Pseudoclefting shows the <i>for Jenny</i> string is part of the embedded clause:</p>
+  <blockquote><span class="num">(99)</span> What I arranged was for Jenny to be present.<br><span class="num">(100)</span> *What I arranged for Jenny was to be present.</blockquote>
+  <p>Distributionally, <i>for</i> in non-finite clauses occurs immediately before the subject and forms a constituent with CP, exactly parallel to <i>that</i>. We classify <i>for</i> as a complementizer.</p>
+
+  <span class="enpg">p.308</span>
+  <p>(101) [CP for[C] [TP Jenny [to be present]]]. Whenever the complementizer <i>for</i> appears, the clause must have an accusative subject; PRO is ruled out:</p>
+  <blockquote><span class="num">(102)</span> Jason intended for him to learn magic.<br><span class="num">(103)</span> *Jason intended for he to learn magic.<br><span class="num">(104)</span> *Jason intended for PRO to learn magic.<br><span class="num">(105)</span> *For to do that would be a mistake.</blockquote>
+  <p>We need a way of letting C determine the case of the subject. Assuming the non-finite T that <i>for</i> selects has no case feature, a case-checking relation can be established between <i>for</i> and the subject (106)–(108).</p>
+
+  <span class="enpg">p.309</span>
+  <p>Just as v valued the case of the object, <i>for</i> will value the case of the subject (109)(110). This means we get a non-finite clause with two accusatives:</p>
+  <blockquote><span class="num">(111)</span> I arranged [for him to see her].</blockquote>
+  <p>The word order is derived because the EPP feature of T causes <i>him</i> to raise to its specifier before <i>for</i> is Merged (112). Non-finite T lacks a case feature, so the case is determined by something else; word order is still determined by the EPP property of T.</p>
+  <p><strong>8.2.4 Null case and PRO.</strong> Just as case regulates the appearance of an accusative DP in <i>for</i> clauses, it is case that regulates the appearance of PRO in control clauses. We extend our case features to include [null], whose morphological effect is to ensure the pronoun is unpronounced.</p>
+
+  <span class="enpg">p.310</span>
+  <p>A verb like <i>try</i> selects a CP headed by a complementizer with this [null] feature, itself unpronounced (113)–(116) → try PRO to (PRO) see him. This accounts for:</p>
+  <blockquote><span class="num">(117)</span> *Medea tried her to leave.<br><span class="num">(118)</span> *Medea tried ∅[null] Jason[case] to leave.<br><span class="num">(119)</span> *I arranged for PRO to see her.</blockquote>
+
+  <span class="enpg">p.311</span>
+  <p>The case of the subject of an infinitival clause is checked by some other element — the C which selects the non-finite T. The position of the subject is determined by the EPP feature on non-finite T.</p>
+  <p><strong>8.2.5 Cross-clausal case checking and ECM.</strong> How do we deal with cases with no overt complementizer but where the embedded subject must be overt NP?</p>
+  <blockquote><span class="num">(120)</span> We believed him to be the headmaster.<br><span class="num">(121)</span> I assumed him to be innocent.<br><span class="num">(122)</span> *We believed to be the headmaster.<br><span class="num">(123)</span> *I assumed to be innocent.</blockquote>
+  <p>One approach (124) believe, [V, uC[acc]] assumes a complex feature bundle, contrary to our usual assumption.</p>
+
+  <span class="enpg">p.312</span>
+  <p>The alternative analysis: the case feature of the embedded subject is checked by the usual case properties of the embedding verbal complex. ECM verbs may take a DP object (126) Anson believed the report; (127) Ron expected the sack — accusative checked by v[acc] (128). As an alternative to a null C, ECM verbs select a non-finite TP whose subject enters a case-checking relationship with the little v above <i>believe</i> (129).</p>
+
+  <span class="enpg">p.313</span>
+  <p>This explains why ECM verbs do not allow PRO (130) *Anson believed PRO to be happy — since little v bears [acc] rather than [null]. A second argument: control clauses and <i>for</i>-clauses pattern with respect to pseudoclefting, contrasting with ECM:</p>
+  <blockquote><span class="num">(131)</span> What Medea arranged was for her children to be poisoned.<br><span class="num">(132)</span> What Medea attempted was to poison her children.<br><span class="num">(133)</span> *What Medea believed was Jason to be a murderer.<br><span class="num">(134)</span> What I said was [CP that we would go].<br><span class="num">(135)</span> *What I said that was [TP we would go].</blockquote>
+  <p>(136) 1. Control clauses are headed by a null C[null]. 2. ECM clauses are just TPs, checked by higher v[acc]. 3. <i>for</i> clauses occur with overt accusative subjects, for[acc].</p>
+
+  <span class="enpg">p.314</span>
+  <p>This might be challenged by non-standard dialects (Belfast, Dundee):</p>
+  <blockquote><span class="num">(137)</span> I went to the shop for to get bread.<br><span class="num">(138)</span> They are going home for to see their parents.<br><span class="num">(139)</span> I tried for to get them.<br><span class="num">(140)</span> I wanted Jimmy for to come with me.</blockquote>
+  <p>The dialectal <i>for</i> seems lower in the structure, attached to T, lacking the accusative case feature. A weakness: we need ECM verbs to select either a finite C or a non-finite TP — a placeholder for a real analysis.</p>
+
+  <span class="enpg">p.315</span>
+  <p><strong>8.2.6 Raising.</strong> Single-argument verbs, notably <i>seem</i> and <i>appear</i>:</p>
+  <blockquote><span class="num">(141)</span> It seems that Agamemnon is a maniac.<br><span class="num">(142)</span> It appears that Hephaestus owns a dragon.<br><span class="num">(143)</span> Agamemnon seems to be a maniac.<br><span class="num">(144)</span> Hephaestus appears to own a dragon.<br><span class="num">(145)</span> Agamemnon attempted to behave well.<br><span class="num">(146)</span> *Agamemnon seems [PRO to be a maniac].<br><span class="num">(147)</span> *Hephaestus appears [PRO to own a dragon].</blockquote>
+
+  <span class="enpg">p.316</span>
+  <p>The correct analysis: the subjects in the matrix clauses have got there by movement, from underlying structures where they appear in their θ-positions (148) [it [seems [CP that Agamemnon left]]]. <i>seem</i> does not have a subject θ-role to assign, so we Merge an unaccusative little v (149).</p>
+
+  <span class="enpg">p.317</span>
+  <p>We could Merge an expletive <i>it</i> (151) It seems that Agamemnon left. We are also interested in (152) Agamemnon seems to have left. Verbs like <i>seem</i> can also Merge with a TP (153). Although <i>to</i> can check its EPP by attracting Agamemnon, it cannot value Agamemnon's case feature, since it lacks a case feature of its own.</p>
+
+  <span class="enpg">p.318</span>
+  <p>Given that we then Merge in <i>seem</i> and the higher finite T, it becomes possible to check the case feature of the matrix T with that of Agamemnon (154). Agamemnon can move into the specifier of the higher T (155). The classical name for this construction is <strong>Subject-to-Subject Raising</strong> (or just <strong>Raising</strong>).</p>
+
+  <span class="enpg">p.319</span>
+  <p>There are two movements, both driven by the EPP feature of T. <strong>Interlude: Solving a technical problem.</strong> If we choose a finite TP, the derivation incorrectly converges (156)(157). Although the case feature of Agamemnon has been checked, it still Agrees with the case feature of T.</p>
+
+  <span class="enpg">p.320</span>
+  <blockquote><span class="num">(158)</span> *Agamemnon seems [TP (Agamemnon) has left].</blockquote>
+  <p>One standard approach: case features delete immediately when checked. Another solution relies on the [uclause-type: ] feature: if <i>seem</i> selects a finite TP, this feature must be checked, but can't be checked by its own C (159)–(161). By Locality of Feature Matching and the <strong>Extension Condition</strong> (162: a syntactic derivation can only be continued by applying operations to the root projection of the tree), the lower T's feature cannot be checked.</p>
+
+  <span class="enpg">p.321</span>
+  <p>The derivation is correctly predicted to crash. Clausal complements must be either CPs, or non-finite TPs. <strong>Back to raising.</strong> Raising constructions can be strung together:</p>
+  <blockquote><span class="num">(163)</span> Hephaestus appears to have turned out to have left.<br><span class="num">(164)</span> Jason happens to appear to seem to be sick.<br><span class="num">(166)</span> It stinks that Zeus is omnipotent.<br><span class="num">(167)</span> *Zeus stinks to be omnipotent.<br><span class="num">(168)</span> There seemed to be three men in the garden.<br><span class="num">(169)</span> There appears to be a problem with this solution.</blockquote>
+
+  <span class="enpg">p.322</span>
+  <p>The verb <i>be</i> takes a PP complement and a DP subject (170)–(174). The checking relation between T and the embedded subject captures the fact that the finite verb agrees with the embedded subject (<i>seem</i> rather than <i>seems</i>). Why do we not raise the subject (175)?</p>
+
+  <span class="enpg">p.323</span>
+  <blockquote><span class="num">(176)</span> *There seem three men to be in the garden.</blockquote>
+  <p>One solution: the operation Merge is preferred over the operation Move. <strong>8.2.7 Object control.</strong></p>
+  <blockquote><span class="num">(177)</span> Jason persuaded Medea to desert her family.<br><span class="num">(178)</span> Agamemnon forced Zeus to leave the school.<br><span class="num">(179)</span> Jason persuaded [Medea] [to desert her family].<br><span class="num">(180)</span> Jason persuaded [Medea to desert her family].</blockquote>
+
+  <span class="enpg">p.324</span>
+  <p>The first argument comes from the behaviour of expletives:</p>
+  <blockquote><span class="num">(181)</span> *I found there. <span class="num">(182)</span> *I destroyed there. <span class="num">(183)</span> There seems to be a problem.<br><span class="num">(184)</span> I expected there to be a problem.<br><span class="num">(185)</span> *I persuaded there to be a problem.<br><span class="num">(186)</span> I believed there to be three books on the subject.<br><span class="num">(187)</span> *I ordered there to be three books on the subject.<br><span class="num">(188)</span> Jason expected the doctor to treat Medea.<br><span class="num">(189)</span> Jason expected Medea to be treated by the doctor.<br><span class="num">(190)</span> Jason persuaded the doctor to treat Medea.</blockquote>
+
+  <span class="enpg">p.325</span>
+  <blockquote><span class="num">(191)</span> Jason persuaded Medea to be treated by the doctor.<br><span class="num">(192)</span> Jason persuaded [Medea] [to desert her family].<br><span class="num">(193)</span> Jason persuaded [Medea] [that she should desert her family].</blockquote>
+  <p>In (190) the doctor is being persuaded, while in (191) it is Medea. These verbs are essentially ditransitive (194).</p>
+
+  <span class="enpg">p.326</span>
+  <p>By the θ-criterion, <i>desert</i> is a two-place predicate, so a θ-role has to be assigned to the subject of the embedded clause, controlled by the matrix object (Medea). Since Medea receives a θ-role from <i>persuade</i>, it cannot have moved from the embedded subject position. It follows that the subject of the embedded clause is PRO:</p>
+  <blockquote><span class="num">(195)</span> Jason persuaded Medea [PRO to desert her family].</blockquote>
+  <p>Since it is the object that controls PRO, verbs like <i>persuade</i> and <i>force</i> are <strong>object control predicates</strong> (196).</p>
+
+  <span class="enpg">p.327</span>
+  <p><strong>8.2.8 Summary and further implications.</strong> Non-finite T is specified with an EPP feature but not with a case feature. The case of the subject is determined by the complementizer (null C[null] or for[acc]) or by some element outside the clause (v[acc] for ECM, T[nom] for raising).</p>
+  <blockquote><span class="num">(197)</span> [That the world is round] e is obvious.<br><span class="num">(198)</span> *e is obvious.</blockquote>
+  <p>The C head that selects for an initial CP bears a [null] case feature.</p>
+  <p><strong>8.3 Adjunct clauses.</strong> CPs also may be adjuncts. Adjunct CPs fall into two main classes: time, and cause/reason.</p>
+  <blockquote><span class="num">(199)</span> Before the executioner arrived, Hephaestus had escaped.<br><span class="num">(200)</span> When the executioner arrived, Hephaestus was asleep.<br><span class="num">(201)</span> After the executioner left, Hephaestus wept.</blockquote>
+
+  <span class="enpg">p.328</span>
+  <blockquote><span class="num">(202)</span> Hephaestus had escaped, before the executioner arrived.<br><span class="num">(203)</span> Hephaestus was asleep, when the executioner arrived.<br><span class="num">(204)</span> Hephaestus wept, after the executioner left.<br><span class="num">(205)</span> Medea thought that, after the executioner had left, Hephaestus would be relieved.</blockquote>
+  <p>These properties suggest that temporal adjunct clauses adjoin to TP (206). They are headed by the temporal complementizer, which takes a TP complement (207).</p>
+  <blockquote><span class="num">(208)</span> Medea was happy, because she had got the highest marks.<br><span class="num">(209)</span> Because she had got the highest marks, Medea was happy.</blockquote>
+
+  <span class="enpg">p.329</span>
+  <blockquote><span class="num">(210)</span> Jason became invisible, so that he could escape.<br><span class="num">(211)</span> So that he could escape, Jason became invisible.</blockquote>
+  <p><strong>8.4 Cross-linguistic implications.</strong> The core phenomenon is <strong>Verb-Second (V2)</strong>, found in most Germanic languages. The finite verb ends up in the second position, immediately after the first constituent (German):</p>
+  <blockquote><span class="num">(212)</span> <i>Ich</i> <strong>las</strong> schon letztes Jahr diesen Roman.<br><span class="num">(213)</span> <i>Diesen Roman</i> <strong>las</strong> ich schon letztes Jahr.<br><span class="num">(214)</span> <i>Schon letztes Jahr</i> <strong>las</strong> ich diesen Roman. “I read this book already last year.”</blockquote>
+  <p>The first constituent counts as the <strong>topic</strong> of the clause.</p>
+
+  <span class="enpg">p.330</span>
+  <p>Whereas in English the Q value was strong but the Decl value was weak, in German matrix C, when it values [uclause-type] on T, always provides a strong feature (215)(216). Matrix C in German bears a strong topic feature [utop*] (217)(218)(219). This is backed up by subordinate clauses:</p>
+  <blockquote><span class="num">(220)</span> Er sagte dass ich schon letztes Jahr diesen Roman <strong>las</strong>. “He said that I read this book already last year.”</blockquote>
+  <p>German is, at bottom, an OV language.</p>
+
+  <span class="enpg">p.331</span>
+  <blockquote><span class="num">(221)</span> Er sagte dass ich schon letztes Jahr [vP diesen Roman gelesen] habe.<br><span class="num">(222)</span> <i>Ich</i> <strong>habe</strong> schon letztes Jahr diesen Roman gelesen.</blockquote>
+  <p>If T raises to C in a matrix clause, the finite verb will be in C. Since matrix C bears a [utop*] feature, this gives rise to V2. With an auxiliary, only the auxiliary participates in V2; the main verb stays in situ (223).</p>
+
+  <span class="enpg">p.332</span>
+  <p>We have seen a further parametric pattern: whether the [uclause-type] feature on T is valued as strong or weak.</p>
+  <blockquote><span class="num">(224)</span> His analysis, I never liked.<br><span class="num">(225)</span> I never liked his analysis.</blockquote>
+  <p>(226) Parameter table: English (Infl-Aux strong, Infl-v weak, EPP-T strong, Decl-T weak, [top]-C optional); French (strong, strong, strong, weak, ?); Swedish (weak, weak, strong, strong, strong); Scottish Gaelic (strong, strong, weak, weak, weak); German (strong, strong, strong, strong, strong).</p>
+
+  <span class="enpg">p.333</span>
+  <p><strong>8.5 Summary.</strong> We proposed that all clauses contain Cs (227 Hierarchy of Projection — Clausal: C ≻ T ≻ (Neg) ≻ (Perf) ≻ (Prog) ≻ (Pass) ≻ v ≻ V; Nominal: D ≻ (Poss) ≻ n ≻ N). C is the place where the interpretable-clause-type feature is found, responsible for valuing an uninterpretable-clause-type feature on T (228). We analysed apparent clausal subjects as involving a null pronominal element in true subject position. We introduced a new case feature [null].</p>
+
+  <span class="enpg">p.334–340</span>
+  <p><strong>Phenomena &amp; explanations:</strong> SAI (T-to-C, driven by uQ*); subject clauses (specifier of C[uC, null]); control clauses (headed by null C[null]); ECM clauses (Vs that take a TP, case by v[acc]); raising clauses (Vs that take a TP, movement driven by EPP of higher T); V2 (parametric variation in Decl value on T and [top] on C).</p>
+  <p><strong>Exercises:</strong> 1 Obligatory <i>that</i>; 2 Negation in interrogatives (Hasn't the potion worked? / Has the potion not worked? vs *Has not the potion worked); 3 Embedded inversion (He asked did I live there); 4 Combining verbal classes; 5 Trees for <i>prefer</i>; 6 Other non-finite clausal complements (-ing); 7 Classifying verbs; 8 V2 trees (incl. embedded V2); 9 Trees once again; 10 Locality in binding (Reflexive Binding: the φ-features of a reflexive must be checked by a higher antecedent within the same CP).</p>
+  <p><strong>Further reading:</strong> Bresnan (1970); Chomsky (1986a); Grimshaw (1979); Adger &amp; Quer (2001); Ross (1967); Koster (1978); Chomsky (1981); Chomsky &amp; Lasnik (1993); Hornstein (1999); Manzini &amp; Roussou (2000); Postal (1974); Lasnik &amp; Saito (1991); Lasnik (2001); Chomsky (1995b, 2000); den Besten (1983); Travis (1984); Zwart (1993); Roberts (2001); Roberts &amp; Roussou (2002); Rizzi (1997).</p>
+
+  <div class="nav-bottom">
+    <a href="Ch07_DP.html">← Ch.7 DP</a>
+    <a href="Ch09_Wh_movement.html">Ch.9 Wh-movement →</a>
+  </div>
+</div><!-- /.wrap -->
+</div><!-- /#en panel -->
+
+<a href="#top" class="back-top">↑ 回頂端</a>
+<footer>Adger, D. (2003) <em>Core Syntax</em>, Ch.8 Functional Categories III — CP（書頁 289–340）· Oxford University Press · DOI:10.1093/oso/9780199243709.003.0008</footer>
+
+<script>
+function showTab(which){
+  document.getElementById('zh').classList.toggle('active', which==='zh');
+  document.getElementById('en').classList.toggle('active', which==='en');
+  document.getElementById('tab-zh').classList.toggle('active', which==='zh');
+  document.getElementById('tab-en').classList.toggle('active', which==='en');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+</script>
+</body>
+</html>
+
+

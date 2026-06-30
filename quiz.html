@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Core Syntax 題庫測驗 Quiz — Adger (2003)</title>
+<style>
+  :root{--ink:#1b1b22;--muted:#5d5d6b;--line:#e3e3ec;--bg:#faf9f6;--accent:#7b2d3b;--accent2:#2d5a7b;--chip:#f0ece4;--card:#fff;--box:#f6f2ec;
+        --g:#1a7a3a;--gbg:#e9f6ee;--ung:#b32020;--ungbg:#fbecec;--star:#b88a00;}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Noto Serif TC","Songti TC",Georgia,"Times New Roman",serif;color:var(--ink);background:var(--bg);line-height:1.85}
+  header{background:linear-gradient(135deg,#7b2d3b,#43202a);color:#fff;padding:38px 24px 30px}
+  header .inner{max-width:1000px;margin:0 auto}
+  header .ch{font-family:system-ui,sans-serif;font-size:.8rem;letter-spacing:2px;color:#e3bcc4}
+  header h1{margin:6px 0 4px;font-size:1.9rem}
+  header .en{color:#f0d9de;font-style:italic}
+  nav.bc{max-width:1000px;margin:0 auto;padding:14px 24px 0;font-family:system-ui,sans-serif;font-size:.85rem}
+  nav.bc a{color:var(--accent);text-decoration:none}
+  .wrap{max-width:1000px;margin:0 auto;padding:14px 24px 90px}
+
+  /* control bar */
+  .controls{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0;font-family:system-ui,sans-serif;font-size:.9rem}
+  .controls h2{margin:0 0 12px;font-size:1.02rem;color:var(--accent);border:0}
+  .ctl-row{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;margin:9px 0}
+  .ctl-row .lbl{min-width:74px;color:var(--muted);font-weight:700}
+  .chipbtn{cursor:pointer;border:1px solid var(--line);background:#f4efea;color:#6a4a52;padding:5px 13px;border-radius:18px;font-size:.85rem;transition:.12s;user-select:none}
+  .chipbtn:hover{background:#ece3e0}
+  .chipbtn.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .seg button{border:0;background:#f4efea;color:#6a4a52;padding:6px 14px;cursor:pointer;font-size:.85rem;font-family:inherit}
+  .seg button.on{background:var(--accent2);color:#fff}
+  .toolbtn{cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--accent);padding:6px 14px;border-radius:8px;font-size:.85rem;font-family:inherit}
+  .toolbtn:hover{background:#faf2f3}
+
+  /* stats */
+  .stats{display:flex;flex-wrap:wrap;gap:14px;background:#fdf6e3;border:1px solid #e9dcae;border-radius:12px;padding:14px 18px;margin:14px 0;font-family:system-ui,sans-serif;font-size:.9rem}
+  .stats .n{font-size:1.5rem;font-weight:800;color:#8a6d00;display:block}
+  .stats .lab{color:#8a6d00;font-size:.78rem}
+  .bars{margin-top:6px}
+  .bar{display:flex;align-items:center;gap:8px;margin:3px 0;font-size:.8rem}
+  .bar .track{flex:1;height:9px;background:#eee;border-radius:6px;overflow:hidden}
+  .bar .fill{height:100%;background:linear-gradient(90deg,#7b2d3b,#a84a5b)}
+  .bar .pct{min-width:64px;text-align:right;color:var(--muted)}
+  .bar .cl{min-width:54px;color:#6a4a52}
+
+  /* question card */
+  .qcard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:16px 0;box-shadow:0 3px 12px rgba(0,0,0,.04)}
+  .qhead{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-family:system-ui,sans-serif;font-size:.74rem;margin-bottom:10px}
+  .tag{padding:2px 9px;border-radius:11px;background:var(--chip);color:#6a4a52}
+  .tag.ch{background:var(--accent);color:#fff}
+  .tag.ty{background:var(--accent2);color:#fff}
+  .tag.df-basic{background:#e9f6ee;color:#1a7a3a}
+  .tag.df-intermediate{background:#fdf3e0;color:#a06b00}
+  .tag.df-advanced{background:#fbecec;color:#b32020}
+  .qnum{margin-left:auto;color:var(--muted);font-weight:700}
+  .star{cursor:pointer;font-size:1.1rem;color:#cbb;user-select:none}
+  .star.on{color:#e0a500}
+  .qstem{font-size:1.08rem;margin:6px 0 4px}
+  .qstem .en{display:block;color:var(--muted);font-style:italic;font-size:.96rem;margin-top:2px}
+  .qstem pre{font-family:"Consolas","Menlo",monospace;font-size:.92rem;background:#f6f2ec;padding:8px 12px;border-radius:8px;white-space:pre-wrap;font-style:normal}
+  .opts{list-style:none;padding:0;margin:12px 0}
+  .opts li{border:1px solid var(--line);border-radius:9px;padding:9px 14px;margin:7px 0;cursor:pointer;transition:.12s;background:#fff}
+  .opts li:hover{background:#faf6f2;border-color:#d8c4c9}
+  .opts li .oen{color:var(--muted);font-style:italic;font-size:.9rem}
+  .opts li.sel{border-color:var(--accent2);background:#eef4f9}
+  .opts li.correct{border-color:var(--g);background:var(--gbg)}
+  .opts li.wrong{border-color:var(--ung);background:var(--ungbg)}
+  .opts li .mk{font-weight:800;margin-right:8px;font-family:system-ui,sans-serif}
+  .filltext{width:100%;font-family:inherit;font-size:1rem;padding:9px 12px;border:1px solid var(--line);border-radius:8px;margin:8px 0}
+  .qbtns{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+  .submit{background:var(--accent);color:#fff;border:0;padding:8px 20px;border-radius:8px;cursor:pointer;font-family:system-ui,sans-serif;font-size:.9rem}
+  .submit:hover{filter:brightness(1.07)}
+  .reveal{background:#fff;color:var(--accent2);border:1px solid var(--line);padding:8px 16px;border-radius:8px;cursor:pointer;font-family:system-ui,sans-serif;font-size:.9rem}
+
+  .feedback{margin-top:12px;border-radius:9px;padding:11px 15px;display:none}
+  .feedback.show{display:block}
+  .feedback.ok{background:var(--gbg);border:1px solid #b5e0c4}
+  .feedback.no{background:var(--ungbg);border:1px solid #e6b9b9}
+  .feedback .verdict{font-weight:800;font-family:system-ui,sans-serif}
+  .feedback .refans{margin:6px 0;font-size:.95rem}
+  .feedback .expl{margin:7px 0 0;font-size:.95rem}
+  .feedback .expl .en{display:block;color:var(--muted);font-style:italic;font-size:.9rem;margin-top:2px}
+
+  .reading{margin-top:11px;font-family:system-ui,sans-serif;font-size:.85rem;background:var(--box);border-radius:9px;padding:9px 14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .reading .rd{color:#6a4a52}
+  .reading a.openbtn{margin-left:auto;background:var(--accent);color:#fff;text-decoration:none;padding:6px 13px;border-radius:7px;font-size:.82rem}
+  .reading a.openbtn:hover{filter:brightness(1.08)}
+
+  .notewrap{margin-top:11px}
+  .notewrap label{font-family:system-ui,sans-serif;font-size:.82rem;color:var(--muted);display:block;margin-bottom:4px}
+  .notewrap textarea{width:100%;min-height:54px;font-family:inherit;font-size:.95rem;padding:9px 12px;border:1px solid var(--line);border-radius:8px;resize:vertical;background:#fffdf8}
+  .notewrap .saved{font-size:.74rem;color:var(--g);font-family:system-ui,sans-serif;margin-left:6px}
+
+  .empty{text-align:center;color:var(--muted);padding:60px 20px;font-family:system-ui,sans-serif}
+  .loaderr{background:#fbecec;border:1px solid #e6b9b9;border-radius:12px;padding:20px;margin:20px 0;font-family:system-ui,sans-serif;font-size:.92rem}
+  .loaderr h3{margin:0 0 8px;color:var(--ung)}
+  .loaderr code{background:#fff;padding:2px 6px;border-radius:4px;border:1px solid var(--line)}
+
+  .examsummary{background:#fff;border:2px solid var(--accent);border-radius:12px;padding:18px 22px;margin:16px 0;display:none}
+  .examsummary.show{display:block}
+  .examsummary h2{margin-top:0;color:var(--accent)}
+  footer{text-align:center;color:var(--muted);font-size:.8rem;padding:24px;font-family:system-ui,sans-serif}
+  .back-top{position:fixed;right:18px;bottom:18px;background:var(--accent);color:#fff;text-decoration:none;padding:8px 13px;border-radius:20px;font-family:system-ui,sans-serif;font-size:.8rem;box-shadow:0 3px 10px rgba(0,0,0,.2)}
+  @media(max-width:600px){.ctl-row .lbl{min-width:100%}}
+</style>
+</head>
+<body id="top">
+<header><div class="inner">
+  <div class="ch">CORE SYNTAX · 題庫測驗 QUIZ</div>
+  <h1>Core Syntax 題庫測驗</h1>
+  <div class="en">David Adger (2003) · 282 題 · 中英對照 · 可記筆記</div>
+</div></header>
+<nav class="bc"><a href="index.html">← 全書導覽</a> ／ 題庫測驗</nav>
+
+<div class="wrap">
+
+  <!-- load error fallback -->
+  <div class="loaderr" id="loaderr" style="display:none">
+    <h3>⚠ 無法自動載入題庫 questions.json</h3>
+    <p>用 <code>file://</code> 直接開啟時，部分瀏覽器會因安全限制擋住載入。請任選：</p>
+    <p>① <b>手動載入</b>：<input type="file" id="fileInput" accept=".json"> （選擇本資料夾的 <code>questions.json</code>）</p>
+    <p>② <b>建議</b>：在本資料夾開終端機執行 <code>python -m http.server</code>，再用瀏覽器開 <code>http://localhost:8000/quiz.html</code>。<br>
+       （部署到 Render／任何 HTTPS 網站時不會有此問題。）</p>
+  </div>
+
+  <!-- controls -->
+  <div class="controls" id="controls" style="display:none">
+    <h2>篩選與設定 Filters &amp; Settings</h2>
+    <div class="ctl-row"><span class="lbl">章節</span><span id="chapFilter"></span></div>
+    <div class="ctl-row"><span class="lbl">題型</span><span id="typeFilter"></span></div>
+    <div class="ctl-row"><span class="lbl">難度</span><span id="diffFilter"></span></div>
+    <div class="ctl-row"><span class="lbl">只看</span>
+      <span class="chipbtn" id="onlyStar" onclick="toggleOnly('star',this)">⭐ 收藏</span>
+      <span class="chipbtn" id="onlyWrong" onclick="toggleOnly('wrong',this)">✗ 答錯過</span>
+      <span class="chipbtn" id="onlyNote" onclick="toggleOnly('note',this)">📝 有筆記</span>
+      <span class="chipbtn" id="onlyUndone" onclick="toggleOnly('undone',this)">○ 未作答</span>
+    </div>
+    <div class="ctl-row"><span class="lbl">語言</span>
+      <span class="seg" id="langSeg">
+        <button data-l="both" class="on" onclick="setLang('both',this)">中英並列</button>
+        <button data-l="zh" onclick="setLang('zh',this)">中文</button>
+        <button data-l="en" onclick="setLang('en',this)">English</button>
+      </span>
+      <span class="lbl" style="min-width:auto;margin-left:14px">模式</span>
+      <span class="seg" id="modeSeg">
+        <button data-m="practice" class="on" onclick="setMode('practice',this)">練習（即時對答）</button>
+        <button data-m="exam" onclick="setMode('exam',this)">測驗（最後計分）</button>
+      </span>
+    </div>
+    <div class="ctl-row" style="margin-top:6px">
+      <button class="toolbtn" onclick="shuffleList()">🔀 隨機排序</button>
+      <button class="toolbtn" id="examSubmitBtn" style="display:none" onclick="gradeExam()">📊 交卷計分</button>
+      <button class="toolbtn" onclick="exportData()">⬇ 匯出筆記/紀錄 JSON</button>
+      <label class="toolbtn" style="cursor:pointer">⬆ 匯入備份<input type="file" id="importInput" accept=".json" style="display:none"></label>
+      <button class="toolbtn" onclick="resetProgress()">♻ 清除進度</button>
+    </div>
+  </div>
+
+  <!-- stats -->
+  <div class="stats" id="stats" style="display:none"></div>
+
+  <!-- exam summary -->
+  <div class="examsummary" id="examsummary"></div>
+
+  <!-- question list -->
+  <div id="qlist"></div>
+  <div class="empty" id="emptymsg" style="display:none">沒有符合篩選條件的題目。<br>No questions match the current filters.</div>
+</div>
+
+<a href="#top" class="back-top">↑ 回頂端</a>
+<footer>Core Syntax 題庫測驗 · 依據 Adger, D. (2003) <em>Core Syntax</em>, Oxford University Press · 內容為個人複習用摘要與短例句引用</footer>
+
+<script>
+/* ===================== state & storage ===================== */
+const NS = "coreSyntaxQuiz";
+let QUESTIONS = [];          // full bank
+let view = [];               // filtered/ordered ids in current view
+let store = load();          // persisted state
+
+function load(){
+  try{ return JSON.parse(localStorage.getItem(NS)) || blank(); }
+  catch(e){ return blank(); }
+}
+function blank(){ return {notes:{}, answers:{}, starred:[], settings:{lang:"both",mode:"practice"}}; }
+function save(){ try{ localStorage.setItem(NS, JSON.stringify(store)); }catch(e){ console.warn("save failed",e); } }
+
+const filters = {chapters:new Set(), types:new Set(), diffs:new Set(), only:new Set()};
+let lang = "both", mode = "practice";
+
+/* ===================== data loading ===================== */
+function boot(){
+  // restore settings
+  lang = (store.settings&&store.settings.lang) || "both";
+  mode = (store.settings&&store.settings.mode) || "practice";
+  fetch("questions.json").then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); })
+    .then(initWith)
+    .catch(()=>{ document.getElementById("loaderr").style.display="block"; });
+}
+document.getElementById("fileInput").addEventListener("change", handleFile);
+document.getElementById("importInput").addEventListener("change", handleImport);
+function handleFile(e){
+  const f=e.target.files[0]; if(!f) return;
+  const rd=new FileReader();
+  rd.onload=()=>{ try{ initWith(JSON.parse(rd.result)); document.getElementById("loaderr").style.display="none"; }
+    catch(err){ alert("檔案解析失敗 / parse error: "+err); } };
+  rd.readAsText(f);
+}
+
+function initWith(data){
+  QUESTIONS = data;
+  document.getElementById("controls").style.display="block";
+  document.getElementById("stats").style.display="flex";
+  buildFilterChips();
+  // restore lang/mode UI
+  document.querySelectorAll("#langSeg button").forEach(b=>b.classList.toggle("on",b.dataset.l===lang));
+  document.querySelectorAll("#modeSeg button").forEach(b=>b.classList.toggle("on",b.dataset.m===mode));
+  document.getElementById("examSubmitBtn").style.display = mode==="exam"?"inline-block":"none";
+  render();
+}
+
+/* ===================== filter UI ===================== */
+function buildFilterChips(){
+  const chaps=[...new Set(QUESTIONS.map(q=>q.chapter))].sort((a,b)=>a-b);
+  const cF=document.getElementById("chapFilter"); cF.innerHTML="";
+  const allC=mkchip("全部",()=>{filters.chapters.clear();syncChips(cF,"chapters");render();}); cF.appendChild(allC);
+  chaps.forEach(c=>{ const el=mkchip("Ch"+c,()=>{toggleSet(filters.chapters,c);syncChips(cF,"chapters");render();}); el.dataset.v=c; cF.appendChild(el); });
+  const types=[["mcq","單選"],["tf","是非"],["fill","填空"],["short","簡答"]];
+  const tF=document.getElementById("typeFilter"); tF.innerHTML="";
+  tF.appendChild(mkchip("全部",()=>{filters.types.clear();syncChips(tF,"types");render();}));
+  types.forEach(([v,lab])=>{ const el=mkchip(lab,()=>{toggleSet(filters.types,v);syncChips(tF,"types");render();}); el.dataset.v=v; tF.appendChild(el); });
+  const diffs=[["basic","基礎"],["intermediate","中等"],["advanced","進階"]];
+  const dF=document.getElementById("diffFilter"); dF.innerHTML="";
+  dF.appendChild(mkchip("全部",()=>{filters.diffs.clear();syncChips(dF,"diffs");render();}));
+  diffs.forEach(([v,lab])=>{ const el=mkchip(lab,()=>{toggleSet(filters.diffs,v);syncChips(dF,"diffs");render();}); el.dataset.v=v; dF.appendChild(el); });
+  syncChips(cF,"chapters");syncChips(tF,"types");syncChips(dF,"diffs");
+}
+function mkchip(label,fn){ const s=document.createElement("span"); s.className="chipbtn"; s.textContent=label; s.onclick=fn; return s; }
+function toggleSet(set,v){ set.has(v)?set.delete(v):set.add(v); }
+function syncChips(container,key){
+  const set=filters[key];
+  [...container.children].forEach((el,i)=>{
+    if(i===0){ el.classList.toggle("on", set.size===0); }       // "全部"
+    else{ const v=el.dataset.v; const val=(key==="chapters")?Number(v):v; el.classList.toggle("on", set.has(val)); }
+  });
+}
+function toggleOnly(k,el){ toggleSet(filters.only,k); el.classList.toggle("on"); render(); }
+function setLang(l,el){ lang=l; document.querySelectorAll("#langSeg button").forEach(b=>b.classList.remove("on")); el.classList.add("on"); store.settings.lang=l; save(); render(); }
+function setMode(m,el){ mode=m; document.querySelectorAll("#modeSeg button").forEach(b=>b.classList.remove("on")); el.classList.add("on"); store.settings.mode=m; save(); document.getElementById("examSubmitBtn").style.display=m==="exam"?"inline-block":"none"; document.getElementById("examsummary").classList.remove("show"); render(); }
+
+/* ===================== filtering ===================== */
+function passes(q){
+  if(filters.chapters.size && !filters.chapters.has(q.chapter)) return false;
+  if(filters.types.size && !filters.types.has(q.type)) return false;
+  if(filters.diffs.size && !filters.diffs.has(q.difficulty)) return false;
+  if(filters.only.has("star") && !store.starred.includes(q.id)) return false;
+  if(filters.only.has("wrong") && !(store.answers[q.id] && store.answers[q.id].correct===false)) return false;
+  if(filters.only.has("note") && !(store.notes[q.id]&&store.notes[q.id].trim())) return false;
+  if(filters.only.has("undone") && store.answers[q.id]) return false;
+  return true;
+}
+let orderOverride=null;
+function shuffleList(){
+  const arr=QUESTIONS.filter(passes).map(q=>q.id);
+  // Fisher–Yates seeded by performance counter (avoids Date dependency)
+  for(let i=arr.length-1;i>0;i--){ const j=(Math.floor(performance.now()*1000)+i*2654435761)%(i+1); const t=arr[i];arr[i]=arr[j];arr[j]=t; }
+  orderOverride=arr; render();
+}
+
+/* ===================== rendering ===================== */
+const TYPELAB={mcq:"單選 MCQ",tf:"是非 T/F",fill:"填空 Fill",short:"簡答 Short"};
+const DIFFLAB={basic:"基礎",intermediate:"中等",advanced:"進階"};
+
+function render(){
+  const list=QUESTIONS.filter(passes);
+  let ordered=list;
+  if(orderOverride){ const map=new Map(list.map(q=>[q.id,q])); ordered=orderOverride.map(id=>map.get(id)).filter(Boolean); }
+  view=ordered.map(q=>q.id);
+  const box=document.getElementById("qlist"); box.innerHTML="";
+  document.getElementById("emptymsg").style.display = ordered.length?"none":"block";
+  ordered.forEach((q,i)=>box.appendChild(renderCard(q,i+1)));
+  renderStats();
+}
+
+function esc(s){ return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function bil(zh,en){
+  if(lang==="zh") return esc(zh);
+  if(lang==="en") return esc(en);
+  return esc(zh)+'<span class="en">'+esc(en)+'</span>';
+}
+
+function renderCard(q,n){
+  const card=document.createElement("div"); card.className="qcard"; card.id="card-"+q.id;
+  const ans=store.answers[q.id];
+  const starred=store.starred.includes(q.id);
+  // head
+  let html='<div class="qhead">'
+    +'<span class="tag ch">Ch'+q.chapter+' · '+esc(q.section)+'</span>'
+    +'<span class="tag ty">'+TYPELAB[q.type]+'</span>'
+    +'<span class="tag df-'+q.difficulty+'">'+DIFFLAB[q.difficulty]+'</span>'
+    +(q.tags?q.tags.map(t=>'<span class="tag">'+esc(t)+'</span>').join(''):'')
+    +'<span class="qnum">#'+n+'</span>'
+    +'<span class="star'+(starred?' on':'')+'" title="收藏" onclick="toggleStar(\''+q.id+'\',this)">★</span>'
+    +'</div>';
+  // stem
+  let stem=bil(q.questionZh,q.questionEn);
+  html+='<div class="qstem">'+stem+'</div>';
+  // body by type
+  if(q.type==="mcq"||q.type==="tf"){
+    html+='<ul class="opts" id="opts-'+q.id+'">';
+    q.options.forEach((o,idx)=>{
+      html+='<li data-i="'+idx+'" onclick="pick(\''+q.id+'\','+idx+')">'
+        +'<span class="mk">'+String.fromCharCode(65+idx)+'.</span>'+bil(o.zh,o.en)+'</li>';
+    });
+    html+='</ul>';
+    html+='<div class="qbtns"><button class="submit" id="sub-'+q.id+'" onclick="submitChoice(\''+q.id+'\')">送出 Submit</button></div>';
+  } else {
+    if(q.type==="fill"){
+      html+='<input class="filltext" id="fill-'+q.id+'" placeholder="輸入你的答案 / type your answer" value="'+esc((ans&&ans.text)||'')+'">';
+    }
+    html+='<div class="qbtns"><button class="reveal" onclick="revealRef(\''+q.id+'\')">查看參考答案 Show answer</button></div>';
+  }
+  // feedback
+  html+='<div class="feedback" id="fb-'+q.id+'"></div>';
+  // reading
+  html+='<div class="reading"><span class="rd">📚 建議閱讀：'
+    + (lang==="en"?esc(q.reading.bookEn):lang==="zh"?esc(q.reading.bookZh):esc(q.reading.bookZh)+' ／ '+esc(q.reading.bookEn))
+    + '</span><a class="openbtn" href="'+q.reading.html+'" target="_blank" rel="noopener">📖 開啟詳解</a></div>';
+  // notes
+  const note=store.notes[q.id]||"";
+  html+='<div class="notewrap"><label>📝 我的筆記 My notes<span class="saved" id="nsaved-'+q.id+'"></span></label>'
+    +'<textarea id="note-'+q.id+'" oninput="onNote(\''+q.id+'\')" placeholder="在這裡記筆記，會自動儲存…">'+esc(note)+'</textarea></div>';
+  card.innerHTML=html;
+  // restore answered visual state (practice mode shows immediately; exam mode keeps selection only)
+  if(ans && (q.type==="mcq"||q.type==="tf")){
+    if(mode==="practice"){ applyMcqResult(card,q,ans.chosen); showFeedback(q,ans.chosen===q.answer); }
+    else if(typeof ans.chosen==="number"){ const li=card.querySelector('li[data-i="'+ans.chosen+'"]'); if(li) li.classList.add("sel"); }
+  }
+  return card;
+}
+
+/* ===================== answering ===================== */
+function pick(id,idx){
+  const q=byId(id); const card=document.getElementById("card-"+id);
+  if(mode==="practice" && store.answers[id]) return;  // locked after answer in practice
+  card.querySelectorAll("#opts-"+id+" li").forEach(li=>li.classList.remove("sel"));
+  const li=card.querySelector('#opts-'+id+' li[data-i="'+idx+'"]'); if(li) li.classList.add("sel");
+  card._pick=idx;
+  if(mode==="exam"){ // store provisional selection
+    store.answers[id]=Object.assign({}, store.answers[id], {chosen:idx, correct:idx===q.answer, ts:stamp(), provisional:true});
+    save();
+  }
+}
+function submitChoice(id){
+  const q=byId(id); const card=document.getElementById("card-"+id);
+  const idx=card._pick!=null?card._pick:(store.answers[id]&&store.answers[id].chosen);
+  if(idx==null){ alert("請先選一個選項 / pick an option first"); return; }
+  store.answers[id]={chosen:idx, correct:idx===q.answer, ts:stamp()};
+  save();
+  if(mode==="practice"){ applyMcqResult(card,q,idx); showFeedback(q,idx===q.answer); }
+  else { renderStats(); }
+}
+function applyMcqResult(card,q,chosen){
+  card.querySelectorAll("#opts-"+q.id+" li").forEach(li=>{
+    const i=Number(li.dataset.i); li.classList.remove("sel");
+    if(i===q.answer) li.classList.add("correct");
+    if(i===chosen && chosen!==q.answer) li.classList.add("wrong");
+  });
+}
+function showFeedback(q,ok){
+  const fb=document.getElementById("fb-"+q.id);
+  let h='<span class="verdict">'+(ok?"✓ 答對 Correct":"✗ 答錯 Incorrect")+'</span>';
+  h+='<div class="expl">'+bil(q.explanationZh,q.explanationEn)+'</div>';
+  fb.className="feedback show "+(ok?"ok":"no"); fb.innerHTML=h;
+}
+function revealRef(id){
+  const q=byId(id); const fb=document.getElementById("fb-"+id);
+  let txt="";
+  if(q.type==="fill"){ const v=document.getElementById("fill-"+id).value; store.answers[id]={text:v, revealed:true, ts:stamp()}; save(); }
+  else { store.answers[id]={revealed:true, ts:stamp()}; save(); }
+  let h='<span class="verdict">參考答案 Reference answer</span>';
+  if(q.answerTextZh||q.answerTextEn) h+='<div class="refans">'+bil(q.answerTextZh,q.answerTextEn)+'</div>';
+  h+='<div class="expl">'+bil(q.explanationZh,q.explanationEn)+'</div>';
+  fb.className="feedback show ok"; fb.innerHTML=h;
+  renderStats();
+}
+
+/* ===================== notes & stars ===================== */
+const noteTimers={};
+function onNote(id){
+  const v=document.getElementById("note-"+id).value;
+  store.notes[id]=v;
+  clearTimeout(noteTimers[id]);
+  noteTimers[id]=setTimeout(()=>{ save(); const s=document.getElementById("nsaved-"+id); if(s){ s.textContent="已儲存 ✓"; setTimeout(()=>s.textContent="",1400);} }, 450);
+}
+function toggleStar(id,el){
+  const i=store.starred.indexOf(id);
+  if(i>=0) store.starred.splice(i,1); else store.starred.push(id);
+  el.classList.toggle("on"); save(); renderStats();
+  if(filters.only.has("star")) render();
+}
+
+/* ===================== exam grading ===================== */
+function gradeExam(){
+  const graded=view.map(byId).filter(q=>q.type==="mcq"||q.type==="tf");
+  let done=0,correct=0;
+  graded.forEach(q=>{ const a=store.answers[q.id]; if(a&&typeof a.chosen==="number"){ done++; if(a.chosen===q.answer) correct++; if(a.provisional){a.provisional=false;} } });
+  save();
+  // reveal all results
+  graded.forEach(q=>{ const a=store.answers[q.id]; const card=document.getElementById("card-"+q.id); if(card&&a&&typeof a.chosen==="number"){ applyMcqResult(card,q,a.chosen); showFeedback(q,a.chosen===q.answer); } });
+  const box=document.getElementById("examsummary");
+  const pct=graded.length?Math.round(correct/graded.length*100):0;
+  box.innerHTML='<h2>📊 測驗結果 Exam result</h2><p>本次可計分題（單選＋是非）：<b>'+graded.length+'</b>　已作答：<b>'+done+'</b>　答對：<b>'+correct+'</b>　正確率：<b>'+pct+'%</b></p>'
+    +'<p style="color:var(--muted);font-size:.88rem">填空／簡答題為自評，請用「查看參考答案」對照。</p>';
+  box.classList.add("show"); box.scrollIntoView({behavior:"smooth"});
+}
+
+/* ===================== stats ===================== */
+function renderStats(){
+  const total=QUESTIONS.length;
+  const answered=Object.keys(store.answers).filter(id=>{const a=store.answers[id];return a&&(typeof a.chosen==="number"||a.revealed);}).length;
+  const scored=Object.values(store.answers).filter(a=>typeof a.correct==="boolean"&&!a.revealed);
+  const correct=scored.filter(a=>a.correct).length;
+  const acc=scored.length?Math.round(correct/scored.length*100):0;
+  const noteN=Object.values(store.notes).filter(t=>t&&t.trim()).length;
+  let h='<div><span class="n">'+total+'</span><span class="lab">總題數 Total</span></div>'
+    +'<div><span class="n">'+answered+'</span><span class="lab">已作答 Answered</span></div>'
+    +'<div><span class="n">'+acc+'%</span><span class="lab">自動計分正確率 Accuracy</span></div>'
+    +'<div><span class="n">'+store.starred.length+'</span><span class="lab">⭐ 收藏 Starred</span></div>'
+    +'<div><span class="n">'+noteN+'</span><span class="lab">📝 筆記 Notes</span></div>';
+  // per-chapter bars
+  let bars='<div class="bars" style="flex:1 1 100%">';
+  const chaps=[...new Set(QUESTIONS.map(q=>q.chapter))].sort((a,b)=>a-b);
+  chaps.forEach(c=>{
+    const qs=QUESTIONS.filter(q=>q.chapter===c);
+    const sc=qs.map(q=>store.answers[q.id]).filter(a=>a&&typeof a.correct==="boolean"&&!a.revealed);
+    const cor=sc.filter(a=>a.correct).length;
+    const p=sc.length?Math.round(cor/sc.length*100):0;
+    bars+='<div class="bar"><span class="cl">Ch'+c+'</span><div class="track"><div class="fill" style="width:'+p+'%"></div></div><span class="pct">'+cor+'/'+sc.length+'（'+p+'%）</span></div>';
+  });
+  bars+='</div>';
+  document.getElementById("stats").innerHTML=h+bars;
+}
+
+/* ===================== export / import / reset ===================== */
+function exportData(){
+  const name=prompt("匯出檔名（不含 .json）/ export filename:", "coreSyntaxQuiz_backup");
+  if(name===null) return;
+  const blob=new Blob([JSON.stringify(store,null,1)],{type:"application/json"});
+  const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download=(name||"coreSyntaxQuiz_backup")+".json"; a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+}
+function handleImport(e){
+  const f=e.target.files[0]; if(!f) return;
+  const rd=new FileReader();
+  rd.onload=()=>{ try{
+      const inc=JSON.parse(rd.result);
+      const mode=confirm("按「確定」= 合併匯入（保留現有並覆寫同題）\n按「取消」= 完全取代現有資料")?"merge":"replace";
+      if(mode==="replace"){ store=Object.assign(blank(),inc); }
+      else{
+        store.notes=Object.assign({},store.notes,inc.notes||{});
+        store.answers=Object.assign({},store.answers,inc.answers||{});
+        store.starred=[...new Set([...(store.starred||[]),...(inc.starred||[])])];
+        store.settings=Object.assign({},store.settings,inc.settings||{});
+      }
+      save(); lang=store.settings.lang||"both"; mode=store.settings.mode||"practice"; initWith(QUESTIONS); alert("匯入完成 / import done");
+    }catch(err){ alert("匯入失敗 / import failed: "+err); } };
+  rd.readAsText(f); e.target.value="";
+}
+function resetProgress(){
+  if(!confirm("確定清除所有筆記、作答紀錄與收藏？此動作無法復原。\nClear ALL notes, answers and stars? This cannot be undone.")) return;
+  store=blank(); save(); render();
+}
+
+/* ===================== helpers ===================== */
+function byId(id){ return QUESTIONS.find(q=>q.id===id); }
+let _seq=0; function stamp(){ return (++_seq); }  // monotonic counter (no Date dependency)
+
+boot();
+</script>
+</body>
+</html>

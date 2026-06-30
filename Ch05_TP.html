@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch.5 功能範疇 I — TP Functional Categories I — TP（逐頁逐例句詳解 + 英文對照）— Adger (2003)</title>
+<style>
+  :root{--ink:#1b1b22;--muted:#5d5d6b;--line:#e3e3ec;--bg:#faf9f6;--accent:#7b2d3b;--accent2:#7b2d3b;--chip:#f0ece4;--card:#fff;--box:#f6f2ec;}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Noto Serif TC","Songti TC",Georgia,"Times New Roman",serif;color:var(--ink);background:var(--bg);line-height:1.9}
+  header{background:linear-gradient(135deg,#7b2d3b,#43202a);color:#fff;padding:54px 24px 36px}
+  header .inner{max-width:900px;margin:0 auto}
+  header .ch{font-family:system-ui,sans-serif;font-size:.8rem;letter-spacing:2px;color:#e3bcc4}
+  header h1{margin:6px 0 4px;font-size:2rem}
+  header .en{color:#f0d9de;font-style:italic}
+  header .pg{margin-top:10px;font-size:.85rem;color:#e3bcc4;font-family:system-ui,sans-serif}
+  nav.bc{max-width:900px;margin:0 auto;padding:14px 24px 0;font-family:system-ui,sans-serif;font-size:.85rem}
+  nav.bc a{color:var(--accent);text-decoration:none}
+  .tabbar{max-width:900px;margin:14px auto 0;padding:0 24px;display:flex;gap:10px;font-family:system-ui,sans-serif}
+  .tab{cursor:pointer;border:1px solid var(--line);border-bottom:0;background:#f1ece9;color:#7a4350;padding:11px 22px;border-radius:10px 10px 0 0;font-weight:700;font-size:.95rem;transition:.15s}
+  .tab:hover{background:#ece3e0}
+  .tab.active{background:var(--card);color:var(--accent);box-shadow:0 -2px 6px rgba(0,0,0,.04)}
+  .panel{display:none}.panel.active{display:block}
+  .toc{max-width:900px;margin:0 auto 10px;padding:18px 24px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+  .toc h2{margin:0 0 10px;font-size:1.05rem;color:var(--accent);border:0}
+  .toc ul{columns:2;column-gap:30px;margin:0;padding-left:18px;font-family:system-ui,sans-serif;font-size:.9rem}
+  .toc a{color:#333;text-decoration:none}.toc a:hover{color:var(--accent)}
+  .wrap{max-width:900px;margin:0 auto;padding:10px 24px 80px}
+  h2{color:var(--accent);border-bottom:2px solid var(--line);padding-bottom:6px;margin-top:48px;font-size:1.45rem;scroll-margin-top:14px}
+  h3{color:#43202a;margin-top:34px;font-size:1.18rem;border-left:5px solid var(--accent);padding-left:12px}
+  .pgmark{display:inline-block;font-family:system-ui,sans-serif;font-size:.72rem;font-weight:700;color:#fff;background:var(--accent);padding:2px 10px;border-radius:12px;margin:24px 0 4px}
+  p{margin:13px 0}
+  .lead{font-size:1.05rem;background:var(--box);border-left:4px solid var(--accent);padding:16px 20px;border-radius:0 10px 10px 0}
+  .term{font-family:system-ui,sans-serif;font-weight:700;color:var(--accent)}
+  .en-term{font-style:italic;color:var(--muted)}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:.93rem}
+  th,td{border:1px solid var(--line);padding:8px 11px;text-align:left;vertical-align:top}
+  th{background:var(--chip);font-family:system-ui,sans-serif}
+  .ex{background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 0;margin:16px 0;overflow:hidden}
+  .ex .row{padding:9px 18px;border-bottom:1px dashed #eee}
+  .ex .row:last-child{border-bottom:0}
+  .ex .sent{font-family:"Times New Roman",serif;font-size:1.05rem}
+  .ex .num{display:inline-block;min-width:34px;color:var(--muted);font-family:system-ui,sans-serif;font-size:.85rem}
+  .ex i{color:#444}
+  .g{color:#1a7a3a;font-weight:bold}.ung{color:#b32020;font-weight:bold}.qm{color:#b88a00;font-weight:bold}
+  .gloss{display:block;margin:4px 0 0 34px;font-size:.92rem;color:#555}
+  .ana{display:block;margin:5px 0 0 34px;font-size:.92rem;color:#6a3340;background:#f8eef1;border-radius:6px;padding:8px 12px}
+  .ana::before{content:"▸ 詳解　";color:var(--accent);font-weight:bold;font-family:system-ui,sans-serif}
+  .concept{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:16px 0;border-top:3px solid var(--accent)}
+  .concept h4{margin:0 0 8px;color:var(--accent);font-family:system-ui,sans-serif;font-size:1rem}
+  .key{background:#fdf6e3;border:1px solid #e9dcae;border-radius:10px;padding:14px 18px;margin:18px 0}
+  .key b{color:#8a6d00}
+  ul.plain{margin:13px 0;padding-left:24px}ul.plain li{margin:6px 0}
+  pre.tree{background:#1f2430;color:#e8e8ee;border-radius:10px;padding:14px 18px;margin:14px 0 14px 34px;font-family:"Cascadia Code","Consolas","Courier New",monospace;font-size:.9rem;line-height:1.5;overflow-x:auto}
+  .bkt{font-family:"Cascadia Code","Consolas",monospace;background:#f3eef0;border-radius:5px;padding:1px 6px;font-size:.92rem;color:#43202a}
+  #en p{margin:12px 0}
+  #en .enpg{display:inline-block;font-family:system-ui,sans-serif;font-size:.72rem;font-weight:700;color:#fff;background:#888;padding:2px 9px;border-radius:12px;margin:20px 0 2px}
+  #en blockquote{margin:10px 0;padding:8px 16px;border-left:3px solid var(--line);background:#fbfbfb;font-family:"Times New Roman",serif}
+  #en .num{color:var(--muted);font-family:system-ui,sans-serif;font-size:.8rem;display:inline-block;min-width:34px}
+  .nav-bottom{display:flex;justify-content:space-between;margin-top:54px;font-family:system-ui,sans-serif;font-size:.9rem}
+  .nav-bottom a{color:var(--accent);text-decoration:none;border:1px solid var(--line);padding:10px 16px;border-radius:8px}
+  footer{text-align:center;color:var(--muted);font-size:.8rem;padding:20px;font-family:system-ui,sans-serif}
+  .back-top{position:fixed;right:18px;bottom:18px;background:var(--accent);color:#fff;text-decoration:none;padding:8px 13px;border-radius:20px;font-family:system-ui,sans-serif;font-size:.8rem;box-shadow:0 3px 10px rgba(0,0,0,.2)}
+</style>
+</head>
+<body id="top">
+<header><div class="inner">
+  <div class="ch">CHAPTER 5 · 逐頁逐例句詳解 + 英文原文對照</div>
+  <h1>功能範疇 I — TP</h1>
+  <div class="en">Functional Categories I — TP</div>
+  <div class="pg">書頁 155–203 · 涵蓋例句 (1)–(169) 與全部習題 · 句子是 T 的投射、V→v、Aux→T、do-support、英／法／瑞典語動詞抬升對比</div>
+</div></header>
+<nav class="bc"><a href="index.html">← 全書導覽</a> ／ 第 5 章</nav>
+
+<div class="tabbar">
+  <div class="tab active" id="tab-zh" onclick="showTab('zh')">中文逐頁詳解</div>
+  <div class="tab" id="tab-en" onclick="showTab('en')">English Original（整章英文原文）</div>
+</div>
+
+<!-- ===================== 中文 PANEL ===================== -->
+<div class="panel active" id="zh">
+<div class="toc">
+  <h2>本章導覽</h2>
+  <ul>
+    <li><a href="#s51b">5.1 導論：句子是 T 的投射</a></li>
+    <li><a href="#s52">5.2 句子是有中心語的</a></li>
+    <li><a href="#s521">5.2.1 理論考量</a></li>
+    <li><a href="#s522">5.2.2 經驗證據（情態、do、to）</a></li>
+    <li><a href="#s52fc">功能範疇與投射層級</a></li>
+    <li><a href="#s523">5.2.3 跨語言證據（克里奧語）</a></li>
+    <li><a href="#s53">5.3 時制標記</a></li>
+    <li><a href="#s531">5.3.1 主要動詞上的時制（Agree）</a></li>
+    <li><a href="#s532">5.3.2 助動詞上的時制</a></li>
+    <li><a href="#s54">5.4 中心語移位</a></li>
+    <li><a href="#s541">5.4.1 否定詞的位置</a></li>
+    <li><a href="#s542">5.4.2 助動詞移至 T</a></li>
+    <li><a href="#s543">5.4.3 V 移至 T（法語）</a></li>
+    <li><a href="#s544">5.4.4 助動詞原位（瑞典語）</a></li>
+    <li><a href="#s55">5.5 do-support（do 支撐）</a></li>
+    <li><a href="#s551">5.5.1 基本性質</a></li>
+    <li><a href="#s552">5.5.2 附綴否定詞分析</a></li>
+    <li><a href="#s553">5.5.3 附綴時制分析</a></li>
+    <li><a href="#s554">5.5.4 時制鏈（Tense chains）</a></li>
+    <li><a href="#s56">5.6 本章摘要</a></li>
+    <li><a href="#sex">習題（Exercises）</a></li>
+  </ul>
+</div>
+
+<div class="wrap">
+  <p class="lead" id="s51">本章是全書<strong>句子結構的核心轉折</strong>。Adger 論證：句子並非「主語 + 述語」的無中心語結構，而是一個<strong>功能中心語 T（Tense）的投射 TP</strong>。T 承載整句的<span class="term">時制特徵（tense features）</span>，主語位於 TP 指示語、vP 為 T 的補語。情態詞（modals）、強調式 do、不定詞 to 都是 T；動詞與助動詞透過 <span class="term">Agree（一致操作）</span> 從 T 取得並核驗時制；助動詞因<strong>強特徵</strong>抬升到 T，主要動詞則否——這解釋了英語、法語、瑞典語在「動詞 vs 否定詞」相對位置上的參數差異，並導出 <span class="term">do-support</span> 的最終分析（時制鏈 Tense chains）。</p>
+
+  <div class="concept"><h4>本章的核心主張（一張圖看懂）</h4>
+  <p>一個簡單及物句的完整結構：主語從 vP 指示語抬升到 TP 指示語；V 抬升並附加到小 v；T 透過 Agree 核驗 v（或助動詞）上的時制特徵。</p>
+  <pre class="tree">              TP
+            ／    ＼
+       Subject     T'
+            ／    ＼
+          T          vP
+                  ／   ＼
+        ⟨Subject⟩       v'
+                     ／   ＼
+                   v        VP
+                ／  ＼     ／  ＼
+              V    v   ⟨V⟩    Object</pre>
+  <p>＊角括號 ⟨…⟩ 代表移位後留下的<strong>拷貝／痕跡</strong>。投射層級（Hierarchy of Projections）最終定為：<span class="bkt">T &gt; (Neg) &gt; (Perf) &gt; (Prog) &gt; v &gt; V</span>，括號內為選擇性。</p></div>
+
+  <!-- 5.1 -->
+  <h2 id="s51b">5.1 導論</h2>
+  <span class="pgmark">書頁 155</span>
+  <p>本書最初的主要目標之一，是用 I-language 的詞彙來刻畫「句子」這個概念。如今我們已能做到：句子由<strong>成分（constituents）</strong>組成，這些成分可彼此內嵌，並彼此承載 <span class="term">θ關係（θ-relations）</span>、<span class="term">選擇關係（selectional relations）</span> 與<span class="term">修飾關係（modification relations）</span>；成分由其中心語（head）的詞項所投射的<strong>特徵</strong>來刻畫；前面數章我們也詳細發展了 vP 內部的結構。</p>
+  <p>本章將看到：句子有一個<strong>核心</strong>——某個詞彙範疇（動詞群 verbal cluster）的投射——其上覆蓋著一系列<strong>會投射、但不指派 θ角色</strong>的其他範疇。其中最重要的是 <span class="term">T</span>：承載整句時制特徵的範疇。句子其實是 T 的投射，主語在 TP 指示語、vP 為 T 的補語：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(1)</span> 句子的概要結構（schematic structure）：</span></div>
+  </div>
+  <pre class="tree">        TP
+      ／    ＼
+  Subject     T'
+          ／    ＼
+        T        vP</pre>
+  <p>vP 核心我們已分析過：動詞片語由兩部分組成——指派 <strong>Agent（施事）</strong>θ角色的「小 v（little v）」，與指派 <strong>Theme（受事）/Goal（終點）</strong>角色的「大 V（big V）」；大 V 抬升並附加到小 v（<span class="term">中心語移位 head movement</span>），以調和 <span class="term">UTAH</span> 與表層語序。本章將進一步論證更多中心語移位，並回到「主語位置」的問題——主語在 vP 指示語得到 θ角色後，會移到更高的 TP 指示語（其機制與動機留待第 6 章）。</p>
+
+  <!-- 5.2 -->
+  <h2 id="s52">5.2 句子是有中心語的</h2>
+  <span class="pgmark">書頁 156</span>
+  <p>本節檢視：句子是否像動詞片語、名詞片語一樣，有句法中心語？答案是「有」，而且這個中心語最重要的貢獻與<strong>時制</strong>有關。</p>
+
+  <h3 id="s521">5.2.1 理論考量</h3>
+  <p>傳統觀念認為句子是「取一個主語、再用一個述語（通常是 VP）對它說點什麼」而成：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(2)</span> 傳統的無中心語結構：</span>
+      <span class="ana">這個結構看似合理，卻有一個致命缺陷：句子<strong>沒有中心語</strong>。範疇「Sentence」的性質不從任何詞項投射而來。若 (2) 正確，文法就得新增一條特殊規則來說明「Sentence 這個範疇如何引入、有何性質」。但若句子是由 T 充當中心語（如 (1)），就<strong>無須擴充文法</strong>：T 本來就在詞庫裡，句子的性質就是 T 性質的投射——一如 PP 是 P 的投射、NP 是 N 的投射。結論：「句子」這個範疇<strong>沒有任何特殊之處</strong>，它和句法裡其他範疇一樣運作。</span></div>
+  </div>
+  <pre class="tree">     Sentence
+      ／    ＼
+  Subject    VP   ← (2) 無中心語，理論上不經濟</pre>
+
+  <h3 id="s522">5.2.2 經驗證據</h3>
+  <p><strong>情態詞（Modals）。</strong>許多英語句子除主要動詞外，還有一個或多個<strong>助動詞</strong>——一小群執行受限語意功能的特化動詞。先看只有一個助動詞的句子：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(3)</span> Gilgamesh may seek Ishtar.</span>
+      <span class="ana">主語 Gilgamesh 由動詞 seek（兩位謂語）指派 θ角色，但主語與其 θ角色指派者之間<strong>被助動詞 may 隔開</strong>。may 屬於一小類<span class="term">情態動詞（modal verbs）</span>，位於主要動詞之前，語意上表達義務、可能、許可、未來等概念。</span></div>
+    <div class="row"><span class="sent"><span class="num">(4)</span> Gilgamesh must seek Ishtar.</span></div>
+    <div class="row"><span class="sent"><span class="num">(5)</span> Gilgamesh can seek Ishtar.</span></div>
+    <div class="row"><span class="sent"><span class="num">(6)</span> Gilgamesh should seek Ishtar.</span></div>
+    <div class="row"><span class="sent"><span class="num">(7)</span> Gilgamesh will seek Ishtar.</span></div>
+    <div class="row"><span class="sent"><span class="num">(8)</span> <span class="ung">*</span>Gilgamesh seek may Ishtar.</span>
+      <span class="ana">情態詞只能出現在主要動詞<strong>之前</strong>，不能在其後（(8) 不合法）。</span></div>
+  </div>
+  <p>情態詞位於「動詞 + 賓語」這個成分<strong>之外</strong>，因為該成分可被<span class="term">假分裂（pseudocleft）</span>(9)、也可整個移離情態詞 (10)：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(9)</span> What Gilgamesh may do is [seek Ishtar].</span></div>
+    <div class="row"><span class="sent"><span class="num">(10)</span> …and [seek Ishtar], Gilgamesh may.</span>
+      <span class="ana">這顯示情態詞不只與動詞構成成分，而是與<strong>整個 vP</strong> 構成成分。所以正確結構是 (11)（may 取 vP 為補語）而非 (12)（may 只取 V，賓語另掛）。</span></div>
+  </div>
+  <pre class="tree">  (11) 正確            (12) 錯誤
+       ?                    ?
+     ／  ＼               ／  ＼
+   may   vP             ?     NP
+       ／  ＼         ／  ＼
+   seek   Ishtar    may  seek  Ishtar</pre>
+  <p>情態詞之間在多數（但非全部）英語方言中呈<span class="term">互補分布（complementary distribution）</span>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(13)</span> <span class="ung">*</span>Gilgamesh must should seek Ishtar.</span></div>
+    <div class="row"><span class="sent"><span class="num">(14)</span> <span class="ung">*</span>Gilgamesh might can seek Ishtar.</span>
+      <span class="ana">這顯示結構中只有<strong>單一位置</strong>容納情態詞，且該位置在 VP 之外、主語之後。概要結構 (15)：[Gilgamesh [ ? [may [seek Ishtar]]]]。</span></div>
+  </div>
+  <span class="pgmark">書頁 158–160</span>
+  <p>情態詞似乎也<strong>因時制而屈折變化</strong>，雖然過去式情態詞的語意常與預期不同。傳統文法將情態詞依時制分類 (16)：</p>
+  <table>
+    <tr><th>現在式 Present</th><th>過去式 Past</th></tr>
+    <tr><td>may</td><td>might</td></tr>
+    <tr><td>can</td><td>could</td></tr>
+    <tr><td>shall</td><td>should</td></tr>
+    <tr><td>will</td><td>would</td></tr>
+    <tr><td>must</td><td>（無過去式）</td></tr>
+  </table>
+  <p>此分類由 <span class="term">時制連動（Sequence of Tense）</span> 現象支持——這是關於矩陣動詞與內嵌動詞時制關係的概括：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(17)</span> I believe [she is pregnant].</span></div>
+    <div class="row"><span class="sent"><span class="num">(18)</span> I think [she is pregnant].</span></div>
+    <div class="row"><span class="sent"><span class="num">(19)</span> I believed [she was pregnant].</span></div>
+    <div class="row"><span class="sent"><span class="num">(20)</span> I thought [she was pregnant].</span></div>
+    <div class="row"><span class="sent"><span class="num">(21)</span> <span class="ung">*</span>I believed [she is pregnant].</span></div>
+    <div class="row"><span class="sent"><span class="num">(22)</span> <span class="ung">*</span>I thought [she is pregnant].</span>
+      <span class="ana">矩陣動詞為過去式時，內嵌子句的動詞<strong>也必須</strong>是過去式——即使該命題在說話時刻仍為真（(19) 不必蘊含 she 已不再懷孕）。這是<strong>純句法</strong>的概括：過去式在矩陣動詞上「強制」內嵌動詞為過去式，與內嵌動詞的語意解讀無關。(21)(22) 因違反此規則而不合法。</span></div>
+  </div>
+  <p>把情態詞加進來看，會發現右欄（過去式）情態詞的<strong>行為與過去式動詞相同</strong>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(23)</span> I believe [she may be pregnant]/[she can do that]/[she will go].</span></div>
+    <div class="row"><span class="sent"><span class="num">(24)</span> I think [she may be pregnant]/[she can do that]/[she will go].</span></div>
+    <div class="row"><span class="sent"><span class="num">(25)</span> I believed [she might be pregnant]/[she could do that]/[she would go].</span></div>
+    <div class="row"><span class="sent"><span class="num">(26)</span> I thought [she might be pregnant]/[she could do that]/[she would go].</span></div>
+    <div class="row"><span class="sent"><span class="num">(27)</span> <span class="ung">*</span>I believed [she may be pregnant]/[she can do that]/[she will go].</span></div>
+    <div class="row"><span class="sent"><span class="num">(28)</span> <span class="ung">*</span>I thought [she may be pregnant]/…</span></div>
+    <div class="row"><span class="sent"><span class="num">(29)</span> She might be pregnant.</span>
+      <span class="ana">might/could/would 在時制連動下表現得像過去式（要搭配過去式矩陣動詞），支持傳統把情態詞分成過去／現在式——即使 (29) 並不描述說話時刻之前的情境。結論：情態詞在<strong>句法上</strong>分裂為現在與過去式，且此過程獨立於其解讀。</span></div>
+  </div>
+  <span class="pgmark">書頁 160–161</span>
+  <p>由此可知情態詞位於主要動詞左方，且其時制特徵受時制連動這個句法依存的約束。我們可假設情態詞帶有<strong>範疇特徵 T</strong>（承載 Tense 特徵的範疇），並與 vP 合併 (30)：</p>
+  <pre class="tree">  (30)     T'
+         ／   ＼
+     modal     VP</pre>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(31)</span> <span class="ung">*</span>Gilgamesh might loved Ishtar.</span>
+      <span class="ana">當有情態詞承載整句時制時，主要動詞<strong>保持不屈折</strong>（不能 loved）——印證時制特徵在 T、不在動詞上。</span></div>
+  </div>
+  <p><strong>強調式 do。</strong>英語還有其他標記時制的助動詞，例如強調式 do：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(32)</span> Enkidu did free animals.</span></div>
+    <div class="row"><span class="sent"><span class="num">(33)</span> Enkidu does free animals.</span></div>
+    <div class="row"><span class="sent"><span class="num">(34)</span> Enkidu freed animals.</span></div>
+    <div class="row"><span class="sent"><span class="num">(35)</span> Enkidu frees animals.</span>
+      <span class="ana">(32)(33) 時制標在助動詞 do/does 上；(34)(35) 語意幾乎相同，但時制直接標在動詞上。可見句子時制可標在 vP 之外的位置（do 出現之處），也可直接標在動詞上。</span></div>
+    <div class="row"><span class="sent"><span class="num">(36)</span> <span class="ung">*</span>Enkidu do freed animals.</span>
+      <span class="ana">與情態詞相同：有 do 時，時制只在 do 上發音，不能同時在動詞上（不能 do + freed）。</span></div>
+  </div>
+  <p>「時制特徵位於 vP 之外」由 <span class="term">VP 前置（VP-fronting）</span>（更精確為 vP-fronting）支持：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(37)</span> Enkidu said he would free the animals and [free the animals] he will.</span></div>
+    <div class="row"><span class="sent"><span class="num">(38)</span> <span class="ung">*</span>Enkidu said he freed the animals and [freed the animals] he.</span></div>
+    <div class="row"><span class="sent"><span class="num">(39)</span> Enkidu said he freed the animals and [free the animals] he did.</span>
+      <span class="ana">前置時，被前置的 vP <strong>不帶時制</strong>（必須是 free，不能 freed，見 (38) 不合法）；時制標記留在原本情態詞會出現的位置——若無情態詞，就由 do 承載 (39)，這個 do <strong>不帶強調意味</strong>。基本結構 (40)：[ [vP free the animals] [ ⟨vP⟩ did ] ]。把這個「問號範疇」認定為 <strong>T</strong>。</span></div>
+  </div>
+  <span class="pgmark">書頁 162</span>
+  <p><strong>VP 省略（VP-ellipsis）</strong>提供同向論證：動詞片語整個省略，由前文補足：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(41)</span> Gilgamesh loved Ishtar and Enkidu did [ ] too.</span></div>
+    <div class="row"><span class="sent"><span class="num">(42)</span> Gilgamesh fears death and Shamash does [ ] as well.</span>
+      <span class="ana">方括號標記被省略的材料——只是<strong>裸 VP、不帶時制</strong>；時制由助動詞 do 承載。VP 省略中，do 似乎只是在承載時制資訊而已。</span></div>
+  </div>
+  <span class="pgmark">書頁 162–163</span>
+  <p><strong>不定詞 to。</strong>最後一個支持「VP 外有時制位置」的元素是 to，它看似介系詞，卻出現在<span class="term">不定詞句（infinitival sentences）</span>中（通常是內嵌句、完全不標時制）：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(43)</span> She tried [to leave].</span></div>
+    <div class="row"><span class="sent"><span class="num">(44)</span> We wanted [to eat cake].</span></div>
+    <div class="row"><span class="sent"><span class="num">(45)</span> <span class="ung">*</span>She tried [to left].</span></div>
+    <div class="row"><span class="sent"><span class="num">(46)</span> <span class="ung">*</span>We wanted [to ate cake].</span>
+      <span class="ana">to 後的動詞必須是<strong>不帶時制（untensed）</strong>的形式（不能 left/ate）。</span></div>
+    <div class="row"><span class="sent"><span class="num">(47)</span> <span class="ung">*</span>She tried [to may leave].</span></div>
+    <div class="row"><span class="sent"><span class="num">(48)</span> <span class="ung">*</span>She wanted [to can leave].</span>
+      <span class="ana">to 與情態詞呈<strong>互補分布</strong>（不能 to + may/can）。</span></div>
+    <div class="row"><span class="sent"><span class="num">(49)</span> <span class="ung">*</span>She tried to do go.</span>
+      <span class="ana">不定詞中也不能用強調式 do。</span></div>
+    <div class="row"><span class="sent"><span class="num">(50)</span> Enkidu wanted to live and Ishtar tried to.</span></div>
+    <div class="row"><span class="sent"><span class="num">(51)</span> <span class="ung">*</span>Enkidu wanted to live and Ishtar tried to do.</span>
+      <span class="ana">VP 省略中，承載時制的 do 也插不進去。這些事實都指向：<strong>to 取代了時制特徵的位置</strong>，與情態詞、強調式 do 佔據同一個句法位置。</span></div>
+  </div>
+  <span class="pgmark">書頁 163–164</span>
+  <div class="key"><b>5.2.2 小結（四點論證）：</b><br>
+  1. 情態詞處於與時制特徵相關的位置。<br>
+  2. 強調式 <i>do</i> 與非限定 <i>to</i> 也在這個位置。<br>
+  3. 這個位置在 vP 之外，但跟在主語的表層位置之後。<br>
+  4. 形態上的時制標記可出現在這個位置。<br>
+  → 支持結構 (52)：modal / do / to 都是<strong>中心語</strong>，都範疇化為 <strong>T</strong>，與 vP 合併投射出 T'、再以主語為指示語投射出 <strong>TP</strong>。</div>
+  <p>看似弔詭：上一章主語在 vP 指示語合併，本章證據卻顯示主語在 TP 指示語。調和之道：主語經歷<strong>移位</strong>，從 vP 指示語抬升、重新合併到 TP 指示語（動機留待第 6 章）。一個簡單及物句的完整概要結構 (53)：</p>
+  <div class="ex"><div class="row"><span class="sent"><span class="num">(53)</span> 簡單及物句的完整結構（兩次移位：V→v 與 Subject→Spec-TP）</span></div></div>
+  <pre class="tree">              TP
+            ／    ＼
+       Subject     T'
+            ／    ＼
+          T          vP
+                  ／   ＼
+        ⟨Subject⟩       v'
+                     ／   ＼
+                   v        VP
+                ／  ＼     ／  ＼
+              V    v   ⟨V⟩    Object</pre>
+
+  <h3 id="s52fc">功能範疇（Functional categories）</h3>
+  <span class="pgmark">書頁 165</span>
+  <p>像 T 這種<strong>會投射、但不指派 θ角色</strong>的範疇，稱為<span class="term">功能範疇（functional categories）</span>。功能範疇有語意，但其語意與帶 V、N、A、P 等<span class="term">詞彙範疇（lexical categories）</span>之 θ相關語意截然不同。功能範疇不僅為詞彙範疇添加非論旨語意，還在子句／片語結構中提供與詞彙範疇相關聯的<strong>位置</strong>。直覺上，功能範疇在詞彙範疇之上<strong>豎起一副句法骨架</strong>，把片語中各種句法關係維繫在一起。</p>
+  <p>其實我們已遇過一個近似功能範疇者：<strong>小 v</strong>。小 v 雖對其指示語有 θ關係，但對其補語則非 θ理論的；小 v 與 V 的關係由<span class="term">投射層級（Hierarchy of Projections）</span>決定，T 的位置亦然：</p>
+  <div class="ex"><div class="row"><span class="sent"><span class="num">(54)</span> 投射層級：<span class="bkt">T &gt; v &gt; V</span></span></div></div>
+
+  <h3 id="s523">5.2.3 跨語言證據</h3>
+  <p>既然時制不必然附於動詞、而可標在結構較高處，我們應能找到「時制標記在 VP 之外」的語言。某些<strong>克里奧語（creole）</strong>正是如此。<span class="term">模里西斯克里奧語（Mauritian Creole）</span>動詞本身不標時制，時制／體貌由<strong>置於動詞前、主語後的小品詞</strong>標記：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(55)</span> mo mahze</span><span class="gloss">1 eat ／「我吃。」</span></div>
+    <div class="row"><span class="sent"><span class="num">(56)</span> mo ti mahze</span><span class="gloss">I [past] eat ／「我吃過了（我吃了）。」</span></div>
+  </div>
+  <p><span class="term">蘇利南的英語底克里奧語 Sranan</span> 也有簡單過去式標記 ben：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(57)</span> mi waka</span><span class="gloss">1 walk ／「我（習慣性地）走。」</span></div>
+    <div class="row"><span class="sent"><span class="num">(58)</span> mi ben waka</span><span class="gloss">I [past] walk ／「我走了。」</span></div>
+    <div class="row"><span class="sent"><span class="num">(59)</span> mi ben e waka</span><span class="gloss">1 [past] [prog] walk ／「我那時正在走。」</span></div>
+    <div class="row"><span class="sent"><span class="num">(60)</span> mi ben o waka</span><span class="gloss">I [past] [fut] walk ／「我正要走。」</span>
+      <span class="ana">過去式標記 ben 可被表進行體或未來的<strong>體貌中心語</strong>與動詞隔開——暗示在 T 合併之前，還有更多中心語先與 vP 合併。英語的助動詞結構也正是如此（見 5.3.2）。</span></div>
+  </div>
+
+  <!-- 5.3 -->
+  <h2 id="s53">5.3 時制標記</h2>
+  <h3 id="s531">5.3.1 主要動詞上的時制</h3>
+  <span class="pgmark">書頁 166–167</span>
+  <p>我們已假設情態詞、強調式 do、to 都是 T 中心語，句子是 T 的投射。但<strong>時制如何在非 T 中心語（動詞、其他助動詞）上發音</strong>？動詞有範疇特徵 T 嗎？立刻可排除：動詞需要範疇特徵 V（且其句法涉及小 v），且動詞與情態詞／do／to <strong>不</strong>呈互補分布（可共現）。然而動詞確實可形態上標記時制：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(61)</span> Gilgamesh misses Enkidu.</span></div>
+    <div class="row"><span class="sent"><span class="num">(62)</span> Gilgamesh missed Enkidu.</span></div>
+  </div>
+  <div class="concept"><h4>核驗與賦值（Checking and valuing features）</h4>
+  <p>我們把 T 的時制特徵與動詞群的關係當成<strong>一致關係</strong>處理：假設動詞群上有一個時制特徵，且它必須與 T 上的時制特徵<strong>相同</strong>。</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(63)</span> a. T[past]…V+v[past]　b. T[present]…V+v[present]　c. <span class="ung">*</span>T[past]…V+v[present]　d. <span class="ung">*</span>T[present]…V+v[past]</span></div>
+  </div>
+  <p>這類似第 3 章選擇特徵的<strong>匹配要求（Matching）</strong>：中心語上不可解釋的範疇特徵（c-選擇特徵）由匹配的範疇特徵核驗，核驗後即刪除（<span class="term">核驗要求 Checking requirement</span> (64)：不可解釋特徵必須被核驗，核驗後可刪除）。選擇特徵在<strong>姊妹關係（sisterhood）</strong>下核驗；現在我們區分範疇特徵與非範疇特徵，後者可在 <strong>c-統制（c-command）</strong>下核驗——這個操作稱為 <span class="term">Agree</span>（大寫，以區別傳統的「一致 agreement」）。</p>
+  </div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(65)</span> <b>Agree：</b>句法物件 Y 上的不可解釋特徵 F，當 Y 與另一帶匹配特徵 F 的句法物件 Z 處於 c-統制關係時，被核驗。</span></div>
+  </div>
+  <span class="pgmark">書頁 168–169</span>
+  <p>把動詞群上的時制特徵設為<strong>不可解釋（uninterpretable）</strong>，T 上的時制特徵則可解釋，即可排除壞結構 (66c,d)：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(66)</span> a. T[past]…V+v[upast] ✓　b. T[present]…V+v[upresent] ✓　c. <span class="ung">*</span>T[past]…V+v[upresent]　d. <span class="ung">*</span>T[present]…V+v[upast]</span>
+      <span class="ana">c,d 不合法，因為動詞群上的不可解釋時制特徵未被核驗。</span></div>
+  </div>
+  <p>如何確保「對的」不可解釋特徵一開始就出現在小 v 上？兩種做法：(a) <strong>純核驗法</strong>——靠 numeration 選詞時的選擇（若選了 [upast] 的 v 卻併入 [present] 的 T，特徵不匹配、不可解釋特徵不被核驗）；(b) <strong>賦值核驗法（checking by valuing）</strong>——小 v 帶一個<strong>未賦值</strong>的不可解釋時制特徵，核驗時從 T 的時制特徵<strong>取得其值</strong>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(67)</span> T[tense:past]…v[utense: ] → T[tense:past]…v[utense:past]</span></div>
+    <div class="row"><span class="sent"><span class="num">(68)</span> <b>Agree（一般化）：</b>在 X[F:val]…Y[uF:]（…代表 c-統制）的構型中，F 核驗並賦值 uF，得到 X[F:val]…Y[uF:val]。</span>
+      <span class="ana">賦值法的優點：不必先生成壞結構再排除，而是<strong>根本不生成</strong>壞結構。</span></div>
+  </div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(69)</span> <span class="ung">*</span>[uF:]…[uF:]　（兩個都未賦值，無法核驗）</span></div>
+    <div class="row"><span class="sent"><span class="num">(70)</span> a. [G]…[uG] → [G]…[uG-已刪]　b. <span class="ung">*</span>[uG]…[uG]</span>
+      <span class="ana">若特徵是<strong>privative（無值對立）</strong>、不需賦值，則仍按舊法核驗即可。現在我們有兩種核驗特徵的句法關係：<strong>Agree</strong> 與<strong>姊妹關係</strong>；後者其實是前者更局部的版本（姊妹是 c-統制的子型）。</span></div>
+  </div>
+  <span class="pgmark">書頁 170–171</span>
+  <p><strong>系統的實作。</strong>核心：是<strong>小 v</strong> 帶一個可取時制特徵為值的不可解釋特徵，稱 <span class="term">Infl（inflection 屈折）</span>：</p>
+  <div class="ex"><div class="row"><span class="sent"><span class="num">(71)</span> 小 v 含一不可解釋屈折特徵 [uInfl: ]。</span></div></div>
+  <p>先建好 V 抬升到 v 的 vP (72)，再與只含範疇特徵 T 與可解釋特徵 [past] 的<strong>空中心語 T</strong> 合併；T 的時制與 v 上的 Agree，後者被賦值 (73)：</p>
+  <pre class="tree">  (73)            TP
+              ／      ＼
+        T[past]          vP
+                      ／    ＼
+                Gilgamesh    v'
+                          ／   ＼
+                        v        VP
+                     ／  ＼    ／  ＼
+                  miss  v[uInfl:past] ⟨miss⟩ Enkidu</pre>
+  <p>拼讀（Spellout）時，帶已核驗 [uInfl:past] 的小 v + 動詞發音為動詞過去式。形態介面規則 (74)：將 [uInfl:past] 發音為 -ed；不規則者 (75)：eat 在鄰接 v[uInfl:past] 時發音為 ate（且此時不發 [uInfl:past]）。現在式一致 (76) Enkidu misses Gilgamesh：英語動詞一致只限現在式，可說此時 T 只帶<strong>數特徵</strong>（如 [singular]），它賦值 v 上的 Infl，最終 v 發音為 -(e)s；語意規則把「無時制特徵的 T」解讀為現在式。</p>
+  <div class="key"><b>5.3.1 小結：</b>英語主要動詞透過 T 與小 v 之間的 <strong>Agree</strong> 關係取得時制；這保證了 T 的可解釋時制特徵所加諸句子的語意，與句中時制屈折的形態形式相容。Agree 是先前「選擇關係在姊妹下核驗」的自然延伸——只是把核驗構型從姊妹擴展到 <strong>c-統制</strong>；選擇特徵核驗只是 Agree 更局部的版本。</div>
+
+  <h3 id="s532">5.3.2 助動詞上的時制</h3>
+  <span class="pgmark">書頁 171–172</span>
+  <p>進行體（progressive）與完成體（perfect）助動詞如何核驗時制？它們<strong>不是</strong>單純的 T 中心語，因為它們能與情態詞、非限定 to 共現（卻不能與強調式 do 共現，見 5.5）：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(77)</span> I might have eaten some seaweed.</span></div>
+    <div class="row"><span class="sent"><span class="num">(78)</span> I'd planned to have finished by now.</span></div>
+    <div class="row"><span class="sent"><span class="num">(79)</span> I could have been flying helicopters by now.</span></div>
+    <div class="row"><span class="sent"><span class="num">(80)</span> I have been flying helicopters for years.</span></div>
+    <div class="row"><span class="sent"><span class="num">(81)</span> <span class="ung">*</span>I have might be flying helicopters.</span></div>
+    <div class="row"><span class="sent"><span class="num">(82)</span> <span class="ung">*</span>I am having eaten seaweed.</span></div>
+    <div class="row"><span class="sent"><span class="num">(83)</span> I might be leaving soon.</span>
+      <span class="ana">助動詞固定順序為 <strong>情態–完成–進行（Modal-Perfect-Progressive）</strong>，三者都可省略，但順序不可亂。時制總標在<strong>第一個助動詞</strong>上；且每個助動詞對下一個動詞性元素有特定形態效應：完成體 have 後接<strong>過去分詞</strong>、進行體 be 後接<strong>現在分詞（-ing）</strong>、情態詞後接<strong>裸動詞詞幹</strong>。</span></div>
+  </div>
+  <span class="pgmark">書頁 172–173</span>
+  <p><strong>完成體助動詞。</strong>have 在 vP 之外合併（由 VP 前置 (84) 可見），並強制主要動詞為過去分詞 (85)：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(84)</span> I'd planned to have finished, and [finished] I have.</span></div>
+    <div class="row"><span class="sent"><span class="num">(85)</span> I have eaten/<span class="ung">*</span>eat/<span class="ung">*</span>ate/<span class="ung">*</span>eating.</span>
+      <span class="ana">假設完成體 have 帶可解釋範疇特徵 <strong>[Perf]</strong>，且 Perf 可作為 v 上 [uInfl:] 的值。</span></div>
+    <div class="row"><span class="sent"><span class="num">(86)</span> have[Perf]…v[uInfl:] → have[Perf]…v[uInfl:Perf]</span></div>
+  </div>
+  <p>推導 (87)：vP 建好後，Perf 與之合併、Agree 賦值 [uInfl:Perf]（拼讀為分詞詞綴）。注意 Perf 上也帶 [uInfl:]（因它將成為帶時制的元素）。接著空中心語 T 合併，核驗 have 上的 uInfl、賦值為 [past] (88)；have 拼讀為 had。但有充分證據顯示完成體 have <strong>實際抬升到 T</strong>（就像主要動詞抬升到 v），所以正確結構是 (89) 而非 (88)：</p>
+  <pre class="tree">  (89)            T
+              ／    ＼
+            T          PerfP
+         ／  ＼      ／    ＼
+       Perf   T   ⟨Perf⟩    vP
+                          ／  ＼
+                    Subject    v'
+                            ／  ＼
+                          v       VP
+                              eaten ⟨eat⟩ Object</pre>
+  <span class="pgmark">書頁 174–175</span>
+  <p><strong>進行體助動詞。</strong>同理，be 帶不可解釋範疇特徵 <strong>Prog</strong>、投射 ProgP，賦值 v 上 [uInfl]，使 v 發音為 -ing。(89) Gilgamesh is fighting Humbaba 在主語抬升前的結構 (90)，be 隨後抬升到 T (91)：</p>
+  <pre class="tree">  (91)            T
+              ／    ＼
+        T[pres]       ProgP
+       ／  ＼        ／    ＼
+     is   T[pres]  ⟨is⟩      vP
+                         ／  ＼
+                  Gilgamesh    v'
+                           ／  ＼
+                         v       VP
+                     fight-ing[uInfl:Prog] ⟨fight⟩ Humbaba</pre>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(92)</span> Gilgamesh has been fighting Humbaba.</span></div>
+    <div class="row"><span class="sent"><span class="num">(93)</span> <span class="ung">*</span>Gilgamesh is having fought Humbaba.</span>
+      <span class="ana">完成體與進行體有<strong>嚴格順序</strong>（Perf 在 Prog 之前）。此排序成因目前仍是重大研究問題、無定論，這裡僅併入投射層級。</span></div>
+    <div class="row"><span class="sent"><span class="num">(94)</span> 投射層級：<span class="bkt">T &gt; (Perf) &gt; (Prog) &gt; v &gt; V</span>（括號內為選擇性）</span></div>
+  </div>
+  <div class="key"><b>5.3.2 小結：</b>英語除情態詞、do、to 外，有一個<strong>空 T 中心語</strong>，核驗其姊妹之中心語上的時制特徵。若該投射是助動詞，則助動詞<strong>移動並附加到 T</strong>（證據見 5.4）。</div>
+
+  <!-- 5.4 -->
+  <h2 id="s54">5.4 中心語移位</h2>
+  <span class="pgmark">書頁 175</span>
+  <p>我們已用 V→v 來導出英語動詞片語的正確語序，這叫<span class="term">中心語移位（head movement）</span>。本節將看到<strong>助動詞抬升到 T</strong> 的強力證據，依據是「助動詞位置」與「否定」的互動。</p>
+
+  <h3 id="s541">5.4.1 否定詞的位置</h3>
+  <span class="pgmark">書頁 176</span>
+  <p>英語否定由小品詞 <strong>not</strong>（或縮減形 n't）標記，分兩種：<span class="term">句子否定（sentential negation）</span>（否定整句的真值）與<span class="term">成分否定（constituent negation）</span>。</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(95)</span> I haven't left yet.</span></div>
+    <div class="row"><span class="sent"><span class="num">(96)</span> It is not true that I have left yet.（(95) 的釋義 = 句子否定）</span></div>
+    <div class="row"><span class="sent"><span class="num">(97)</span> I was sitting not under the tree (but under the bush).（PP 成分否定）</span></div>
+    <div class="row"><span class="sent"><span class="num">(98)</span> I was eating not a peach (but an apple).（NP 成分否定）</span></div>
+    <div class="row"><span class="sent"><span class="num">(99)</span> I might be not going to the party (but washing my hair).（VP 成分否定）</span></div>
+    <div class="row"><span class="sent"><span class="num">(100)</span> It is true that I might be doing something other than going…（= (99) 的意思）</span></div>
+    <div class="row"><span class="sent"><span class="num">(101)</span> It is not true that I might be going to the party.（≠ (99)）</span>
+      <span class="ana">本章專注於<strong>句子否定</strong>的解讀，因此把「只有成分否定解讀」的句子標為不合法。</span></div>
+  </div>
+  <p>在有完整助動詞的句子裡，句子否定<strong>跟在情態詞之後</strong>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(102)</span> Gilgamesh might not have been reading the cuneiform tablets.</span></div>
+    <div class="row"><span class="sent"><span class="num">(103)</span> <span class="ung">*</span>Gilgamesh might have not been reading the cuneiform tablets.</span></div>
+    <div class="row"><span class="sent"><span class="num">(104)</span> <span class="ung">*</span>Gilgamesh might have been not reading the cuneiform tablets.</span></div>
+    <div class="row"><span class="sent"><span class="num">(105)</span> Gilgamesh has not been reading the cuneiform tablets.</span></div>
+    <div class="row"><span class="sent"><span class="num">(106)</span> <span class="ung">*</span>Gilgamesh has been not reading the cuneiform tablets.</span></div>
+    <div class="row"><span class="sent"><span class="num">(107)</span> Gilgamesh is not reading the cuneiform tablets.</span>
+      <span class="ana">(103)(104) 對多數人只在成分否定解讀下合法。教訓：句子否定<strong>總是跟在第一個助動詞之後</strong>。</span></div>
+  </div>
+
+  <h3 id="s542">5.4.2 助動詞移至 T</h3>
+  <span class="pgmark">書頁 177–178</span>
+  <p>否定跟在情態詞（= T）之後 → Neg 在 T 右側、在 T 之前合併；又因 Neg 在 Perf 左側 → 在 Perf 之後合併。假設 Neg 是中心語，得結構 (108)，並更新投射層級 (109)：</p>
+  <pre class="tree">  (108)        T'
+            ／    ＼
+          T          NegP
+                  ／    ＼
+                Neg       PerfP</pre>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(109)</span> 投射層級：<span class="bkt">T &gt; (Neg) &gt; (Perf) &gt; (Prog) &gt; v &gt; V</span></span></div>
+    <div class="row"><span class="sent"><span class="num">(110)</span> Gilgamesh has not read the cuneiform tablets.</span>
+      <span class="ana">但若 Neg 比 Perf 高，為何 (110) 中 has 卻在 not 之前？答案：<strong>最高的助動詞移到 T</strong>（一如 V 移到 v）(111)。只有進行體時亦然 (112)。</span></div>
+    <div class="row"><span class="sent"><span class="num">(112)</span> Gilgamesh is not reading the cuneiform tablets.</span></div>
+    <div class="row"><span class="sent"><span class="num">(113)</span> Gilgamesh has eaten the honey.（無否定時仍假設此移位 → (114)）</span></div>
+  </div>
+  <pre class="tree">  (114)            TP
+              ／      ＼
+        Gilgamesh       T'
+                     ／    ＼
+                   T          PerfP
+                ／  ＼      ／    ＼
+              has   T   ⟨has⟩      vP
+                                ／  ＼
+                       ⟨Gilgamesh⟩  v' … eat-en ⟨eat⟩ the honey</pre>
+  <span class="pgmark">書頁 179</span>
+  <p>於是兩種情形：T 在<strong>助動詞</strong>上核驗時制 → 助動詞抬升到 T；T 在<strong>小 v</strong> 上核驗時制 → <strong>不</strong>抬升。後者由「英語主要動詞在否定詞<strong>之後</strong>」可知：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(115)</span> <span class="ung">*</span>Gilgamesh flew not the broomstick.</span></div>
+    <div class="row"><span class="sent"><span class="num">(116)</span> Gilgamesh didn't fly the broomstick.</span>
+      <span class="ana">若主要動詞抬升到 T，(115) 在現代英語應合法——但它不合法；表達否定主要動詞要用助動詞 do（5.5）。主要動詞<strong>留在結構低處</strong>，與助動詞對比。</span></div>
+  </div>
+  <span class="pgmark">書頁 179–181</span>
+  <div class="concept"><h4>特徵的「強度（strength）」——驅動移位的機制</h4>
+  <p>為何帶時制的助動詞抬升到 T，帶時制的動詞卻原位不動？引入特徵的第二屬性：<span class="term">強度（strength）</span>（以 * 標示）。強特徵<strong>觸發移位</strong>，使核驗必須<strong>局部</strong>（姊妹關係）發生，而非遠距。</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(117)</span> X[uF*]…Y[F] → X[uF*-已核驗] Y[F]…⟨Y[F]⟩（高特徵為強）</span></div>
+    <div class="row"><span class="sent"><span class="num">(118)</span> <b>強度概括：</b>強特徵必須與其所核驗／被核驗的特徵局部相鄰。</span></div>
+    <div class="row"><span class="sent"><span class="num">(119)</span> X[F]…Y[uF*] → X[F] Y[uF*-已核驗]…⟨Y[uF*]⟩（低特徵為強）</span></div>
+  </div>
+  <p>移位是<strong>向上</strong>的（讓比 Neg 低的助動詞抬升到比 Neg 高的位置）。強度可能與形態相關（「強度 = 形態可解釋性」），但此問題未定，我們僅把它當作純形式的移位驅動機制。</p>
+  </div>
+  <p>關鍵特徵指定：Perf（或 Prog）上被賦值為時制的 [uInfl] 是<strong>強</strong>的，故助動詞須與 T 局部相鄰 → 觸發 Perf 抬升附加到 T（兩步驟：先 Agree 賦值，再抬升 (120)）。小 v 上的屈折特徵是<strong>弱</strong>的，故無須與 T 局部 → 英語主要動詞永不在否定詞前 (121)。總結 (122)：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(122)</span> 當 [uInfl:] 在 <strong>Aux</strong> 上被 T 賦值，其值為<strong>強</strong>；在 <strong>v</strong> 上被賦值，其值為<strong>弱</strong>。</span></div>
+    <div class="row"><span class="sent"><span class="num">(123)</span> V→v 的強制移位同理：小 v 帶一個<strong>強</strong>的不可解釋 V 特徵（形似選擇特徵），由 V 抬升到 v 滿足。</span></div>
+  </div>
+
+  <h3 id="s543">5.4.3 V 移至 T（法語）</h3>
+  <span class="pgmark">書頁 181–184</span>
+  <p>與英語不同，<strong>法語主要動詞出現在否定詞之前</strong>，與助動詞位置相同：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(124)</span> Jean n'a pas aimé Marie.</span><span class="gloss">John has not loved Mary ／「John 沒愛過 Mary。」（完成體 a 在 pas 之前）</span></div>
+    <div class="row"><span class="sent"><span class="num">(125)</span> Jean n'aime pas Marie.</span><span class="gloss">John loves not Mary ／「John 不愛 Mary。」（<strong>主要動詞 aime 在 pas 之前</strong>）</span>
+      <span class="ana">法語真正的否定標記是 <strong>pas</strong>（相當於英語 not）；ne/n' 為附加否定元素，口語可省、也出現於某些非否定句 (126) Avant que je ne sois arrivé…（贅詞 ne，本章忽略其句法）。</span></div>
+    <div class="row"><span class="sent"><span class="num">(126)</span> Avant que je ne sois arrivé, …</span><span class="gloss">Before that I NE be-[subj] arrived ／「在我抵達之前…」</span></div>
+  </div>
+  <p>法語主要動詞移到否定詞前的位置。<strong>英／法參數差異</strong>：英語助動詞時制值為強、小 v 為弱；法語不可解釋 Infl 被賦值為時制時<strong>一律為強</strong>。對比表 (127)：</p>
+  <table>
+    <tr><th>語言</th><th>Aux 上的時制（Tense on Aux）</th><th>v 上的時制（Tense on v）</th></tr>
+    <tr><td>英語 English</td><td>strong（強）</td><td>weak（弱）</td></tr>
+    <tr><td>法語 French</td><td>strong（強）</td><td>strong（強）</td></tr>
+  </table>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(128)</span> <span class="ung">*</span>Jean (ne) pas aime Marie.</span>
+      <span class="ana">正確排除：v 上的時制特徵未與 T 上的時制取得適當局部構型（因 v 為強，必須抬升至 T）。</span></div>
+    <div class="row"><span class="sent"><span class="num">(129)</span> Jean n'aime pas Marie.（逐步推導 Step 1–5）</span></div>
+  </div>
+  <p><strong>推導 (129)：</strong>Step 1 合併 aime 與賓語 Marie；Step 2 與 v[uInfl:,uV*] 合併、aime 抬升附加到 v（滿足 uV*）、再併入主語 Jean；Step 3 否定 pas 與之合併；Step 4 T[pres] 合併，T 的時制與 v 的 Infl 匹配，<strong>因 v 上時制值為強，整個 v 複合體抬升到 T</strong>；Step 5 主語移到 TP 指示語。最終結構：</p>
+  <pre class="tree">  Step 4–5            TP
+                  ／      ＼
+              Jean           T
+                          ／    ＼
+                        T          NegP
+                     ／  ＼      ／    ＼
+                   v   T[pres]  pas      vP
+              aime-v[uInfl:pres*]   ⟨Jean⟩  v'
+                                       ⟨aime v⟩  VP
+                                             ⟨aime⟩ Marie</pre>
+
+  <h3 id="s544">5.4.4 助動詞原位（瑞典語）</h3>
+  <span class="pgmark">書頁 184–185</span>
+  <p><strong>瑞典語</strong>與英、法都不同：助動詞與主要動詞<strong>都不</strong>出現在否定詞左側（此處用從屬子句資料，否定詞以粗體標）：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(130)</span> om hon <b>inte</b> har köpt boken</span><span class="gloss">whether she not has bought book-the ／「她是否還沒買那本書」</span></div>
+    <div class="row"><span class="sent"><span class="num">(131)</span> om hon <b>inte</b> köpte boken</span><span class="gloss">whether she not bought book-the ／「她是否沒買那本書」</span>
+      <span class="ana">瑞典語的不可解釋時制特徵<strong>一律為弱</strong>，故 Aux 與 v 都不抬升至 T、都留在否定詞之後。</span></div>
+  </div>
+  <p>完整類型學 (132)：</p>
+  <table>
+    <tr><th>語言</th><th>Aux 上時制</th><th>v 上時制</th><th>結果</th></tr>
+    <tr><td>英語 English</td><td>strong</td><td>weak</td><td>Aux 抬升、V 不抬升</td></tr>
+    <tr><td>法語 French</td><td>strong</td><td>strong</td><td>Aux 與 V 都抬升</td></tr>
+    <tr><td>瑞典語 Swedish</td><td>weak</td><td>weak</td><td>都不抬升</td></tr>
+  </table>
+  <div class="key"><b>一個未見證的可能（預測中的空缺）：</b>表中還有一格未被證實——「主要動詞抬升到 T、但助動詞不抬升」（v 上時制為強、Aux 上為弱）。Adger 不知有此類語言。若這真是語言可能集合中的空缺，理論原則上應排除它；但就目前框架而言，理論<strong>預測</strong>這種語言存在。</div>
+
+  <!-- 5.5 -->
+  <h2 id="s55">5.5 do-support（do 支撐）</h2>
+  <h3 id="s551">5.5.1 基本性質</h3>
+  <span class="pgmark">書頁 185–187</span>
+  <p>英語助動詞系統最後一項待解問題：主要動詞與否定的互動。既然小 v 時制為弱、V+v 不移動，理論會錯誤預測：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(133)</span> <span class="ung">*</span>Gilgamesh not flew the dragon.</span></div>
+    <div class="row"><span class="sent"><span class="num">(134)</span> <span class="ung">*</span>Tiamat not destroyed the world.</span></div>
+    <div class="row"><span class="sent"><span class="num">(135)</span> Gilgamesh did not fly the dragon.</span></div>
+    <div class="row"><span class="sent"><span class="num">(136)</span> Tiamat did not destroy the world.</span>
+      <span class="ana">合法的對應句靠插入 do——稱 <span class="term">do-support（do 支撐）</span>。它出現於否定句 (135)(136)，也出現於只有主要動詞的 VP 省略與 VP 前置 (137)(138)。</span></div>
+    <div class="row"><span class="sent"><span class="num">(137)</span> Tiamat did not defeat the gods but Gilgamesh did [ ].</span></div>
+    <div class="row"><span class="sent"><span class="num">(138)</span> Gilgamesh wanted to seduce Ishtar, and seduce Ishtar he did [ ].</span></div>
+  </div>
+  <p>do-support 為何在現代英語出現，自 Chomsky《Syntactic Structures》以來一直困擾生成語法學者。Chomsky 視之為<strong>最後手段（last-resort）</strong>：當「把時制附於主要動詞」的規則因故失敗時，插入 do 來「拯救」句子。以下檢視幾種分析，各有問題（資料<strong>嚴重不足以決定</strong>分析）。觸發 do-support 的脈絡有二：<strong>T 被否定隔開於動詞</strong>，或 <strong>T 根本不 c-統制動詞</strong>（VP 前置、VP 省略）。注意 T 也可被副詞等其他材料隔開：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(139)</span> Gilgamesh has never flown a dragon.</span></div>
+    <div class="row"><span class="sent"><span class="num">(140)</span> <span class="ung">*?</span>Gilgamesh never has flown a dragon.</span>
+      <span class="ana">(139) 中 has 已移到 T、其後跟副詞 never，故 never 附加在 <strong>T 之下</strong> (141)。</span></div>
+    <div class="row"><span class="sent"><span class="num">(142)</span> Gilgamesh never flies dragons.</span>
+      <span class="ana">無助動詞時 never 同樣附加在 T 之下，介於 T 與動詞之間 (143)。但此處 <strong>do-support 不適用</strong>（只能用強調式 do）——可見：do-support 啟動的關鍵是 <strong>not 本身</strong>介於 T 與小 v 之間，副詞不算。</span></div>
+  </div>
+
+  <h3 id="s552">5.5.2 附綴否定詞分析（Affixal negation）</h3>
+  <span class="pgmark">書頁 187–188</span>
+  <p>第一種提案：<strong>not 其實是附綴到 T 的詞綴</strong>。英語 T 有正、負兩形；負形 T[neg] 有特殊形態要求——須<strong>後綴到一個顯性中心語</strong>。若 T 內無顯性中心語，特殊形態操作就插入 do。</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(144)</span> Gilgamesh hasn't left.</span>
+      <span class="ana">有完成體助動詞抬升到 T，T[neg] 已後綴於助動詞，無須 do-support。</span></div>
+    <div class="row"><span class="sent"><span class="num">(145)</span> <span class="ung">*</span>Gilgamesh not left.</span>
+      <span class="ana">v 屈折弱、不移動，T[neg] 拼讀時左側無可附綴的中心語 → 句法良構但形態違規。</span></div>
+    <div class="row"><span class="sent"><span class="num">(146)</span> Gilgamesh didn't leave.（插入預設助動詞 do 拯救）</span></div>
+  </div>
+  <p>兩個問題：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(147)</span> <span class="ung">*</span>Gilgamesh didn't ate the honey.</span></div>
+    <div class="row"><span class="sent"><span class="num">(148)</span> <span class="ung">*</span>Gilgamesh doesn't ate the honey.</span>
+      <span class="ana"><strong>問題一（過度生成）：</strong>T 已在 v 上賦值過去時制 → 動詞帶過去形態，do-support 又因 T[neg] 附綴而啟動 → 系統錯誤生成 (147)/(148)。<strong>問題二（遺漏）：</strong>把 do-support 歸因於附綴否定，無法解釋它為何也出現在<strong>不必為否定</strong>的 VP 省略、VP 前置脈絡。</span></div>
+  </div>
+
+  <h3 id="s553">5.5.3 附綴時制分析（Affixal tense）</h3>
+  <span class="pgmark">書頁 188–192</span>
+  <p>另一提案：Neg 只是中心語（如 5.4），而是 <strong>T 一般而言是後綴</strong>；若無可附綴對象，T 就附綴到其姊妹的中心語。有助動詞時，中心語移位已造好結構，後綴需求自動滿足 (149)；無助動詞時，T 後綴到小 v (150→151)。但若姊妹中心語是 <strong>Neg</strong>（非動詞範疇，T 無法附綴）→ do-support 作為最後手段啟動 (152)；VP 省略／前置中 T 無顯性姊妹 → 同樣啟動 (153)。</p>
+  <pre class="tree">  (149) 有 Aux        (152) 否定句
+       T                   T
+     ／ ＼              ／  ＼
+   aux  T[neg]        T       NegP
+                          ／  ＼
+                        not     VP   ← T 無法後綴到 Neg → do-support</pre>
+  <p>但此法也有問題。若與「T 在 v 上核驗時制」並用，仍出現同樣難題——為何不能既 do-support 又屈折動詞 (154)？</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(154)</span> a. <span class="ung">*</span>Gilgamesh didn't ate the honey.　b. <span class="ung">*</span>Gilgamesh don't ate the honey.</span>
+      <span class="ana">會被錯誤預測為合法。可規定「T 在 v 上核驗時制時，T 的後綴性質被刪除」來解套，但不優雅。更嚴重的反對：把問題交給「拼讀之後才作用的移位操作」——但我們的拼讀規則目前只是發音規則。為保持規則簡單、移位留在句法部門，<strong>拒絕</strong>此分析。</span></div>
+  </div>
+  <p>另一改良：後綴是<strong>句法</strong>操作而非形態操作——T <strong>向下移動</strong>附加到 v（lowering）(155)。這可解釋「為何沒有 do-support + v 屈折」（動詞時制不是拼讀 v 而來、而是 T 後綴到 v 而來）。但問題仍在：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(156)</span> …and [eat the honey] he did.</span></div>
+    <div class="row"><span class="sent"><span class="num">(157)</span> <span class="ung">*</span>…and [ate the honey] he.</span>
+      <span class="ana">若 T 後綴是句法規則，它應能在 vP 前置前就把時制綴到動詞上，錯誤導出 (157)（結構 (158)）。我們無法強制「T 後綴只在 VP 前置／省略之後才作用」——理論裡只有詞項性質、Merge、Move、Adjoin，<strong>無法對句法移位強加外在排序</strong>。</span></div>
+  </div>
+  <p>結論：用<strong>下移（lowering）</strong>解決英語動詞屈折是錯的方向。事實上許多句法學者徹底排除下移操作，主張移位<strong>必須移到比基底位置更高</strong>之處。</p>
+
+  <h3 id="s554">5.5.4 時制鏈（Tense chains）</h3>
+  <span class="pgmark">書頁 192–194</span>
+  <p>最後一種分析引入新物件：<span class="term">鏈（chain）</span>。鏈由 Agree 操作形成：每當一特徵核驗另一特徵，兩個進入核驗關係的句法物件就構成一條鏈。如 T 與 v 核驗時制 → 構成鏈 (159) ⟨T, v⟩。關鍵：鏈中每一環必須 c-統制下一環，否則鏈<strong>斷裂</strong>。</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(160)</span> <b>時制發音規則 PTR（Pronouncing Tense Rule）：</b>在鏈 ⟨T[tense], v[uInfl:tense]⟩ 中，<strong>只有當 v 是 T 之姊妹的中心語時</strong>，才把時制特徵發音在 v 上。</span></div>
+  </div>
+  <p>效果（一條規則統一解釋多種情形）：</p>
+  <ul class="plain">
+    <li><strong>簡單句：</strong>v 是 T 之姊妹的中心語 → 時制在 v 上發音（正常屈折）。</li>
+    <li><strong>否定句 (161)：</strong>not 是 T 之姊妹的中心語、不在時制鏈中 → PTR 失敗 → do-support 作為最後手段 (162) I did not understand。（v 上有已賦值 [uInfl:past]，但 PTR 禁止發音。）</li>
+    <li><strong>VP 前置 (163)(164)：</strong>vP 已移走附加到 TP → T 不再 c-統制 v、鏈斷裂 → PTR 不適用 → do-support。…and [love Ishtar] Gilgamesh did。</li>
+    <li><strong>VP 省略 (165)：</strong>PTR 是發音規則，無法對「已被省略、根本不發音」的 v 作用 → do-support。Enkidu didn't love Ishtar but Gilgamesh did [ ]。</li>
+    <li><strong>有助動詞 (166)：</strong>助動詞已越過否定、附加到 T、成為 T 之姊妹 → PTR 適用，時制在助動詞上發音。Gilgamesh hasn't kissed Ishtar。</li>
+  </ul>
+  <pre class="tree">  (161) 否定句          (163) VP 前置
+       T                    T
+     ／ ＼               ／  ＼
+   T[past] NegP        vP      TP   ← vP 移出 → T 不 c-統制 v
+        ／  ＼              （鏈斷 → do-support）
+      not    vP
+          ／  ＼
+   (Subject)   v'
+            ver  v[uInfl:past]  ← v 非 T 姊妹中心語 → 不發音 → do-support</pre>
+  <div class="key"><b>5.5.4 評估：</b>PTR 克服了其他分析的<strong>經驗</strong>困難，但有<strong>理論</strong>代價：引入了新概念「鏈」（理想上想避免），又規定了一條<strong>語言特定</strong>的發音規則（亦欲避免）。儘管如此，本書後續仍<strong>採用 PTR</strong> 來處理 do-support。</div>
+
+  <!-- 5.6 -->
+  <h2 id="s56">5.6 本章摘要</h2>
+  <span class="pgmark">書頁 194–196</span>
+  <ul class="plain">
+    <li>句子由功能（不指派 θ角色）範疇 <strong>T</strong> 充當中心語，T 承載整句時制特徵。證據來自帶時制特徵的詞項：情態詞、強調式 do（與 to）。</li>
+    <li>主語從 vP 指示語移到 <strong>TP 指示語</strong>（動機見第 6 章）。</li>
+    <li>時制在「一時制特徵 c-統制另一匹配時制特徵」的構型中核驗，明確化為 <strong>Agree</strong> (167)：X[F:val]…Y[uF:] → X[F:val]…Y[uF:val]。形態上，已核驗的時制特徵作為形態介面規則的輸入，使時制標記附於動詞。</li>
+    <li>帶時制的助動詞合併於 T 之下、但<strong>抬升到 T</strong> 以滿足<strong>強特徵</strong> (168)：強特徵必須與其所核驗／被核驗的特徵局部（姊妹）相鄰。選擇特徵<strong>恆強</strong>（恆在姊妹下核驗）；其他不可解釋特徵可弱（在 Agree 下核驗）。</li>
+    <li>由此導出帶時制助動詞與否定的分布；英／法／瑞典語的參數差異由特徵強度的不同指定捕捉。</li>
+    <li>精修後的投射層級 (169)：<span class="bkt">T &gt; (Neg) &gt; (Perf) &gt; (Prog) &gt; v &gt; V</span>（括號內選擇性、其餘強制）。此層級被假設為<strong>普遍</strong>地規定子句結構，語言差異僅限於層級中各中心語／指示語特徵的<strong>強度與可解釋性</strong>。</li>
+    <li>do-support：形態介面規則對<strong>鏈</strong>敏感（鏈於 Agree 時形成）；若鏈被後續操作<strong>斷裂</strong>，會反映在最終形態上。</li>
+  </ul>
+  <table>
+    <tr><th>現象 Phenomenon</th><th>解釋 Explanation</th></tr>
+    <tr><td>情態詞、do、to 的位置</td><td>句子是 TP，這些元素帶範疇特徵 T</td></tr>
+    <tr><td>主語位於這些元素左側</td><td>主語從 vP 移到 TP 指示語</td></tr>
+    <tr><td>時制特徵在何處發音、如何解讀</td><td>Agree 下的特徵核驗</td></tr>
+    <tr><td>助動詞相對於否定的分布</td><td>投射層級 + Aux→T 移位 + 特徵強度</td></tr>
+    <tr><td>跨語言動詞／助動詞／否定語序差異</td><td>特徵強度的不同指定</td></tr>
+    <tr><td>do-support</td><td>時制鏈斷裂影響發音規則</td></tr>
+  </table>
+
+  <!-- Exercises -->
+  <h2 id="sex">習題（Exercises）</h2>
+  <span class="pgmark">書頁 196–203</span>
+  <div class="concept"><h4>習題一　不定詞中的否定（Negation in infinitivals）</h4>
+  <p>Task 1：非限定子句由 to 充當中心語。(1) Gilgamesh decided [not to kill Ishtar]——這對把正文分析套到非限定子句造成什麼問題（not 與 to 的相對位置）？Task 2：提出解法、畫樹，並評其優劣。</p></div>
+  <div class="concept"><h4>習題二　繫詞結構（Copular constructions）</h4>
+  <p>(1) Gilgamesh is [in the dungeon]．(2) Shamash is [a dangerous sorcerer]．(3) Tiamat is [extremely evil]——be 後接 PP/NP/AP。Part A：假設 be 是小 v 之一種，為 (1) 提供顯示所有移位的推導。Part B：造否定句，由此推論 be 的位置、必要時修正推導。Part C：解釋 (5) <span class="ung">*</span>Gilgamesh doesn't be in the dungeon 為何不合法（標準英語）。</p></div>
+  <div class="concept"><h4>習題三　省略與助動詞（Ellipsis and auxiliaries）</h4>
+  <p>提出 <strong>VP 省略的同一性條件 ICVE</strong>：一個 vP 只有當其內容可從前文一個相同的 vP 回復時才能被省略。Part A：(6) I will eat a mango, and Gillian will [ ] too 等——指出被省略材料、是否支持 ICVE。Part B：(9) I ate a mango and Gillian did [ ] too 等——以字面同一性填空，結果是否威脅 PTR 分析（提示：畫樹、ICVE 作用於句法結構）。Part C：(11) Raffi slept well, and Gillian will [ ] too 等——在 PTR 下是否如預期。Part D：(13) <span class="ung">*</span>Gillian has made pasta and David is too 等為何退化；某些方言加 do 的版本 (15)(16) 為何能改善。</p></div>
+  <div class="concept"><h4>習題四　法語動詞與助動詞（French verbs and auxiliaries）</h4>
+  <p>(1) Jean aime bien Marie「John 很愛 Mary」／(2) <span class="ung">*</span>Jean bien aime Marie／(3) Jean a bien aimé Pierre。Task 1：用這些資料論證法語主要動詞與完成體助動詞的拼讀位置；並嘗試納入 (4) Jean a aimé bien Pierre。（副詞 bien 作為位置診斷。）</p></div>
+  <div class="concept"><h4>習題五　英語 have</h4>
+  <p>have 至少兩種：完成體助動詞 (1) I have eaten the muffin／表所有 (2) I have a book。Part A：造兩者否定句，找出句法差異、提出假設（用助動詞分析的概念、利用 (1) 完成體助動詞表層位置的已知）。Part B：造 yes/no 問句，驗證或修正假設。Part C：造附加問句（tag-questions）再評估。Part D：用副詞 often 的不同位置 (3)–(6) 作部分結構診斷，自行給判斷並檢驗假設。</p></div>
+  <div class="concept"><h4>習題六　雙重情態詞（Double modals）</h4>
+  <p>蘇格蘭 Hawick 方言允許一句多個情態詞：(1) He will can go／(2) He might could go。can/could 恆為第二個 (3)–(5)；情態詞須時制一致 (6)(7)；can/could 可出現於不定詞 to 之後 (8)–(12)。用四組資料評估兩假設：<strong>假設 1</strong>「雙重情態詞是單一詞」、<strong>假設 2</strong>「其中一個其實是副詞」；若都不對，自行提出假設。資料含問句倒裝 (13)–(17)、否定 no 插入 (18)、附加問句 (19)–(24)、量詞 all 浮動 (25)–(28)。</p></div>
+
+  <div class="key"><b>本章關鍵詞彙：</b>functional category vs lexical category、T / TP / T'、tense feature、modal、auxiliary（Modal-Perfect-Progressive）、emphatic do、non-finite to、infinitival、Sequence of Tense、pseudocleft、complementary distribution、VP-fronting / VP-ellipsis、head movement、V-to-v、Aux-to-T、V-to-T（French）、Infl / [uInfl:]、interpretable vs uninterpretable feature、checking / valuing、Agree、c-command、sisterhood、Checking requirement、feature strength (strong/weak)、Hierarchy of Projections（T &gt; (Neg) &gt; (Perf) &gt; (Prog) &gt; v &gt; V）、sentential vs constituent negation、do-support、last resort、affixal negation、affixal tense / lowering、chain、Pronouncing Tense Rule (PTR)、Spellout、Mauritian Creole / Sranan、English-French-Swedish parameter。</div>
+
+  <div class="nav-bottom">
+    <a href="index.html">← 全書導覽</a>
+    <a href="Ch06_Subjects_Objects.html">第 6 章：主語與賓語 →</a>
+  </div>
+</div><!-- /.wrap -->
+</div><!-- /#zh -->
+
+<!-- ===================== ENGLISH PANEL ===================== -->
+<div class="panel" id="en">
+<div class="wrap">
+  <p class="lead">Condensed page-by-page paraphrase of Chapter 5 of Adger (2003), <em>Core Syntax</em>, pp. 155–203 (OUP). Running prose is summarized (not reproduced verbatim); key terms are bolded; numbered examples are given with their grammaticality marks.</p>
+
+  <span class="enpg">p.155</span>
+  <p><strong>5.1 Introduction.</strong> We can now characterize <strong>sentence</strong> in I-language terms: sentences are made of <strong>constituents</strong> that embed, bear θ-relations, selectional and modification relations, and project features from their heads. A sentence has a core (the verbal cluster / vP) topped by categories that project but assign <strong>no θ-roles</strong>. The chief one is <strong>T</strong>, which hosts the sentence's <strong>tense features</strong>. Sentences are projections of T, with the subject in Spec-TP and vP as T's complement.</p>
+  <blockquote><span class="num">(1)</span> [TP Subject [T' T vP ]]</blockquote>
+  <p>vP = little v (assigns Agent) + big V (assigns Theme/Goal); V raises and adjoins to v (<strong>head movement</strong>) to reconcile UTAH with word order. The subject is θ-marked in Spec-vP but moves up to Spec-TP (mechanics in Ch.6).</p>
+
+  <span class="enpg">p.156</span>
+  <p><strong>5.2 Sentences are headed. 5.2.1 Theoretical considerations.</strong> The traditional "Subject + VP" structure (2) leaves the sentence <strong>headless</strong>, requiring a special rule. If instead T heads the sentence (1), no grammar extension is needed—T is in the lexicon, and sentence properties project from T, just as PP projects from P. There is nothing special about the category Sentence.</p>
+  <blockquote><span class="num">(2)</span> [Sentence Subject VP ] — headless, uneconomical</blockquote>
+
+  <span class="enpg">p.157</span>
+  <p><strong>5.2.2 Empirical evidence — Modals.</strong> Many English sentences have auxiliaries: a small specialized verb class. A single modal separates the subject from its θ-assigner.</p>
+  <blockquote><span class="num">(3)</span> Gilgamesh may seek Ishtar.<br><span class="num">(4)</span> Gilgamesh must seek Ishtar. <span class="num">(5)</span> Gilgamesh can seek Ishtar. <span class="num">(6)</span> Gilgamesh should seek Ishtar. <span class="num">(7)</span> Gilgamesh will seek Ishtar.<br><span class="num">(8)</span> *Gilgamesh seek may Ishtar.<br><span class="num">(9)</span> What Gilgamesh may do is [seek Ishtar]. <span class="num">(10)</span> …and [seek Ishtar], Gilgamesh may.</blockquote>
+  <p>Pseudocleft (9) and movement (10) show the modal takes the <strong>whole vP</strong> as complement (11), not just V (12).</p>
+
+  <span class="enpg">p.158</span>
+  <p>Modals are in <strong>complementary distribution</strong>: only one position hosts them, outside VP but after the subject.</p>
+  <blockquote><span class="num">(11)</span> [ may [vP seek Ishtar]] (correct) — <span class="num">(12)</span> *[ may [V seek] NP] (wrong)<br><span class="num">(13)</span> *Gilgamesh must should seek Ishtar. <span class="num">(14)</span> *Gilgamesh might can seek Ishtar.<br><span class="num">(15)</span> [Gilgamesh [ ? [may [seek Ishtar]]]]</blockquote>
+
+  <span class="enpg">p.159</span>
+  <p>Modals inflect for tense. Traditional grammars split them (16). This is supported by <strong>Sequence of Tense</strong>.</p>
+  <blockquote><span class="num">(16)</span> Present/Past: may/might, can/could, shall/should, will/would, must/(—).<br><span class="num">(17)</span> I believe [she is pregnant]. <span class="num">(18)</span> I think [she is pregnant].<br><span class="num">(19)</span> I believed [she was pregnant]. <span class="num">(20)</span> I thought [she was pregnant].<br><span class="num">(21)</span> *I believed [she is pregnant]. <span class="num">(22)</span> *I thought [she is pregnant].</blockquote>
+
+  <span class="enpg">p.160</span>
+  <p>Past on the matrix verb <strong>forces</strong> past on the embedded verb, regardless of interpretation—a purely <strong>syntactic</strong> generalization. Modals in the past column (might/could/would) behave like past forms under Sequence of Tense, supporting the split. Modals bear a category feature <strong>T</strong> and Merge with vP (30).</p>
+  <blockquote><span class="num">(23)–(28)</span> I believe/think [she may/can/will…]; I believed/thought [she might/could/would…]; *I believed/thought [she may/can/will…].<br><span class="num">(29)</span> She might be pregnant. <span class="num">(30)</span> [T' modal VP ]</blockquote>
+
+  <span class="enpg">p.161</span>
+  <p><strong>Do.</strong> When a modal bears tense, the main verb stays uninflected (31). The <strong>emphatic do</strong> also marks tense on a position outside vP.</p>
+  <blockquote><span class="num">(31)</span> *Gilgamesh might loved Ishtar.<br><span class="num">(32)</span> Enkidu did free animals. <span class="num">(33)</span> Enkidu does free animals.<br><span class="num">(34)</span> Enkidu freed animals. <span class="num">(35)</span> Enkidu frees animals. <span class="num">(36)</span> *Enkidu do freed animals.<br><span class="num">(37)</span> …and [free the animals] he will. <span class="num">(38)</span> *…and [freed the animals] he. <span class="num">(39)</span> …and [free the animals] he did.</blockquote>
+
+  <span class="enpg">p.162</span>
+  <p><strong>VP-fronting</strong> shows tense lives outside vP: the fronted vP is untensed, tense is stranded on T (do if no modal). <strong>VP-ellipsis</strong> makes the same point—do just carries tense.</p>
+  <blockquote><span class="num">(40)</span> [[vP free the animals] [ ⟨vP⟩ did ]] — the "?" category = <strong>T</strong>.<br><span class="num">(41)</span> Gilgamesh loved Ishtar and Enkidu did [ ] too. <span class="num">(42)</span> Gilgamesh fears death and Shamash does [ ] as well.</blockquote>
+
+  <span class="enpg">p.163</span>
+  <p><strong>To.</strong> Infinitival <strong>to</strong> appears in untensed embedded clauses, in complementary distribution with modals and with emphatic do—so <strong>to</strong> occupies the same T position.</p>
+  <blockquote><span class="num">(43)</span> She tried [to leave]. <span class="num">(44)</span> We wanted [to eat cake].<br><span class="num">(45)</span> *She tried [to left]. <span class="num">(46)</span> *We wanted [to ate cake].<br><span class="num">(47)</span> *…[to may leave]. <span class="num">(48)</span> *…[to can leave]. <span class="num">(49)</span> *She tried to do go.<br><span class="num">(50)</span> Enkidu wanted to live and Ishtar tried to. <span class="num">(51)</span> *…Ishtar tried to do.</blockquote>
+
+  <span class="enpg">p.164</span>
+  <p>Summary: (1) modals, (2) emphatic do & non-finite to, are in one position (3) outside vP but after the subject, where (4) tense may be marked. Modals/do/to are <strong>heads</strong> categorized as <strong>T</strong>, Merging with vP → T', then with the subject → TP (52). A simple transitive clause (53) has two movements: V→v and Subject→Spec-TP; trace shown in angled brackets.</p>
+  <blockquote><span class="num">(52)</span> [TP Subject [T' T vP ]]　<span class="num">(53)</span> [TP Subj [T' T [vP ⟨Subj⟩ [v' [v V+v ] [VP ⟨V⟩ Object ]]]]]</blockquote>
+
+  <span class="enpg">p.165</span>
+  <p><strong>Functional categories</strong> (like T) project but assign no θ-role; their semantics is non-thematic. They erect a syntactic skeleton above the <strong>lexical categories</strong> (V, N, A, P). Little v is already akin to a functional category. The <strong>Hierarchy of Projections</strong> fixes T, v, V positions.</p>
+  <blockquote><span class="num">(54)</span> Hierarchy of Projections: T &gt; v &gt; V</blockquote>
+
+  <span class="enpg">p.165</span>
+  <p><strong>5.2.3 Cross-linguistic evidence.</strong> Some <strong>creoles</strong> mark tense outside VP. In <strong>Mauritian Creole</strong>, particles before the verb and after the subject carry tense/aspect.</p>
+  <blockquote><span class="num">(55)</span> mo manze 'I eat'. <span class="num">(56)</span> mo ti manze 'I ate' (ti = past).</blockquote>
+
+  <span class="enpg">p.166</span>
+  <p><strong>Sranan</strong> (English-based creole) has past <strong>ben</strong>, separable from the verb by aspect heads (PROG e, FUT o)—suggesting further heads Merge with vP before T. <strong>5.3 Tense marking. 5.3.1 Tense on main verbs.</strong> Verbs do not have category feature T (they need V + little v, and co-occur with modals/do/to). Yet they show tense morphology.</p>
+  <blockquote><span class="num">(57)</span> mi waka. <span class="num">(58)</span> mi ben waka. <span class="num">(59)</span> mi ben e waka. <span class="num">(60)</span> mi ben o waka.<br><span class="num">(61)</span> Gilgamesh misses Enkidu. <span class="num">(62)</span> Gilgamesh missed Enkidu.</blockquote>
+
+  <span class="enpg">p.167</span>
+  <p><strong>Checking and valuing.</strong> Treat the T–verb relation like agreement: the tense feature on the verbal complex must match T's. The verbal feature is <strong>uninterpretable</strong>; T's is interpretable. Checking under <strong>c-command</strong> (extending sisterhood) is the operation <strong>Agree</strong>.</p>
+  <blockquote><span class="num">(63)</span> a/b ok: T[past]…V+v[past] etc.; c/d *: mismatched.<br><span class="num">(64)</span> Checking requirement: uninterpretable features must be checked, then delete.</blockquote>
+
+  <span class="enpg">p.168</span>
+  <p>Uninterpretable tense on the verbal complex rules out the bad mismatches (66c,d). We choose <strong>checking by valuing</strong>: v carries an <strong>unvalued</strong> uninterpretable tense feature, valued by T.</p>
+  <blockquote><span class="num">(65)</span> Agree: uF on Y is checked when Y is c-commanded by Z bearing matching F.<br><span class="num">(66)</span> a/b ok; c/d * (uninterpretable tense unchecked).</blockquote>
+
+  <span class="enpg">p.169</span>
+  <blockquote><span class="num">(67)</span> T[tense:past]…v[utense: ] → T[tense:past]…v[utense:past].<br><span class="num">(68)</span> Agree: X[F:val]…Y[uF:] (c-command) → X[F:val]…Y[uF:val].<br><span class="num">(69)</span> *[uF:]…[uF:]. <span class="num">(70)</span> privative: [G]…[uG] checks; *[uG]…[uG].</blockquote>
+  <p>Two checking relations: <strong>Agree</strong> and <strong>Sisterhood</strong> (the latter a more local subcase).</p>
+
+  <span class="enpg">p.170</span>
+  <p><strong>Applying the system.</strong> Little v hosts an uninterpretable inflectional feature <strong>[uInfl:]</strong> that can take a tense value. Build vP (V→v), Merge a <strong>null T</strong> [T, past]; T Agrees with v, valuing it. At Spellout, v+verb is pronounced as past.</p>
+  <blockquote><span class="num">(71)</span> Little v contains [uInfl: ]. <span class="num">(72)</span> [vP Gilgamesh [v' [v miss v[uInfl:]] [VP ⟨miss⟩ Enkidu]]].<br><span class="num">(73)</span> [TP T[past] [vP … v[uInfl:past] … ]].<br><span class="num">(74)</span> Pronounce [uInfl:past] as -ed.</blockquote>
+
+  <span class="enpg">p.171</span>
+  <p>Irregulars (75): eat → ate adjacent to v[uInfl:past]. Present agreement (76): T bears only a number feature valuing Infl → -(e)s; semantics reads tenseless T as present. <strong>Summary 5.3.1:</strong> English main verbs get tense via an <strong>Agree</strong> relation between T and little v; Agree extends sisterhood-based checking to c-command.</p>
+  <blockquote><span class="num">(75)</span> Pronounce eat as ate adjacent to v[uInfl:past]. <span class="num">(76)</span> Enkidu misses Gilgamesh.</blockquote>
+
+  <span class="enpg">p.172</span>
+  <p><strong>5.3.2 Tense on auxiliaries.</strong> Progressive/perfect auxiliaries are <strong>not</strong> just T heads: they co-occur with modals and to (but not emphatic do). Order is fixed <strong>Modal-Perfect-Progressive</strong>; tense on the first auxiliary; each governs the next form (Perf→past participle, Prog→-ing, Modal→bare stem).</p>
+  <blockquote><span class="num">(77)</span> I might have eaten some seaweed. <span class="num">(78)</span> I'd planned to have finished by now.<br><span class="num">(79)</span> I could have been flying helicopters by now. <span class="num">(80)</span> I have been flying helicopters for years.<br><span class="num">(81)</span> *I have might be flying helicopters. <span class="num">(82)</span> *I am having eaten seaweed. <span class="num">(83)</span> I might be leaving soon.</blockquote>
+
+  <span class="enpg">p.172</span>
+  <p><strong>The perfect auxiliary</strong> have Merges outside vP (84) and forces the past participle (85). It bears interpretable [Perf]; Perf values v's [uInfl] as [Perf] (86).</p>
+  <blockquote><span class="num">(84)</span> …and [finished] I have. <span class="num">(85)</span> I have eaten/*eat/*ate/*eating.<br><span class="num">(86)</span> have[Perf]…v[uInfl:] → have[Perf]…v[uInfl:Perf].</blockquote>
+
+  <span class="enpg">p.173</span>
+  <p>Derivation (87): Perf Merges with vP, Agrees with v, spelled as a participle affix; Perf itself bears [uInfl:]. Then null T Merges, valuing have's uInfl as past (88) → had. But there is good evidence have <strong>raises to T</strong> (89), like a main verb raises to v.</p>
+  <blockquote><span class="num">(87)/(88)</span> [PerfP have[Perf,uInfl:] [vP …]] → T[past] checks have.<br><span class="num">(89)</span> [T [T Perf+T ] [PerfP ⟨Perf⟩ vP ]]</blockquote>
+
+  <span class="enpg">p.174</span>
+  <p><strong>The progressive auxiliary</strong> be bears uninterpretable [Prog], projects ProgP, values v's [uInfl] → v pronounced -ing.</p>
+  <blockquote><span class="num">(89)</span> Gilgamesh is fighting Humbaba. <span class="num">(90)</span> [T T[sing] [ProgP is[Prog,uInfl:sing] [vP Gilgamesh … fight-ing[uInfl:Prog] Humbaba ]]].</blockquote>
+
+  <span class="enpg">p.175</span>
+  <p>be raises to T (91). Perf and Prog come in strict order (92 vs *93); the ordering source is unsettled, so it is folded into the Hierarchy (94). <strong>Summary 5.3.2:</strong> English has a null T head checking tense on the head of its sister; if an auxiliary, it raises and adjoins to T.</p>
+  <blockquote><span class="num">(91)</span> [T [T is+T ] [ProgP ⟨is⟩ vP ]].<br><span class="num">(92)</span> Gilgamesh has been fighting Humbaba. <span class="num">(93)</span> *Gilgamesh is having fought Humbaba.<br><span class="num">(94)</span> Hierarchy: T &gt; (Perf) &gt; (Prog) &gt; v &gt; V.</blockquote>
+
+  <span class="enpg">p.175</span>
+  <p><strong>5.4 Head movement.</strong> V→v derives English word order. Striking evidence for auxiliary movement to T comes from the interaction of auxiliary placement with <strong>negation</strong>.</p>
+
+  <span class="enpg">p.176</span>
+  <p><strong>5.4.1 The position of negation.</strong> not / n't. <strong>Sentential negation</strong> denies the whole sentence's truth (95–96); <strong>constituent negation</strong> negates a sub-part (97 PP, 98 NP, 99 VP). We focus on sentential readings. With full auxiliaries, sentential negation <strong>follows the modal</strong>.</p>
+  <blockquote><span class="num">(95)</span> I haven't left yet. <span class="num">(96)</span> It is not true that I have left yet.<br><span class="num">(97)</span> I was sitting not under the tree (but under the bush). <span class="num">(98)</span> I was eating not a peach (but an apple).<br><span class="num">(99)</span> I might be not going to the party (but washing my hair). <span class="num">(100)/(101)</span> readings.</blockquote>
+
+  <span class="enpg">p.176</span>
+  <blockquote><span class="num">(102)</span> Gilgamesh might not have been reading the cuneiform tablets.<br><span class="num">(103)</span> *…might have not been… <span class="num">(104)</span> *…might have been not reading… (only constituent-neg reading).</blockquote>
+
+  <span class="enpg">p.177</span>
+  <p>No modal → negation follows Perfect (105 vs *106); no Perfect → follows Progressive (107). Lesson: sentential negation <strong>always follows the first auxiliary</strong>. <strong>5.4.2 Movement of auxiliaries to T.</strong> Negation is to the right of T (the modal) and left of Perf → Neg Merges after Perf, before T (108). Updated Hierarchy (109).</p>
+  <blockquote><span class="num">(105)</span> Gilgamesh has not been reading… <span class="num">(106)</span> *…has been not reading… <span class="num">(107)</span> Gilgamesh is not reading…<br><span class="num">(108)</span> [T' T [NegP Neg PerfP ]].　<span class="num">(109)</span> T &gt; (Neg) &gt; (Perf) &gt; (Prog) &gt; v &gt; V.</blockquote>
+
+  <span class="enpg">p.178</span>
+  <p>But Neg is higher than Perf—so why does has precede not in (110)? The <strong>highest auxiliary raises to T</strong> (111), like V→v. Same for progressive (112). Assumed even without negation (113→114).</p>
+  <blockquote><span class="num">(110)</span> Gilgamesh has not read the cuneiform tablets. <span class="num">(111)/(112)</span> Aux raises to T.<br><span class="num">(113)</span> Gilgamesh has eaten the honey. <span class="num">(114)</span> [TP Gilgamesh [T' [T has+T ] [PerfP ⟨has⟩ [vP … eaten ⟨eat⟩ the honey ]]]].</blockquote>
+
+  <span class="enpg">p.179</span>
+  <p>Two cases: T checks tense on an auxiliary → it raises; T checks on little v → no raising. We know main verbs don't raise because they follow negation.</p>
+  <blockquote><span class="num">(115)</span> *Gilgamesh flew not the broomstick. <span class="num">(116)</span> Gilgamesh didn't fly the broomstick.</blockquote>
+
+  <span class="enpg">p.179</span>
+  <p>Why does a tensed auxiliary raise but a tensed verb stay in situ? Introduce feature <strong>strength</strong> (marked *): a strong feature triggers <strong>Move</strong>, forcing <strong>local</strong> (sisterhood) checking.</p>
+  <blockquote><span class="num">(117)</span> X[uF*]…Y[F] → X Y[F]…⟨Y⟩.　<span class="num">(118)</span> A strong feature must be local to the feature it checks/is checked by.<br><span class="num">(119)</span> X[F]…Y[uF*] → … ⟨Y[uF*]⟩ (lower feature strong).</blockquote>
+
+  <span class="enpg">p.180</span>
+  <p>Movement is <strong>upwards</strong>. Strength may = morphological interpretability, but this is unsettled; we use it as a formal trigger. Make the valued [uInfl] on Perf/Prog <strong>strong</strong> → two-step: Agree values it, then Perf raises to adjoin T (120).</p>
+  <blockquote><span class="num">(120)</span> [T [T Perf[uInfl:past] T[past]] [NegP Neg [PerfP ⟨Perf⟩ VP ]]].</blockquote>
+
+  <span class="enpg">p.181</span>
+  <p>[uInfl] on little v is <strong>weak</strong> → no locality → main verbs never precede negation (121). General statement (122). V→v likewise driven by a strong uV* on v (123).</p>
+  <blockquote><span class="num">(121)</span> [TP Subj [T' T[past] [NegP Neg [vP ⟨Subj⟩ … Verb+v[uInfl] ]]]].<br><span class="num">(122)</span> [uInfl] valued on Aux = strong; on v = weak. <span class="num">(123)</span> v bears strong uV*.</blockquote>
+
+  <span class="enpg">p.181</span>
+  <p><strong>5.4.3 V-to-T movement.</strong> Unlike English, <strong>French main verbs precede negation</strong>, like auxiliaries.</p>
+  <blockquote><span class="num">(124)</span> Jean n'a pas aimé Marie. 'John didn't love Mary' (perfect a before pas).<br><span class="num">(125)</span> Jean n'aime pas Marie. 'John doesn't love Mary' (main verb aime before pas).</blockquote>
+
+  <span class="enpg">p.182</span>
+  <p>True French negator = <strong>pas</strong>; ne/n' is optional, also in non-negatives (126, expletive ne). Parameter: in English, Aux tense = strong, v = weak; in French, valued uInfl is <strong>always strong</strong> (127). This rules out (128).</p>
+  <blockquote><span class="num">(126)</span> Avant que je ne sois arrivé, … 'Before I arrived'.<br><span class="num">(127)</span> Tense on Aux / on v — English: strong/weak; French: strong/strong.<br><span class="num">(128)</span> *Jean (ne) pas aime Marie.</blockquote>
+
+  <span class="enpg">p.183</span>
+  <p>Derivation of (129): Step 1 Merge aime+Marie; Step 2 Merge v[uInfl:,uV*], raise aime to v, Merge subject Jean; Step 3 Merge pas; Step 4 Merge T[pres]; T matches v's Infl, which is <strong>strong</strong>, so the whole v-complex raises to T; Step 5 subject raises to Spec-TP.</p>
+  <blockquote><span class="num">(129)</span> Jean n'aime pas Marie. Step 4: [T [T aime-v[uInfl:pres*] T[pres]] [NegP pas [vP Jean ⟨aime v⟩ [VP ⟨aime⟩ Marie ]]]].</blockquote>
+
+  <span class="enpg">p.184</span>
+  <p><strong>5.4.4 Aux in situ.</strong> In <strong>Swedish</strong>, neither auxiliaries nor main verbs precede negation (subordinate-clause data; negation in bold). Swedish: uninterpretable tense <strong>always weak</strong> (132). Typology: English strong/weak; French strong/strong; Swedish weak/weak.</p>
+  <blockquote><span class="num">(130)</span> om hon <b>inte</b> har köpt boken 'whether she hasn't bought the book'.<br><span class="num">(131)</span> om hon <b>inte</b> köpte boken 'whether she didn't buy the book'.<br><span class="num">(132)</span> Tense on Aux/on v — English strong/weak; French strong/strong; Swedish weak/weak.</blockquote>
+
+  <span class="enpg">p.185</span>
+  <p>One cell is <strong>unattested</strong>: main verbs raise but auxiliaries don't (v strong, Aux weak). Adger knows no such language; if a genuine gap, the theory should rule it out, but as stated it predicts such a language. <strong>5.5 Do-support. 5.5.1 Basic properties.</strong> Weak v predicts *(133)/(134); the grammatical counterparts use <strong>do-support</strong> (135/136). It also applies in VP-ellipsis and VP-fronting with a main verb (137/138).</p>
+  <blockquote><span class="num">(133)</span> *Gilgamesh not flew the dragon. <span class="num">(134)</span> *Tiamat not destroyed the world.<br><span class="num">(135)</span> Gilgamesh did not fly the dragon. <span class="num">(136)</span> Tiamat did not destroy the world.<br><span class="num">(137)</span> …but Gilgamesh did [ ]. <span class="num">(138)</span> …and seduce Ishtar he did [ ].</blockquote>
+
+  <span class="enpg">p.186</span>
+  <p>Since Chomsky (1957), do-support is a <strong>last resort</strong> when tense-attachment to the main verb fails. The data <strong>underdetermine</strong> the analysis. Triggers: T separated from V by negation, or T not c-commanding V (VP-fronting/ellipsis). Adverbs (e.g. never) don't trigger it—only <strong>not</strong> intervening between T and v does.</p>
+  <blockquote><span class="num">(139)</span> Gilgamesh has never flown a dragon. <span class="num">(140)</span> *?Gilgamesh never has flown a dragon.<br><span class="num">(141)</span> [TP Gilgamesh [T' [T has+T] [PerfP ⟨has⟩ [vP never [vP ⟨G⟩ flown a dragon ]]]]].<br><span class="num">(142)</span> Gilgamesh never flies dragons. <span class="num">(143)</span> never adjoins below T.</blockquote>
+
+  <span class="enpg">p.187</span>
+  <p><strong>5.5.2 Affixal negation.</strong> Proposal: <strong>not</strong> is an affix on T; English T has positive/negative forms; T[neg] must suffix to an overt head, else do is inserted. Two problems: (1) <strong>overgeneration</strong>—T values past on v AND do-support applies (147/148); (2) <strong>omission</strong>—doesn't explain do-support in non-negative VP-ellipsis/fronting.</p>
+  <blockquote><span class="num">(144)</span> Gilgamesh hasn't left. <span class="num">(145)</span> *Gilgamesh not left. <span class="num">(146)</span> Gilgamesh didn't leave.<br><span class="num">(147)</span> *Gilgamesh didn't ate the honey. <span class="num">(148)</span> *Gilgamesh doesn't ate the honey.</blockquote>
+
+  <span class="enpg">p.188</span>
+  <p><strong>5.5.3 Affixal tense.</strong> Alternative: Neg is a head; <strong>T</strong> in general is a suffix attaching to the head of its sister. With an auxiliary, head movement satisfies this (149); else T suffixes to little v (150→151).</p>
+  <blockquote><span class="num">(149)</span> [T aux+T[neg]]. <span class="num">(150)/(151)</span> T suffixes to v.</blockquote>
+
+  <span class="enpg">p.189</span>
+  <p>With Neg (a non-verbal head), T cannot suffix → do-support (152). In VP-ellipsis/fronting, no overt sister → do-support (153). Same overgeneration puzzle (154).</p>
+  <blockquote><span class="num">(152)</span> [T T [NegP not VP ]] → do-support. <span class="num">(153)</span> [T T (vP) ] → do-support.<br><span class="num">(154)</span> a. *Gilgamesh didn't ate the honey. b. *Gilgamesh don't ate the honey.</blockquote>
+
+  <span class="enpg">p.190</span>
+  <p>A stipulation (delete T's suffixal property when it values v) is inelegant. Worse: it needs a movement <strong>after</strong> Spellout, but Spellout rules are just pronunciation rules—rejected.</p>
+
+  <span class="enpg">p.191</span>
+  <p>Variant: T-suffixation is a <strong>syntactic lowering</strong> of T onto v (155). This explains no "do-support + inflected v". But it wrongly allows an inflected fronted VP (157). We cannot impose <strong>extrinsic ordering</strong> (the theory only has lexical properties, Merge, Move, Adjoin). So lowering is the wrong approach; many syntacticians ban <strong>downward</strong> movement.</p>
+  <blockquote><span class="num">(155)</span> [vP ⟨Subj⟩ [v' [v V ] [VP ⟨V⟩ ... v+T ]]] (lowering).<br><span class="num">(156)</span> …and [eat the honey] he did. <span class="num">(157)</span> *…and [ate the honey] he. <span class="num">(158)</span> wrongly derived [TP [vP ate the honey] [TP Subj [T' T (vP) ]]].</blockquote>
+
+  <span class="enpg">p.192</span>
+  <p><strong>5.5.4 Tense chains.</strong> A <strong>chain</strong> is formed by Agree: the two checking objects (e.g. T and v) form ⟨T,v⟩. Each link must c-command the next, else the chain breaks. <strong>Pronouncing Tense Rule (PTR):</strong> in a chain ⟨T[tense], v[uInfl:tense]⟩, pronounce tense on v <strong>only if v is the head of T's sister</strong>.</p>
+  <blockquote><span class="num">(159)</span> ⟨T, v⟩. <span class="num">(160)</span> PTR (as above). <span class="num">(161)</span> [T T[past] [NegP not [vP … ver+v[uInfl:past] ]]]. <span class="num">(162)</span> I did not understand.</blockquote>
+
+  <span class="enpg">p.193</span>
+  <p>Negative: not heads T's sister, outside the chain → PTR fails → do-support. VP-fronting: vP adjoins to TP → T no longer c-commands v → chain broken → do-support (163/164). VP-ellipsis: PTR cannot apply to an unpronounced v → do-support (165). With an auxiliary raised to T (T's sister), PTR applies → tense on the auxiliary (166).</p>
+  <blockquote><span class="num">(163)/(164)</span> …and [love Ishtar] Gilgamesh did. <span class="num">(165)</span> Enkidu didn't love Ishtar but Gilgamesh did [ ]. <span class="num">(166)</span> Gilgamesh hasn't kissed Ishtar.</blockquote>
+
+  <span class="enpg">p.194</span>
+  <p>PTR solves the empirical problems but has theoretical costs (introduces <strong>chains</strong> and a language-specific pronunciation rule). We adopt it nonetheless. <strong>5.6 Summary.</strong> Sentences are headed by the functional (non-θ) category <strong>T</strong>, hosting tense features; evidence from modals and emphatic do. The subject moves to Spec-TP (Ch.6). Tense is checked via <strong>Agree</strong> (167); morphology attaches tense to the verb.</p>
+  <blockquote><span class="num">(167)</span> Agree: X[F:val]…Y[uF:] (c-command) → X[F:val]…Y[uF:val].</blockquote>
+
+  <span class="enpg">p.195</span>
+  <p>Tensed auxiliaries Merge below T but <strong>raise</strong> to satisfy feature <strong>strength</strong> (168). Selectional features are always strong (sisterhood); others may be weak (Agree). This derives auxiliary/negation distribution; English/French/Swedish vary by strength. Refined Hierarchy (169). It universally dictates clause structure; cross-linguistic differences are confined to <strong>strength and interpretability</strong> of features. <strong>Do-support</strong> is captured via <strong>chains</strong> sensitive to morphological interface rules; a broken chain shows in the morphology.</p>
+  <blockquote><span class="num">(168)</span> A strong feature must be local to the feature it checks/is checked by.<br><span class="num">(169)</span> Hierarchy of Projections: T &gt; (Neg) &gt; (Perf) &gt; (Prog) &gt; v &gt; V.</blockquote>
+
+  <span class="enpg">p.196–203</span>
+  <p><strong>Exercises.</strong> (1) Negation in infinitivals — Gilgamesh decided [not to kill Ishtar]; problem for the not/to analysis, propose a fix + tree. (2) Copular constructions — be as a v; derive (1), build negatives, explain *Gilgamesh doesn't be in the dungeon. (3) Ellipsis and auxiliaries — Identity Condition on VP-Ellipsis (ICVE); test it and the PTR analysis on did/does/will/should data; explain degraded *…has made pasta and David is too. (4) French verbs and auxiliaries — use adverb bien (Jean aime bien Marie / *Jean bien aime Marie / Jean a bien aimé Pierre) to locate verb and perfect auxiliary. (5) English have — perfective vs possessive have; negatives, yes/no, tag-questions, adverb often as diagnostics. (6) Double modals — Hawick Scots He will can go / He might could go; evaluate "single word" vs "one is an adverb" hypotheses against inversion, no-insertion, tag, and all-float data. <strong>Further reading:</strong> §5.2 Chomsky (1986a), Pollock (1989), Haegeman (1997), Roberts (1985); §5.3 Chomsky (1957, 2001b), HPSG/LFG unification; §5.4 Pollock (1989), Emonds (1978), Iatridou (1990), Koopman (1984), Roberts (2001), Chomsky (1993, 1995b), Roberts & Roussou (2002); §5.5 Chomsky (1957, 1981), Lasnik (1995).</p>
+
+  <div class="nav-bottom">
+    <a href="index.html">← Index</a>
+    <a href="Ch06_Subjects_Objects.html">Ch.6 Subjects &amp; Objects →</a>
+  </div>
+</div><!-- /.wrap -->
+</div><!-- /#en -->
+
+<a href="#top" class="back-top">↑ 回頂端</a>
+<footer>Adger, D. (2003) <em>Core Syntax</em>, Ch.5 TP（書頁 155–203）· Oxford University Press · DOI:10.1093/oso/9780199243709.003.0005</footer>
+
+<script>
+function showTab(which){
+  document.getElementById('zh').classList.toggle('active', which==='zh');
+  document.getElementById('en').classList.toggle('active', which==='en');
+  document.getElementById('tab-zh').classList.toggle('active', which==='zh');
+  document.getElementById('tab-en').classList.toggle('active', which==='en');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+</script>
+</body>
+</html>

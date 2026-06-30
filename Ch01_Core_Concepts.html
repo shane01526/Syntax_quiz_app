@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch.1 核心概念 Core Concepts（逐頁逐例句詳解 + 英文對照）— Adger (2003)</title>
+<style>
+  :root{--ink:#1b1b22;--muted:#5d5d6b;--line:#e3e3ec;--bg:#faf9f6;--accent:#7b2d3b;--accent2:#7b2d3b;--chip:#f0ece4;--card:#fff;--box:#f6f2ec;}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Noto Serif TC","Songti TC",Georgia,"Times New Roman",serif;color:var(--ink);background:var(--bg);line-height:1.9}
+  header{background:linear-gradient(135deg,#7b2d3b,#43202a);color:#fff;padding:54px 24px 36px}
+  header .inner{max-width:900px;margin:0 auto}
+  header .ch{font-family:system-ui,sans-serif;font-size:.8rem;letter-spacing:2px;color:#e3bcc4}
+  header h1{margin:6px 0 4px;font-size:2rem}
+  header .en{color:#f0d9de;font-style:italic}
+  header .pg{margin-top:10px;font-size:.85rem;color:#e3bcc4;font-family:system-ui,sans-serif}
+  nav.bc{max-width:900px;margin:0 auto;padding:14px 24px 0;font-family:system-ui,sans-serif;font-size:.85rem}
+  nav.bc a{color:var(--accent);text-decoration:none}
+  .tabbar{max-width:900px;margin:14px auto 0;padding:0 24px;display:flex;gap:10px;font-family:system-ui,sans-serif}
+  .tab{cursor:pointer;border:1px solid var(--line);border-bottom:0;background:#f1ece9;color:#7a4350;padding:11px 22px;border-radius:10px 10px 0 0;font-weight:700;font-size:.95rem;transition:.15s}
+  .tab:hover{background:#ece3e0}
+  .tab.active{background:var(--card);color:var(--accent);box-shadow:0 -2px 6px rgba(0,0,0,.04)}
+  .panel{display:none}.panel.active{display:block}
+  .toc{max-width:900px;margin:0 auto 10px;padding:18px 24px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+  .toc h2{margin:0 0 10px;font-size:1.05rem;color:var(--accent);border:0}
+  .toc ul{columns:2;column-gap:30px;margin:0;padding-left:18px;font-family:system-ui,sans-serif;font-size:.9rem}
+  .toc a{color:#333;text-decoration:none}.toc a:hover{color:var(--accent)}
+  .wrap{max-width:900px;margin:0 auto;padding:10px 24px 80px}
+  h2{color:var(--accent);border-bottom:2px solid var(--line);padding-bottom:6px;margin-top:48px;font-size:1.45rem;scroll-margin-top:14px}
+  h3{color:#43202a;margin-top:34px;font-size:1.18rem;border-left:5px solid var(--accent);padding-left:12px}
+  .pgmark{display:inline-block;font-family:system-ui,sans-serif;font-size:.72rem;font-weight:700;color:#fff;background:var(--accent);padding:2px 10px;border-radius:12px;margin:24px 0 4px}
+  p{margin:13px 0}
+  .lead{font-size:1.05rem;background:var(--box);border-left:4px solid var(--accent);padding:16px 20px;border-radius:0 10px 10px 0}
+  .term{font-family:system-ui,sans-serif;font-weight:700;color:var(--accent)}
+  .en-term{font-style:italic;color:var(--muted)}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:.93rem}
+  th,td{border:1px solid var(--line);padding:8px 11px;text-align:left;vertical-align:top}
+  th{background:var(--chip);font-family:system-ui,sans-serif}
+  .ex{background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 0;margin:16px 0;overflow:hidden}
+  .ex .row{padding:9px 18px;border-bottom:1px dashed #eee}
+  .ex .row:last-child{border-bottom:0}
+  .ex .sent{font-family:"Times New Roman",serif;font-size:1.05rem}
+  .ex .num{display:inline-block;min-width:34px;color:var(--muted);font-family:system-ui,sans-serif;font-size:.85rem}
+  .ex i{color:#444}
+  .g{color:#1a7a3a;font-weight:bold}.ung{color:#b32020;font-weight:bold}.qm{color:#b88a00;font-weight:bold}
+  .gloss{display:block;margin:4px 0 0 34px;font-size:.92rem;color:#555}
+  .ana{display:block;margin:5px 0 0 34px;font-size:.92rem;color:#6a3340;background:#f8eef1;border-radius:6px;padding:8px 12px}
+  .ana::before{content:"▸ 詳解　";color:var(--accent);font-weight:bold;font-family:system-ui,sans-serif}
+  .concept{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:16px 0;border-top:3px solid var(--accent)}
+  .concept h4{margin:0 0 8px;color:var(--accent);font-family:system-ui,sans-serif;font-size:1rem}
+  .key{background:#fdf6e3;border:1px solid #e9dcae;border-radius:10px;padding:14px 18px;margin:18px 0}
+  .key b{color:#8a6d00}
+  ul.plain{margin:13px 0;padding-left:24px}ul.plain li{margin:6px 0}
+  #en p{margin:12px 0}
+  #en .enpg{display:inline-block;font-family:system-ui,sans-serif;font-size:.72rem;font-weight:700;color:#fff;background:#888;padding:2px 9px;border-radius:12px;margin:20px 0 2px}
+  #en blockquote{margin:10px 0;padding:8px 16px;border-left:3px solid var(--line);background:#fbfbfb;font-family:"Times New Roman",serif}
+  #en .num{color:var(--muted);font-family:system-ui,sans-serif;font-size:.8rem;display:inline-block;min-width:34px}
+  .nav-bottom{display:flex;justify-content:space-between;margin-top:54px;font-family:system-ui,sans-serif;font-size:.9rem}
+  .nav-bottom a{color:var(--accent);text-decoration:none;border:1px solid var(--line);padding:10px 16px;border-radius:8px}
+  footer{text-align:center;color:var(--muted);font-size:.8rem;padding:20px;font-family:system-ui,sans-serif}
+  .back-top{position:fixed;right:18px;bottom:18px;background:var(--accent);color:#fff;text-decoration:none;padding:8px 13px;border-radius:20px;font-family:system-ui,sans-serif;font-size:.8rem;box-shadow:0 3px 10px rgba(0,0,0,.2)}
+</style>
+</head>
+<body id="top">
+<header><div class="inner">
+  <div class="ch">CHAPTER 1 · 逐頁逐例句詳解 + 英文原文對照</div>
+  <h1>核心概念</h1>
+  <div class="en">Core Concepts</div>
+  <div class="pg">書頁 1–21 · 涵蓋例句 (1)–(49) 與全部核心論證</div>
+</div></header>
+<nav class="bc"><a href="index.html">← 全書導覽</a> ／ 第 1 章</nav>
+
+<div class="tabbar">
+  <div class="tab active" id="tab-zh" onclick="showTab('zh')">中文逐頁詳解</div>
+  <div class="tab" id="tab-en" onclick="showTab('en')">English Original（整章英文原文）</div>
+</div>
+
+<!-- ===================== 中文 PANEL ===================== -->
+<div class="panel active" id="zh">
+<div class="toc">
+  <h2>本章導覽</h2>
+  <ul>
+    <li><a href="#s11">1.1 什麼是句子？</a></li>
+    <li><a href="#s111">1.1.1 話語、命題與句子</a></li>
+    <li><a href="#s112">1.1.2 可接受性、合語法性與星號</a></li>
+    <li><a href="#s113">1.1.3 形式與順序</a></li>
+    <li><a href="#s12">1.2 默會知識</a></li>
+    <li><a href="#s13">1.3 句法理論</a></li>
+    <li><a href="#s14">1.4 回到句子（遞迴與無限性）</a></li>
+    <li><a href="#s15">1.5 本章摘要</a></li>
+  </ul>
+</div>
+
+<div class="wrap">
+  <p class="lead" id="s11">本章是全書的<strong>方法論與哲學地基</strong>。Adger 在此回答一個看似簡單的問題——「什麼是句子？」——並藉此帶出生成語法的全部基本立場：句子是<strong>心理的、抽象的</strong>對象；母語者對句子的判斷（合語法性）是語言學的核心資料；這套句法知識是<strong>默會（tacit）、與生俱來</strong>的；語言學的任務是為這套知識建立一個<strong>形式化、可否證、最精簡</strong>的理論。最後用「遞迴」說明語言為何能以有限規則產生無限句子。</p>
+
+  <div class="concept"><h4>本章的問題意識</h4>
+  <p>初學者常以為「句子」就是「印在紙上、念出聲音的一串字」。Adger 第 1 章要徹底翻轉這個直覺：句子<strong>不是</strong>那串聲音或字母（那叫「話語 utterance」），而是母語者腦中一個<strong>抽象的心理結構</strong>。語言學研究的對象，是這套讓人能判斷「這串字對不對」的<strong>內在知識系統（I-language）</strong>，而非外在的言語表現。理解這個區分，是讀懂全書後續所有技術分析的前提。</p></div>
+
+  <!-- 1.1.1 -->
+  <h2 id="s111">1.1.1 話語、命題與句子</h2>
+  <span class="pgmark">書頁 1</span>
+  <p>有些人類語言的話語似乎具有特殊地位——它們表達所謂的「完整思想」。例如我說「It's rather hot, today（今天相當熱）」，任何英語母語者都會理解成一個完整的訊息。Adger 用一個小場景帶出三個關鍵概念的區分：</p>
+  <table>
+    <tr><th>概念</th><th>英文</th><th>定義</th></tr>
+    <tr><td>話語</td><td class="en-term">utterance</td><td>句子的<strong>實際使用</strong>；外在、有物理形體（可錄音、可印刷、可輸入電腦）</td></tr>
+    <tr><td>命題</td><td class="en-term">proposition</td><td>句子意義中可被判斷「真／假」的那一面；描述世界的某個狀態</td></tr>
+    <tr><td>句子</td><td class="en-term">sentence</td><td>對「具相同形式的諸多話語」的<strong>抽象</strong>；內在、心理的實體，無物理形體</td></tr>
+  </table>
+  <p>場景：我在星期日說「今天很熱」，你在星期一也說「今天很熱」——我們用了<strong>完全相同的句子</strong>（相同的語言形式），卻表達了<strong>不同的命題</strong>（我說的「今天」指週日，你的指週一，真假條件不同）。這顯示：<strong>同一句子可在不同場合表達不同命題</strong>；命題與語言形式無關。</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(1)</span> John saw Stephan.（英語）</span></div>
+    <div class="row"><span class="sent"><span class="num">(2)</span> Jean a vu Stephan.（法語）</span></div>
+    <div class="row"><span class="sent"><span class="num">(3)</span> Chunnaic Iain Stephan.（蘇格蘭蓋爾語）</span>
+      <span class="ana">這三句分屬不同語言、形式完全不同，卻表達<strong>同一個命題</strong>（John 看見了 Stephan）。這從另一個方向印證：命題獨立於語言形式。命題與形式是兩件可分離的事——這個區分是全書「句法（管形式）vs 語意（管命題）」分工的起點。</span></div>
+  </div>
+  <span class="pgmark">書頁 2</span>
+  <p>那麼「句子」本身如何定義？答案是：你我之所以能從一個話語讀出命題，是因為共享同一套語言知識，其中包括「如何組成英語句子」與「句子的命題如何依賴其形式」。<strong>句子是抽象的心理實體</strong>，無法被錄音或電子操作；能被操作的只有「句子的使用（話語）」。你眼前讀到的這些字，技術上其實是<strong>話語</strong>（有外在形體）；句子本身是內在、抽象的。</p>
+
+  <!-- 1.1.2 -->
+  <h2 id="s112">1.1.2 可接受性、合語法性與星號</h2>
+  <p>本書主要關心句子的<strong>形式</strong>。同一命題可用不同形式表達——例如主動與被動：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(4)</span> That monkey is eating the banana.</span></div>
+    <div class="row"><span class="sent"><span class="num">(5)</span> The banana is being eaten by that monkey.</span>
+      <span class="ana">(4) 主動、(5) 被動，形式不同卻傳達<strong>大致相同的訊息</strong>。呼應 1.1.1：一個命題可有多種形式。</span></div>
+  </div>
+  <span class="pgmark">書頁 3</span>
+  <p>反過來，多數人無法從 (6) 讀出任何訊息，會拒絕它作為英語句子：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(6)</span> <span class="ung">*</span> By is eaten monkey banana that the being.</span>
+      <span class="ana">為何不可接受？因為<strong>詞序（word order）</strong>很重要。(6) 用的字和 (5) 一模一樣，但排列順序不是英語允許的。→ 顯示「順序」是句子合法與否的因素之一。</span></div>
+    <div class="row"><span class="sent"><span class="num">(7)</span> <span class="ung">*</span> That monkey is ate the banana.</span>
+      <span class="ana">但可接受性<strong>不只</strong>取決於詞序。(7) 的詞序完全正常（和 (4) 一樣），壞的是<strong>詞的形式（form）</strong>——is 後面該接 eating（現在分詞）而非 ate（過去式）。→ 顯示「詞與詞之間的形式關係」也是因素。</span></div>
+  </div>
+  <p>還有些句子「怪」是因為與我們對世界的認知衝突，而非形式問題：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(8)</span> The amoeba coughed.（變形蟲咳嗽了）</span>
+      <span class="ana">這句形式完全正常，但多數人覺得怪——因為在我們對世界的認知裡，變形蟲不會咳嗽。它的不可接受性<strong>取決於語境與世界觀</strong>（在奇幻小說或卡通裡就完全 OK）。→ 關鍵教訓：<strong>「不可接受」不等於「不合語法」</strong>；這裡是<strong>語意／世界知識</strong>的問題，不是句法問題。</span></div>
+  </div>
+  <span class="pgmark">書頁 3–4</span>
+  <p>另一種不可接受是「語意合理但彆扭」的句子，問題出在<strong>處理（剖析）</strong>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(9)</span> <span class="qm">!</span>I looked the number which you picked out at random by using a needle and a phonebook up.</span></div>
+    <div class="row"><span class="sent"><span class="num">(10)</span> <span class="g">✓</span> I looked up the number which you picked out…（up 緊接 look）</span></div>
+    <div class="row"><span class="sent"><span class="num">(11)</span> <span class="g">✓</span> I looked the number up.（look 與 up 距離短）</span>
+      <span class="ana">(9) 中 look 與 up 之間隔了 15 個字，難以理解；把 up 拉近就變好 (10)(11)。Adger 假設：聽者處理時，遇到 look 就<strong>預期</strong> up，但等太久、中間又要處理複雜結構，連結就難建立。→ 這是 <span class="term">剖析解釋（parsing explanation）</span>：問題不在「不合文法」，而在人腦<strong>處理</strong>時難以指派正確結構，極端時甚至<strong>無法剖析（unparsable）</strong>。</span></div>
+  </div>
+  <div class="concept"><h4>核心區分：剖析解釋 vs 合語法性解釋</h4>
+  <p>(9) 可以靠「縮短距離」變好 → 屬<span class="term">剖析（performance/表現）</span>問題。但 (7) <strong>無法</strong>靠縮短距離變好——語言根本就要求 is 後面接特定形式，這個關係在 (7) 裡就是不成立。這種解釋叫 <span class="term">合語法性解釋（grammaticality explanation）</span>，這類句子稱<span class="term">不合語法（ungrammatical）</span>。<strong>身為語言學家，我們無法事先知道</strong>一個句子的不可接受是因為難剖析、不合語法、還是其他因素——這是判斷時必須小心的。</p></div>
+  <p>句法學家用<strong>星號 *</strong> 標記「這串字不是該語言的合語法句子」：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(12)</span> <span class="ung">*</span> By is eaten monkey banana that the being.</span></div>
+    <div class="row"><span class="sent"><span class="num">(13)</span> <span class="ung">*</span> The monkey is ate the banana.</span>
+      <span class="ana">一串字稱為 <span class="term">string（字串）</span>；在字串前加星號 = 主張它不是該語言的合語法句子。這個 * 慣例會貫穿全書。</span></div>
+  </div>
+  <span class="pgmark">書頁 5</span>
+  <p>星號還用於「<strong>在特定解讀下</strong>不合法」——句子形式沒問題，但無法承載某個指定的意義：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(14)</span> People are in the garden.（存在解讀：有些人在花園裡）</span></div>
+    <div class="row"><span class="sent"><span class="num">(15)</span> People are stupid.（通則解讀：人（普遍而言）是愚蠢的）</span>
+      <span class="ana">(14) 只能是「存在」解讀（有些人在花園），不能是「人普遍都在花園」；(15) 反過來只能是「通則」解讀（人都笨），不能是「存在些笨人」。所以 (15) 在「存在解讀」下被<strong>加星（starred under that interpretation）</strong>。</span></div>
+  </div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(16)</span> How did Julie ask if Jenny left?</span></div>
+    <div class="row"><span class="sent"><span class="num">(17)</span> How did Julie say that Jenny left?</span>
+      <span class="ana">(16) 只能問「Julie <strong>問</strong>的方式」（大聲、無禮…），<strong>不能</strong>問「Jenny <strong>離開</strong>的方式」。但 (17) 卻可以問「Jenny 離開的方式」（生氣地、輕快地…）。所以 (16) <strong>在「問 Jenny 離開方式」這個解讀下不合語法</strong>。為何？因為英語的句法知識<strong>不允許</strong>把 (16) 的詞組成能得出該意義的結構——這預告了第 9、10 章的「wh-移位」與「島嶼」限制。</span></div>
+  </div>
+  <span class="pgmark">書頁 6</span>
+  <p>為何 * 同時用於「不是句子」與「沒有預期的意義」兩種情況？因為命題不只取決於<strong>有哪些字</strong>，也取決於<strong>字如何組合</strong>。母語者能給 (17) 指派兩種結構、卻只能給 (16) 指派一種；缺少的那種結構就用 * 標記（並在上下文註明所指的解讀）。</p>
+
+  <!-- 1.1.3 -->
+  <h2 id="s113">1.1.3 形式與順序</h2>
+  <p>回到更明顯的形式事實。詞序會改變命題：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(18)</span> That banana is eating the monkey.（那根香蕉在吃猴子）</span>
+      <span class="ana">與 (4) 用<strong>完全相同的字</strong>，但詞序不同 → 意思相反。再次證明詞序攸關命題。</span></div>
+  </div>
+  <p>詞與詞之間還有<strong>形式上的牽連</strong>。(18) 的第一、三個字（that…is）的形式由第二個字決定；改變第二字，第一、三字也得跟著改：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(19)</span> Those monkeys are eating the banana.</span></div>
+    <div class="row"><span class="sent"><span class="num">(20)</span> <span class="ung">*</span> Those monkey are eating the banana.</span></div>
+    <div class="row"><span class="sent"><span class="num">(21)</span> <span class="ung">*</span> That monkeys is eating the banana.</span>
+      <span class="ana">不能把 are 換成 is（或反之）：those↔monkeys↔are 必須一致，that↔monkey↔is 必須一致。這種「一個詞牽動其他詞形式」的關係稱 <span class="term">一致（agreement）</span>（後續章節詳論）。它<strong>無法</strong>用剖析解釋——純粹是結構問題。</span></div>
+  </div>
+  <span class="pgmark">書頁 7</span>
+  <p>意義也是母語者有強烈直覺的對象。最明顯的是 <strong>歧義（ambiguous）</strong>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(22)</span> The monkey wrote a poem on its favourite banana.</span>
+      <span class="ana">兩個意思：① 猴子寫了一首「關於」它最愛的香蕉的詩（write about）；② 猴子真的把詩寫「在」香蕉表面上（write on the surface）。同一串字、同一詞序，卻有兩個意義 → 顯示句子有<strong>結構</strong>，而結構規定了成分之間的關係。</span></div>
+  </div>
+  <div class="key"><b>本節結論：</b>句子不只是「字一個接一個串起來」，而是有<span class="term">句法結構（syntactic structure）</span>——它規定了句子各片段之間成立哪些關係。句法學家的主要任務就是：找出語言的<strong>基本構件</strong>，以及這些構件之間有哪些<strong>關係</strong>。</div>
+
+  <!-- 1.2 -->
+  <h2 id="s12">1.2 默會知識</h2>
+  <span class="pgmark">書頁 7–8</span>
+  <p>上一節說的「知識」是語言學的<strong>技術義</strong>，與「歷史知識」截然不同。Adger 用四個對比說明語言知識的特殊性：</p>
+  <table>
+    <tr><th>歷史知識</th><th>語言知識</th></tr>
+    <tr><td>片面的（partial）：只知道片段</td><td>近乎完整：你很難教我一個英語沒有的造句法</td></tr>
+    <tr><td>易忘的（forgettable）：會忘記日期</td><td>不會「忘記如何造句」（除非嚴重腦傷）</td></tr>
+    <tr><td>外顯的（explicit）：能說出口</td><td>無法用意識說清楚造句規則</td></tr>
+    <tr><td>學來的（learned）：刻意學習</td><td>近乎本能、無須教導</td></tr>
+  </table>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(23)</span> <span class="g">✓</span> Anson is incredibly difficult to please.</span></div>
+    <div class="row"><span class="sent"><span class="num">(24)</span> <span class="ung">*</span> Anson is incredibly difficult to be pleased.</span>
+      <span class="ana">母語者立刻知道 (23) 是英語句子、(24) 不是——但<strong>說不出為什麼</strong> (24) 這麼糟。這種「知道卻說不出所以然」的知識，正是 <span class="term">默會知識（tacit knowledge）</span>。本書的科學任務就是把這套說不出口的知識，用明確的理論揭露出來。</span></div>
+  </div>
+  <span class="pgmark">書頁 8–9</span>
+  <p><strong>語言習得的特殊性。</strong>多數兒童三歲就掌握母語核心結構。三歲兩個月的孩子能說出 (25)(26)——雖有一致錯誤（I are、a carpenter keep），卻已展現「組合句子並操作其部件」的複雜結構。</p>
+  <div class="concept"><h4>刺激貧乏論（Poverty of the Stimulus）——本章最重要的論證</h4>
+  <p>以英語 yes/no 問句為例。問句 (27) Has Jenny eaten a cake? / (28) Will Anson come to the party? 顯然對應於陳述句 (29) Jenny has eaten a cake / (30) Anson will come。孩子聽到問句後，理論上可以「夢想出」(31) 多條規則來生成它：</p>
+  <ul class="plain">
+    <li><strong>規則1：</strong>把前兩個字對調。</li>
+    <li><strong>規則2：</strong>把第一個動詞性成分與第一個名詞片語對調。</li>
+    <li><strong>規則3：</strong>把<strong>主語之後</strong>的動詞性成分移到主語<strong>之前</strong>。（正確規則）</li>
+  </ul>
+  </div>
+  <span class="pgmark">書頁 9–10</span>
+  <p>三條規則在簡單句上結果相同，但在複雜句（主語含關係子句）上會分歧。若孩子用規則1（對調前兩字），會產生 (32b) *Man the has eaten the cake、(33b) *Woman the who is singing is happy——顯然錯。若用規則2，會產生 (35b) *Is the woman who singing is happy——也錯。正確的規則3 產生 (37b) Is the woman who is singing happy?</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(35b)</span> <span class="ung">*</span> Is the woman who singing is happy?（規則2 的錯誤預測）</span></div>
+    <div class="row"><span class="sent"><span class="num">(37b)</span> <span class="g">✓</span> Is the woman who is singing happy?（規則3，正確）</span>
+      <span class="ana">Crain &amp; Nakayama (1987) 的實驗顯示：連三歲兩個月的孩子，<strong>都不犯</strong>規則1、2 預測的錯誤，一律用最複雜的規則3。關鍵在於：規則3 必須認識到句子有<strong>階層結構</strong>（要先找出「主語」這個結構單位），而非單純的線性順序。<strong>而孩子聽到的語料根本不足以排除規則1、2</strong>——他們卻天生就知道要用規則3。這就是<span class="term">刺激貧乏論</span>：兒童擁有的語言知識，不可能單從他們聽到的輸入學來。</span></div>
+  </div>
+  <span class="pgmark">書頁 10–12</span>
+  <p>為何把這稱為「知識」？源自柏拉圖之問——<strong>我們如何能用如此少的輸入知道如此多？</strong>Chomsky 稱之為 <span class="term">柏拉圖問題（Plato's Problem）</span>。其他重要概念：</p>
+  <ul class="plain">
+    <li><span class="term">認知（cognize）</span>：若哲學家堅持「知識」須是「真確且有理據的信念」，語言學家願改用 cognize 一詞——但「（默會）知識」是合理的技術術語。</li>
+    <li><span class="term">grammar（文法）</span>有兩義要小心：(i) 說話者對其語言的默會知識；(ii) 語言學家對該默會知識的<strong>外顯理論</strong>。</li>
+    <li><span class="term">I-language</span>（I = Internal/Individual，內在／個體）：Chomsky 對「文法第一義」的稱呼，即說話者的默會語言知識。語言學家建構的是「關於 I-language 的理論」。</li>
+    <li>I-language 有<strong>生理基礎</strong>：左腦的 <span class="term">Broca's area</span> 與 <span class="term">Wernicke's area</span> 受損會造成特定語言缺陷；<span class="term">特定型語言障礙（SLI）</span>有遺傳因素（已找到相關基因突變）；但<strong>習得哪種語言</strong>由環境決定。</li>
+  </ul>
+  <p>I-language 是人類心智中把<strong>意義</strong>（部分為命題）與<strong>形式</strong>（聲音、字母、手語符號）連結起來的部件。它<strong>高度創造性</strong>，能把無限的意義連到無限的符號序列——這是人類溝通、乃至物種演化成功的根本。</p>
+
+  <!-- 1.3 -->
+  <h2 id="s13">1.3 句法理論</h2>
+  <span class="pgmark">書頁 12–13</span>
+  <p>兩個已得結論：(i) 句子是抽象心理對象；(ii) 一個句子是否屬於某人的母語，是該說話者<strong>默會地知道</strong>的。據此可初步定義：<span class="term">句法知識（syntax）</span>是 I-language 中關於「句子如何由基本部件組合而成」的那部分——這正是我們要建構理論的對象。</p>
+  <p><strong>什麼是理論？</strong>理論是一組能解釋某些現象的<strong>普遍原則／定律</strong>。一個理論要考慮兩件事：(1) 它的<strong>領域（domain）</strong>（要解釋什麼現象）；(2) 它能做出哪些<strong>陳述</strong>（陳述關於什麼、允許哪些關係）。重要的是：<strong>我們無法在研究之前就知道</strong>陳述該關於什麼——理論是逐步發展、再探索其後果的。成功的理論不僅解釋已觀察的現象，還能對<strong>新情況做出可檢驗的預測</strong>，且預測錯誤時理論可被挑戰。</p>
+  <span class="pgmark">書頁 14</span>
+  <p><strong>形式化（formal）</strong>是物理、化學、生物等成功理論的特徵：系統是明確的、概念有良好定義。明確定義的好處是<strong>更難被誤用</strong>。生成語法假設：人類心理的某些面向（包括語言結構）類似自然界現象——這由腦的物理結構、人類的遺傳結構都涉入語言結構而得到支持。因此，那些在處理自然界如此成功的理論手法，很可能有助於理解語言。這也呼應「在自然中尋找數學模式」的 <span class="term">伽利略取向（Galilean approach）</span>：語言中的數學模式是什麼？</p>
+  <span class="pgmark">書頁 15</span>
+  <p><strong>精簡原則。</strong>理論應盡量精簡——盡量少假設概念與關係（源自 William of Ockham 的 <span class="term">奧坎剃刀（Ockham's Razor）</span>）。理論的基礎要簡單，即使其效應可能很複雜。句法理論要陳述：基本單位是什麼（<span class="term">句法原子／形符 syntactic primes / formatives</span>），以及這些單位如何彼此關聯（<span class="term">句法關係 syntactic relations</span>）。有了理論，就對某組資料做<strong>分析（analysis）</strong>。</p>
+  <div class="key"><b>理論的三級「充分性（adequacy）」：</b><br>
+  ① <span class="term">觀察充分性（observational adequacy）</span>：只要「把對的字按對的順序排出來」即可（最低標準）。<br>
+  ② <span class="term">描述充分性（descriptive adequacy）</span>：要能對句子指派<strong>正確的結構</strong>，描述語言裡所有結構及其互動（更嚴格）。<br>
+  ③ <span class="term">解釋充分性（explanatory adequacy）</span>：要能解釋兒童<strong>為何</strong>在給定輸入下習得「這一個」I-language、而非其他同樣相容於資料卻做錯預測的 I-language（最高標準）。</div>
+  <span class="pgmark">書頁 16</span>
+  <p>所有人共享的 I-language 面向稱 <span class="term">普遍語法（Universal Grammar, UG）</span>。UG 理論陳述：跨語言共通的部分（<span class="term">UG 原則 Principles</span>），以及各語言可分歧之處（<span class="term">變異參數 Parameters</span>）。例如 UG 可能要求所有語言都有「動詞與主語的一致關係」，但某些語言不發音、或一致也及於賓語。<strong>參數少 → 可能的分析少 → </strong>能解釋兒童為何能在貧乏資料下如此快速習得語言（解釋充分性）。</p>
+
+  <!-- 1.4 -->
+  <h2 id="s14">1.4 回到句子：遞迴與離散無限性</h2>
+  <span class="pgmark">書頁 16–17</span>
+  <p>I-language 的核心性質之一：它刻畫<strong>潛在無限多</strong>的句子。我們日常用的許多句子都是初次說出的新句，卻毫無困難。怎麼可能？<strong>難道大腦把所有句子都存起來？不可能。</strong></p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(38)</span> Paul had an affair.</span></div>
+    <div class="row"><span class="sent"><span class="num">(39)–(42)</span> Paul had two / three / … eighty-eight billion … affairs.</span>
+      <span class="ana">光是改數字就能無限造句——句子數遠超 Paul 的風流韻事。但更根本的證明來自<strong>內嵌（embedding）</strong>。</span></div>
+  </div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(43)</span> Anson thought Julie had fainted.</span></div>
+    <div class="row"><span class="sent"><span class="num">(44)</span> You said that [Anson thought that Julie had fainted].</span></div>
+    <div class="row"><span class="sent"><span class="num">(45)</span> David wrote that [you said that Anson thought that Julie had fainted].</span>
+      <span class="ana">每一次把整個句子<strong>內嵌</strong>進另一個句子，就得到一個新句子；這個過程原則上<strong>永無止境</strong>（實際上會因疲倦或死亡而停）。因此句子數是<strong>無限</strong>的。這也帶出 <span class="term">能力（competence，＝I-language，原則上能做什麼）</span> 與 <span class="term">表現（performance，實際使用）</span> 的區分——剖析是表現問題，合語法性是能力問題。</span></div>
+  </div>
+  <span class="pgmark">書頁 18–19</span>
+  <p>這種創造力<strong>絕對依賴句子有結構</strong>。一個明確而精簡的陳述方式是 <span class="term">詞組結構規則（Phrase Structure Rules, PS-rules）</span>（早期生成語法用、後已被取代；可想成「把箭頭左邊的符號改寫成右邊的東西」）：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(46)</span> S → Paul had an affair.</span></div>
+    <div class="row"><span class="sent"><span class="num">(47)</span> S → You said that S</span>
+      <span class="ana">注意 (47) 箭頭<strong>兩邊都有 S</strong>。套用 (47) 的輸出，又可作為 (47) 的新輸入——例如推導 (49)：S → You said that S → You said that you said that S → … → You said that you said that Paul had an affair。</span></div>
+  </div>
+  <div class="key"><b>遞迴（recursion）：</b>像 (47) 這樣「同一符號出現在箭頭兩側」、能不斷回頭套用自己的規則，稱為 <span class="term">遞迴規則</span>；由此產生的語言是 <span class="term">遞迴語言</span>。正是「人類語言是遞迴的」這個性質，讓有限的規則能<strong>生成（generate）無限</strong>的句子——這就是我們在語言裡找到的<strong>數學模式</strong>。我們希望用盡量精簡的理論來捕捉這個根本性質（第 3 章詳論）。</div>
+
+  <!-- 1.5 -->
+  <h2 id="s15">1.5 本章摘要</h2>
+  <span class="pgmark">書頁 19–20</span>
+  <ul class="plain">
+    <li>從「什麼是句子？」出發，用<strong>命題</strong>與<strong>話語</strong>把句子的語意／物理性質與其<strong>結構</strong>性質區分開。</li>
+    <li>人類能透過<strong>默會語言知識</strong>給字串指派結構；此結論由三種判斷支持：可剖析性、語意良構性、結構良構性。</li>
+    <li>默會知識是<strong>無意識、部分與生俱來</strong>的，稱 <strong>I-language</strong>。</li>
+    <li>理解 I-language 的方法是建立<strong>形式化、普遍、最精簡</strong>的理論；此理論應能解釋<strong>刺激貧乏</strong>的事實、以及語言共性與變異——候選方案是「少數基本原則 + 有限參數」。</li>
+    <li>理論還須能解釋人類語言的<strong>遞迴</strong>本質——無限意義與無限結構的連結，這正是人類溝通與物種成功的基礎。</li>
+  </ul>
+  <div class="key"><b>本章關鍵詞彙：</b>utterance / proposition / sentence、acceptability / grammaticality、star (*) / string、parsing explanation vs grammaticality explanation、unparsable、agreement、ambiguous、syntactic structure、tacit knowledge、Poverty of the Stimulus、Plato's Problem、I-language、Broca's / Wernicke's area、SLI、competence vs performance、UG（Principles &amp; Parameters）、descriptive / explanatory adequacy、Ockham's Razor、Galilean approach、PS-rules、derivation、recursion / generate。</div>
+
+  <div class="nav-bottom">
+    <a href="index.html">← 全書導覽</a>
+    <a href="Ch02_Morphosyntactic_Features.html">第 2 章：形態句法特徵 →</a>
+  </div>
+</div><!-- /.wrap -->
+</div><!-- /#zh -->
+
+<!-- ===================== ENGLISH PANEL ===================== -->
+<div class="panel" id="en">
+<div class="wrap">
+  <p class="lead">English original of Chapter 1, reproduced page by page from Adger (2003), <em>Core Syntax</em>, pp. 1–21 (OUP). Running prose is given in full; numbered examples are listed with their grammaticality marks.</p>
+
+  <span class="enpg">p.1</span>
+  <p><strong>1.1 What is a sentence? — 1.1.1 Utterances, propositions, and sentences.</strong> Certain utterances of human languages seem to have a special status, in that they express what you might call 'complete thoughts'. So if I were to say, "It's rather hot, today", any native English speaker will interpret me as conveying a message which is somehow complete. Note that you could say exactly the same thing, "It's rather hot, today", which will also convey a complete message. However, if I do this on Sunday, and you do it on Monday, the message communicated is different. Linguists say that the <strong>proposition</strong> expressed is different.</p>
+  <p>A proposition is that aspect of the meaning of a sentence which allows us to say, "Yes, that's true" or "No, that's false". It describes a state of affairs that holds in the world, and its correspondence with that state of affairs allows us to attribute truth or falsity to the proposition.</p>
+  <p>Note that, even though we have expressed different propositions, we have both used exactly the same linguistic form. We have both said the same <strong>sentence</strong>. This little scenario gives us some grasp of a core idea in syntax, the idea of a sentence as an abstraction over <strong>utterances</strong> which have the same form. The same proposition is conveyed by the English sentence (1), the French sentence (2), and the Scottish Gaelic sentence (3):</p>
+  <blockquote><span class="num">(1)</span> John saw Stephan.<br><span class="num">(2)</span> Jean a vu Stephan.<br><span class="num">(3)</span> Chunnaic Iain Stephan.</blockquote>
+
+  <span class="enpg">p.2</span>
+  <p>So a proposition is that aspect of the meaning of a sentence which says something about a state of affairs, and an utterance is an actual use of a sentence. A sentence itself is something which can't be recorded, heard, or electronically manipulated, only <strong>uses</strong> of sentences can. Although it sounds counter-intuitive, what you see on this page are technically utterances. Sentences, on the other hand, are internal, mental entities, which have an abstract form.</p>
+  <p><strong>1.1.2 Acceptability, grammaticality, and stars.</strong> We can express the same proposition using different sentence forms:</p>
+  <blockquote><span class="num">(4)</span> That monkey is eating the banana.<br><span class="num">(5)</span> The banana is being eaten by that monkey.</blockquote>
+
+  <span class="enpg">p.3</span>
+  <blockquote><span class="num">(6)</span> *By is eaten monkey banana that the being.</blockquote>
+  <p>Why is (6) not an <strong>acceptable</strong> sentence of English? Well obviously the <strong>order</strong> of the words matters. Acceptability, however, doesn't just depend upon the order of words.</p>
+  <blockquote><span class="num">(7)</span> *That monkey is ate the banana.</blockquote>
+  <p>It's the <em>form</em> of the words that makes the sentence unacceptable; the word after <i>is</i> should have the form <i>eating</i>, not <i>ate</i>.</p>
+  <blockquote><span class="num">(8)</span> The amoeba coughed.</blockquote>
+  <p>The acceptability of this sentence depends upon the context. The acceptability of (8) appears to be dependent on our view of the world.</p>
+  <blockquote><span class="num">(9)</span> !I looked the number which you picked out at random by using a needle and a phonebook up.<br><span class="num">(10)</span> I looked up the number which you picked out at random…</blockquote>
+
+  <span class="enpg">p.4</span>
+  <blockquote><span class="num">(11)</span> I looked the number up.</blockquote>
+  <p>This kind of explanation for unacceptability is known as a <strong>parsing</strong> explanation. In the most extreme cases we might conclude that the sentence can't be parsed at all—it is <strong>unparsable</strong>. This kind of explanation for the unacceptability of (7) is known as a <strong>grammaticality</strong> explanation, and sentences like (7) are termed <strong>ungrammatical</strong>. Syntacticians express the claim with a star:</p>
+  <blockquote><span class="num">(12)</span> *By is eaten monkey banana that the being.<br><span class="num">(13)</span> *The monkey is ate the banana.</blockquote>
+  <p>Sometimes a sequence of words is called a <strong>string</strong>.</p>
+
+  <span class="enpg">p.5</span>
+  <p>Acceptability concerns making a judgement about the status of a string as part of a language. As linguists, we cannot know in advance whether a string of words is unacceptable because it is difficult to parse, because it is ungrammatical, or because of some other factor.</p>
+  <blockquote><span class="num">(14)</span> People are in the garden.<br><span class="num">(15)</span> People are stupid.<br><span class="num">(16)</span> How did Julie ask if Jenny left?<br><span class="num">(17)</span> How did Julie say that Jenny left?</blockquote>
+  <p>This is not a possible meaning of (16). In that case, we would say that (16) is ungrammatical under this interpretation.</p>
+
+  <span class="enpg">p.6</span>
+  <p>The propositions expressed by sentences are not just dependent on the words in a sentence, but also on the ways that those words are put together. <strong>1.1.3 Form and order.</strong></p>
+  <blockquote><span class="num">(18)</span> That banana is eating the monkey.<br><span class="num">(19)</span> Those monkeys are eating the banana.<br><span class="num">(20)</span> *Those monkey are eating the banana.<br><span class="num">(21)</span> *That monkeys is eating the banana.</blockquote>
+
+  <span class="enpg">p.7</span>
+  <p>The relationship between the second word and the others is known as <strong>agreement</strong>. The meanings of sentences are also things which native speakers have strong intuitions about; (22) has two meanings (i.e. it is <strong>ambiguous</strong>):</p>
+  <blockquote><span class="num">(22)</span> The monkey wrote a poem on its favourite banana.</blockquote>
+  <p>Sentences have a <strong>structure</strong> which specifies certain relationships. The general term is the <strong>syntactic structure</strong> of the sentence. <strong>1.2 Tacit knowledge.</strong> Knowledge of language isn't like knowledge of history. My knowledge of history is extremely <strong>partial, forgettable, explicit, and learned</strong>.</p>
+
+  <span class="enpg">p.8</span>
+  <blockquote><span class="num">(23)</span> Anson is incredibly difficult to please.<br><span class="num">(24)</span> *Anson is incredibly difficult to be pleased.</blockquote>
+  <p>The kind of knowledge of language which allows you to make this judgement is not accessible to you—the term for this is <strong>tacit knowledge</strong>. Most children have a command over the core structures of their language by the time they are three (Pinker 1994, ch. 7):</p>
+  <blockquote><span class="num">(25)</span> Can I put my head in the mailbox so the mailman can know where I are and put me in the mailbox?</blockquote>
+
+  <span class="enpg">p.9</span>
+  <blockquote><span class="num">(26)</span> Can I keep the screwdriver just like a carpenter keep the screwdriver?<br><span class="num">(27)</span> Has Jenny eaten a cake?<br><span class="num">(28)</span> Will Anson come to the party?<br><span class="num">(29)</span> Jenny has eaten a cake.<br><span class="num">(30)</span> Anson will come to the party.<br><span class="num">(31)</span> 1. Swap the first two words around. 2. Swap the first verbal element with the first noun phrase. 3. Put the verbal element that follows the subject in front of it.<br><span class="num">(32)</span> a. The man has eaten the cake. b. *Man the has eaten the cake.<br><span class="num">(33)</span> a. The woman who is singing is happy. b. *Woman the who is singing is happy.</blockquote>
+
+  <span class="enpg">p.10</span>
+  <blockquote><span class="num">(34)</span> a. The man has eaten the cake. b. Has the man eaten the cake?<br><span class="num">(35)</span> a. The woman who is singing is happy. b. *Is the woman who singing is happy.<br><span class="num">(36)</span> b. Has the man eaten the cake?<br><span class="num">(37)</span> b. Is the woman who is singing happy?</blockquote>
+  <p>Crain and Nakayama (1987) showed that the errors expected under the first two hypotheses never occurred. This kind of argument is known as a <strong>Poverty of the Stimulus</strong> argument: the linguistic stimulus that a child is exposed to is not rich enough to provide the information the child needs to acquire the language. In many senses, this tacit knowledge is far more like instinct than other kinds of knowledge.</p>
+
+  <span class="enpg">p.11</span>
+  <p>The answer has to do with a discussion that goes back to Plato—a problem which Chomsky has christened <strong>Plato's Problem</strong>. The linguists' use of <strong>knowledge</strong> (and especially <strong>tacit knowledge</strong>) is a technical term (cf. <strong>cognize</strong>). Another common term is <strong>grammar</strong>: (i) a speaker's tacit knowledge; (ii) a linguist's explicit theory of it. Chomsky refers to the first sense as <strong>I-language</strong> (I = Internal/Individual). Two areas of the brain's left hemisphere: <strong>Broca's area</strong> and <strong>Wernicke's area</strong>. Some aspects are genetically determined—<strong>Specific Language Impairment (SLI)</strong>.</p>
+
+  <span class="enpg">p.12</span>
+  <p>Other aspects of I-language are determined by environmental factors. I-language allows us to link together meanings with forms, and is highly creative. Syntax is key to human achievement at a fundamental level. <strong>1.3 Syntactic theories.</strong> Syntactic knowledge is that part of an I-language that is concerned with the ways that sentences are put together out of basic parts.</p>
+
+  <span class="enpg">p.13</span>
+  <p>A theory is a statement of <strong>general principles</strong> or laws. We don't know what the statements are about in advance of investigation. A successful theory engenders new questions, gives explanations of observed phenomena, and makes testable predictions.</p>
+
+  <span class="enpg">p.14</span>
+  <p>Theories of physics, genetics, etc. have a <strong>formal</strong> aspect. The approach in generative grammar assumes that certain aspects of human psychology are similar to phenomena of the natural world. This relates to the search for "mathematical patterns in nature" — the <strong>Galilean approach</strong>.</p>
+
+  <span class="enpg">p.15</span>
+  <p>We keep theories as simple as possible (<strong>Ockham's Razor</strong>). The basic units are syntactic <strong>primes/formatives</strong>; how they relate are <strong>syntactic relations</strong>; we then develop an <strong>analysis</strong>. Levels: <strong>observational adequacy</strong> ('right words in the right order'); <strong>descriptive adequacy</strong> (assign the right structures); <strong>explanatory adequacy</strong> (explain how a child fixes on the right I-language).</p>
+
+  <span class="enpg">p.16</span>
+  <p>The aspects common to all of us are <strong>Universal Grammar (UG)</strong>: <strong>Principles</strong> and <strong>Parameters</strong>. Few parameters → few analyses → explains rapid acquisition. <strong>1.4 Back to sentences.</strong></p>
+  <blockquote><span class="num">(38)</span> Paul had an affair.</blockquote>
+
+  <span class="enpg">p.17</span>
+  <blockquote><span class="num">(39)</span> Paul had two affairs. <span class="num">(40)</span> Paul had three affairs… <span class="num">(41)/(42)</span> Paul had eighty-eight billion … affairs…<br><span class="num">(43)</span> Anson thought Julie had fainted.<br><span class="num">(44)</span> You said that Anson thought that Julie had fainted.<br><span class="num">(45)</span> David wrote that you said that Anson thought that Julie had fainted.</blockquote>
+  <p>We can take a sentence and <strong>embed</strong> it inside another, indefinitely → an infinite number of sentences. The distinction between <strong>competence</strong> (= I-language) and <strong>performance</strong> (putting it to use). Parsing is performance; grammaticality is competence.</p>
+
+  <span class="enpg">p.18</span>
+  <p>The creativity of I-languages depends on the fact that sentences have structure. A general, explicit, minimal statement: <strong>Phrase Structure Rules (PS-rules)</strong>.</p>
+  <blockquote><span class="num">(46)</span> S → Paul had an affair.<br><span class="num">(47)</span> S → You said that S<br><span class="num">(48)</span> a. S (apply 46) b. Paul had an affair.<br><span class="num">(49)</span> a. S (apply 47) b. You said that S (apply 47) c. You said that you said that S (apply 46) d. You said that you said that Paul had an affair.</blockquote>
+
+  <span class="enpg">p.19</span>
+  <p>The rules give rise to (technically <strong>generate</strong>) an infinite number of sentences. Sets of rules which refer back to themselves are called <strong>recursive</strong>. It is partly the fact that human languages are recursive that allows them to be creative. It seems that we have found a mathematical pattern in language.</p>
+
+  <span class="enpg">p.19–21</span>
+  <p><strong>1.5 Summary.</strong> We distinguished semantic and physical properties of a sentence from its structural properties via <strong>proposition</strong> and <strong>utterance</strong>. Human beings assign structure to a string via tacit knowledge of language (<strong>I-language</strong>), motivated by judgements of parsability, semantic well-formedness, and structural well-formedness. We build a theory that is formal, general, and maximally simple, that explains Poverty of the Stimulus facts and both linguistic universals and variation (basic principles + parameters), and that accounts for the <strong>recursive</strong> nature of human languages. <strong>Further reading</strong> covers Cruse (2000), Saeed (1997), Chomsky (1965, 1957, 1986b, 1995a), Pinker (1994), Crain &amp; Nakayama (1987), Gopnik et al., Lai et al. (2001), Feynman (1965), Lasnik (2000).</p>
+
+  <div class="nav-bottom">
+    <a href="index.html">← Index</a>
+    <a href="Ch02_Morphosyntactic_Features.html">Ch.2 Features →</a>
+  </div>
+</div><!-- /.wrap -->
+</div><!-- /#en -->
+
+<a href="#top" class="back-top">↑ 回頂端</a>
+<footer>Adger, D. (2003) <em>Core Syntax</em>, Ch.1 Core Concepts（書頁 1–21）· Oxford University Press · DOI:10.1093/oso/9780199243709.003.0001</footer>
+
+<script>
+function showTab(which){
+  document.getElementById('zh').classList.toggle('active', which==='zh');
+  document.getElementById('en').classList.toggle('active', which==='en');
+  document.getElementById('tab-zh').classList.toggle('active', which==='zh');
+  document.getElementById('tab-en').classList.toggle('active', which==='en');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+</script>
+</body>
+</html>

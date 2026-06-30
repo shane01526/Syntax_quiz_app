@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch.6 主語與賓語 Subjects and Objects（逐頁逐例句詳解 + 英文對照）— Adger (2003)</title>
+<style>
+  :root{--ink:#1b1b22;--muted:#5d5d6b;--line:#e3e3ec;--bg:#faf9f6;--accent:#7b2d3b;--accent2:#7b2d3b;--chip:#f0ece4;--card:#fff;--box:#f6f2ec;}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Noto Serif TC","Songti TC",Georgia,"Times New Roman",serif;color:var(--ink);background:var(--bg);line-height:1.9}
+  header{background:linear-gradient(135deg,#7b2d3b,#43202a);color:#fff;padding:54px 24px 36px}
+  header .inner{max-width:900px;margin:0 auto}
+  header .ch{font-family:system-ui,sans-serif;font-size:.8rem;letter-spacing:2px;color:#e3bcc4}
+  header h1{margin:6px 0 4px;font-size:2rem}
+  header .en{color:#f0d9de;font-style:italic}
+  header .pg{margin-top:10px;font-size:.85rem;color:#e3bcc4;font-family:system-ui,sans-serif}
+  nav.bc{max-width:900px;margin:0 auto;padding:14px 24px 0;font-family:system-ui,sans-serif;font-size:.85rem}
+  nav.bc a{color:var(--accent);text-decoration:none}
+  .tabbar{max-width:900px;margin:14px auto 0;padding:0 24px;display:flex;gap:10px;font-family:system-ui,sans-serif}
+  .tab{cursor:pointer;border:1px solid var(--line);border-bottom:0;background:#f1ece9;color:#7a4350;padding:11px 22px;border-radius:10px 10px 0 0;font-weight:700;font-size:.95rem;transition:.15s}
+  .tab:hover{background:#ece3e0}
+  .tab.active{background:var(--card);color:var(--accent);box-shadow:0 -2px 6px rgba(0,0,0,.04)}
+  .panel{display:none}.panel.active{display:block}
+  .toc{max-width:900px;margin:0 auto 10px;padding:18px 24px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+  .toc h2{margin:0 0 10px;font-size:1.05rem;color:var(--accent);border:0}
+  .toc ul{columns:2;column-gap:30px;margin:0;padding-left:18px;font-family:system-ui,sans-serif;font-size:.9rem}
+  .toc a{color:#333;text-decoration:none}.toc a:hover{color:var(--accent)}
+  .wrap{max-width:900px;margin:0 auto;padding:10px 24px 80px}
+  h2{color:var(--accent);border-bottom:2px solid var(--line);padding-bottom:6px;margin-top:48px;font-size:1.45rem;scroll-margin-top:14px}
+  h3{color:#43202a;margin-top:34px;font-size:1.18rem;border-left:5px solid var(--accent);padding-left:12px}
+  .pgmark{display:inline-block;font-family:system-ui,sans-serif;font-size:.72rem;font-weight:700;color:#fff;background:var(--accent);padding:2px 10px;border-radius:12px;margin:24px 0 4px}
+  p{margin:13px 0}
+  .lead{font-size:1.05rem;background:var(--box);border-left:4px solid var(--accent);padding:16px 20px;border-radius:0 10px 10px 0}
+  .term{font-family:system-ui,sans-serif;font-weight:700;color:var(--accent)}
+  .en-term{font-style:italic;color:var(--muted)}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:.93rem}
+  th,td{border:1px solid var(--line);padding:8px 11px;text-align:left;vertical-align:top}
+  th{background:var(--chip);font-family:system-ui,sans-serif}
+  .ex{background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 0;margin:16px 0;overflow:hidden}
+  .ex .row{padding:9px 18px;border-bottom:1px dashed #eee}
+  .ex .row:last-child{border-bottom:0}
+  .ex .sent{font-family:"Times New Roman",serif;font-size:1.05rem}
+  .ex .num{display:inline-block;min-width:34px;color:var(--muted);font-family:system-ui,sans-serif;font-size:.85rem}
+  .ex i{color:#444}
+  .g{color:#1a7a3a;font-weight:bold}.ung{color:#b32020;font-weight:bold}.qm{color:#b88a00;font-weight:bold}
+  .gloss{display:block;margin:4px 0 0 34px;font-size:.92rem;color:#555}
+  .ana{display:block;margin:5px 0 0 34px;font-size:.92rem;color:#6a3340;background:#f8eef1;border-radius:6px;padding:8px 12px}
+  .ana::before{content:"\25B8 \8A73\89E3\3000";color:var(--accent);font-weight:bold;font-family:system-ui,sans-serif}
+  .concept{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:16px 0;border-top:3px solid var(--accent)}
+  .concept h4{margin:0 0 8px;color:var(--accent);font-family:system-ui,sans-serif;font-size:1rem}
+  .key{background:#fdf6e3;border:1px solid #e9dcae;border-radius:10px;padding:14px 18px;margin:18px 0}
+  .key b{color:#8a6d00}
+  ul.plain{margin:13px 0;padding-left:24px}ul.plain li{margin:6px 0}
+  pre.tree{background:#f7f4ef;border:1px solid var(--line);border-radius:8px;padding:14px 16px;overflow-x:auto;font-family:"Consolas","Courier New",monospace;font-size:.86rem;line-height:1.5;color:#33232a;margin:14px 0}
+  #en p{margin:12px 0}
+  #en .enpg{display:inline-block;font-family:system-ui,sans-serif;font-size:.72rem;font-weight:700;color:#fff;background:#888;padding:2px 9px;border-radius:12px;margin:20px 0 2px}
+  #en blockquote{margin:10px 0;padding:8px 16px;border-left:3px solid var(--line);background:#fbfbfb;font-family:"Times New Roman",serif}
+  #en .num{color:var(--muted);font-family:system-ui,sans-serif;font-size:.8rem;display:inline-block;min-width:34px}
+  .nav-bottom{display:flex;justify-content:space-between;margin-top:54px;font-family:system-ui,sans-serif;font-size:.9rem}
+  .nav-bottom a{color:var(--accent);text-decoration:none;border:1px solid var(--line);padding:10px 16px;border-radius:8px}
+  footer{text-align:center;color:var(--muted);font-size:.8rem;padding:20px;font-family:system-ui,sans-serif}
+  .back-top{position:fixed;right:18px;bottom:18px;background:var(--accent);color:#fff;text-decoration:none;padding:8px 13px;border-radius:20px;font-family:system-ui,sans-serif;font-size:.8rem;box-shadow:0 3px 10px rgba(0,0,0,.2)}
+</style>
+</head>
+<body id="top">
+<header><div class="inner">
+  <div class="ch">CHAPTER 6 · 逐頁逐例句詳解 + 英文原文對照</div>
+  <h1>主語與賓語</h1>
+  <div class="en">Subjects and Objects</div>
+  <div class="pg">書頁 204–243 · 涵蓋例句 (1)–(135) 與全部核心論證</div>
+</div></header>
+<nav class="bc"><a href="index.html">← 全書導覽</a> ／ 第 6 章</nav>
+
+<div class="tabbar">
+  <div class="tab active" id="tab-zh" onclick="showTab('zh')">中文逐頁詳解</div>
+  <div class="tab" id="tab-en" onclick="showTab('en')">English Original（整章英文原文）</div>
+</div>
+
+<div class="panel active" id="zh">
+<div class="toc">
+  <h2>本章導覽</h2>
+  <ul>
+    <li><a href="#s61b">6.1 導論：兩個主語位置的矛盾</a></li>
+    <li><a href="#s62">6.2 主語移位</a></li>
+    <li><a href="#s621">6.2.1 量詞滯留</a></li>
+    <li><a href="#s622">6.2.2 虛主語結構</a></li>
+    <li><a href="#s63">6.3 格與 EPP</a></li>
+    <li><a href="#s631">6.3.1 主語與 EPP 特徵</a></li>
+    <li><a href="#s632">6.3.2 賓語與特徵配對的局部性</a></li>
+    <li><a href="#s633">6.3.3 主謂一致</a></li>
+    <li><a href="#s634">6.3.4 階段小結</a></li>
+    <li><a href="#s64">6.4 非賓格主語</a></li>
+    <li><a href="#s641">6.4.1 義大利語 ne 附著</a></li>
+    <li><a href="#s642">6.4.2 希伯來語領屬與格</a></li>
+    <li><a href="#s65">6.5 被動句</a></li>
+    <li><a href="#s66">6.6 副詞</a></li>
+    <li><a href="#s67">6.7 詞序與移位（參數變異）</a></li>
+    <li><a href="#s68">6.8 本章摘要</a></li>
+    <li><a href="#sex">練習題</a></li>
+  </ul>
+</div>
+
+<div class="wrap">
+  <p class="lead">本章把前面零散建立的機制——<strong>小 v（little v）、TP、移位、特徵核查</strong>——整合成一套關於名詞片語為何出現在它出現的位置的理論。核心問題：主語在子句中究竟佔哪個位置？答案是<strong>有兩個主語位置</strong>：一個是<span class="term">θ 角色指派位置（Spec-vP，基底主語位置）</span>，一個是<span class="term">格與 EPP 核查位置（Spec-TP，表層主語位置）</span>，兩者由<strong>移位</strong>連結。為了驅動這個移位、並解釋格的分布，Adger 引入三件武器：<span class="term">Agree（一致操作）</span>、<span class="term">格特徵（[nom] 在 T、[acc] 在 v）</span>、以及 <span class="term">EPP 特徵 [uN*]</span>。再用<strong>配對局部性</strong>確保是<strong>最近</strong>的名詞移動。最後把這套機制延伸到非賓格、被動、與 VSO 參數變異。</p>
+
+  <div class="concept"><h4>本章的問題意識：兩個結構的矛盾</h4>
+  <p>第 4 章說：及物動詞的主語在 <strong>Spec-vP</strong>（小 v 的指示語）合併。第 5 章說：句子由 <strong>T</strong> 統轄，T 容納有定助動詞。把兩者拼起來會得到助動詞在主語左邊的錯誤預測；但事實上主語在助動詞<strong>左邊</strong>。解法：主語先在 Spec-vP 合併（取得 θ 角色），再<strong>移位</strong>到 Spec-TP（表層位置）。本章的任務就是為這個移位找到<strong>獨立證據</strong>並提出<strong>驅動機制</strong>。</p></div>
+
+  <h2 id="s61b">6.1 導論</h2>
+  <span class="pgmark">書頁 204</span>
+  <p>回顧第 4 章：及物動詞的主語在小 v 的指示語合併，得到 <span class="term">vP 殼（vP shell）</span>結構。回顧第 5 章：句子由 T 統轄，T 容納有定助動詞。兩者並置時出現表面矛盾——主語的線性位置在助動詞<strong>左側</strong>，而非右側。</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(3)</span> Cassandra has foretold disaster again.</span>
+      <span class="ana">Cassandra 是 foretold 的<span class="term">施事（Agent）</span>，故在 VP 上方小 v 的指示語合併。但它在線性上出現在有定助動詞 has 的<strong>左邊</strong>。若主語只待在 Spec-vP，它應該在 has 右邊——矛盾。</span></div>
+  </div>
+  <p>第 5 章的解法是：其實有<strong>兩個主語位置</strong>，由移位連結。及物主語在 Spec-vP 合併（<strong>基底主語位置</strong>），再移到 <strong>Spec-TP</strong>（<strong>表層主語位置</strong>）：</p>
+  <pre class="tree">(4)            TP
+            /      \
+        Subject     T'
+                  /    \
+                 T      vP
+                       /   \
+                  (Subject) v'
+                          /   \
+                         v     VP
+                             /    \
+                          verb    Object</pre>
+  <p>由於 (3) 的有定完成式助動詞在 T，片語 Cassandra 被正確預測會<strong>先於</strong>它（在英語裡指示語先於中心語）。本章將仔細檢驗這個提案——目前只用為了得到正確詞序來證成它，接下來要找<strong>更紮實的證據</strong>，並提出驅動移位的<strong>機制</strong>。</p>
+
+  <h2 id="s62">6.2 主語移位</h2>
+  <h3 id="s621">6.2.1 量詞滯留（Quantifier stranding）</h3>
+  <span class="pgmark">書頁 205</span>
+  <p>主語確實從較低位置移到表層位置的<strong>第一個證據</strong>，來自所謂的<span class="term">浮游量詞（floating quantifiers）</span>。這些是類似限定詞的元素，通常黏在 NP 上：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(5)</span> All the dragons had escaped.</span></div>
+    <div class="row"><span class="sent"><span class="num">(6)</span> Both the twins might have been at the party.</span>
+      <span class="ana">all、both 緊貼在 NP 前。但它們之所以被稱為浮游，是因為也能漂浮到離 NP 一段距離的地方（見 7、8）。</span></div>
+  </div>
+  <span class="pgmark">書頁 206</span>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(7)</span> The dragons had all eaten the pigs.</span></div>
+    <div class="row"><span class="sent"><span class="num">(8)</span> The twins might have both been at the party.</span>
+      <span class="ana">all、both 漂浮到助動詞之後。但<strong>不是所有量詞都這樣</strong>——most、many 就不行。</span></div>
+  </div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(9a)</span> <span class="g">✓</span> Most dragons have been neutered.</span></div>
+    <div class="row"><span class="sent"><span class="num">(9b)</span> <span class="ung">*</span> Dragons have most been neutered.</span></div>
+    <div class="row"><span class="sent"><span class="num">(10a)</span> <span class="g">✓</span> Many vampires have become vegetarian.</span></div>
+    <div class="row"><span class="sent"><span class="num">(10b)</span> <span class="ung">*</span> Vampires have many become vegetarian.</span>
+      <span class="ana">most、many 無法漂浮。所以浮游能力是某類量詞的性質，需要解釋。</span></div>
+  </div>
+  <p>早期分析提出一條<strong>專屬的轉換規則</strong>，把量詞從主語移到右方某位置：(11) <em>Q+NP…VP</em> → (12) <em>NP…Q+VP</em>。較新的分析把這想法<strong>翻轉</strong>：量詞是被<strong>滯留（stranded）</strong>的——它原地不動，是它所連結的 NP 移走了：(13) <em>…Q+NP…VP</em> → (14) <em>NP…Q+(NP)…VP</em>。要讓後一分析成立，NP 必須<strong>從低位起算、向上提升</strong>——這正是我們為了詞序所提的結構。</p>
+  <span class="pgmark">書頁 206–207</span>
+  <p>具體化：假設浮游量詞是<strong>中心語</strong>，與非浮游量詞的差別在於它取 <strong>NP 補語</strong>而非 N 補語：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(15)</span> [<sub>DP</sub> All [<sub>NP</sub> the dragons]]</span></div>
+    <div class="row"><span class="sent"><span class="num">(16)</span> [<sub>DP</sub> Both [<sub>NP</sub> the twins]]</span></div>
+    <div class="row"><span class="sent"><span class="num">(17)</span> [<sub>DP</sub> Most [<sub>N</sub> dragons]]</span>
+      <span class="ana">浮游量詞 all/both 取整個 NP <em>the dragons</em> 為補語，故 NP 可單獨移走、留下量詞；非浮游的 most 取 N 補語，沒有可單獨移走的 NP，故不能滯留。（此分析暫與中心語都投射相牴觸，留待第 7 章解決。）</span></div>
+  </div>
+  <span class="pgmark">書頁 207–208</span>
+  <p>看 (18) <em>The dragons had all eaten the pigs</em> 的推導。主語 [all the dragons] 在 Spec-vP 合併 (19)；合併 Perf、再合併 T，T 觸發 Perf 提升 (20)。接著移到 Spec-TP 時面臨<strong>選擇</strong>：移整個 [all the dragons]（得 21），還是只移子部 [the dragons]（得 22）？</p>
+  <pre class="tree">(22)              TP
+              /        \
+        [the dragons]   T'
+                      /    \
+            had+T      vP
+                    /      \
+        ([all the dragons]) v'
+                          /   \
+                         v     VP
+                              ...
+   -> The dragons had [all (the dragons)] eaten the pigs</pre>
+  <div class="key"><b>滯留分析的精髓：</b>量詞<strong>哪兒也沒漂</strong>；是它的<strong>補語（NP）移走時把它留下</strong>。這個優雅分析<strong>只在有兩個由移位連結的主語位置的假設下才可能</strong>；單一主語位置（只有 Spec-TP）就辦不到。這類論證的價值在於：把原本用<strong>特設規則</strong>處理的現象，改用<strong>普遍原則</strong>（θ 角色就近指派、移位可作用於 NP 的子部）來解釋。</div>
+  <span class="pgmark">書頁 209</span>
+  <p>此分析也對量詞與副詞位置做出正確預測——量詞可出現在 vP 附加副詞的<strong>右邊</strong>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(23)</span> The dragons simply all died out.</span>
+      <span class="ana">all 被滯留在 Spec-vP，故出現在副詞 simply 的<strong>下方／右方</strong>。同一機制解釋。</span></div>
+  </div>
+
+  <h3 id="s622">6.2.2 虛主語結構（Expletive constructions）</h3>
+  <span class="pgmark">書頁 209</span>
+  <p>支持主語低位合併、再提升的<strong>第二組證據</strong>是虛主語結構。<span class="term">虛主語（expletive）</span>是填入表層主語位置、但<strong>不從謂語取得 θ 角色</strong>的元素。英語有兩種：<em>there</em> 和 <em>it</em>。</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(24)</span> There are many fish in the sea.</span></div>
+    <div class="row"><span class="sent"><span class="num">(25)</span> There were people playing on the beach.</span></div>
+    <div class="row"><span class="sent"><span class="num">(26)</span> It is quarter past four.</span></div>
+    <div class="row"><span class="sent"><span class="num">(27)</span> It is extremely windy today.</span>
+      <span class="ana"><em>it</em> 型虛主語涉及<strong>零元謂語（zero-place predicate）</strong>，根本沒有主語論元，故本章不處理。本章只關心<strong>有論元動詞的論旨主語位置</strong>，因此聚焦 <em>there</em>。注意：真虛主語 <em>there</em> <strong>不重讀、無方位語意</strong>，與 (28) <em>I saw people playing there on the beach</em> 中重讀、表方位的 <em>there</em> 不同。</span></div>
+  </div>
+  <span class="pgmark">書頁 209–210</span>
+  <p><em>there</em> 句有<strong>論旨結構相同</strong>的對應句（差別僅在強調或主語的精確解讀）：(29) <em>Many fish are in the sea</em>、(30) <em>People were playing on the beach</em>。可用<span class="term">附加問句（tag-question）</span>證明虛主語確實是<strong>結構主語</strong>——附加問句的操作是把主語複製、前綴否定助動詞、貼到句尾：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(31)</span> Ron is likely to be on the Web, isn t he?</span></div>
+    <div class="row"><span class="sent"><span class="num">(32)</span> Jenny hasn t eaten all her Clinique make-up again, has she?</span></div>
+    <div class="row"><span class="sent"><span class="num">(33)</span> There is going to be a party, isn t there?</span></div>
+    <div class="row"><span class="sent"><span class="num">(34)</span> There were people eating fire at the fair, weren t there?</span>
+      <span class="ana">附加問句裡重複的正是 <em>there</em>，證明 <em>there</em> 佔據<strong>結構主語位置</strong>。</span></div>
+  </div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(35)</span> <span class="ung">*</span> [Many people were [there playing on the beach]]</span>
+      <span class="ana">句中可同時有 <em>there</em> 與論旨主語，但論旨主語<strong>必須在 there 右邊</strong>（若 there 解為方位副詞則合法）。故虛主語結構的圖式是 (36) <em>there T … Subject vP</em>；論旨等同的對應句則是 (37) <em>Subject T … (Subject) vP</em>。這支持兩個主語位置由移位連結。剩下的理論問題：<strong>什麼機制保證這個移位發生？</strong></span></div>
+  </div>
+
+  <h2 id="s63">6.3 格與 EPP（Case and EPP）</h2>
+  <span class="pgmark">書頁 211</span>
+  <p>切入點：第 2 章的<span class="term">帶格代名詞分布</span>。英語代名詞帶<strong>格特徵</strong>，規範其分布：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(38)</span> <span class="g">✓</span> She has kissed her.</span></div>
+    <div class="row"><span class="sent"><span class="num">(39)</span> <span class="ung">*</span> Her has kissed her.</span></div>
+    <div class="row"><span class="sent"><span class="num">(40)</span> <span class="ung">*</span> She has kissed she.</span>
+      <span class="ana">只有<span class="term">主格（nominative, [nom]）</span>代名詞能出現在表層主語位置（Spec-TP，緊鄰有定助動詞左邊）；只有<span class="term">賓格（accusative, [acc]）</span>代名詞能在賓語位置（主動詞右邊）。模式：<strong>代名詞的格形被綁定到結構中的特定位置</strong>。既然位置本質上關聯到中心語（補語或指示語），可假設<strong>名詞的格由特定中心語的性質驅動</strong>。</span></div>
+  </div>
+  <table>
+    <tr><th>格</th><th>英文</th><th>由哪個中心語指派</th><th>出現位置</th></tr>
+    <tr><td>主格</td><td class="en-term">nominative [nom]</td><td>有定 T</td><td>Spec-TP（表層主語）</td></tr>
+    <tr><td>賓格</td><td class="en-term">accusative [acc]</td><td>小 v</td><td>賓語位置（V 的補語）</td></tr>
+  </table>
+
+  <h3 id="s631">6.3.1 主語與 EPP 特徵</h3>
+  <span class="pgmark">書頁 211–212</span>
+  <p>主格與<strong>有定 T</strong> 連結。不需新機制——既有的 <span class="term">Agree（一致）</span>操作就能保證 Spec-TP 標記主格。Agree 讓中心語與它<strong>c-統制</strong>的句法元素間特定特徵相配：</p>
+  <div class="key"><b>(41)</b> T 帶一個<strong>不可解讀的格特徵 [ucase:nom]</strong>，它在 Agree 之下為某個 NP 的格特徵<strong>賦值</strong>。<br>由於格特徵的功能是規範名詞片語的句法分布、而非標記語意，故<strong>一律不可解讀（uninterpretable）</strong>。不可解讀特徵的常規性質：<strong>必須被核查</strong>、不關聯特殊語意。</div>
+  <p><strong>關鍵差異：</strong>到目前為止，特徵總是<strong>成對相配</strong>——一可解讀、一不可解讀，且<strong>賦值的那一方是可解讀方</strong>。但格特徵<strong>兩方都不可解讀</strong>。許多語言學家覺得這不直觀，也會引發第 8 章 (8.2.6) 的技術問題，但本章暫且採用。</p>
+  <p><strong>記法約定（見 42）：</strong>未賦值的不可解讀格特徵記為 <code>[case]</code>（而非完整的 [ucase: ]）；核查並賦值後記為 <code>[nom]</code>（劃掉表已核查）；已賦值但未核查則記為 <code>[nom]</code>。數列：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(42)</span> numeration = {pronoun[3,sing,case], pronoun[3,sing,case], know, v[uInfl:,uN], T[pres,nom]}</span></div>
+  </div>
+  <p>逐步推導（句子 <em>He knows him</em>）：</p>
+  <ul class="plain">
+    <li><strong>Step 1：</strong>合併 know 與一個代名詞（滿足 know 的 c-選擇特徵 [V,uN]）。代名詞暫視為名詞。</li>
+    <li><strong>Step 2：</strong>合併 v（滿足投射層級），V 提升到 v。</li>
+    <li><strong>Step 3：</strong>合併另一代名詞於 Spec-vP（滿足 v 投射到的 N 選擇特徵）。</li>
+    <li><strong>Step 4：</strong>合併 T[pres,nom]。</li>
+    <li><strong>Step 5：</strong>T 與小 v Agree、T 為 v 的 Infl 賦值；T 與 Spec-vP 的代名詞為<strong>格</strong> Agree，代名詞格特徵被賦值為 <code>[nom]</code>。Agree 關係中的不可解讀特徵此時被核查。</li>
+  </ul>
+  <pre class="tree">(Step 5)            T'
+                 /      \
+          T[pres,nom]    vP
+                       /     \
+       pronoun[N,3,sing,nom]  v'
+                            /    \
+                           v      VP
+                         know   ... pronoun[N,3,sing,case]</pre>
+  <p>此時所有不可解讀特徵均已核查（除了 V 補語上的 [case]，下節處理），且<strong>強制了主格名詞出現</strong>。拼讀規則 (43) 把 pronoun[N,3,sing,nom] 唸成 <em>he</em>。</p>
+  <p>主格被強制出現，源於<strong>有定 T 恆帶 [nom]</strong> 的假設：若句中其餘部分沒有主格，T 上的 [nom] 永遠無法核查，<strong>推導崩潰（crash）</strong>。這正確排除了 (44) <em>*Him knows him</em>。</p>
+  <span class="pgmark">書頁 213–214</span>
+  <p><strong>但移位還沒被保證。</strong>移位由<strong>特徵強度</strong>驅動。最直覺的候選是讓 T 上的 [nom] 為<strong>強</strong>——但這行不通，因為它與虛主語結構衝突。冰島語顯示：虛主語結構裡，<strong>主格名詞可留在原位</strong>，Spec-TP 由虛主語填充：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(46)</span> Það hefur maður dansað í garðinum</span>
+      <span class="gloss">there has man-[Nom] danced in garden-the　「一個男人在花園裡跳過舞。」</span></div>
+    <div class="row"><span class="sent"><span class="num">(47)</span> Það hefur einhver borðað epli</span>
+      <span class="gloss">there has someone-[Nom] eaten apple-[acc]　「有人吃了一顆蘋果。」</span>
+      <span class="ana">虛主語 <em>Það</em> 在表層主語位置，主格名詞留在<strong>較低</strong>的主語位置。若是 [nom] 的強度逼主語移到 Spec-TP，就會預測主格片語移走——但事實上主格<strong>原地不動</strong>，Spec-TP 由虛主語填。所以<strong>不是 [nom] 的強度</strong>負責填 Spec-TP。</span></div>
+  </div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(48)</span> <span class="ung">*</span> Hefur einhver borðað epli</span>
+      <span class="gloss">has someone-[Nom] eaten apple-[acc]　（作為簡單陳述句不合法）</span>
+      <span class="ana">但 Spec-TP <strong>必須被填</strong>，否則不合法。所以有某物逼 Spec-TP 被填與 [nom] 強度<strong>是兩回事</strong>。</span></div>
+  </div>
+  <div class="key"><b>(49) EPP 特徵的誕生：</b>採納 <strong>[nom] 核查主格</strong>、但<strong>另一個特徵的強度</strong>逼某個名詞出現在 Spec-TP。這個特徵像 T 上的 c-選擇特徵，要求 Spec-TP 有名詞，記為 <code>[uN*]</code>。但它<strong>不關聯 θ 角色</strong>（T 是功能中心語，無 θ 可指派），是<strong>純形式</strong>的特徵。因此有定現在式 T 的特徵規格為：<br><strong>T[pres, nom, uN*]</strong>——可解讀時態特徵 + 不可解讀主格 + 強不可解讀 N 特徵。<br>因歷史因緣，這個 uN* 特徵稱為 <span class="term">EPP 特徵（擴充投射原則 Extended Projection Principle）</span>。</div>
+  <span class="pgmark">書頁 215</span>
+  <p>回到 Step 6：不再讓 [nom] 為強，而是讓有定 T 帶 EPP 特徵 [uN*]，正常投射到 T。T 與 v Agree（時態）、與 Spec-v 的代名詞 Agree（格）；EPP 與該代名詞為<strong>範疇</strong> Agree，並在投射到 T 後<strong>就近（姊妹關係）</strong>透過代名詞移入 Spec-TP 而被滿足：</p>
+  <pre class="tree">(Step 6)              TP
+                  /        \
+   pronoun[N,3,sing,nom]    T'
+                         /     \
+                 T[pres,nom,uN*] vP
+                              /    \
+                          (he)     v'
+                                  ... know ... pronoun[N,...,case]</pre>
+  <p>此新做法延伸到虛主語結構：假設<strong>虛主語沒有格要核查</strong>。在 T 已合併、已與基底主語 Agree 之後，<strong>不</strong>提升主語，而是<strong>合併虛主語</strong>，藉此滿足 EPP（見 (50)，下方以英語詞代替冰島語詞以利理解）：</p>
+  <pre class="tree">(50)              TP
+              /        \
+           There        T'
+                      /    \
+                 T[pres,nom] PerfP
+                    (has)  /    \
+                          ...   vP
+                              /    \
+                  someone[N,nom]   v'
+                                  eat ... the apple</pre>
+  <span class="pgmark">書頁 216</span>
+  <p>冰島語還提供進一步證據：EPP 性質應與主格核查<strong>分離</strong>。冰島語有<span class="term">與格主語（dative subjects）</span>——帶與格、卻出現在結構主語位置的 NP：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(51)</span> Jóni líkaði bókin ekki</span>
+      <span class="gloss">John-[Dat] liked book-[Nom]-the not　「John 不喜歡那本書。」</span>
+      <span class="ana">與格主語佔 Spec-TP，主格卻落在賓語名詞上。這清楚顯示：<strong>主格核查</strong>與 <strong>Spec-TP 必須被填</strong> 是<strong>兩個不能合併的約束</strong>。</span></div>
+  </div>
+
+  <h3 id="s632">6.3.2 賓語與特徵配對的局部性</h3>
+  <span class="pgmark">書頁 217</span>
+  <p>已達成兩件事：主格正確關聯有定 T；某元素（基底主語或虛主語）出現在 Spec-TP。但<strong>賓格還沒處理</strong>。目前無法排除 (52) <em>*He knows he</em>。需平行假設：某個與 vP 關聯的中心語帶 [acc]，與賓語進入 Agree。候選有 v 和 V；本章假設是<strong>小 v</strong>（下節 6.4 有暗示性論證）。圖式 (53)：</p>
+  <ul class="plain">
+    <li>1. 合併 V 與 Object，再合併 little v[acc]。</li>
+    <li>2. Object 帶未賦值 [case]，Agree 發生，賦值為 [acc]。</li>
+    <li>3. 合併 Subject，再合併 T。</li>
+    <li>4. Agree：T 與 v 的時態；T 的 [nom] 與 Subject；T 的 [N] 與 Subject。</li>
+    <li>5. Subject 提升到 Spec-TP 以滿足 T 上的強 EPP。</li>
+  </ul>
+  <p>這排除 (52)：賓語位置的代名詞格被賦為 [acc] 而非 [nom]。<strong>但新問題：</strong>什麼排除 T 的 EPP 與<strong>賓語</strong>（而非主語）的 N 特徵 Agree 的推導？那會讓賓語提升、主語留原位：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(54)</span> <span class="ung">*</span> [Him has [<sub>vP</sub> he known (him)]]</span>
+      <span class="ana">這顯然不合法，但目前沒東西排除它。問題在於 Agree <strong>跳過</strong>了句法元素——它略過離 T 最近的 [N]（主語），去配對賓語的 N 特徵。為此引入<strong>配對局部性約束</strong>。</span></div>
+  </div>
+  <div class="key"><b>(55) 配對局部性（Locality of Matching）：</b>特徵 F（在 X）與相配特徵 F（在 Y）之間成立 Agree，<strong>當且僅當沒有介入的 Z[F]</strong>。<br>
+  <b>(56) 介入（Intervention）：</b>在結構 [X … Z … Y] 中，Z <strong>介入</strong> X 與 Y 之間，當且僅當 X c-統制 Z 且 Z c-統制 Y。</div>
+  <pre class="tree">(57)              T'
+              /        \
+       T[nom,uN*]       vP
+                      /     \
+        Subject[N,nom]       v'
+                          /     \
+                       v[acc]    VP
+                               /    \
+                              v   Object[N,acc]</pre>
+  <p>T 的 [nom] 為主語賦主格；小 v 的 [acc] 為賓語賦賓格。至於 T 的 EPP [uN*]：依局部性，T 上的 N <strong>只能</strong>與<strong>主語</strong> Agree——因為主語 c-統制賓語、T c-統制主語，故主語<strong>介入</strong> T 與賓語之間。賓語因此<strong>永遠無法</strong>提升去滿足 EPP，排除 (58) <em>*Him has he known (him)</em>。</p>
+  <span class="pgmark">書頁 218–219</span>
+  <p><strong>對浮游量詞的意涵。</strong>在 (59) 結構裡，had 已附接到 T，T 節點被拉伸，特徵在兩個 T 之間共享，故 [nom] 與 EPP 能 c-統制 PerfP 及其內所有東西。賓語太遠不能配對；但主語結構複雜，含<strong>兩個 NP 節點</strong>：[the dragons] 與 [all the dragons]。假設 all 取 NP 補語 (60)：</p>
+  <pre class="tree">(60)        NP
+          /     \
+        all      NP
+              the dragons</pre>
+  <p>關鍵：這兩個 NP 節點<strong>彼此都不 c-統制對方</strong>。所以較高的 NP 節點<strong>不介入</strong> T[uN*] 與較低 NP 之間的配對，於是允許後者單獨提升：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(61)</span> [<sub>NP</sub> the dragons] have [<sub>vP</sub> [<sub>NP</sub> all ([<sub>NP</sub> the dragons])] died].</span>
+      <span class="ana">局部性條件自動允許只提升 [the dragons]、留下 all——正是量詞滯留的機制根源。</span></div>
+  </div>
+
+  <h3 id="s633">6.3.3 主謂一致（Subject-verb agreement）</h3>
+  <span class="pgmark">書頁 219–220</span>
+  <p>格核查的做法自然延伸到主謂一致。英語單複數主語在現在式動詞上引發不同一致：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(62a)</span> <span class="g">✓</span> The librarian likes books.</span></div>
+    <div class="row"><span class="sent"><span class="num">(62b)</span> <span class="ung">*</span> The librarian like books.</span></div>
+    <div class="row"><span class="sent"><span class="num">(63a)</span> <span class="ung">*</span> The librarians likes books.</span></div>
+    <div class="row"><span class="sent"><span class="num">(63b)</span> <span class="g">✓</span> The librarians like books.</span>
+      <span class="ana">T 與 Spec-vP 的主語為<strong>格</strong> Agree，又與小 v 為<strong>時態與 φ 特徵</strong> Agree——兩個關係正好給出觀察到的一致模式。</span></div>
+  </div>
+  <p>複數 NP <em>The librarians</em> 的名詞帶可解讀 [pl] 與未賦值格特徵。現在式 T 帶 EPP、格特徵、現在時態、外加<strong>不可解讀 φ 特徵 [uφ:]</strong>（須被核查）。結構 (64) T[nom, uφ:, uN*]。核查順序：</p>
+  <ul class="plain">
+    <li>(65) T 的格特徵為 NP 賦主格；EPP 與主語的範疇特徵 Agree；NP 的 φ 特徵（此處為 plural）與 T 的 uφ Agree，<strong>為 T 的 uφ 賦值</strong>。</li>
+    <li>(66) 小 v 上 uInfl 的值來自 T 上的相關特徵——唯一相關的是<strong>已從主語取得值的 φ 特徵</strong>。Agree 在 T 的 φ 與 v 的 [uInfl:] 間成立。</li>
+    <li>(67) 各 Agree 關係合謀，把主語 NP 的一致資訊<strong>經由 T 傳到小 v</strong>（最終在 v 上拼讀）；最後主語移到 Spec-TP 滿足 EPP。</li>
+  </ul>
+  <pre class="tree">(67)              TP
+              /        \
+        NP[nom]         T'
+   the librarians[pl] /    \
+              T[pres,φ:pl,uN*] vP
+                            /    \
+              (the librarians)   v'
+                                like+v[pres,Infl:pl] ... books</pre>
+  <p>小 v 拼讀時，拼讀規則對其特徵內容敏感，給出 <em>-s</em> 或零形。</p>
+
+  <h3 id="s634">6.3.4 階段小結</h3>
+  <span class="pgmark">書頁 220</span>
+  <div class="key"><b>(68) 理論進度：</b><br>
+  1. 有定 T 帶 [nom]，小 v 帶 [acc]。<br>
+  2. 有定 T 帶 [uN*]（EPP），逼某物（虛主語或名詞片語）合併入 Spec-TP。<br>
+  3. Agree 受限：特徵配對只發生在 F 與 F 所 c-統制的<strong>最近</strong>相配特徵之間。</div>
+  <p>此理論解釋主語與賓語分布、格模式，延伸到虛主語結構，並與量詞滯留一致。<strong>進一步預測：</strong>若<strong>沒有介入的主語</strong>，Agree 應能在賓語與 T 的 EPP 間發生，賓語應提升到 Spec-TP。接下來兩節（非賓格、被動）檢驗此預測。</p>
+
+  <h2 id="s64">6.4 非賓格主語（Unaccusative subjects）</h2>
+  <span class="pgmark">書頁 221</span>
+  <p>第 4 章由 <span class="term">UTAH（論旨角色指派一致性假設）</span>得出：只取<strong>受事（Theme）</strong>論元的動詞，把該論元實現為<strong>賓語</strong>。這些<span class="term">非賓格動詞（unaccusative verbs）</span>關聯的小 v <strong>缺乏指示語</strong>。</p>
+  <pre class="tree">         vP
+       /     \
+      v       VP
+            /     \
+   fall[V,uN]    Theme</pre>
+  <p>把它與上節理論結合，立刻有預測：既然 T 的 EPP 與 Theme 的 N 特徵之間<strong>沒有介入主語</strong>，Theme 應能移到 Spec-TP 滿足 EPP；又因有定 T 有 [nom]，非賓格的單一論元應能與 T 在格上 Agree。最後，若 T 與賓語配格，<strong>非賓格版小 v 必須缺乏格規格</strong>，否則句中會有未核查格特徵。故<strong>非賓格小 v 同時缺乏格特徵與選擇性 uN 特徵（因而沒有指示語）</strong>——正是缺乏賓格給了它們非賓格之名。</p>
+  <p>推導 (69) <em>Gilgamesh arrives</em>：</p>
+  <ul class="plain">
+    <li><strong>Step 1：</strong>arrive 取單一 Theme，合併投射 VP（依 UTAH）：[arrive [Gilgamesh[N,case]]]。</li>
+    <li><strong>Step 2：</strong>與缺指示語、缺 [acc] 的小 v 結合；arrive 提升到此 v。</li>
+    <li><strong>Step 3：</strong>合併 T[uN*, nom, uφ:]。T 的 [nom] 為 Gilgamesh 賦<strong>主格</strong>（雖在賓語位置合併，卻得主格）；T 的 uφ 被賦值為單數；EPP 與 Gilgamesh 的 N 核查，因 [uN*] 強，觸發其移入 Spec-TP；新賦值的 [sing] 再核查 v 的 [uInfl:]。</li>
+  </ul>
+  <pre class="tree">(Step 3)            TP
+                /        \
+   Gilgamesh[N,nom]       T'
+                       /     \
+              T[nom,φ:sing]   vP
+                            /    \
+                           v      VP
+                  arrive[Infl:sing] ... (Gilgamesh)</pre>
+  <p>表層看起來與非作格動詞 <em>run</em> 相同，但<strong>推導不同</strong>：這裡是把<strong>底層賓語</strong>移到表層主語位置，而非移底層主語。<strong>預測：</strong>應有句法現象把非賓格主語當作及物賓語對待（因兩者合併位置相同）。下面看義大利語的著名例子。</p>
+
+  <h3 id="s641">6.4.1 義大利語 ne 附著（Ne-cliticization）</h3>
+  <span class="pgmark">書頁 222–223</span>
+  <p>義大利語有<span class="term">附著語素（clitics）</span>的特殊句法：賓語代名詞不能留在基底位置，須緊貼有定動詞／助動詞<strong>左側</strong>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(70)</span> Maria ha visto Gianni　「Maria 看見 Gianni。」</span></div>
+    <div class="row"><span class="sent"><span class="num">(71)</span> <span class="ung">*</span> Maria ha visto lo（賓語代名詞留原位，不合法）</span></div>
+    <div class="row"><span class="sent"><span class="num">(72)</span> Maria lo ha visto　「Maria 看見他。」（lo 移到動詞左側）</span></div>
+  </div>
+  <p>跟在數詞後的代名詞用特殊形 <em>ne</em>（<span class="term">部分屬格附著語 partitive clitic</span>）：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(73)</span> Gianni trascorrerà tre settimane a Milano　「John 將在米蘭待三週。」</span></div>
+    <div class="row"><span class="sent"><span class="num">(74)</span> <span class="ung">*</span> Gianni trascorrerà tre ne a Milano（ne 留原位，不合法）</span></div>
+    <div class="row"><span class="sent"><span class="num">(75)</span> Gianni ne trascorrerà tre a Milano　「John 將在米蘭待其中三週。」</span></div>
+  </div>
+  <p>ne 附著有句法限制——<strong>不能從主語位置</strong>進行：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(76)</span> Alcune persone trascorreranno tre settimane a Milano　「一些人將在米蘭待三週。」</span></div>
+    <div class="row"><span class="sent"><span class="num">(77)</span> <span class="ung">*</span> Alcune ne trascorreranno tre settimane a Milano（從主語做 ne 附著，不合法）</span></div>
+  </div>
+  <div class="key"><b>(78) 概括：</b>ne 附著<strong>只可能從賓語位置的片語</strong>進行。</div>
+  <span class="pgmark">書頁 223–224</span>
+  <p>義大利語（如法語）把動詞提升到 T，又（如冰島語虛主語）允許主語留基底位置：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(79)</span> Telefoneranno tre persone domani　「明天會有三個人打電話。」</span>
+      <span class="ana">動詞 telefoneranno 提升到 T，主語 tre persone 留在 Spec-vP（見 (80) 結構）。EPP 此處抽象掉：可說義大利語 T 缺 EPP，或由語音空虛主語滿足。</span></div>
+  </div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(81)</span> <span class="ung">*</span> Ne telefoneranno tre domani（非作格動詞，ne 附著不合法）</span></div>
+    <div class="row"><span class="sent"><span class="num">(82)</span> <span class="g">✓</span> Ne arriveranno tre domani　「明天會有其中三個抵達。」（非賓格動詞，合法）</span>
+      <span class="ana">非作格 telefonare 主語在 Spec-vP，ne 附著失敗；非賓格 arrivare 單一論元在<strong>賓語位置</strong>合併，ne 附著成功。這支持<strong>非賓格主語生成於賓語位置</strong>。但此論證未深究 ne 為何只從賓語進行，故仍可被批評（如改用語意的 Theme 分析）。</span></div>
+  </div>
+
+  <h3 id="s642">6.4.2 希伯來語領屬與格（Possessor datives）</h3>
+  <span class="pgmark">書頁 224–225</span>
+  <p>現代希伯來語用介詞元素 <em>le</em> 表領屬。(83) <em>ha-praxim navlu le-rani</em>「Rani 的花枯萎了」。這個<strong>領屬與格</strong>系統性地<strong>無法</strong>表達及物動詞主語的領屬：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(84)</span> Le-mi ha-yeladim xatxu et ha-gader</span>
+      <span class="gloss">to-who the-boys cut acc the-fence　可解作「男孩們割了<strong>誰的</strong>籬笆？」　<span class="ung">*</span>不可解作「<strong>誰的</strong>男孩割了籬笆？」</span></div>
+    <div class="row"><span class="sent"><span class="num">(85)</span> Le-mi ha-yaldot nigna ba-psanter</span>
+      <span class="gloss">to-who the-girls played in-the-piano　「女孩們彈了誰的鋼琴？」　<span class="ung">*</span>不可解作「誰的女孩彈鋼琴？」</span>
+      <span class="ana">被領屬者只能是<strong>賓語</strong>的指稱（籬笆、鋼琴），不能是主語（男孩、女孩）。</span></div>
+  </div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(86)</span> <span class="ung">*</span> Le-mi ha-xatulim yilelu</span>
+      <span class="gloss">to-who the-cats whined　「誰的貓嗚咽？」（領屬解讀不合法）</span></div>
+    <div class="row"><span class="sent"><span class="num">(88)</span> <span class="g">✓</span> Le-mi ha-mitriya nafla</span>
+      <span class="gloss">to-who the-umbrella fell　「誰的雨傘掉了。」</span>
+      <span class="ana">初步概括 (87) 領屬與格無法連結主語會被 (88) 推翻。真正區分在<strong>非作格 vs 非賓格</strong>：yilelu（嗚咽）是非作格、論元在 Spec-vP；nafla（掉落）是非賓格、論元是 V 的姊妹（賓語位置）。</span></div>
+  </div>
+  <div class="key"><b>(89) 修正概括：</b>領屬與格<strong>無法連結（原生於）Spec-vP 的論元</strong>。配合 UTAH：嗚咽者是施事（Spec-vP）排除 (86)；掉落物是受事（V 的姊妹）正確允許 (88)。再次支持非賓格／非作格的句法區分。</div>
+  <span class="pgmark">書頁 225–226</span>
+  <p>本節結論：英語非賓格動詞的表層句法由與其他動詞類<strong>相同的機制</strong>驅動——T 的特徵性質觸發某論元從 vP 內移到 Spec-TP。單一論元時該論元提升，遮蔽了非賓格與非作格的結構差異；vP 內多於一個論元時，<strong>最近的</strong>提升。</p>
+
+  <h2 id="s65">6.5 被動句（Passives）</h2>
+  <span class="pgmark">書頁 226–227</span>
+  <p>移到主語位置的最後一例是<span class="term">被動結構</span>。被動是簡單句（主動對應句）的變體：主語被降格，賓語進到結構主語位置。</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(90a)</span> Medea killed Jason.</span></div>
+    <div class="row"><span class="sent"><span class="num">(90b)</span> Jason was killed.</span>
+      <span class="ana">兩句裡 Jason 都得<strong>受事/受影響者（Theme/Patient）</strong>角色，依 UTAH 都是 V 的姊妹合併。但 (90b) 裡它移到表層主語位置：先於有定助動詞、被附加問句挑為結構主語。</span></div>
+  </div>
+  <p>被動類似非賓格：<strong>不指派賓格、無論旨主語</strong>。故賓語與 T 的 [nom] 核查主格、提升到 Spec-TP 滿足 EPP (91)。但此分析尚有缺口——它預測 (92) <em>Jason killed</em> 是 (90a) 的被動，但 (92) 雖合法卻是<strong>錯誤解讀</strong>（不能表 Jason 被殺）。也沒解釋英語被動<strong>必須有助動詞 be</strong>。</p>
+  <span class="pgmark">書頁 227–228</span>
+  <p>另一問題：被動主動詞<strong>不是有定形</strong>，而是<strong>過去分詞</strong>：(93) <em>The poisoned garments were stolen / *were stole</em>。兩問題同法解決——設一個 <span class="term">被動功能中心語 Pass</span>（屬投射層級），英語以助動詞 <em>be</em> 實現。Pass 帶範疇特徵 Pass、直接選擇 VP、帶 [uInfl:]，其語意貢獻是<strong>只選擇非賓格小 vP</strong>：</p>
+  <pre class="tree">(94)              T'
+              /        \
+   T[past,uN*,nom]      PassP
+                      /      \
+          be[Pass,uInfl:past*] vP
+                              /    \
+                             v      VP
+                  kill[Infl:Pass] ... Jason</pre>
+  <p>Pass 為小 v 的 uInfl 賦值；其拼讀規則與帶已核查 Infl:Perf 的 v 相同，故被動 <em>be</em> 後接過去分詞。Pass 是帶助動詞實現的功能中心語，帶強 Infl，<strong>提升到 T</strong>（如其他助動詞），得中間結構 (95) <em>was killed Jason</em>。T 的 [nom] 核查賓語格、EPP 核查賓語範疇並觸發提升：</p>
+  <pre class="tree">(96)              TP
+              /        \
+          Jason         T'
+                     /     \
+            T[past,nom]     PassP
+              be[Pass...]  /    \
+                          ...   vP
+                  kill[Infl:Pass] ... (Jason)
+   -> (97) Jason was killed.</pre>
+  <div class="key"><b>拆解被動：</b>此分析全用既有工具——額外功能中心語由助動詞的形態存在證成；其句法與其他助動詞相同；選擇非賓格 vP 同時解釋了<strong>缺賓格</strong>與<strong>缺論旨主語</strong>；觸發移位的機制與論旨主語、非賓格單論元所用的完全相同。<strong>結論：沒有特殊的被動結構，只有一個帶其特徵規格的中心語 Pass。</strong></div>
+  <span class="pgmark">書頁 228–229</span>
+  <p>未盡之處：未解釋英語被動可用 by 片語加回施事，而非賓格不行：(98) <em>Jason was killed by Medea</em> ✓ / (99) <em>*Jason arrived by Medea</em> / (100) <em>*There arrived by Medea</em>。跨語言變異亦未及——法語可用虛主語填被動表層主語、讓賓語留原位：(101) <em>Il a été tué trois hommes (par l assassin)</em>「（被刺客）殺了三個人」；但英語 (102) <em>*There were killed three men</em> 不行。某些語言允許非作格被動，如德語 (103) <em>Es wurde getanzt</em>「有人跳舞了」。然而幾乎沒有語言允許<strong>非賓格被動</strong>——這在現行分析下仍是謎。</p>
+
+  <h2 id="s66">6.6 副詞（Adverbs）</h2>
+  <span class="pgmark">書頁 229–230</span>
+  <p>暫離移位主題，看句子由 TP 統轄對副詞句法的意涵。副詞是附加到片語的<span class="term">附加語（adjunct）</span>。(104) <em>Enkidu quickly freed the animals</em>：副詞介於主語與句子其餘部分之間。既然副詞須附接到 vP、卻夾在主語與動詞之間，<strong>主語必在 vP 之外</strong>——TP 假設正好讓主語在 Spec-TP (105)，無需額外規定。</p>
+  <pre class="tree">(105)             TP
+              /        \
+        Subject         T'
+                     /     \
+                    T       vP
+                          /    \
+                      adverb    VP
+                              ...</pre>
+  <p>預測：副詞 quickly 不能在情態動詞<strong>之前</strong>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(106)</span> <span class="ung">*</span> Enkidu quickly may free the animals.</span></div>
+    <div class="row"><span class="sent"><span class="num">(107)</span> <span class="g">✓</span> Enkidu may quickly free the animals.</span>
+      <span class="ana">主語在 modal 提升到的 T 之指示語；副詞須附接片語，(106) 沒有空間放副詞。</span></div>
+  </div>
+  <p>副詞可附接 PerfP、ProgP：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(108)</span> Gilgamesh may quickly have cast the spell.</span></div>
+    <div class="row"><span class="sent"><span class="num">(109)</span> Gilgamesh should slowly be tickling the mandrake.</span></div>
+    <div class="row"><span class="sent"><span class="num">(110)</span> Gilgamesh may have quickly cast the spell.</span></div>
+    <div class="row"><span class="sent"><span class="num">(111)</span> Gilgamesh should be slowly tickling the mandrake.</span>
+      <span class="ana">(108)(109) 比 (106) 好，但不如副詞更靠近主動詞的 (110)(111)。</span></div>
+  </div>
+  <span class="pgmark">書頁 230–231</span>
+  <p>若副詞附接 vP 或更高投射（而非 VP），則 (112)(113) 的不合法被預測：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(112)</span> <span class="ung">*</span> Gilgamesh failed often Herbology.</span></div>
+    <div class="row"><span class="sent"><span class="num">(113)</span> <span class="ung">*</span> Ron captured quickly a gryphon.</span>
+      <span class="ana">英語副詞不能插在動詞與賓語之間（因附接 vP 以上而非 VP）。</span></div>
+  </div>
+  <p>有趣的是：若動詞能移到 T（如法語），這類句子應合法，因動詞會越過 vP 附接副詞 (114)。英語早期階段（V+v 提升到 T）確實允許動詞與賓語間插副詞——彌爾頓《失樂園》(1668)：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(115)</span> Satan their chief undertakes alone the voyage（動詞 undertakes 與賓語 the voyage 被副詞 alone 隔開）</span></div>
+    <div class="row"><span class="sent"><span class="num">(116)</span> Adam consents not（動詞 consents 在 not 之前）</span>
+      <span class="ana">兩句顯示 1668 年英語可把主動詞提升到 T；今日兩結構皆不合法。</span></div>
+  </div>
+  <span class="pgmark">書頁 231–232</span>
+  <p><strong>兩類副詞。</strong>VP 副詞（quickly、slowly、messily、weirdly）描述動作方式；<span class="term">命題副詞（propositional adverbs）</span>（probably、unfortunately、perhaps、surely）描述說話者對整個命題真值的確定度，最適合放<strong>句首</strong>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(117)</span> Perhaps Gilgamesh should be leaving.</span></div>
+    <div class="row"><span class="sent"><span class="num">(118)</span> Fortunately Hermione passed Herbology.</span></div>
+    <div class="row"><span class="sent"><span class="num">(119)</span> Ron failed Demonology, unfortunately.</span>
+      <span class="ana">命題副詞附接 <strong>TP</strong>（見 (120)）。它們也能插在主語與助動詞間 (121)(122)，但需特定語調，可能反映更複雜的推導。</span></div>
+  </div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(121)</span> Gilgamesh perhaps should be leaving.</span></div>
+    <div class="row"><span class="sent"><span class="num">(122)</span> Hermione fortunately has passed Herbology.</span></div>
+  </div>
+
+  <h2 id="s67">6.7 詞序與移位（參數變異）</h2>
+  <span class="pgmark">書頁 232–233</span>
+  <p>回到跨語言<strong>參數變異</strong>。第 5 章用投射層級各中心語特徵的<strong>強度</strong>不同來解釋英、法、瑞典語的差異。同理可施於驅動主語移位的特徵：英語 EPP 為<strong>強</strong>。若某語言 EPP <strong>弱</strong>，則沒有東西移入 Spec-TP，主語留在基底位置——這用來處理 <span class="term">VSO 語言（動詞–主語–賓語）</span>。蘇格蘭蓋爾語：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(123)</span> Chunnaic Iain Mairi</span>
+      <span class="gloss">see-[past] Iain Mairi　「Iain 看見 Mairi。」</span>
+      <span class="ana">動詞在主語之前。分析：主語留基底位置，小 v 的動詞複合體提升到 T (124)。T 與主語 Agree，但 T 的 EPP <strong>弱</strong>，不必就近滿足。</span></div>
+  </div>
+  <pre class="tree">(124)            TP
+              /        \
+             T          vP
+           /    \     /    \
+          v   T[uN,nom] Iain[N,nom]  v'
+        saw                        /    \
+                              (saw v)    VP
+                                       (saw) Mairi</pre>
+  <span class="pgmark">書頁 233–234</span>
+  <p>證據來自 <span class="term">VP 刪略（VP ellipsis）</span>。英語 VP 刪略其實作用於 <strong>vP</strong>：(125) <em>Have you seen Mary? — I have [<sub>vP</sub> seen Mary]</em>（主語已提升到 Spec-TP，故刪掉的是動詞+賓語）。若 (124) 對，VSO 語言刪 vP 時<strong>主語與賓語都被刪</strong>（因兩者都在 vP 內）。蓋爾語（與愛爾蘭語）以重複動詞回答是非問句，正是這結果：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(126)</span> Did you see Mary?</span></div>
+    <div class="row"><span class="sent"><span class="num">(127)</span> Am faca tu Mairi?（Q see-[past] you Mary「你看見 Mary 了嗎？」）</span></div>
+    <div class="row"><span class="sent"><span class="num">(128)</span> Chunnaic（see-[past]「是。」）</span></div>
+    <div class="row"><span class="sent"><span class="num">(129)</span> Chan fhaca（Neg see-[past]「不。」）</span></div>
+    <div class="row"><span class="sent"><span class="num">(130)</span> Chunnaic mi Mairi（see-[past] I Mary，未刪略的冗長答法）</span>
+      <span class="ana">蓋爾語無通用的 yes/no，而是重複動詞。完整答法 <em>I did see Mary</em> 經 vP 刪略後只剩動詞——如預期，刪掉了主語與賓語兩者，證明 EPP 在這類 VSO 語言為弱（或缺）、而小 v 的時態特徵為強。</span></div>
+  </div>
+  <p>由此得到參數類型表：</p>
+  <table>
+    <tr><th>語言</th><th>助動詞時態（Tense on aux）</th><th>小 v 時態（Tense on v）</th><th>T 上的 EPP</th></tr>
+    <tr><td>English</td><td>強 strong</td><td>弱 weak</td><td>強 strong</td></tr>
+    <tr><td>French</td><td>強 strong</td><td>強 strong</td><td>強 strong</td></tr>
+    <tr><td>Swedish</td><td>弱 weak</td><td>弱 weak</td><td>強 strong</td></tr>
+    <tr><td>Scottish Gaelic</td><td>強 strong</td><td>強 strong</td><td>弱 weak</td></tr>
+  </table>
+  <p>(131) 此類型表引出<strong>缺漏的可能性</strong>之問：是否存在 EPP 弱、且 aux/v 特徵也弱的語言（即一切都留在 vP 內）？若不存在，為什麼？</p>
+
+  <h2 id="s68">6.8 本章摘要</h2>
+  <span class="pgmark">書頁 234–236</span>
+  <ul class="plain">
+    <li>基本子句結構最多有<strong>兩個主語位置</strong>：一個關聯 <strong>θ 角色指派</strong>，一個關聯 <strong>格與 EPP 核查</strong>。證據來自量詞滯留與虛主語結構。</li>
+    <li>兩位置可由<strong>同一元素</strong>佔據，此時由<strong>移位</strong>連結。移位由 T 的 <strong>EPP 特徵</strong>觸發——一個<strong>強不可解讀 N 特徵 [uN*]</strong>，類似 c-選擇特徵、由 Spec-TP 在姊妹關係下核查，但<strong>不關聯 θ 角色</strong>，是純形式特徵。</li>
+    <li>為掌握格分布：<strong>T 帶 [nom]、小 v 帶 [acc]</strong>。並以<strong>局部性條件</strong>約束特徵配對：<br>(132) 配對局部性：Agree 成立於 X 上 F 與 Y 上相配 F，當且僅當無介入 Z[F]。<br>(133) 介入：[X…Z…Y] 中 Z 介入 X、Y，當且僅當 X c-統制 Z 且 Z c-統制 Y。</li>
+    <li>這捕捉通常是論旨主語而非賓語移到表層主語位置；但<strong>無論旨主語時</strong>，賓語可移——非賓格、被動的賓語在英語移到表層主語位置；義大利語 ne 附著、希伯來語領屬與格進一步佐證。</li>
+    <li>被動分析：投射層級加入 <strong>Pass 功能中心語</strong>，(134) Hierarchy of Projections: T &gt; (Neg) &gt; (Perf) &gt; (Prog) &gt; (Pass) &gt; v &gt; V；Pass 特殊性在<strong>選擇非賓格小 vP</strong>。</li>
+    <li>把 <strong>EPP 強度</strong>也參數化，延伸語言類型學——對至少一類 VSO 語言有正確的經驗後果。</li>
+  </ul>
+  <table>
+    <tr><th>現象</th><th>解釋</th></tr>
+    <tr><td>浮游量詞</td><td>NP 從 Spec-vP 移到 Spec-TP 後量詞被滯留</td></tr>
+    <tr><td>虛主語結構</td><td>EPP 由虛主語核查、[nom] 由原位主語核查</td></tr>
+    <tr><td>帶格代名詞與 NP 分布</td><td>T 的 [nom]、V/v 的 [acc]、EPP 與配對局部性</td></tr>
+    <tr><td>非賓格與被動</td><td>特殊小 v 缺指示語與 [acc]；其餘同主動句原則</td></tr>
+    <tr><td>（至少一類）VSO 詞序</td><td>T 的 EPP 弱，動詞提升</td></tr>
+    <tr><td>副詞分布</td><td>不同層級的附接與動詞移位互動</td></tr>
+  </table>
+  <div class="key"><b>(135) 記法縮寫：</b>(a) [ucase: ]（未核查格特徵）縮為 [case]；(b) [ucase:nom]（已核查已賦值）縮為 [nom]（劃線）；(c) [ucase:nom]（未核查但自帶值）縮為 [nom]。</div>
+
+  <h2 id="sex">練習題（Exercises）</h2>
+  <span class="pgmark">書頁 237–238</span>
+  <ul class="plain">
+    <li><strong>練習 1（樹狀圖）：</strong>為下列句子畫含全部相關特徵（含格特徵）的樹：(1) Cassandra has warned Agamemnon again. (2) Medea might have given Jason a poisoned robe. (3) They should have all sent Oedipus to Colonus. (4) Perhaps Iphigenia will have murdered Oedipus by tomorrow.</li>
+    <li><strong>練習 2（格）：</strong>解釋各代名詞如何核查格、為何不合法（須自行提出介詞片語的格指派方案）：(1) *Me gave it to him. (2) *I sent she away. (3) *I introduced her to he.</li>
+    <li><strong>練習 3（被動與浮游量詞）：</strong>畫樹：(1) The dragons have all been slain. (2) All the dragons have been slain.</li>
+    <li><strong>練習 4（虛主語）：</strong>為 (1) There was a dragon in the cave 給出推導（可用三角形表 PP）。</li>
+    <li><strong>練習 5（量詞浮游難題）：</strong>解釋為何下列資料在文中分析下出人意料：(1) *The dragons were slain all. (2) *The Greeks arrived all.</li>
+    <li><strong>練習 6（雙賓被動）：</strong>(1) 推導 The book was donated to the hospital. (2) 解釋 *The hospital was donated the book to 為何不合法。</li>
+    <li><strong>練習 7（副詞）：</strong>說明 (1) Ron certainly will buy a dog. (2) Ron definitely has bought a dog. 對文中分析的困難並提出替代方案。</li>
+  </ul>
+
+  <div class="key"><b>本章關鍵詞彙：</b>two subject positions、Spec-vP / Spec-TP、subject raising、floating quantifier / quantifier stranding、expletive（there / it）、tag-question、Case theory、nominative [nom] / accusative [acc]、uninterpretable Case feature、operation Agree、valuation / checking、EPP feature [uN*]、Extended Projection Principle、Locality of Matching、Intervention、c-command、little v assigns accusative、dative subject、unaccusative / unergative、UTAH、ne-cliticization (partitive clitic)、possessor dative、passive / Pass head、Hierarchy of Projections、VP ellipsis (vP)、VSO / parameterization、feature strength。</div>
+
+  <div class="nav-bottom">
+    <a href="index.html">← 全書導覽</a>
+    <a href="Ch07_DP.html">第 7 章：功能範疇 II — DP →</a>
+  </div>
+</div>
+</div>
+
+<div class="panel" id="en">
+<div class="wrap">
+  <p class="lead">Condensed page-by-page paraphrase of Chapter 6 of Adger (2003), <em>Core Syntax</em>, pp. 204-243 (OUP). Key terms are <strong>bolded</strong>; numbered examples are listed verbatim in blockquotes. This is a study paraphrase, not the full verbatim text.</p>
+
+  <span class="enpg">p.204</span>
+  <p><strong>6.1 Introduction.</strong> The chapter addresses the position of the subject in clause structure and the syntactic dependencies that subjects and objects enter into. Ch.4 placed transitive subjects in the specifier of <strong>little v</strong>; Ch.5 had clauses headed by <strong>T</strong> (hosting finite auxiliaries). Combining the two gives an apparent contradiction: the subject is to the <strong>left</strong> of the auxiliary, not the right.</p>
+  <blockquote><span class="num">(3)</span> Cassandra has foretold disaster again.</blockquote>
+  <p>Solution: there are really <strong>two subject positions</strong> related by movement. The transitive subject Merges in Spec-vP (base position) and Moves to Spec-TP (surface position), so the finite auxiliary in T is correctly preceded by the subject.</p>
+
+  <span class="enpg">p.205</span>
+  <p><strong>6.2 Subject movement. 6.2.1 Quantifier stranding.</strong> First evidence comes from <strong>floating quantifiers</strong> - determiner-like elements normally attached to NPs.</p>
+  <blockquote><span class="num">(5)</span> All the dragons had escaped.</blockquote>
+
+  <span class="enpg">p.206</span>
+  <blockquote><span class="num">(6)</span> Both the twins might have been at the party.<br><span class="num">(7)</span> The dragons had all eaten the pigs.<br><span class="num">(8)</span> The twins might have both been at the party.<br><span class="num">(9)</span> a. Most dragons have been neutered. b. *Dragons have most been neutered.<br><span class="num">(10)</span> a. Many vampires have become vegetarian. b. *Vampires have many become vegetarian.</blockquote>
+  <p>Not all quantifiers float. Older analyses moved Q rightward; newer ones say Q is <strong>stranded</strong> when its NP raises: (13) Q+NP...VP to (14) NP...Q+(NP)...VP. This requires the NP to start low and raise - exactly the word-order structure already proposed. Assume floating quantifiers are <strong>heads taking an NP complement</strong>.</p>
+
+  <span class="enpg">p.207</span>
+  <blockquote><span class="num">(15)</span> [DP All [NP the dragons]]<br><span class="num">(16)</span> [DP Both [NP the twins]]<br><span class="num">(17)</span> [DP Most [N dragons]]<br><span class="num">(18)</span> The dragons had all eaten the pigs.</blockquote>
+  <p>Subjects Merge in Spec-vP (19); Perf and T are added, T triggers Perf-raising (20).</p>
+
+  <span class="enpg">p.208</span>
+  <p>When raising to Spec-TP we face a <strong>choice</strong>: move [all the dragons] (21) or just [the dragons] (22). Taking the latter gives quantifier float. The quantifiers do not float - they are <strong>stranded</strong> when their complement moves. This works only if there are <strong>two subject positions</strong> related by movement.</p>
+
+  <span class="enpg">p.209</span>
+  <p>The argument replaces a construction-specific rule with general principles (theta-roles assigned locally; movement may target subparts of an NP). It also predicts quantifiers can follow vP-adjoined adverbs.</p>
+  <blockquote><span class="num">(23)</span> The dragons simply all died out.</blockquote>
+  <p><strong>6.2.2 Expletive constructions.</strong> An <strong>expletive</strong> fills the surface subject position but gets no theta-role. English has <em>there</em> and <em>it</em>.</p>
+  <blockquote><span class="num">(24)</span> There are many fish in the sea.<br><span class="num">(25)</span> There were people playing on the beach.<br><span class="num">(26)</span> It is quarter past four.<br><span class="num">(27)</span> It is extremely windy today.<br><span class="num">(28)</span> I saw people playing there on the beach.</blockquote>
+  <p>The <em>it</em>-expletives involve <strong>zero-place predicates</strong> and are set aside. True expletive <em>there</em> is unstressed and non-locative.</p>
+
+  <span class="enpg">p.210</span>
+  <blockquote><span class="num">(29)</span> Many fish are in the sea.<br><span class="num">(30)</span> People were playing on the beach.<br><span class="num">(31)</span> Ron is likely to be on the Web, isn t he?<br><span class="num">(32)</span> Jenny hasn t eaten all her Clinique make-up again, has she?<br><span class="num">(33)</span> There is going to be a party, isn t there?<br><span class="num">(34)</span> There were people eating fire at the fair, weren t there?<br><span class="num">(35)</span> *[Many people were [there playing on the beach]]</blockquote>
+  <p><strong>Tag-questions</strong> show <em>there</em> is the structural subject. Schema (36) <em>there T ... Subject vP</em>; thematic counterpart (37) <em>Subject T ... (Subject) vP</em>. Supports two movement-related subject positions. Open question: what mechanism forces the movement?</p>
+
+  <span class="enpg">p.211</span>
+  <p><strong>6.3 Case and EPP.</strong> English pronouns bear <strong>case features</strong> regulating distribution.</p>
+  <blockquote><span class="num">(38)</span> She has kissed her.<br><span class="num">(39)</span> *Her has kissed her.<br><span class="num">(40)</span> *She has kissed she.</blockquote>
+  <p>Only <strong>nominative</strong> appears in Spec-TP, only <strong>accusative</strong> in object position. Case is driven by properties of particular <strong>heads</strong>. <strong>6.3.1 Subjects and EPP features.</strong> Nominative is associated with finite T; the existing operation <strong>Agree</strong> suffices.</p>
+
+  <span class="enpg">p.212</span>
+  <blockquote><span class="num">(41)</span> T bears an uninterpretable case feature [ucase:nom], which values a case feature on an NP under Agree.</blockquote>
+  <p>Case features are <strong>uniformly uninterpretable</strong>. Unusually, <strong>both</strong> members of the case-checking relation are uninterpretable (unintuitive; problems revisited in Ch.8). Notation (42): unvalued = [case]; checked = struck-through [nom]; valued-but-unchecked = [nom].</p>
+  <blockquote><span class="num">(42)</span> numeration = {pronoun[3,sing,case], pronoun[3,sing,case], know, v[uInfl:,uN], T[pres,nom]}</blockquote>
+
+  <span class="enpg">p.213</span>
+  <p>Derivation steps 1-5: Merge know + pronoun; Merge v, V raises; Merge second pronoun in Spec-vP; Merge T; T and v Agree (Infl valued), T and the Spec-vP pronoun Agree for case to valued [nom].</p>
+
+  <span class="enpg">p.214</span>
+  <blockquote><span class="num">(43)</span> Pronounce pronoun[N,3,sing,nom] as <em>he</em>.<br><span class="num">(44)</span> *Him knows him.</blockquote>
+  <p>Finite T <strong>always</strong> bears [nom]; without a nominative the derivation <strong>crashes</strong>. Movement is forced by <strong>feature strength</strong>. Tempting to make [nom] strong - but that fails (next page).</p>
+
+  <span class="enpg">p.215</span>
+  <blockquote><span class="num">(45)</span> *There was he/him in the garden.<br><span class="num">(46)</span> Thad hefur madur dansad i gardinum - "A man has danced in the garden."<br><span class="num">(47)</span> Thad hefur einhver bordad epli - "Someone has eaten an apple."<br><span class="num">(48)</span> *Hefur einhver bordad epli.</blockquote>
+  <p>Icelandic: the nominative can stay <strong>in situ</strong> while the expletive fills Spec-TP, so it is <strong>not</strong> the strength of [nom] that fills Spec-TP. But Spec-TP <strong>must</strong> be filled (48). So [nom] checks nominative; a <strong>separate</strong> feature forces a nominal into Spec-TP.</p>
+  <blockquote><span class="num">(49)</span> T[pres, nom, uN*]</blockquote>
+  <p>This [uN*] is a purely formal selectional N feature with <strong>no theta-role</strong> - the <strong>EPP feature</strong> (Extended Projection Principle).</p>
+
+  <span class="enpg">p.216</span>
+  <p>Step 6 revised: T bears EPP; once projected, it is satisfied locally by movement of the pronoun into Spec-TP. For expletives, assume the expletive has <strong>no case</strong> to check; instead of raising the subject, we Merge the expletive to satisfy EPP (50).</p>
+
+  <span class="enpg">p.217</span>
+  <blockquote><span class="num">(51)</span> Joni likadi bokin ekki - "John did not like the book." (dative subject + nominative object)</blockquote>
+  <p>Icelandic <strong>dative subjects</strong> show nominative-case-checking and the Spec-TP-filling requirement are <strong>distinct</strong>. <strong>6.3.2 Objects and locality of feature matching.</strong> Accusative still unhandled.</p>
+  <blockquote><span class="num">(52)</span> *He knows he.</blockquote>
+  <p>Some vP head bears [acc]; we assume <strong>little v</strong>. Schema (53): Merge V+Object, Merge v[acc]; Object case valued [acc]; Merge Subject, T; Agree (tense, [nom], [N]); Subject raises to Spec-TP.</p>
+
+  <span class="enpg">p.218</span>
+  <blockquote><span class="num">(54)</span> *[Him has [vP he known (him)]]</blockquote>
+  <p>Need to rule out the EPP matching the <strong>object</strong>. Agree must not skip the subject.</p>
+  <blockquote><span class="num">(55)</span> Locality of Matching: Agree holds between F on X and matching F on Y iff there is no intervening Z[F].<br><span class="num">(56)</span> Intervention: in [X ... Z ... Y], Z intervenes iff X c-commands Z and Z c-commands Y.</blockquote>
+  <p>The subject intervenes between T and the object, so the EPP can only match the subject (57). Object can never raise to satisfy EPP.</p>
+
+  <span class="enpg">p.219</span>
+  <blockquote><span class="num">(58)</span> *Him has he known (him).<br><span class="num">(59)</span> [tree: T stretched by adjoined <em>had</em>; features shared]<br><span class="num">(60)</span> [NP all [NP the dragons]]</blockquote>
+  <p>For floated quantifiers: the two NP nodes [the dragons] and [all the dragons] <strong>do not c-command each other</strong>, so the higher one does not intervene; the lower NP can raise.</p>
+  <blockquote><span class="num">(61)</span> [NP the dragons] have [vP [NP all ([NP the dragons])] died].</blockquote>
+  <p><strong>6.3.3 Subject-verb agreement.</strong></p>
+
+  <span class="enpg">p.220</span>
+  <blockquote><span class="num">(62)</span> a. The librarian likes books. b. *The librarian like books.<br><span class="num">(63)</span> a. *The librarians likes books. b. The librarians like books.<br><span class="num">(64)</span> T[nom, uphi:, uN*] ... the librarians[pl] ...</blockquote>
+  <p>T Agrees with the subject for <strong>case</strong> and with little v for <strong>tense and phi-features</strong>. The NP [pl] values T <strong>uphi</strong>.</p>
+
+  <span class="enpg">p.221</span>
+  <blockquote><span class="num">(65)/(66)/(67)</span> phi-information passes from the subject NP, via T, to little v (where it is spelled out as -s or zero); the subject then moves to Spec-TP.</blockquote>
+  <p><strong>6.3.4 Interim summary.</strong></p>
+  <blockquote><span class="num">(68)</span> 1. Finite T bears [nom], v bears [acc]. 2. Finite T bears [uN*] (EPP) to something Merges into Spec-TP. 3. Agree only matches the <strong>closest</strong> matching feature.</blockquote>
+  <p>Prediction: with <strong>no intervening subject</strong>, the object can match EPP and raise. Tested next.</p>
+
+  <span class="enpg">p.221</span>
+  <p><strong>6.4 Unaccusative subjects.</strong> By the <strong>UTAH</strong>, verbs with only a <strong>Theme</strong> realize it as an <strong>object</strong>; <strong>unaccusative</strong> verbs have a little v <strong>lacking a specifier</strong>. Prediction: with no intervening subject, the Theme raises to Spec-TP and gets nominative from T. The unaccusative little v must lack both <strong>[acc]</strong> and the selectional <strong>uN</strong> (hence no specifier).</p>
+  <blockquote><span class="num">(69)</span> Gilgamesh arrives.</blockquote>
+
+  <span class="enpg">p.222</span>
+  <p>Derivation: arrive Merges with Gilgamesh (VP); little v (no spec, no [acc]); Merge T; [nom] values Gilgamesh as nominative even though Merged in object position; phi valued sing; EPP triggers raising. Surface looks like an <strong>unergative</strong> (run) but the derivation moves an underlying <strong>object</strong>. Prediction: phenomena treating unaccusative subjects like transitive objects - e.g. Italian.</p>
+  <p><strong>6.4.1 Ne-cliticization.</strong> In Italian, object clitic pronouns must sit just left of the finite verb.</p>
+  <blockquote><span class="num">(70)</span> Maria ha visto Gianni.<br><span class="num">(71)</span> *Maria ha visto lo.</blockquote>
+
+  <span class="enpg">p.223</span>
+  <blockquote><span class="num">(72)</span> Maria lo ha visto.<br><span class="num">(73)</span> Gianni trascorrera tre settimane a Milano.<br><span class="num">(74)</span> *Gianni trascorrera tre ne a Milano.<br><span class="num">(75)</span> Gianni ne trascorrera tre a Milano.<br><span class="num">(76)</span> Alcune persone trascorreranno tre settimane a Milano.<br><span class="num">(77)</span> *Alcune ne trascorreranno tre settimane a Milano.</blockquote>
+  <p>The <strong>partitive clitic <em>ne</em></strong> cannot be extracted from a subject.</p>
+  <blockquote><span class="num">(78)</span> Ne-cliticization is only possible from a phrase in object position.<br><span class="num">(79)</span> Telefoneranno tre persone domani.</blockquote>
+
+  <span class="enpg">p.224</span>
+  <p>Italian raises V to T and lets subjects stay low (80); EPP abstracted away (weak, or a null expletive).</p>
+  <blockquote><span class="num">(81)</span> *Ne telefoneranno tre domani. (unergative)<br><span class="num">(82)</span> Ne arriveranno tre domani. (unaccusative - OK)</blockquote>
+  <p>Good argument that unaccusative subjects originate in <strong>object position</strong> (though not a deep account of why ne needs an object).</p>
+
+  <span class="enpg">p.224-225</span>
+  <p><strong>6.4.2 Possessor datives in Hebrew.</strong> The preposition <em>le</em> marks possession.</p>
+  <blockquote><span class="num">(83)</span> ha-praxim navlu le-rani - "Rani flowers wilted."<br><span class="num">(84)</span> Le-mi ha-yeladim xatxu et ha-gader - "Whose fence did the boys cut?" / *"Whose boys cut the fence."<br><span class="num">(85)</span> Le-mi ha-yaldot nigna ba-psanter - "Whose piano did the girls play?" / *"Whose girls..."<br><span class="num">(86)</span> *Le-mi ha-xatulim yilelu - "Whose cats whined?"</blockquote>
+  <p>The possessed entity must be the <strong>object</strong>, not the subject.</p>
+
+  <span class="enpg">p.225</span>
+  <blockquote><span class="num">(87)</span> Possessor datives are unable to associate with subjects.<br><span class="num">(88)</span> Le-mi ha-mitriya nafla - "Whose umbrella fell." (OK)<br><span class="num">(89)</span> Possessor datives are unable to associate with arguments (that originate) in the specifier of vP.</blockquote>
+  <p>(87) is too strong; (88) shows the <strong>unergative/unaccusative</strong> divide matters. (89) rules out (86) (whiners = agents in Spec-vP) and allows (88) (fallers = Themes, sister of V).</p>
+
+  <span class="enpg">p.226</span>
+  <p>Unaccusatives use the <strong>same mechanisms</strong> as other classes: T features trigger raising of an argument from inside vP. With one argument it raises (hiding the unaccusative/unergative difference); with more, the <strong>closest</strong> raises. <strong>6.5 Passives.</strong> The object ends up in subject position.</p>
+  <blockquote><span class="num">(90)</span> a. Medea killed Jason. b. Jason was killed.</blockquote>
+
+  <span class="enpg">p.227</span>
+  <p>Passives are <strong>like unaccusatives</strong>: no accusative, no thematic subject; the object checks [nom] and raises (91). But this leaves problems.</p>
+  <blockquote><span class="num">(92)</span> *Jason killed. (grammatical, but wrong reading)<br><span class="num">(93)</span> The poisoned garments were stolen / *were stole.</blockquote>
+  <p>The passive verb is a <strong>past participle</strong>, and English requires auxiliary <em>be</em>.</p>
+
+  <span class="enpg">p.228</span>
+  <p>Solution: a <strong>Pass</strong> functional head realized as <em>be</em>, in the Hierarchy of Projections, bearing [uInfl:] and selecting only an <strong>unaccusative little vP</strong> (94). Pass values v uInfl (to past participle), raises to T like other auxiliaries (95).</p>
+  <blockquote><span class="num">(94)</span> T[past,uN*,nom] [PassP be[Pass,uInfl:past*] [vP ... kill[Infl:Pass] Jason]]<br><span class="num">(95)</span> was killed Jason</blockquote>
+
+  <span class="enpg">p.229</span>
+  <blockquote><span class="num">(96)/(97)</span> Jason was killed. (T [nom] checks object case; EPP triggers raising)</blockquote>
+  <p>Passive is deconstructed: no special construction, just a <strong>Pass head</strong> with its featural specification, which brings in independent behaviours.</p>
+  <blockquote><span class="num">(98)</span> Jason was killed by Medea.<br><span class="num">(99)</span> *Jason arrived by Medea.<br><span class="num">(100)</span> *There arrived by Medea.</blockquote>
+
+  <span class="enpg">p.230</span>
+  <blockquote><span class="num">(101)</span> Il a ete tue trois hommes (par l assassin) - French expletive passive.<br><span class="num">(102)</span> *There were killed three men (by the assassin).<br><span class="num">(103)</span> Es wurde getanzt - "There was dancing." (German unergative passive)</blockquote>
+  <p>Cross-linguistic variation is left open; almost no language passivizes an <strong>unaccusative</strong> - a mystery here. <strong>6.6 Adverbs.</strong></p>
+  <blockquote><span class="num">(104)</span> Enkidu quickly freed the animals.</blockquote>
+  <p>The adverb adjoins to vP yet sits between subject and verb, so the subject must be <strong>outside vP</strong> - i.e. in Spec-TP (105).</p>
+
+  <span class="enpg">p.231</span>
+  <blockquote><span class="num">(106)</span> *Enkidu quickly may free the animals.<br><span class="num">(107)</span> Enkidu may quickly free the animals.<br><span class="num">(108)</span> Gilgamesh may quickly have cast the spell.<br><span class="num">(109)</span> Gilgamesh should slowly be tickling the mandrake.<br><span class="num">(110)</span> Gilgamesh may have quickly cast the spell.<br><span class="num">(111)</span> Gilgamesh should be slowly tickling the mandrake.<br><span class="num">(112)</span> *Gilgamesh failed often Herbology.<br><span class="num">(113)</span> *Ron captured quickly a gryphon.</blockquote>
+  <p>Adverbs adjoin to vP or higher, not VP. If V could raise to T (as in French), V would cross the adverb (114).</p>
+
+  <span class="enpg">p.232</span>
+  <blockquote><span class="num">(115)</span> Satan their chief undertakes alone the voyage. (Milton, 1668)<br><span class="num">(116)</span> Adam consents not. (Milton, 1668)</blockquote>
+  <p>Earlier English raised main verbs (V+v) to T. <strong>VP adverbs</strong> (manner) vs <strong>propositional adverbs</strong> (probably, unfortunately, perhaps, surely) - the latter prefer sentence-initial position.</p>
+  <blockquote><span class="num">(117)</span> Perhaps Gilgamesh should be leaving.<br><span class="num">(118)</span> Fortunately Hermione passed Herbology.<br><span class="num">(119)</span> Ron failed Demonology, unfortunately.<br><span class="num">(120)</span> [TP Perhaps [TP Gilgamesh should be leaving]]<br><span class="num">(121)</span> Gilgamesh perhaps should be leaving.<br><span class="num">(122)</span> Hermione fortunately has passed Herbology.</blockquote>
+  <p>Propositional adverbs adjoin to TP; their inter-position needs special intonation. <strong>6.7 Word order and movement.</strong> Variation = feature <strong>strength</strong> parameterized.</p>
+
+  <span class="enpg">p.233</span>
+  <blockquote><span class="num">(123)</span> Chunnaic Iain Mairi - "Iain saw Mairi." (Scottish Gaelic, VSO)</blockquote>
+  <p>If EPP is <strong>weak</strong>, nothing raises to Spec-TP; the subject stays low and the verb (in v) raises to T (124). Evidence: <strong>VP ellipsis</strong> targets <strong>vP</strong>.</p>
+  <blockquote><span class="num">(125)</span> Have you seen Mary? - I have [vP seen Mary].</blockquote>
+
+  <span class="enpg">p.234</span>
+  <p>In a VSO language, eliding vP deletes <strong>both</strong> subject and object (both inside vP). Gaelic/Irish answer yes/no by repeating the verb:</p>
+  <blockquote><span class="num">(126)</span> Did you see Mary?<br><span class="num">(127)</span> Am faca tu Mairi?<br><span class="num">(128)</span> Chunnaic. ("Yes.")<br><span class="num">(129)</span> Chan fhaca. ("No.")<br><span class="num">(130)</span> Chunnaic mi Mairi. (unelided)</blockquote>
+  <p>So EPP is <strong>weak</strong> (or absent) in these VSO languages, while tense on little v is strong.</p>
+  <blockquote><span class="num">(131)</span> Typology - Tense on aux / Tense on v / EPP on T:<br>English: strong / weak / strong<br>French: strong / strong / strong<br>Swedish: weak / weak / strong<br>Scottish Gaelic: strong / strong / weak</blockquote>
+  <p>Open question: is there a language with weak EPP <em>and</em> weak aux/v (everything stays in vP)? If not, why?</p>
+
+  <span class="enpg">p.234-236</span>
+  <p><strong>6.8 Summary.</strong> Up to <strong>two subject positions</strong>: one for theta-role assignment, one for case/EPP checking, motivated by quantifier stranding and expletives. Movement is triggered by the <strong>EPP feature</strong> (a strong uninterpretable N feature, purely formal, no theta-role). T bears [nom], little v bears [acc]; feature matching is constrained by Locality.</p>
+  <blockquote><span class="num">(132)</span> Locality of Matching: Agree holds between F on X and matching F on Y iff there is no intervening Z[F].<br><span class="num">(133)</span> Intervention: in [X ... Z ... Y], Z intervenes iff X c-commands Z and Z c-commands Y.<br><span class="num">(134)</span> Hierarchy of Projections: T &gt; (Neg) &gt; (Perf) &gt; (Prog) &gt; (Pass) &gt; v &gt; V.<br><span class="num">(135)</span> Abbreviations: [ucase: ] to [case]; checked [ucase:nom] to struck [nom]; valued-unchecked to [nom].</blockquote>
+  <p>Without a thematic subject the object raises (unaccusatives, passives), supported by Italian <em>ne</em>-cliticization and Hebrew possessor datives. <strong>Pass</strong> selects an unaccusative vP. EPP strength is parameterized, capturing one subtype of VSO.</p>
+
+  <span class="enpg">p.237-243</span>
+  <p><strong>Exercises.</strong> (1) Draw trees with full case features for four sentences. (2) Explain case-checking and ungrammaticality of *Me gave it to him etc.; propose case-assignment for PPs. (3) Trees for <em>The dragons have all been slain</em> / <em>All the dragons have been slain</em>. (4) Derive <em>There was a dragon in the cave</em>. (5) Why *<em>The dragons were slain all</em> is unexpected. (6) Derive <em>The book was donated to the hospital</em>; explain *<em>The hospital was donated the book to</em>. (7) Adverb difficulties with <em>Ron certainly will...</em> / <em>Ron definitely has...</em>. <strong>Further reading</strong> covers two-subject-positions (Koopman and Sportiche 1991, Koizumi 1993, McCloskey 1997, Bobaljik and Jonas 1996), quantifier float (Sportiche 1988, Bobaljik 1998), expletives (Milsark 1974, Safir, Belletti 1988, Lasnik, Vikner 1995), case/Agree (Chomsky 1995b/2000/2001a/b, Rizzi 1990), unaccusativity (Perlmutter 1978, Burzio 1986, Baker 1988, Borer 2002, Levin and Rappaport-Hovav 1995), passives (Chomsky 1957/1965, Freidin 1975, Postal 1986, Jaeggli 1986, Baker/Johnson/Roberts 1989), adverbs (Cinque 1999, Alexiadou 1997), and VSO (McCloskey 1991/1997).</p>
+
+  <div class="nav-bottom">
+    <a href="index.html">← Index</a>
+    <a href="Ch07_DP.html">Ch.7 DP →</a>
+  </div>
+</div>
+</div>
+
+<a href="#top" class="back-top">↑ 回頂端</a>
+<footer>Adger, D. (2003) <em>Core Syntax</em>, Ch.6 Subjects and Objects（書頁 204–243）· Oxford University Press · DOI:10.1093/oso/9780199243709.003.0006</footer>
+
+<script>
+function showTab(which){
+  document.getElementById('zh').classList.toggle('active', which==='zh');
+  document.getElementById('en').classList.toggle('active', which==='en');
+  document.getElementById('tab-zh').classList.toggle('active', which==='zh');
+  document.getElementById('tab-en').classList.toggle('active', which==='en');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+</script>
+</body>
+</html>

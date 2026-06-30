@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch.9 Wh- 移位 Wh-movement（逐頁逐例句詳解 + 英文對照）— Adger (2003)</title>
+<style>
+  :root{--ink:#1b1b22;--muted:#5d5d6b;--line:#e3e3ec;--bg:#faf9f6;--accent:#3a5a40;--accent2:#3a5a40;--chip:#eef1ec;--card:#fff;--box:#eef3ee;}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Noto Serif TC","Songti TC",Georgia,"Times New Roman",serif;color:var(--ink);background:var(--bg);line-height:1.9}
+  header{background:linear-gradient(135deg,#3a5a40,#1f3324);color:#fff;padding:54px 24px 36px}
+  header .inner{max-width:900px;margin:0 auto}
+  header .ch{font-family:system-ui,sans-serif;font-size:.8rem;letter-spacing:2px;color:#bcd6c4}
+  header h1{margin:6px 0 4px;font-size:2rem}
+  header .en{color:#d9f0de;font-style:italic}
+  header .pg{margin-top:10px;font-size:.85rem;color:#a9d8b4;font-family:system-ui,sans-serif}
+  nav.bc{max-width:900px;margin:0 auto;padding:14px 24px 0;font-family:system-ui,sans-serif;font-size:.85rem}
+  nav.bc a{color:var(--accent2);text-decoration:none}
+  .tabbar{max-width:900px;margin:14px auto 0;padding:0 24px;display:flex;gap:10px;font-family:system-ui,sans-serif}
+  .tab{cursor:pointer;border:1px solid var(--line);border-bottom:0;background:#edf1ee;color:#43607a;padding:11px 22px;border-radius:10px 10px 0 0;font-weight:700;font-size:.95rem;transition:.15s}
+  .tab:hover{background:#e3ebe5}
+  .tab.active{background:var(--card);color:var(--accent2);box-shadow:0 -2px 6px rgba(0,0,0,.04)}
+  .panel{display:none}.panel.active{display:block}
+  .toc{max-width:900px;margin:0 auto 10px;padding:18px 24px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+  .toc h2{margin:0 0 10px;font-size:1.05rem;color:var(--accent2);border:0}
+  .toc ul{columns:2;column-gap:30px;margin:0;padding-left:18px;font-family:system-ui,sans-serif;font-size:.9rem}
+  .toc a{color:#333;text-decoration:none}.toc a:hover{color:var(--accent2)}
+  .wrap{max-width:900px;margin:0 auto;padding:10px 24px 80px}
+  h2{color:var(--accent2);border-bottom:2px solid var(--line);padding-bottom:6px;margin-top:48px;font-size:1.45rem;scroll-margin-top:14px}
+  h3{color:#1f3324;margin-top:34px;font-size:1.18rem;border-left:5px solid var(--accent2);padding-left:12px}
+  .pgmark{display:inline-block;font-family:system-ui,sans-serif;font-size:.72rem;font-weight:700;color:#fff;background:var(--accent2);padding:2px 10px;border-radius:12px;margin:24px 0 4px}
+  p{margin:13px 0}
+  .lead{font-size:1.05rem;background:var(--box);border-left:4px solid var(--accent2);padding:16px 20px;border-radius:0 10px 10px 0}
+  .term{font-family:system-ui,sans-serif;font-weight:700;color:var(--accent2)}
+  .en-term{font-style:italic;color:var(--muted)}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:.93rem}
+  th,td{border:1px solid var(--line);padding:8px 11px;text-align:left;vertical-align:top}
+  th{background:var(--chip);font-family:system-ui,sans-serif}
+  .ex{background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 0;margin:16px 0;overflow:hidden}
+  .ex .row{padding:9px 18px;border-bottom:1px dashed #eee}
+  .ex .row:last-child{border-bottom:0}
+  .ex .sent{font-family:"Times New Roman",serif;font-size:1.05rem}
+  .ex .num{display:inline-block;min-width:38px;color:var(--muted);font-family:system-ui,sans-serif;font-size:.85rem}
+  .ex i{color:#444}
+  .g{color:#1a7a3a;font-weight:bold}.ung{color:#b32020;font-weight:bold}.qm{color:#b88a00;font-weight:bold}
+  .gloss{display:block;margin:4px 0 0 38px;font-size:.92rem;color:#555}
+  .ana{display:block;margin:5px 0 0 38px;font-size:.92rem;color:#2f4a35;background:#eef4ef;border-radius:6px;padding:8px 12px}
+  .ana::before{content:"\25B8 \8A73\89E3\3000";color:var(--accent2);font-weight:bold;font-family:system-ui,sans-serif}
+  .concept{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:16px 0;border-top:3px solid var(--accent2)}
+  .concept h4{margin:0 0 8px;color:var(--accent2);font-family:system-ui,sans-serif;font-size:1rem}
+  .key{background:#fdf6e3;border:1px solid #e9dcae;border-radius:10px;padding:14px 18px;margin:18px 0}
+  .key b{color:#8a6d00}
+  .tree{background:#1f2933;color:#e6edf3;border-radius:10px;padding:14px 18px;margin:16px 0;font-family:"Consolas","Menlo",monospace;font-size:.86rem;line-height:1.5;overflow-x:auto;white-space:pre}
+  .tree .hl{color:#ffd479}
+  .deriv{counter-reset:d;margin:14px 0;padding:0;list-style:none}
+  .deriv li{counter-increment:d;background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent2);border-radius:0 8px 8px 0;padding:8px 14px 8px 40px;margin:8px 0;position:relative}
+  .deriv li::before{content:counter(d);position:absolute;left:10px;top:8px;background:var(--accent2);color:#fff;width:20px;height:20px;border-radius:50%;text-align:center;font-size:.78rem;line-height:20px;font-family:system-ui,sans-serif}
+  ul.plain{margin:13px 0;padding-left:24px}ul.plain li{margin:6px 0}
+  #en p{margin:12px 0}
+  #en .enpg{display:inline-block;font-family:system-ui,sans-serif;font-size:.72rem;font-weight:700;color:#fff;background:#888;padding:2px 9px;border-radius:12px;margin:20px 0 2px}
+  #en blockquote{margin:10px 0;padding:8px 16px;border-left:3px solid var(--line);background:#fbfbfb;font-family:"Times New Roman",serif}
+  #en .num{color:var(--muted);font-family:system-ui,sans-serif;font-size:.8rem;display:inline-block;min-width:38px}
+  .nav-bottom{display:flex;justify-content:space-between;margin-top:54px;font-family:system-ui,sans-serif;font-size:.9rem}
+  .nav-bottom a{color:var(--accent2);text-decoration:none;border:1px solid var(--line);padding:10px 16px;border-radius:8px}
+  footer{text-align:center;color:var(--muted);font-size:.8rem;padding:20px;font-family:system-ui,sans-serif}
+  .back-top{position:fixed;right:18px;bottom:18px;background:var(--accent2);color:#fff;text-decoration:none;padding:8px 13px;border-radius:20px;font-family:system-ui,sans-serif;font-size:.8rem;box-shadow:0 3px 10px rgba(0,0,0,.2)}
+  code{background:#eef1ec;padding:1px 5px;border-radius:4px;font-family:"Consolas",monospace;font-size:.9em}
+</style>
+</head>
+<body id="top">
+<header><div class="inner">
+  <div class="ch">CHAPTER 9 · 逐頁逐例句詳解 + 英文原文對照</div>
+  <h1>Wh- 移位</h1>
+  <div class="en">Wh-movement</div>
+  <div class="pg">書頁 341–375 · 涵蓋例句 (1)–(133) 與全部樹狀推導、跨語言證據與練習</div>
+</div></header>
+<nav class="bc"><a href="index.html">← 全書導覽</a> ／ 第 9 章</nav>
+
+<div class="tabbar">
+  <div class="tab active" id="tab-zh" onclick="showTab('zh')">中文逐頁詳解</div>
+  <div class="tab" id="tab-en" onclick="showTab('en')">English Original（整章英文原文）</div>
+</div>
+
+<div class="panel active" id="zh">
+<div class="toc">
+  <h2>本章導覽</h2>
+  <ul>
+    <li><a href="#s91">9.1 導論：Spec-CP 是落腳點</a></li>
+    <li><a href="#s92">9.2 哪些成分會經歷 wh-移位</a></li>
+    <li><a href="#s921">9.2.1 Wh-詞組的範疇</a></li>
+    <li><a href="#s922">9.2.2 Wh-問句的語意</a></li>
+    <li><a href="#s93">9.3 Wh-移位的機制</a></li>
+    <li><a href="#s931">9.3.1 檢核 wh-特徵</a></li>
+    <li><a href="#s932">9.3.2 修正系統：強制 [uwh*] 與空算子</a></li>
+    <li><a href="#s933">9.3.3 其他 wh-移位（介詞賓語、附加語）</a></li>
+    <li><a href="#s934">9.3.4 內嵌 wh-問句</a></li>
+    <li><a href="#s94">9.4 主語 wh-問句</a></li>
+    <li><a href="#s95">9.5 長距離 wh-移位（連續循環）</a></li>
+    <li><a href="#s96">9.6 Wh-in situ（原位）</a></li>
+    <li><a href="#s97">9.7 優位效應 Superiority</a></li>
+    <li><a href="#s98">9.8 跨語言變異</a></li>
+    <li><a href="#s99">9.9 本章摘要</a></li>
+    <li><a href="#ex">練習與延伸（含關係子句）</a></li>
+  </ul>
+</div>
+
+<div class="wrap">
+
+  <span class="pgmark">書頁 341</span>
+  <p class="lead" id="s91">本章把前一章建立的 <span class="term">CP 層</span>用來解釋英語的 <span class="term">wh-問句（wh-question）</span>。第 8 章我們已論證 C 是中心語，並由<span class="term">主動詞倒裝（Subject-Auxiliary Inversion, SAI）</span>看到 T 因 C 給的強 [Q*] 特徵而上移到 C。本章核心問題是：在 <i>Who did Medea poison?</i> 裡，<strong>who 站在哪裡？為什麼跑到句首？是什麼觸發移動？</strong>答案：who 起初在動詞補語位置取得題旨角色，之後因 C 上一個<strong>強的不可解釋特徵 [uwh*]</strong> 移到 <span class="term">CP 指示語（Spec-CP）</span>。本章逐步精煉此機制，並推廣到內嵌問句、主語問句、長距離移位、原位 wh、優位效應與跨語言變異。</p>
+
+  <div class="concept"><h4>本章核心主張一覽</h4>
+  <ul class="plain">
+    <li><strong>落腳點</strong>：wh-詞組移到 Spec-CP（它是詞組，目標是指示語而非中心語）。</li>
+    <li><strong>觸發者</strong>：C[Q] 上的強特徵 <code>[uwh*]</code>；wh-詞組本身帶<strong>可解釋</strong>的 <code>[wh]</code>。</li>
+    <li><strong>yes/no 問句</strong>：由直接 Merge 在 Spec-CP 的<strong>空算子 Op[wh]</strong> 滿足 [uwh*]。</li>
+    <li><strong>主語問句</strong>：T 的 [uclause-type] 可由主語的 [wh] 值定，故<strong>不發生 T-to-C 移位</strong>（解釋無 do-support）。</li>
+    <li><strong>長距離</strong>：移位<strong>逐個經過</strong>中介 Spec-CP（連續循環 successive-cyclic），由蘇格蘭蓋爾語標句詞交替證實。</li>
+    <li><strong>跨語言</strong>：[uwh] 弱的語言（漢語、日語）得普遍 wh-in-situ。</li>
+  </ul></div>
+
+  <h3>從 SAI 回顧</h3>
+  <p>第 8 章分析：T 帶 [past, Q*]，C 帶 [Q]。C 把 T 的 [uclause-type] 值定為強 [Q*]，T 中心語附加到 C，得 yes/no 倒裝。若值為弱 [Decl]，T 不上移，得陳述句。</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(1)</span> Did Medea poison Jason?</span>
+      <span class="ana">上一章的起點。T-to-C 由強 [Q*] 觸發。本章問：把賓語換成 wh-詞會如何？</span></div>
+  </div>
+
+  <span class="pgmark">書頁 342</span>
+  <p>把 (1) 賓語換成 who，得 <span class="term">wh-問句</span>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(4)</span> Who did Medea poison?</span>
+      <span class="ana">類比 TP、vP、DP 都有指示語，假設 who 站在 <strong>Spec-CP</strong>。who 在底層是 poison 的補語（取得 Theme 角色——問「被毒死的人是誰」），之後移到 Spec-CP。這也提供「C 有指示語」的英語內部證據。</span></div>
+  </div>
+  <div class="tree">          CP
+       +---+----+
+   <span class="hl">who</span>       Cbar
+            +---+---+
+     C[did,Q]      TP
+                +---+---+
+              Medea     Tbar
+                    +----+----+
+                  T[past]     vP
+                          +---+---+
+                       (Medea)   vbar
+                              +---+---+
+                            poison    VP
+                                  +---+---+
+                              (poison) (<span class="hl">who</span>)
+  -- who 自 V 補語移到 Spec-CP；T(did) 上移到 C。</div>
+
+  <span class="pgmark">書頁 343</span>
+  <p>預測：把 (4) 內嵌到選擇問句的動詞下，who 應出現在「選擇動詞」與「內嵌標句詞」之間。<strong>幾乎</strong>正確：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(6)</span> <span class="g">✓</span> I asked who Medea poisoned.</span>
+      <span class="ana">(6) 沒有任何內嵌標句詞。</span></div>
+    <div class="row"><span class="sent"><span class="num">(7)</span> <span class="g">✓</span> I asked if Medea poisoned Jason.</span>
+      <span class="ana">對比 (7)：內嵌 yes/no 用 <i>if</i>。可見標準英語中與 wh-移位共現的內嵌標句詞是<strong>空的（null）</strong>。</span></div>
+  </div>
+  <p>北愛爾蘭等方言允許<strong>內嵌倒裝</strong>，提供佐證：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(8)</span> <span class="qm">%</span>I asked did Medea poison Jason.（方言）</span></div>
+    <div class="row"><span class="sent"><span class="num">(9)</span> <span class="qm">%</span>I asked who did Medea poison.（方言）</span>
+      <span class="ana">助動詞在 C 位置，who 被夾在「選擇動詞」與「助動詞」之間，正如預測。(10) 結構：[v ask [CP who [Cbar C(null) [TP Medea ... (poison)(who)]]]]。</span></div>
+  </div>
+
+  <h2 id="s92">9.2 哪些成分會經歷 wh-移位</h2>
+  <span class="pgmark">書頁 344</span>
+  <p>移位只作用於<strong>特定的一小類詞</strong>，稱 <span class="term">wh-詞組（wh-expressions）</span>（英語多以 wh 開頭）：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(11)</span> <span class="g">✓</span> Who did Medea poison?</span></div>
+    <div class="row"><span class="sent"><span class="num">(12)</span> <span class="ung">*</span> Someone did Medea poison.</span>
+      <span class="ana">不定代名詞 someone <strong>不能</strong>前移，只有 wh-詞可以。</span></div>
+  </div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(13)</span> What have you eaten? &nbsp;<span class="num">(14)</span> When did you arrive?</span></div>
+    <div class="row"><span class="sent"><span class="num">(15)</span> Where are you living? &nbsp;<span class="num">(16)</span> Which book are you reading?</span></div>
+    <div class="row"><span class="sent"><span class="num">(17)</span> Why are you leaving? &nbsp;<span class="num">(18)</span> How are you feeling?</span>
+      <span class="ana">只有 how 不以 wh 開頭。觸發者<strong>不是語音特徵</strong>，而是<strong>形態句法特徵</strong>：</span></div>
+  </div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(19)</span> <span class="ung">*</span>Whales have I seen.</span></div>
+    <div class="row"><span class="sent"><span class="num">(20)</span> <span class="ung">*</span>Whisky do I drink.</span>
+      <span class="ana">whales、whisky 拼字以 wh 起頭卻不能前移。故設立<strong>形態句法特徵 [wh]</strong>。它是<strong>純粹的（privative / 原子的）</strong>特徵，不參與 Agree 值定。</span></div>
+  </div>
+
+  <h3 id="s921">9.2.1 Wh-詞組的範疇</h3>
+  <span class="pgmark">書頁 345</span>
+  <p>多數 wh-詞是簡單詞，是代名形式（then, there, 第三人稱代名詞）的 [wh] 版本，當作帶範疇特徵 + [wh] 的中心語：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(21)</span> where [wh, P, locational] &nbsp;<span class="num">(22)</span> when [wh, P, temporal]</span></div>
+    <div class="row"><span class="sent"><span class="num">(23)</span> who [wh, D, human] &nbsp;<span class="num">(24)</span> what [wh, D, non-human]</span>
+      <span class="ana">where 與 when 句法上特徵相同。who/what/where 是<strong>代名性</strong>的——不能再與另一成分結合投射出更大的 wh-詞組：</span></div>
+  </div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(25)</span> <span class="ung">*</span>[where place] are you living?</span></div>
+    <div class="row"><span class="sent"><span class="num">(26)</span> <span class="ung">*</span>[when time] will you be there?</span></div>
+    <div class="row"><span class="sent"><span class="num">(27)</span> <span class="ung">*</span>[who guy] did you see?</span>
+      <span class="ana">依第 4 章，這意味它們<strong>同時是詞彙項也是詞組項</strong>：初始 Merge 為論元或附加語、不再投射，故移位時當<strong>詞組</strong>移動，目標 Spec-CP（而非 C 中心語）。</span></div>
+  </div>
+  <span class="pgmark">書頁 346</span>
+  <p>但 what 與 which 可帶補語，組成更大的 wh-DP：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(28)</span> [Which poem about Achilles] did Homer recite?</span></div>
+    <div class="row"><span class="sent"><span class="num">(29)</span> [What kind of actor] is he?</span>
+      <span class="ana">它們是限定詞 D 的 [wh] 版本，平行於 (30) the poem about Achilles、(31) that kind of actor。這正是 <span class="term">隨主詞組前移（pied-piping）</span>：wh-限定詞把整個名詞詞組「帶著」一起移到 Spec-CP。</span></div>
+  </div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(32)</span> <span class="ung">*</span>Which the poem did Homer recite?</span></div>
+    <div class="row"><span class="sent"><span class="num">(33)</span> <span class="ung">*</span>What a kind of actor is he?</span>
+      <span class="ana">wh-限定詞與 D 呈<strong>互補分布</strong>。結構 (34)：[DP[wh] which [nP poem about Achilles]]。</span></div>
+  </div>
+  <span class="pgmark">書頁 347</span>
+  <p>how 與 why 無清楚非-wh 對應形式，但句法上類似 where/when。how 還能與形容詞／副詞結合：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(35)</span> [How fond of Clytemnestra] is Agamemnon?</span></div>
+    <div class="row"><span class="sent"><span class="num">(36)</span> [How quickly] did the Greeks take Troy?</span>
+      <span class="ana">把它們當作 <span class="term">程度詞（Degree, Deg）</span>的 wh-版本（如 very [Deg]，(37) [DegP very [AP fond of Clytemnestra]]）。how = [Deg, wh]，(39) [DegP[wh] how [AP ...]]。</span></div>
+  </div>
+  <div class="key"><b>更新後的投射階層 (38)：</b><br>
+  子句層：C &gt; T &gt; (Neg) &gt; (Perf) &gt; (Prog) &gt; (Pass) &gt; v &gt; V<br>
+  名詞層：D &gt; (Poss) &gt; n &gt; N<br>
+  形容詞層：(Deg) &gt; A &nbsp;←本章新增。Deg 是凌駕 AP/AdvP 的功能中心語，平行於 D 凌駕 nP、T 凌駕 vP。</div>
+  <span class="pgmark">書頁 347–348</span>
+  <p>(40) 跨語言證據：Zuni、Kiowa、古典希伯來語的 wh-詞都顯示形態規律——</p>
+  <table>
+    <tr><th>語言</th><th>who</th><th>what</th><th>where</th><th>when</th></tr>
+    <tr><td>English</td><td>who</td><td>what</td><td>where</td><td>when</td></tr>
+    <tr><td>Zuni</td><td>cop</td><td>kwap</td><td>hop</td><td>kyaayip</td></tr>
+    <tr><td>Kiowa</td><td>ha:tel</td><td>ho:nde</td><td>hiky</td><td>ha:oy</td></tr>
+    <tr><td>Hebrew</td><td>mi</td><td>mah</td><td>ayin</td><td>matay</td></tr>
+  </table>
+  <p>Zuni 全以 -p 結尾、Kiowa 全以 h 起頭、希伯來語四個有三個以 m 起頭。雖非所有語言皆然（如土耳其語），但足夠多無親緣語言顯示規律，說明 [wh] 是 <span class="term">普遍語法（UG）</span>普遍提供、有形態動機的特徵。</p>
+
+  <h3 id="s922">9.2.2 Wh-問句的語意</h3>
+  <span class="pgmark">書頁 348–349</span>
+  <p>語意上 wh-問句可一致釋義成含<span class="term">疑問量詞（interrogative quantifier）</span>的「For which x...」句式：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(41)</span> Who ate the cake? = For which x, x a human, x ate the cake.</span></div>
+    <div class="row"><span class="sent"><span class="num">(42)</span> When did you eat the cake? = For which x, x a time, you ate it at x.</span></div>
+    <div class="row"><span class="sent"><span class="num">(43)</span> Why...? = reason. &nbsp;<span class="num">(44)</span> [Which girl] ate the cake? = girl.</span></div>
+    <div class="row"><span class="sent"><span class="num">(45)</span> What did she eat? = thing. &nbsp;<span class="num">(46)</span> Where...? = place.</span></div>
+    <div class="row"><span class="sent"><span class="num">(47)</span> How...? = manner. &nbsp;<span class="num">(48)</span> How quickly...? = measure.</span>
+      <span class="ana">設立特徵最強的動機是「同時有形態與語意表現」。此處一小類詞共享形態特異性、語意共性（疑問量詞）、句法行為（都可移到 Spec-CP）。設立 [wh] 完全合理。</span></div>
+  </div>
+
+  <h2 id="s93">9.3 Wh-移位的機制</h2>
+  <span class="pgmark">書頁 349</span>
+  <p>題旨角色由 UTAH 依「DP 與動詞的初始 Merge」決定。(49) Who did Medea poison? 中 who 帶 Theme 角色，故起初與 V Merge，再移到主句指示語。問題：<strong>什麼觸發此移動？為何只發生於 wh-詞組？</strong></p>
+
+  <h3 id="s931">9.3.1 檢核 wh-特徵</h3>
+  <span class="pgmark">書頁 349–350</span>
+  <p>回顧 SAI：C[Q] 把 T 的 [uclause-type] 值為強 [Q*]，T 上移到 C（(50)）。wh-問句中 T-to-C 也發生，且 wh-詞組移到 Spec-CP。實作：假設 <strong>C[Q] 可（選擇性地）帶強特徵 [uwh*]</strong>，與所 c-統制的 wh-詞組檢核；因強，wh-詞組必須移入與 C 的局部構形——是詞組，故移入 Spec-CP：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(51)</span> [XP[wh] C[Q, uwh*] ... (XP[wh]) ]</span>
+      <span class="ana">局部性由「把 [uwh*] 投射到 C 層」達成（如 EPP 投射到 T、[gen*] 投射到 D）。wh-詞組 Merge 到 C 時與強 wh-特徵成姊妹關係。</span></div>
+  </div>
+  <div class="tree">(53)->(54)  C[Q,uwh*] c-統制 who[wh]，Agree 檢核；強度迫使
+   局部性，who 為詞組，移入 Spec-CP：
+
+          CP
+       +---+----+
+   <span class="hl">who[D,wh]</span>  Cbar
+            +---+---+
+      C[did,Q]     TP
+                +---+---+
+              Medea     Tbar
+                     ...poison (poison) (<span class="hl">who</span>)</div>
+  <p>為何 [uwh*] 設為「選擇性」？因 yes/no 問句 (52) Did Medea poison Jason? 倒裝助動詞左邊沒有 wh-詞組。</p>
+  <div class="concept"><h4>選擇性 [uwh*] 帶來的嚴重問題</h4>
+  <p>若 C[Q] 可<strong>不</strong>帶 [uwh*]，則<strong>錯誤地</strong>預測下句也合法：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(55)</span> <span class="ung">*</span>Did Medea poison who?</span>
+      <span class="ana">who 帶<strong>可解釋</strong> [wh]，不需檢核；T-to-C 已由強 [Q*] 滿足；推導應收斂——但 (55) 不合法（非回聲讀）。系統無法排除「有 T-to-C 但無 wh-移位」的壞例。</span></div>
+  </div></div>
+  <span class="pgmark">書頁 351–352</span>
+  <p>誘人但<strong>錯誤</strong>的修法：給 wh-詞組自身一個強 [uQ*] 迫使移動（(56) who[D, wh, uQ*]）。但此路不通，因 wh-詞組<strong>原位（in situ）</strong>時完全合法：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(57)</span> <span class="g">✓</span>Medea saw who?（回聲問句）</span></div>
+    <div class="row"><span class="sent"><span class="num">(58)</span> <span class="g">✓</span>Jason gave the poisoned clothes to who?（回聲問句）</span>
+      <span class="ana"><span class="term">回聲問句（echo-question）</span>有特殊語調與解讀（不是「for which x」，而是「請重複 who 所代表的詞」），表驚訝或請求重述。它不是一般問句，C 不帶 [Q]。若給 wh-詞 [uQ*]，就無法解釋回聲問句裡它不必檢核。</span></div>
+  </div>
+  <span class="pgmark">書頁 352–353</span>
+  <p>而且許多語言（含英語）允許 <span class="term">多重 wh-問句（multiple wh-questions）</span>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(59)</span> Who poisoned who? = (61) For which pair(s) x, y, x poisoned y?</span></div>
+    <div class="row"><span class="sent"><span class="num">(60)</span> Who showed what to who? = (62) For which triple(s) x, y, z, x showed y to z?</span>
+      <span class="ana">這些句子<strong>至少有一個 wh 留在原位</strong>，故「所有 wh 都必須移動」行不通。問題回到原點：(63) *Did Medea poison who? 如何排除？</span></div>
+  </div>
+  <div class="key"><b>9.3.1 階段性小結：</b>① 以形態 + 語意證據動機化 [wh]。② wh-移位可由「C[Q] 帶強 [uwh*]」實作。③ 但若 [uwh*] <strong>選擇性</strong>，就無法排除「有 T-to-C、無 wh-移位」的 (63)。</div>
+
+  <h3 id="s932">9.3.2 修正系統：強制 [uwh*] 與空算子</h3>
+  <span class="pgmark">書頁 353–354</span>
+  <p>把 [uwh*] 設為<strong>強制（obligatory）</strong>如何？麻煩在 yes/no (64) Did Medea poison Jason? 沒有 wh。解法：強制的 [uwh*] 在 yes/no 由一個直接 Merge 在 Spec-CP 的<strong>空成分</strong>滿足——傳統稱 <span class="term">空算子（null operator, Op[wh]）</span>：</p>
+  <div class="tree">(65)        CP
+         +---+----+
+   <span class="hl">Op[wh]</span>     Cbar
+            +---+---+
+      C[did,Q,uwh*] TP
+                ...Medea (T) poison (poison) Jason
+  -- Op[wh] 直接 Merge 在 Spec-CP，檢核強制的 [uwh*]。</div>
+  <span class="pgmark">書頁 354–355</span>
+  <p>有了 Op，用上一章的 <strong>Merge 優先於 Move</strong> 解釋 (66) *Did Medea poison who? 為何不合法。T 已升到 C[Q, uwh*]、wh 投射到 C 的階段 (67)，若 numeration 含空算子，面臨選擇：升 who（Move）或 Merge 空算子——<strong>Merge 優先迫使 Merge 空算子</strong>。</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(68)</span> 空算子語意 = Is it true or false that p?（yes/no）</span>
+      <span class="ana">空算子語意<strong>不是</strong>疑問量詞，只問命題真假。</span></div>
+  </div>
+  <p>多重 wh 的語意是把多個簡單疑問量詞組成<strong>複合疑問量詞</strong>（(69) Who kissed who? = (70) For which pair x, y, x kissed y?）。問題句 (66) 結構含兩個 wh：(71) Op[wh] ... who[wh]。套用同一語意程序<strong>失敗</strong>——手上不是兩個簡單疑問量詞，而是一個 who 與一個產生 yes/no 語意的算子，無法合成。結果<strong>句法良構、語意亂碼（gibberish）</strong>，故被排除。</p>
+  <div class="key"><b>最終立場：</b>[uwh*] <strong>強制</strong>出現在 C[Q]，由 wh-詞組移入 Spec-CP 滿足；若無 wh-詞組，推導必須含一個 <strong>wh-算子</strong>，產生 yes/no 語意。排除 (66) 的關鍵在<strong>語意組合</strong>。</div>
+
+  <h3 id="s933">9.3.3 其他 wh-移位：介詞賓語與附加語</h3>
+  <span class="pgmark">書頁 356</span>
+  <p>wh-問句也能由介詞賓語、附加語形成：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(72)</span> Who did you introduce Athena to?（介詞賓語）</span></div>
+    <div class="row"><span class="sent"><span class="num">(73)</span> Why did you kill Pegasus?（原因附加語）</span></div>
+    <div class="row"><span class="sent"><span class="num">(74)</span> Where did Perseus see the Gorgon?（地點附加語）</span>
+      <span class="ana">(75) 介詞賓語 who 初始與 to Merge（PP 再 Merge 入動詞投射），稍後移到 Spec-CP，留下 [PP to (who)]。</span></div>
+  </div>
+  <span class="pgmark">書頁 356–357</span>
+  <p>附加語亦同：時間／方式／原因附加語附加於 vP（(76) Perseus saw the Gorgon in his shield）。當 PP 是 wh（如 where）時，整個 wh-PP 移到 Spec-CP：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(78)</span> Where did Perseus see the Gorgon?</span>
+      <span class="ana">[CP where [Cbar did [TP Perseus ... [vP (where) [vP ... see the Gorgon]]]]]。</span></div>
+  </div>
+
+  <h3 id="s934">9.3.4 內嵌 wh-問句</h3>
+  <span class="pgmark">書頁 357–358</span>
+  <p>某些述語可內嵌 yes/no，也能內嵌 wh-問句：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(79)</span> I wondered whether Medea had fled. &nbsp;<span class="num">(80)</span> I enquired if we could leave early.</span></div>
+    <div class="row"><span class="sent"><span class="num">(81)</span> I wondered who Medea had poisoned. &nbsp;<span class="num">(82)</span> I enquired when we could leave.</span>
+      <span class="ana">wh-詞移到<strong>內嵌</strong> CP 指示語，故內嵌 C 必為 [Q, uwh*]。但標準英語內嵌問句<strong>不發生 T-to-C 移位</strong>：</span></div>
+  </div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(83)</span> <span class="ung">*</span>I enquired could we leave early.</span></div>
+    <div class="row"><span class="sent"><span class="num">(84)</span> <span class="ung">*</span>I wondered who had Medea poisoned.</span></div>
+    <div class="row"><span class="sent"><span class="num">(85)</span> <span class="ung">*</span>I enquired when could we leave.</span>
+      <span class="ana">解釋：內嵌 C 的詞彙規定把 T 的 [uclause-type] 值為<strong>弱 [Q]</strong> 而非強 [Q*]，故無倒裝。因內嵌與 wh-問句分析平行，正確預測內嵌無倒裝。</span></div>
+  </div>
+
+  <h2 id="s94">9.4 主語 wh-問句</h2>
+  <span class="pgmark">書頁 359</span>
+  <p>主語 wh-問句在英語引發特殊問題：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(86)</span> Who has drunk the poison? &nbsp;<span class="num">(87)</span> Which goddess might help us? &nbsp;<span class="num">(88)</span> Who is sailing to Ithaca?</span>
+      <span class="ana">乍看 (89) 可平行賓語問句處理：wh-主語自 Spec-vP 升到 Spec-TP，再 Merge C[Q, uwh*]、T 升到 C、who 升到 Spec-CP。</span></div>
+  </div>
+  <p>但<strong>沒有助動詞</strong>的句子暴露問題：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(90)</span> <span class="g">✓</span>Who drank the poison? &nbsp;<span class="num">(91)</span> <span class="g">✓</span>Which goddess helped us?</span>
+      <span class="ana">若需 T-to-C，則 T 只含 T 中心語（無助動詞）時 T-to-C 通常觸發 <span class="term">do-support</span>（(92) Did you drink the poison? (93) Did Athena help us?），因 T-to-C 打斷 T-v 鏈，時制無法在 v 發音。</span></div>
+  </div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(94)</span> <span class="qm">!</span>Who did drink the poison? &nbsp;<span class="num">(95)</span> <span class="qm">!</span>Which goddess did help us?</span>
+      <span class="ana">(94)(95) 只在<strong>強調讀</strong>下合法。困擾：沒有方式能預測無 do-support 的 (90)(91) 合法、又預測無強調的 (94)(95) 不合法——除非主語 wh 有特殊之處。</span></div>
+  </div>
+  <div class="concept"><h4>解法：主語可自己值定 [uclause-type]（單一規定 stipulation）</h4>
+  <p>結構主語的關鍵性質（賓語、附加語沒有）：<strong>主語 c-統制 T</strong>。故可由<strong>主語</strong>（而非 C）檢核 T 的 [uclause-type]。本章唯一規定：</p>
+  <div class="ex"><div class="row"><span class="sent"><span class="num">(96)</span> [uclause-type] on T may have [wh] as a value.（T 的子句類型特徵可以 [wh] 為值）</span></div></div>
+  </div>
+  <span class="pgmark">書頁 360–361</span>
+  <ol class="deriv">
+    <li>(97) wh-主語仍在原位，T Merge：T[past, nom, uclause-type:, uD*]，who[case, D, wh]。</li>
+    <li>Agree：[past] 對 v（值定時制）；[nom] 對 [case] on who（檢核格位）；EPP 對最近 DP（who）。</li>
+    <li>(98) 為滿足 EPP 強度，who 升到 Spec-TP。</li>
+    <li>(99) 主語 DP c-統制 T 且帶可解釋 [wh]，故 Agree(who, [uclause-type])，值為 [wh] 並檢核——<strong>T 不再需要 [Q*]，不上移到 C</strong>。</li>
+    <li>(100) 最後 Merge C[Q, uwh*]。[uclause-type] 已值定，C 與 T <strong>不 Agree、無 T-to-C</strong>；但 wh-主語仍升到 Spec-CP。</li>
+  </ol>
+  <div class="tree">(100)        CP
+          +---+----+
+   <span class="hl">who[nom,D,wh]</span>  Cbar
+             +---+----+
+          C[Q,uwh*]   TP
+                  +----+----+
+               (who)        Tbar
+                       +-----+-----+
+              T[past,nom,uclause-type:wh]  vP
+                                  (who) ... drank the poison
+  -- 所有特徵已檢核；T 未升到 C（故無 do-support），正確得 (90)。</div>
+
+  <h2 id="s95">9.5 長距離 wh-移位（連續循環）</h2>
+  <span class="pgmark">書頁 361</span>
+  <p>wh-移位可<strong>跨越子句界限</strong>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(101)</span> Who did Jason think (that) Medea had poisoned?</span></div>
+    <div class="row"><span class="sent"><span class="num">(102)</span> What did you say (that) the poet had written?</span>
+      <span class="ana">wh-成分在<strong>內嵌子句</strong>取得題旨角色，表層卻落在<strong>主句</strong> Spec-CP。如何推導？兩個假設。</span></div>
+  </div>
+  <span class="pgmark">書頁 361–362</span>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(103)</span> XP[wh] ... think [CP that ... (XP[wh])]（一步到位，不經中介 Spec-CP）</span></div>
+    <div class="row"><span class="sent"><span class="num">(104)</span> XP[wh] ... think [CP (XP[wh]) that ... (XP[wh])]（兩步，經中介 Spec-CP）</span>
+      <span class="ana">簡單性似乎偏好 (103)：操作較少；且 think 不能取 wh-問句補語（(105) *Jason thinks who Medea had poisoned），故 (106) ...think [[wh-XP]...] 看似不該出現——而 (104) 推導中正好出現此構形。</span></div>
+  </div>
+  <span class="pgmark">書頁 362–363</span>
+  <p>但跨語言實證支持<strong>(104)（經中介指示語）</strong>。<span class="term">蘇格蘭蓋爾語（Scottish Gaelic）</span>：一般內嵌標句詞是 gu(n)：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(107)</span> Bha mi ag radh <strong>gun</strong> do bhuail i e.「我說過她打了他。」</span></div>
+    <div class="row"><span class="sent"><span class="num">(108)</span> Tha mi a smaoineachadh <strong>gu</strong> bheil Iain air a mhisg.「我認為 Iain 喝醉了。」</span>
+      <span class="ana">陳述內嵌用 gu(n)。</span></div>
+  </div>
+  <p>但對下層子句的論元提問時，<strong>中介標句詞由 gu 變為 a</strong>（後接動詞形式也改變）：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(109)</span> Co bha thu ag radh <strong>a</strong> bhuail i?「你說她打了誰？」</span></div>
+    <div class="row"><span class="sent"><span class="num">(110)</span> Co tha thu a smaoineachadh <strong>a</strong> tha air a mhisg?「你認為誰喝醉了？」</span>
+      <span class="ana">若一步到位，中介標句詞沒有理由改變；若 wh 移入中介 C 指示語，就能解釋此交替：中介 C 帶強 [uwh*]，wh 移入其 Spec 檢核，故 C 採 a 形式；不帶此特徵時用 gu(n)。</span></div>
+  </div>
+  <div class="key"><b>連續循環移位（successive-cyclic movement）(111)：</b>wh-詞組自初始 Merge 位置出發後，<strong>逐個經過 Spec-CP 到 Spec-CP，不能跳過任何一個 Spec-CP</strong>。本章暫當作一條規定（stipulation），第 10 章「局域性」深入推導其所以然。</div>
+  <div class="tree">(112)   ...who
+        +--+--+
+      say ... CP
+          +---+---+
+      (<span class="hl">who</span>)     Cbar   <- 中介 Spec-CP（蓋爾語顯示為 a）
+          +--+--+
+       that(C)  TP
+              ... you saw (<span class="hl">who</span>)
+  -- who: V補語 到 中介 Spec-CP 到 主句 Spec-CP（分兩步）。</div>
+
+  <h2 id="s96">9.6 Wh-in situ（原位 wh）</h2>
+  <span class="pgmark">書頁 364</span>
+  <p>本章已見兩類原位 wh：回聲問句與多重問句。</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(113)</span> Medea poisoned who?（回聲，非真問句）</span></div>
+    <div class="row"><span class="sent"><span class="num">(114)</span> Who poisoned who?（多重，是真問句）</span>
+      <span class="ana">(114) 有真正問句語意。關鍵：wh-詞組上的 [wh] 是<strong>可解釋</strong>的；是 C 上<strong>不可解釋</strong> wh-特徵的強度造成移位。</span></div>
+  </div>
+  <span class="pgmark">書頁 364–365</span>
+  <ol class="deriv">
+    <li>(115) 先 Merge who[case, wh, D] 為賓語，建好 vP：[vP ... poison (poison) who]。主語 who 在 Spec-vP。</li>
+    <li>(116) Merge T，檢核格位、EPP 吸引主語 who 升到 Spec-TP；主語 Agree T 的 [uclause-type]，值為 wh。</li>
+    <li>(117) Merge C[Q, uwh*]，觸發<strong>主語位置的 wh</strong>移到 Spec-CP，檢核 C 的不可解釋特徵。<strong>賓語 who 留在原位</strong>。</li>
+  </ol>
+  <p>所有不可解釋特徵皆已檢核，語意規則套用，得 (118) Who poisoned who? = (119) For which pair x, y, x poisoned y? 一個 wh 移動即足以檢核 C 的單一 [uwh*]；其餘 wh 原位由語意組合成複合疑問量詞。</p>
+
+  <h2 id="s97">9.7 優位效應 Superiority</h2>
+  <span class="pgmark">書頁 365–366</span>
+  <p>如何排除「賓語 wh 越過主語 wh」的壞推導？</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(120)</span> <span class="ung">*</span>[CP Who(obj) [TP who(subj) poisoned (who) ]]</span>
+      <span class="ana">把賓語 wh 越過主語移入 Spec-CP。但<strong>特徵檢核的局域性已自動排除它</strong>：中心語檢核它所 c-統制的<strong>最近</strong>匹配特徵。C Merge 入 TP 時最近的 wh 是主語位置的（介於 C 與賓語 wh 之間），故移動的是主語 wh。此即 <span class="term">優位效應（superiority effect）</span>——移動的是最高（superior）的 wh。</span></div>
+  </div>
+  <span class="pgmark">書頁 366</span>
+  <p>三論元動詞也有優位：(121) Athena introduced [Medea [to Jason]] 中 Theme c-統制 Goal。把兩者換成 wh，預測移動 Theme（離 C 最近）：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(122)</span> <span class="g">✓</span>Who did Athena introduce to whom?（移 Theme，正確）</span></div>
+    <div class="row"><span class="sent"><span class="num">(123)</span> <span class="ung">*</span>Who did Athena introduce who to?（移 Goal，違反優位）</span></div>
+  </div>
+  <p>但優位是<strong>弱</strong>現象。把簡單 wh 換成 which 複合詞組，兩種次序都合法——此為 <span class="term">語段連結效應（D(iscourse)-linking）</span>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(124)</span> <span class="g">✓</span>Which poet wrote which ode? &nbsp;<span class="num">(125)</span> <span class="g">✓</span>Which ode did which poet write?</span>
+      <span class="ana">當 wh-限定詞範域於語段已確立的元素時出現。which 詞組需語段已確立指涉對象才適切：(126) Look at all these books. Which book would you like?</span></div>
+  </div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(127)</span> <span class="g">✓</span>Who is there?（進暗房聽到聲音，適切）</span></div>
+    <div class="row"><span class="sent"><span class="num">(128)</span> <span class="qm">#</span>Which person is there?（# = 語用怪而非不合語法）</span>
+      <span class="ana">非 D-連結的 who 對先前語段沒那麼挑剔。本書不對 D-連結效應、或 (125) 中 SAI 反常出現提出解釋。</span></div>
+  </div>
+
+  <h2 id="s98">9.8 跨語言變異</h2>
+  <span class="pgmark">書頁 367</span>
+  <p>既然 wh-移位由 C 的強 [uwh*] 觸發，依「變異繫於功能中心語特徵強度」的取向，應有語言的 C[Q] 帶<strong>弱 [uwh]</strong>，這些語言<strong>普遍 wh-in-situ</strong>，連簡單問句也不移位。漢語、日語即是：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(129)</span> What did John buy?（英語，移位）</span></div>
+    <div class="row"><span class="sent"><span class="num">(130)</span> John-wa nani-o kaimasita ka?（日語）<span class="gloss">John-TOP what-ACC bought Q「John 買了什麼？」</span></span>
+      <span class="ana">日語是中心語在後語言，動詞在補語右側，標句詞 ka 在屈折動詞右側。wh-成分是賓格，在一般賓格賓語位置——<strong>不移位</strong>。(131) [CP [TP John-wa [vP nani-o kaimasita] ] ka[C,Q,uwh] ]。C[Q] 的 [uwh] 弱，僅與 wh-賓語 Agree、不移動。漢語同理。</span></div>
+  </div>
+  <span class="pgmark">書頁 368</span>
+  <p>也有語言把<strong>所有</strong> wh 都移到子句邊緣，如保加利亞語：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(132)</span> Kogo kakvo e pital Ivan?<span class="gloss">whom what Aux asked Ivan「Ivan 問了誰什麼？」</span></span>
+      <span class="ana">這在現行假設下<strong>不被預期</strong>：一旦一個 wh 移入 Spec-CP 檢核強特徵，推導就該收斂、其餘 wh 留原位。多重 wh-前移語言需額外機制。</span></div>
+  </div>
+  <p>(133) 把此參數納入跨語言表：</p>
+  <table>
+    <tr><th>語言</th><th>Tense on Aux</th><th>Tense on v</th><th>EPP on T</th><th>Decl on T</th><th>[top] on C</th><th>wh on C</th></tr>
+    <tr><td>English</td><td>strong</td><td>weak</td><td>strong</td><td>weak</td><td>optional</td><td>strong</td></tr>
+    <tr><td>French</td><td>strong</td><td>strong</td><td>strong</td><td>weak</td><td>?</td><td>optional</td></tr>
+    <tr><td>Swedish</td><td>weak</td><td>weak</td><td>strong</td><td>strong</td><td>strong</td><td>strong</td></tr>
+    <tr><td>Scottish Gaelic</td><td>strong</td><td>strong</td><td>weak</td><td>weak</td><td>weak</td><td>strong</td></tr>
+    <tr><td>German</td><td>strong</td><td>strong</td><td>strong</td><td>strong</td><td>strong</td><td>strong</td></tr>
+    <tr><td>Japanese</td><td>strong</td><td>strong</td><td>strong</td><td>weak</td><td>weak</td><td>weak</td></tr>
+  </table>
+  <p>日語似有 V-to-T（故 Aux/v 的 Infl 屬性為強），有 vP 外主語位置（EPP 強），無 V2（與德語在 Decl/[top] 對比），且為 wh-in-situ（[wh] on C 弱）。其餘語言都要求 wh-問句的 Spec-C 被 wh-詞組填滿（故 wh 強），唯法語兩種皆可。這個漸增的類型學示範了「原則與參數」模型如何處理跨語言效應。</p>
+
+  <h2 id="s99">9.9 本章摘要</h2>
+  <span class="pgmark">書頁 369–370</span>
+  <p>本章探討 wh-移位，論證它由 C 上的強 wh-特徵驅動；簡單 yes/no 問句也涉及一個直接 Merge 在 Spec-CP 的 wh-算子。本章未引入太多新理論機制，而是把處理 DP-移位的系統<strong>推廣</strong>到 wh-移位，大體成功，只需<strong>一條規定</strong>（主語 wh-問句無 T-to-C 移位）。系統也自然延伸到英語及他語的 wh-in-situ；多重問句中，獨立動機化的特徵匹配局域性亦捕捉了優位效應（主賓、Theme-Goal）。並引入「跨子句 wh-移位必停靠中介 Spec-C」之觀念（第 10 章詳論）。</p>
+  <table>
+    <tr><th>現象</th><th>解釋</th></tr>
+    <tr><td>單一 wh 詞的問句</td><td>wh-詞組移到 Spec-CP，由 [uwh*] 觸發</td></tr>
+    <tr><td>Yes/no 問句</td><td>空算子 Op[wh] 直接 Merge 在 Spec-CP</td></tr>
+    <tr><td>主語 wh-問句</td><td>T 的 [uclause-type] 可以 [wh] 為值，故無 T-to-C 移位</td></tr>
+    <tr><td>蓋爾語標句詞交替</td><td>移位逐個 Spec 到 Spec（連續循環）</td></tr>
+    <tr><td>多重 wh-問句</td><td>只需一個 wh 移到 Spec-CP</td></tr>
+    <tr><td>優位效應</td><td>Agree 的局域性條件套用於 wh-特徵匹配</td></tr>
+    <tr><td>Wh-in-situ 語言</td><td>C 上的 [uwh] 是弱特徵</td></tr>
+  </table>
+
+  <h2 id="ex">練習與延伸：關係子句、否定移位、運算子移位</h2>
+  <span class="pgmark">書頁 370–375</span>
+  <p>練習部分含若干重要延伸，其中<strong>關係子句</strong>與<strong>運算子移位</strong>是本章須涵蓋的內容。</p>
+
+  <h3>練習 1：Wh 與約束（重建效應 reconstruction）</h3>
+  <div class="ex">
+    <div class="row"><span class="sent">(1) Which book about himself did Anson write?</span></div>
+    <div class="row"><span class="sent">(2) Which book about herself did Jenny say that Anson had written?</span>
+      <span class="ana">反身代名詞可隨 wh-詞組一起移動。若約束規則套用於<strong>最終</strong>表徵，(1) 對「反身詞須被約束」是問題（himself 跑到句首不再被 Anson c-統制）；若約束規則在<strong>推導過程</strong>中（如 Agree）套用，可在移動前位置滿足。(2) 對<strong>大多數說者合語法</strong>，提供<strong>中介 Spec-CP 存在</strong>的約束學證據——一步到位的推導會錯誤預測 (2) 不合法。</span></div>
+  </div>
+
+  <h3>練習 2：哪些範疇可經歷 wh-移位</h3>
+  <div class="ex">
+    <div class="row"><span class="sent">(1) What did he reply? &nbsp;(2) He replied that he was happy. &nbsp;(3) *He replied his answer.</span>
+      <span class="ana">由 reply 的 c-選擇（選 CP、不選 DP），推論 (1) 中 what 的範疇應為 CP/子句性，而非單純 DP。</span></div>
+  </div>
+
+  <h3>練習 3：關係子句（wh-關係子句 vs that-關係子句）</h3>
+  <p>本章只看了問句的 wh-移位；<span class="term">關係子句（relative clause）</span>也有 wh-移位。它修飾名詞，假設是<strong>附加於 nP 層的 CP</strong>：</p>
+  <div class="tree">(1)        DP
+        +---+---+
+       the      nP
+            +---+----+
+           nP        CP   <- 關係子句，附加於 nP
+        vampire   who crumbled into dust</div>
+  <div class="ex">
+    <div class="row"><span class="sent">(2) the book [which Anson lent to Jenny]</span></div>
+    <div class="row"><span class="sent">(3) the time [when you left me] &nbsp;(4) the place [where we lived for six years]</span></div>
+    <div class="row"><span class="sent">(5) the vampire [who Mina loved]</span>
+      <span class="ana"><strong>Task 1</strong>：由 c-選擇論證含 wh-詞的關係子句涉及<strong>移位</strong>——lend、love 須選賓語，但 (2)(5) 關係子句裡賓語位置是空的，wh-詞正是從那裡移出，故有空位（gap）= 移位的證據。<strong>Task 2</strong>：把關係子句當作與 wh-問句一樣，只是其 C 帶可解釋的子句類型特徵 <strong>[Rel]</strong> 而非 [Q]，故解讀為關係修飾語；[Rel] 作為 T 的 [uclause-type] 值在英語為<strong>弱</strong>（無倒裝：*the book which did Anson lend）。<strong>Task 3</strong>：預測關係子句可長距離——正確（the book which I think that Anson lent to Jenny）。</span></div>
+  </div>
+  <p><strong>that-關係子句</strong>（Part D）：也有只含標句詞 that 的關係子句：</p>
+  <div class="ex">
+    <div class="row"><span class="sent">(6) the book [that Anson lent to Jenny] &nbsp;(7) the time [that you left me]</span></div>
+    <div class="row"><span class="sent">(8) the place [that we lived in for six years] &nbsp;(9) the vampire [that crumbled into dust]</span>
+      <span class="ana"><strong>Task 4</strong>：把 Part A 分析套到 that-關係子句的問題在於<strong>表面沒有可見的 wh-詞</strong>。解法：假設這些子句仍有一個<strong>空算子（Op[wh]）</strong>從空位移到 Spec-CP，C 由 that 實現（C 帶 [Rel, uwh*]）——呼應 9.3.2 的空算子機制與「運算子移位（operator movement）」：表面無 wh，結構上仍有一個不發音的 wh-算子經歷移位、留下空位。</span></div>
+  </div>
+
+  <h3>練習 4：否定移位（negative movement）</h3>
+  <div class="ex">
+    <div class="row"><span class="sent">(1) Never will I do syntax again. &nbsp;(2) Nothing like that would I ever eat again.</span></div>
+    <div class="row"><span class="sent">(3) Nobody (*did) put up with her. &nbsp;(4) I swore that never again would I drink absinthe.</span>
+      <span class="ana">否定詞組前移並觸發倒裝，平行於 wh-移位（由 C 上的特徵觸發、否定詞組移到 Spec-CP）。(3) 主語否定詞不觸發 do-support，平行主語 wh-問句（9.4）。(4) 內嵌子句中的否定前移 + 倒裝，顯示這也是 C 層現象、可內嵌。</span></div>
+  </div>
+
+  <h3>練習 5–6：樹狀圖與約束</h3>
+  <p>練習 5 要求為 8 個句子畫樹並說明特徵檢核（含長距離、主語問句、介詞賓語等綜合題，如 <i>Why did you say that you were leaving?</i>、<i>Who did you say that John thought would leave early?</i>）。練習 6 把約束域設為 CP，重探反身詞與代名詞的約束（如 *Anson thought that himself was going to the club）。</p>
+
+  <div class="key"><b>本章關鍵詞彙：</b>wh-movement、wh-expression、Spec-CP、[wh]（interpretable, privative）、[uwh*]（uninterpretable, strong）、C[Q]、Subject-Auxiliary Inversion (SAI)、[uclause-type]、null operator (Op[wh])、Merge over Move、echo-question、wh-in situ、multiple wh-question、interrogative quantifier「for which x」、embedded wh-question、subject wh-question、do-support、long-distance / successive-cyclic movement、intermediate Spec-CP、pied-piping、Scottish Gaelic gu(n)/a complementizer alternation、superiority effect、D-linking、relative clause（[Rel]）、wh-relative vs that-relative、operator movement、Hierarchy of Projections（新增 Deg &gt; A）、cross-linguistic variation（Chinese/Japanese wh-in situ、Bulgarian multiple wh-fronting）。</div>
+
+  <div class="nav-bottom">
+    <a href="index.html">← 全書導覽</a>
+    <a href="Ch10_Locality.html">第 10 章：局域性 →</a>
+  </div>
+</div>
+</div>
+
+<div class="panel" id="en">
+<div class="wrap">
+  <p class="lead">Condensed page-by-page paraphrase of Chapter 9 of Adger (2003), <em>Core Syntax</em>, pp. 341-375 (OUP). Key terms in <strong>bold</strong>; short numbered examples given verbatim in blockquotes. This is a study paraphrase, not the full verbatim text.</p>
+
+  <span class="enpg">p.341</span>
+  <p><strong>9.1 Introduction.</strong> The previous chapter showed clauses are headed by a functional projection <strong>C</strong>, with evidence from <strong>Subject-Auxiliary Inversion (SAI)</strong>, analysed as T-to-C movement driven by a strong <strong>[Q*]</strong> feature (the value of <strong>[uclause-type]</strong> on T). If [uclause-type] is valued as weak [Decl], T stays put and we get a declarative.</p>
+  <blockquote><span class="num">(1)</span> Did Medea poison Jason?</blockquote>
+
+  <span class="enpg">p.342</span>
+  <p>This gives evidence for C as a head; we also want evidence C has a <strong>specifier</strong>. English <strong>wh-questions</strong> provide it. We hypothesize <em>who</em> sits in <strong>Spec-CP</strong>, Merged in the Theme position (complement of <em>poison</em>, by UTAH) and moved.</p>
+  <blockquote><span class="num">(4)</span> Who did Medea poison?</blockquote>
+
+  <span class="enpg">p.343</span>
+  <p>Embedding under a question-selecting verb predicts <em>who</em> between verb and complementizer - almost right, but the embedding complementizer is <strong>null</strong> (unlike <em>if</em>). Northern Irish dialects allow embedded inversion, confirming the auxiliary sits in C.</p>
+  <blockquote><span class="num">(6)</span> I asked who Medea poisoned.<br><span class="num">(7)</span> I asked if Medea poisoned Jason.<br><span class="num">(8)</span> %I asked did Medea poison Jason.<br><span class="num">(9)</span> %I asked who did Medea poison.</blockquote>
+
+  <span class="enpg">p.344</span>
+  <p><strong>9.2 Elements that undergo wh-movement.</strong> Movement targets a specific subset, <strong>wh-expressions</strong>. Not <em>someone</em>; not just any wh-spelled word - it is triggered by <strong>morphosyntactic</strong>, not phonological, features. We set up a privative (atomic) feature <strong>[wh]</strong>.</p>
+  <blockquote><span class="num">(11)</span> Who did Medea poison? <span class="num">(12)</span> *Someone did Medea poison.<br><span class="num">(13)-(18)</span> What/When/Where/Which book/Why/How...?<br><span class="num">(19)</span> *Whales have I seen. <span class="num">(20)</span> *Whisky do I drink.</blockquote>
+
+  <span class="enpg">p.345</span>
+  <p><strong>9.2.1 Wh-expressions.</strong> Simple wh-words are [wh] versions of pro-forms. <em>who/what/where/when</em> are pronominal - they cannot take a complement (*[where place]...), so they are simultaneously lexical and phrasal, move as phrases, and target Spec-CP.</p>
+  <blockquote><span class="num">(21)</span> where [wh,P,loc] <span class="num">(22)</span> when [wh,P,temp] <span class="num">(23)</span> who [wh,D,human] <span class="num">(24)</span> what [wh,D,non-human]<br><span class="num">(25)-(27)</span> *[where place] / *[when time] / *[who guy]...</blockquote>
+
+  <span class="enpg">p.346</span>
+  <p><em>what</em> and <em>which</em> take complements (wh-determiners), in complementary distribution with D. The whole wh-DP <strong>pied-pipes</strong> to Spec-CP.</p>
+  <blockquote><span class="num">(28)</span> [Which poem about Achilles] did Homer recite?<br><span class="num">(29)</span> [What kind of actor] is he?<br><span class="num">(32)</span> *Which the poem... <span class="num">(33)</span> *What a kind of actor...</blockquote>
+
+  <span class="enpg">p.347</span>
+  <p><em>how</em> combines with adjectives/adverbs: it is the wh-version of a <strong>Degree (Deg)</strong> head (like <em>very</em>). New <strong>Hierarchy of Projections</strong> adds Adjectival: (Deg) &gt; A. Other languages (Zuni, Kiowa, Hebrew) show morphological regularities in wh-words - [wh] is UG-motivated.</p>
+  <blockquote><span class="num">(35)</span> [How fond of Clytemnestra] is Agamemnon?<br><span class="num">(36)</span> [How quickly] did the Greeks take Troy?<br><span class="num">(40)</span> Zuni cop/kwap/hop...; Kiowa ha:tel...; Hebrew mi/mah...</blockquote>
+
+  <span class="enpg">p.348-349</span>
+  <p><strong>9.2.2 Interpretation.</strong> Wh-questions paraphrase as an <strong>interrogative quantifier</strong>: "For which x...". A limited class sharing morphological peculiarity, semantic commonality, and syntactic behaviour (movement to Spec-CP) justifies [wh].</p>
+  <blockquote><span class="num">(41)</span> Who ate the cake? = For which x (human), x ate the cake. <span class="num">(42)-(48)</span> when/why/which girl/what/where/how/how quickly...</blockquote>
+
+  <span class="enpg">p.349-350</span>
+  <p><strong>9.3 Mechanics. 9.3.1 Checking wh-features.</strong> C[Q] can (optionally) bear a strong <strong>[uwh*]</strong> feature, checked under c-command (Agree) with a wh-expression; strength forces the phrasal wh into Spec-CP.</p>
+  <blockquote><span class="num">(51)</span> [XP[wh] C[Q, uwh*] ... (XP[wh])]<br><span class="num">(52)</span> Did Medea poison Jason?</blockquote>
+
+  <span class="enpg">p.351-353</span>
+  <p>If [uwh*] is optional we wrongly predict (55). Making the wh itself carry strong [uQ*] fails, because wh-in-situ is fine in <strong>echo-questions</strong> (C bears no [Q]). English also allows <strong>multiple wh-questions</strong> with at least one wh in situ.</p>
+  <blockquote><span class="num">(55)</span> *Did Medea poison who?<br><span class="num">(57)</span> Medea saw who? <span class="num">(58)</span> Jason gave the poisoned clothes to who?<br><span class="num">(59)</span> Who poisoned who? <span class="num">(63)</span> *Did Medea poison who?</blockquote>
+
+  <span class="enpg">p.353-355</span>
+  <p><strong>9.3.2 Refining.</strong> Make [uwh*] <strong>obligatory</strong>. Yes/no questions satisfy it with a <strong>null operator Op[wh]</strong> Merged directly in Spec-CP. <strong>Merge over Move</strong> rules out (66): we must Merge Op rather than raise <em>who</em>. The Op semantics is yes/no (true or false that p), not an interrogative quantifier; combining Op[wh]...who[wh] yields well-formed syntax but <strong>semantic gibberish</strong>.</p>
+  <blockquote><span class="num">(64)</span> Did Medea poison Jason? <span class="num">(66)</span> *Did Medea poison who?<br><span class="num">(68)</span> Is it true or false that p?<br><span class="num">(69)</span> Who kissed who? <span class="num">(70)</span> For which pair x,y, x kissed y? <span class="num">(71)</span> Op[wh]...who[wh]</blockquote>
+
+  <span class="enpg">p.356-358</span>
+  <p><strong>9.3.3 Other wh-movements.</strong> Objects of prepositions and adjuncts wh-move too. <strong>9.3.4 Embedded wh-questions.</strong> Embedded C is [Q, uwh*]; Standard English has <strong>no T-to-C</strong> in embedded questions (weak [Q]).</p>
+  <blockquote><span class="num">(72)</span> Who did you introduce Athena to? <span class="num">(73)</span> Why did you kill Pegasus? <span class="num">(78)</span> Where did Perseus see the Gorgon?<br><span class="num">(81)</span> I wondered who Medea had poisoned. <span class="num">(82)</span> I enquired when we could leave.<br><span class="num">(83)</span> *I enquired could we leave early. <span class="num">(84)</span> *I wondered who had Medea poisoned.</blockquote>
+
+  <span class="enpg">p.359-361</span>
+  <p><strong>9.4 Subject wh-questions.</strong> A naive parallel analysis predicts do-support for auxiliary-less cases - wrong. Since the subject c-commands T, let the <strong>subject</strong> check [uclause-type] on T. EPP raises <em>who</em> to Spec-TP; Agree values [uclause-type] as [wh]; C[Q, uwh*] merges; [uclause-type] already valued, so <strong>no T-to-C</strong>, but the wh-subject still raises to Spec-CP.</p>
+  <blockquote><span class="num">(90)</span> Who drank the poison? <span class="num">(91)</span> Which goddess helped us?<br><span class="num">(94)</span> !Who did drink the poison? (emphatic only)<br><span class="num">(96)</span> [uclause-type] on T may have [wh] as a value.</blockquote>
+
+  <span class="enpg">p.361-363</span>
+  <p><strong>9.5 Long-distance wh-movement.</strong> Wh-movement crosses clause boundaries. Two hypotheses: one swoop (103) vs through the intermediate Spec-CP (104). Simplicity favours (103), but evidence favours <strong>(104)</strong>. <strong>Scottish Gaelic</strong>: the embedding complementizer changes from <strong>gu(n)</strong> to <strong>a</strong> under long-distance questions - motivating movement through the intermediate Spec-CP. Stipulation (111): a wh-expression cannot skip a Spec-CP (<strong>successive-cyclic</strong>; derived in Ch.10).</p>
+  <blockquote><span class="num">(101)</span> Who did Jason think (that) Medea had poisoned?<br><span class="num">(105)</span> *Jason thinks who Medea had poisoned.<br><span class="num">(109)</span> Co...a bhuail i? <span class="num">(110)</span> Co...a tha...?<br><span class="num">(111)</span> A wh-expression cannot skip a specifier of CP when it moves.</blockquote>
+
+  <span class="enpg">p.364-365</span>
+  <p><strong>9.6 Wh-in situ.</strong> [wh] on the wh-expression is interpretable; it is the strength of [uwh] on C that drives movement. For multiple questions, the subject wh moves to Spec-CP; the object wh stays in situ.</p>
+  <blockquote><span class="num">(113)</span> Medea poisoned who? <span class="num">(114)/(118)</span> Who poisoned who? <span class="num">(119)</span> For which pair x,y, x poisoned y?</blockquote>
+
+  <span class="enpg">p.365-366</span>
+  <p><strong>9.7 Superiority.</strong> A head checks the <strong>closest</strong> c-commanded matching feature, so the highest (superior) wh moves - ruling out (120) automatically. Also seen with ditransitives (Theme c-commands Goal). Superiority is <strong>weak</strong>: with <em>which</em>-phrases both orders are fine (<strong>D(iscourse)-linking</strong>).</p>
+  <blockquote><span class="num">(120)</span> *[CP Who [TP who poisoned]]<br><span class="num">(122)</span> Who did Athena introduce to whom? <span class="num">(123)</span> *Who did Athena introduce who to?<br><span class="num">(124)</span> Which poet wrote which ode? <span class="num">(125)</span> Which ode did which poet write?<br><span class="num">(128)</span> #Which person is there?</blockquote>
+
+  <span class="enpg">p.367-368</span>
+  <p><strong>9.8 Cross-linguistic variation.</strong> A weak [uwh] on C[Q] predicts generalized <strong>wh-in-situ</strong> (Chinese, Japanese). Japanese is head-final; the wh stays in object position, checked by Agree without movement. <strong>Bulgarian</strong> fronts all wh-phrases - unexpected, needing extra machinery. Parameter table (133) added.</p>
+  <blockquote><span class="num">(129)</span> What did John buy?<br><span class="num">(130)</span> John-wa nani-o kaimasita ka? (What did John buy?)<br><span class="num">(132)</span> Kogo kakvo e pital Ivan? (Who did Ivan ask what?)</blockquote>
+
+  <span class="enpg">p.369-370</span>
+  <p><strong>9.9 Summary.</strong> Wh-movement is driven by strong wh-features on C; yes/no questions use a null Op[wh] in Spec-CP. The DP-movement system extends to wh-movement with a single stipulation (no T-to-C in subject wh-questions). Wh-in-situ, multiple questions, superiority (locality on Agree), and successive-cyclic movement through intermediate Spec-CP all follow.</p>
+
+  <span class="enpg">p.370-375 (Exercises)</span>
+  <p><strong>Exercises.</strong> (1) Wh and binding - reconstruction; intermediate Spec-CP shown by reflexive binding. (2) Category of wh-phrases. (3) <strong>Relative clauses</strong>: CPs adjoined at nP; wh-relatives involve movement (gap evidence); the relative C bears <strong>[Rel]</strong> not [Q]; long-distance possible; <strong>that-relatives</strong> (no visible wh) handled via a null <strong>operator</strong> moving from the gap to Spec-CP. (4) Negative movement (parallel to wh). (5) Trees + feature checking. (6) Binding with CP as locality domain.</p>
+  <blockquote><span class="num">Ex1</span> Which book about himself did Anson write? / Which book about herself did Jenny say that Anson had written?<br><span class="num">Ex3</span> the book [which Anson lent to Jenny] / the book [that Anson lent to Jenny]<br><span class="num">Ex4</span> Never will I do syntax again. / I swore that never again would I drink absinthe.</blockquote>
+
+  <div class="nav-bottom">
+    <a href="index.html">← Index</a>
+    <a href="Ch10_Locality.html">Ch.10 Locality →</a>
+  </div>
+</div>
+</div>
+
+<a href="#top" class="back-top">↑ 回頂端</a>
+<footer>Adger, D. (2003) <em>Core Syntax</em>, Ch.9 Wh-movement（書頁 341–375）· Oxford University Press · DOI:10.1093/oso/9780199243709.003.0009</footer>
+
+<script>
+function showTab(which){
+  document.getElementById('zh').classList.toggle('active', which==='zh');
+  document.getElementById('en').classList.toggle('active', which==='en');
+  document.getElementById('tab-zh').classList.toggle('active', which==='zh');
+  document.getElementById('tab-en').classList.toggle('active', which==='en');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+</script>
+</body>
+</html>

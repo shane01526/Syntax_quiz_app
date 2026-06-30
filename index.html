@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adger (2003) Core Syntax — 全書導覽</title>
+<style>
+  :root{
+    --ink:#1b1b22; --muted:#5d5d6b; --line:#e3e3ec; --bg:#faf9f6;
+    --accent:#7b2d3b; --accent2:#2d5a7b; --chip:#f0ece4; --card:#fff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Noto Serif TC","Songti TC",Georgia,"Times New Roman",serif;
+    color:var(--ink);background:var(--bg);line-height:1.85;}
+  header{background:linear-gradient(135deg,#7b2d3b,#43202a);color:#fff;padding:64px 24px 52px;text-align:center}
+  header h1{margin:0;font-size:2.3rem;letter-spacing:1px}
+  header .sub{margin-top:12px;color:#f0d9de;font-size:1.05rem}
+  header .meta{margin-top:18px;font-size:.9rem;color:#e3bcc4;font-family:system-ui,sans-serif}
+  .wrap{max-width:1080px;margin:0 auto;padding:40px 24px 80px}
+  .intro{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:26px 30px;margin-bottom:38px;box-shadow:0 4px 18px rgba(0,0,0,.04)}
+  .intro h2{margin:0 0 10px;font-size:1.25rem;color:var(--accent)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:20px}
+  a.card{display:block;text-decoration:none;color:inherit;background:var(--card);
+    border:1px solid var(--line);border-radius:14px;padding:22px 24px;
+    transition:.18s;box-shadow:0 3px 12px rgba(0,0,0,.04);position:relative;overflow:hidden}
+  a.card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(123,45,59,.16);border-color:#caa}
+  a.card .ch{font-family:system-ui,sans-serif;font-size:.78rem;font-weight:700;
+    color:#fff;background:var(--accent);padding:3px 11px;border-radius:20px;display:inline-block}
+  a.card.b .ch{background:var(--accent2)}
+  a.card h3{margin:14px 0 6px;font-size:1.18rem}
+  a.card .en{color:var(--muted);font-size:.92rem;font-style:italic;margin-bottom:10px}
+  a.card p{margin:0;font-size:.9rem;color:#444}
+  footer{text-align:center;color:var(--muted);font-size:.82rem;padding:30px;font-family:system-ui,sans-serif}
+  .legend{font-family:system-ui,sans-serif;font-size:.85rem;color:var(--muted);margin:8px 0 0}
+  a.quizcard{display:block;text-decoration:none;color:#fff;border-radius:16px;padding:26px 30px;margin-bottom:30px;
+    background:linear-gradient(135deg,#43202a,#7b2d3b 55%,#2d5a7b);box-shadow:0 6px 22px rgba(123,45,59,.22);
+    transition:.18s;position:relative;overflow:hidden}
+  a.quizcard:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(123,45,59,.3)}
+  a.quizcard .badge{font-family:system-ui,sans-serif;font-size:.74rem;font-weight:700;letter-spacing:1px;
+    background:rgba(255,255,255,.18);padding:4px 12px;border-radius:20px;display:inline-block}
+  a.quizcard h3{margin:14px 0 6px;font-size:1.5rem}
+  a.quizcard p{margin:0;font-size:.95rem;color:#f0d9de}
+  a.quizcard .go{position:absolute;right:28px;bottom:24px;font-family:system-ui,sans-serif;font-weight:700;font-size:.95rem;
+    background:#fff;color:var(--accent);padding:9px 18px;border-radius:10px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Core Syntax</h1>
+  <div class="sub">David Adger（2003）· Oxford University Press</div>
+  <div class="meta">碩一句法課程 · 全 10 章詳細說明導覽頁</div>
+</header>
+<div class="wrap">
+  <div class="intro">
+    <h2>關於這本書</h2>
+    <p>《Core Syntax》是 David Adger 於 2003 年出版的<strong>生成語法（Generative Grammar）</strong>入門教科書，採用 1990 年代以後 Chomsky 的<strong>最簡方案（Minimalist Program）</strong>框架。全書以「特徵（features）」為核心驅動力，用 <strong>Merge（合併）</strong>、<strong>Agree（一致）</strong>、<strong>Move（移位）</strong>三個基本操作，循序漸進地推導出英語（與跨語言）句子的結構。</p>
+    <p>本書最大特色是<strong>「可檢核特徵驅動推導」</strong>：每一個句法操作都必須由某個未詮釋特徵（uninterpretable feature）的檢核需求觸發。書中大量使用 Medea、Jason、Zeus 等希臘神話人物作為例句主角，是這套教材的招牌風格。</p>
+    <p class="legend">點選下方任一章卡片，開啟該章的詳細中文（含英文術語）說明檔。建議依章節順序閱讀，因為後章持續沿用前章建立的機制。</p>
+  </div>
+
+  <a class="quizcard" href="quiz.html">
+    <span class="badge">🧠 互動題庫 · INTERACTIVE QUIZ</span>
+    <h3>Core Syntax 題庫測驗</h3>
+    <p>全 10 章共 282 題 · 單選／是非／填空／簡答 · 中英對照 · 可記筆記（自動儲存）· 每題附建議閱讀與詳解連結</p>
+    <span class="go">開始測驗 →</span>
+  </a>
+
+  <div class="grid">
+    <a class="card" href="Ch01_Core_Concepts.html">
+      <span class="ch">Chapter 1</span>
+      <h3>核心概念</h3>
+      <div class="en">Core Concepts</div>
+      <p>句法作為認知科學、能力 vs 表現、合語法性、生成語法的目標、UG 與刺激貧乏論。</p>
+    </a>
+    <a class="card" href="Ch02_Morphosyntactic_Features.html">
+      <span class="ch">Chapter 2</span>
+      <h3>形態句法特徵</h3>
+      <div class="en">Morphosyntactic Features</div>
+      <p>特徵理論、範疇特徵、φ-特徵、可詮釋 vs 不可詮釋、賦值 vs 未賦值、詞庫。</p>
+    </a>
+    <a class="card" href="Ch03_Constituency_Theta.html">
+      <span class="ch">Chapter 3</span>
+      <h3>成分性與題旨角色</h3>
+      <div class="en">Constituency &amp; Theta Roles</div>
+      <p>成分測試、論元結構、θ-角色與 θ-準則、c-選擇 vs s-選擇、述語與論元。</p>
+    </a>
+    <a class="card" href="Ch04_Phrase_Structure.html">
+      <span class="ch">Chapter 4</span>
+      <h3>表徵詞組結構</h3>
+      <div class="en">Representing Phrase Structure</div>
+      <p>X-bar 理論、Merge、中心語/補語/指定語、c-統制、小 v、UTAH、延伸條件。</p>
+    </a>
+    <a class="card" href="Ch05_TP.html">
+      <span class="ch">Chapter 5</span>
+      <h3>功能範疇 I — TP</h3>
+      <div class="en">Functional Categories I — TP</div>
+      <p>時制、限定性、助動詞、T 中心語、V-to-T 移位、do-support、英法對比。</p>
+    </a>
+    <a class="card" href="Ch06_Subjects_Objects.html">
+      <span class="ch">Chapter 6</span>
+      <h3>主語與賓語</h3>
+      <div class="en">Subjects and Objects</div>
+      <p>格位檢核、Agree、EPP、VP 內主語假說、小 v 賦予賓格、虛主詞 expletive。</p>
+    </a>
+    <a class="card" href="Ch07_DP.html">
+      <span class="ch">Chapter 7</span>
+      <h3>功能範疇 II — DP</h3>
+      <div class="en">Functional Categories II — DP</div>
+      <p>DP 假說、限定詞中心語、領屬結構、代名詞作 D、屬格、n 與名詞組層次。</p>
+    </a>
+    <a class="card b" href="Ch08_CP.html">
+      <span class="ch">Chapter 8</span>
+      <h3>功能範疇 III — CP</h3>
+      <div class="en">Functional Categories III — CP</div>
+      <p>標句詞、子句類型 [Q]/[Decl]、SAI 與 T-to-C、PRO 與控制、ECM、提升、V2。</p>
+    </a>
+    <a class="card b" href="Ch09_Wh_movement.html">
+      <span class="ch">Chapter 9</span>
+      <h3>Wh- 移位</h3>
+      <div class="en">Wh-movement</div>
+      <p>疑問詞移位、[uwh*] 特徵、連續循環移位、pied-piping、wh-in-situ、關係子句。</p>
+    </a>
+    <a class="card b" href="Ch10_Locality.html">
+      <span class="ch">Chapter 10</span>
+      <h3>局域性</h3>
+      <div class="en">Locality</div>
+      <p>島嶼限制、語段 phase 與 PIC、相對最簡性、優先條件、that-trace 效應。</p>
+    </a>
+  </div>
+</div>
+<footer>
+  生成說明檔 · 依據 Adger, D. (2003) <em>Core Syntax</em>, Oxford University Press · DOI:10.1093/oso/9780199243709
+</footer>
+</body>
+</html>

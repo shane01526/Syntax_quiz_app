@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch.2 形態句法特徵 Morphosyntactic Features（逐頁逐例句詳解 + 英文對照）— Adger (2003)</title>
+<style>
+  :root{--ink:#1b1b22;--muted:#5d5d6b;--line:#e3e3ec;--bg:#faf9f6;--accent:#7b2d3b;--accent2:#7b2d3b;--chip:#f0ece4;--card:#fff;--box:#f6f2ec;}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Noto Serif TC","Songti TC",Georgia,"Times New Roman",serif;color:var(--ink);background:var(--bg);line-height:1.9}
+  header{background:linear-gradient(135deg,#7b2d3b,#43202a);color:#fff;padding:54px 24px 36px}
+  header .inner{max-width:900px;margin:0 auto}
+  header .ch{font-family:system-ui,sans-serif;font-size:.8rem;letter-spacing:2px;color:#e3bcc4}
+  header h1{margin:6px 0 4px;font-size:2rem}
+  header .en{color:#f0d9de;font-style:italic}
+  header .pg{margin-top:10px;font-size:.85rem;color:#e3bcc4;font-family:system-ui,sans-serif}
+  nav.bc{max-width:900px;margin:0 auto;padding:14px 24px 0;font-family:system-ui,sans-serif;font-size:.85rem}
+  nav.bc a{color:var(--accent);text-decoration:none}
+  .tabbar{max-width:900px;margin:14px auto 0;padding:0 24px;display:flex;gap:10px;font-family:system-ui,sans-serif}
+  .tab{cursor:pointer;border:1px solid var(--line);border-bottom:0;background:#f1ece9;color:#7a4350;padding:11px 22px;border-radius:10px 10px 0 0;font-weight:700;font-size:.95rem;transition:.15s}
+  .tab:hover{background:#ece3e0}
+  .tab.active{background:var(--card);color:var(--accent);box-shadow:0 -2px 6px rgba(0,0,0,.04)}
+  .panel{display:none}.panel.active{display:block}
+  .toc{max-width:900px;margin:0 auto 10px;padding:18px 24px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+  .toc h2{margin:0 0 10px;font-size:1.05rem;color:var(--accent);border:0}
+  .toc ul{columns:2;column-gap:30px;margin:0;padding-left:18px;font-family:system-ui,sans-serif;font-size:.9rem}
+  .toc a{color:#333;text-decoration:none}.toc a:hover{color:var(--accent)}
+  .wrap{max-width:900px;margin:0 auto;padding:10px 24px 80px}
+  h2{color:var(--accent);border-bottom:2px solid var(--line);padding-bottom:6px;margin-top:48px;font-size:1.45rem;scroll-margin-top:14px}
+  h3{color:#43202a;margin-top:34px;font-size:1.18rem;border-left:5px solid var(--accent);padding-left:12px}
+  .pgmark{display:inline-block;font-family:system-ui,sans-serif;font-size:.72rem;font-weight:700;color:#fff;background:var(--accent);padding:2px 10px;border-radius:12px;margin:24px 0 4px}
+  p{margin:13px 0}
+  .lead{font-size:1.05rem;background:var(--box);border-left:4px solid var(--accent);padding:16px 20px;border-radius:0 10px 10px 0}
+  .term{font-family:system-ui,sans-serif;font-weight:700;color:var(--accent)}
+  .en-term{font-style:italic;color:var(--muted)}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:.93rem}
+  th,td{border:1px solid var(--line);padding:8px 11px;text-align:left;vertical-align:top}
+  th{background:var(--chip);font-family:system-ui,sans-serif}
+  .ex{background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 0;margin:16px 0;overflow:hidden}
+  .ex .row{padding:9px 18px;border-bottom:1px dashed #eee}
+  .ex .row:last-child{border-bottom:0}
+  .ex .sent{font-family:"Times New Roman",serif;font-size:1.05rem}
+  .ex .num{display:inline-block;min-width:34px;color:var(--muted);font-family:system-ui,sans-serif;font-size:.85rem}
+  .ex i{color:#444}
+  .g{color:#1a7a3a;font-weight:bold}.ung{color:#b32020;font-weight:bold}.qm{color:#b88a00;font-weight:bold}
+  .gloss{display:block;margin:4px 0 0 34px;font-size:.92rem;color:#555}
+  .ana{display:block;margin:5px 0 0 34px;font-size:.92rem;color:#6a3340;background:#f8eef1;border-radius:6px;padding:8px 12px}
+  .ana::before{content:"▸ 詳解　";color:var(--accent);font-weight:bold;font-family:system-ui,sans-serif}
+  .concept{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:16px 0;border-top:3px solid var(--accent)}
+  .concept h4{margin:0 0 8px;color:var(--accent);font-family:system-ui,sans-serif;font-size:1rem}
+  .key{background:#fdf6e3;border:1px solid #e9dcae;border-radius:10px;padding:14px 18px;margin:18px 0}
+  .key b{color:#8a6d00}
+  ul.plain{margin:13px 0;padding-left:24px}ul.plain li{margin:6px 0}
+  #en p{margin:12px 0}
+  #en .enpg{display:inline-block;font-family:system-ui,sans-serif;font-size:.72rem;font-weight:700;color:#fff;background:#888;padding:2px 9px;border-radius:12px;margin:20px 0 2px}
+  #en blockquote{margin:10px 0;padding:8px 16px;border-left:3px solid var(--line);background:#fbfbfb;font-family:"Times New Roman",serif}
+  #en .num{color:var(--muted);font-family:system-ui,sans-serif;font-size:.8rem;display:inline-block;min-width:34px}
+  .nav-bottom{display:flex;justify-content:space-between;margin-top:54px;font-family:system-ui,sans-serif;font-size:.9rem}
+  .nav-bottom a{color:var(--accent);text-decoration:none;border:1px solid var(--line);padding:10px 16px;border-radius:8px}
+  footer{text-align:center;color:var(--muted);font-size:.8rem;padding:20px;font-family:system-ui,sans-serif}
+  .back-top{position:fixed;right:18px;bottom:18px;background:var(--accent);color:#fff;text-decoration:none;padding:8px 13px;border-radius:20px;font-family:system-ui,sans-serif;font-size:.8rem;box-shadow:0 3px 10px rgba(0,0,0,.2)}
+</style>
+</head>
+<body id="top">
+<header><div class="inner">
+  <div class="ch">CHAPTER 2 · 逐頁逐例句詳解 + 英文原文對照</div>
+  <h1>形態句法特徵</h1>
+  <div class="en">Morphosyntactic Features</div>
+  <div class="pg">書頁 22–61 · 涵蓋例句 (1)–(100) 與全部核心論證</div>
+</div></header>
+<nav class="bc"><a href="index.html">← 全書導覽</a> ／ 第 2 章</nav>
+
+<div class="tabbar">
+  <div class="tab active" id="tab-zh" onclick="showTab('zh')">中文逐頁詳解</div>
+  <div class="tab" id="tab-en" onclick="showTab('en')">English Original（整章英文原文）</div>
+</div>
+
+<div class="panel active" id="zh">
+<div class="toc">
+  <h2>本章導覽</h2>
+  <ul>
+    <li><a href="#s21b">2.1 導論</a></li>
+    <li><a href="#s22">2.2 引入特徵</a></li>
+    <li><a href="#s23">2.3 特徵是什麼？</a></li>
+    <li><a href="#s231">2.3.1 特徵系統</a></li>
+    <li><a href="#s232">2.3.2 介面規則</a></li>
+    <li><a href="#s24">2.4 為特徵尋找動機</a></li>
+    <li><a href="#s241">2.4.1 主要類別特徵</a></li>
+    <li><a href="#s242">2.4.2 詞的內容（詞庫與語意特徵）</a></li>
+    <li><a href="#s243">2.4.3 更多次要特徵（φ／格／動詞）</a></li>
+    <li><a href="#s25">2.5 本章摘要</a></li>
+    <li><a href="#sex">習題（反身詞・祈使句・代名詞）</a></li>
+  </ul>
+</div>
+
+<div class="wrap">
+  <p class="lead" id="s21">第 1 章告訴我們：句子是<strong>抽象的心理結構</strong>，句法負責規範句子的「形式與順序」。本章要回答的問題是——<strong>句法到底在規範什麼東西，才會產生那些形式與順序的事實？</strong>Adger 的答案是 <span class="term">形態句法特徵（morphosyntactic feature）</span>。特徵在句法裡所扮演的角色，類似<strong>原子</strong>在古典物理理論中的角色：它們是句法的<strong>基本構件</strong>，而它們<strong>如何組合、如何彼此關聯</strong>，正是各種觀察到的現象之根源。本章逐一帶出：類別特徵（N/V/A/P）、φ-特徵（人稱/數/性）、格特徵、時貌特徵，以及四組關鍵對立——<strong>可解釋 vs 不可解釋、有值 vs 無值、單價 vs 二元、句法特徵 vs 語意/語音特徵</strong>。</p>
+
+  <div class="concept"><h4>本章的問題意識</h4>
+  <p>第 1 章用 <em>The pig grunts</em> / <em>*The pig grunt</em> 這類一致現象說明句子有結構，但沒說清楚<strong>一致關係到底在連結什麼</strong>。本章逐步逼問：被一致關係連結的<strong>不是「實際的詞」</strong>（換成 bear、man、child 模式都一樣），<strong>也不是「詞的形態外形」</strong>（有的加 -s、有的換母音、有的整字替換，外形天差地遠，模式卻相同）。因此一定有一個更<strong>抽象</strong>的東西在被連結——這就是<span class="term">特徵</span>。特徵是「句法看得見、且可能決定詞的外形」的詞之屬性，是把<strong>聲音與意義</strong>連起來的核心元素。</p></div>
+
+  <h2 id="s21b">2.1 導論</h2>
+  <span class="pgmark">書頁 22</span>
+  <p>本章試圖回答：句法所規範的究竟是什麼，使得第 1 章看到的關於<strong>形式與順序</strong>的種種事實得以產生？答案是引入 <span class="term">形態句法特徵（morphosyntactic feature）</span> 這個概念，並爬梳句法學家如何<strong>論證</strong>這類特徵存在。Adger 給出貫穿全章的類比：<strong>特徵之於句法，如同原子之於古典物理</strong>——它們是基本構件，其組合方式與相互關係造就了觀察到的現象。</p>
+
+  <h2 id="s22">2.2 引入特徵</h2>
+  <span class="pgmark">書頁 22</span>
+  <p>第一個任務：找出句法的「零件」是什麼，亦即 <span class="term">句法形符（syntactic formative）</span> 的本質為何。最直覺的答案是「句法形符就是<strong>詞（words）</strong>」——但這並不完全正確。回顧第 1 章的一致現象：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(1)</span> The pig grunts.</span></div>
+    <div class="row"><span class="sent"><span class="num">(2)</span> The pigs grunt.</span></div>
+    <div class="row"><span class="sent"><span class="num">(3)</span> <span class="ung">*</span> The pig grunt.</span></div>
+    <div class="row"><span class="sent"><span class="num">(4)</span> <span class="ung">*</span> The pigs grunts.</span>
+      <span class="ana">第二個詞帶 -s（pigs）時，第三個詞就<strong>不能</strong>帶 -s（須用 grunt）；反之亦然。一致關係要求主語與動詞在某種屬性上「相符」。</span></div>
+  </div>
+  <span class="pgmark">書頁 23</span>
+  <p>換成完全不同的詞，模式一模一樣：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(5)</span> The bear snuffles.</span></div>
+    <div class="row"><span class="sent"><span class="num">(6)</span> The bears snuffle.</span></div>
+    <div class="row"><span class="sent"><span class="num">(7)</span> <span class="ung">*</span> The bear snuffle.</span></div>
+    <div class="row"><span class="sent"><span class="num">(8)</span> <span class="ung">*</span> The bears snuffles.</span>
+      <span class="ana">既然換詞不變，<strong>相關的不是「實際的詞」</strong>，而是詞的某種<strong>屬性</strong>。或許相關的是「詞的外形」（是否以 -s 結尾）？這個外形稱 <span class="term">形態形式（morphological form）</span>。</span></div>
+  </div>
+  <p>但「外形說」也站不住腳。看以下兩組：第二個詞<strong>不</strong>以 -s 結尾，而是<strong>中間母音變化</strong>（man~men），或<strong>加 -ren 並改母音</strong>（child~children），模式卻完全相同：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(9)</span> The man chuckles.</span></div>
+    <div class="row"><span class="sent"><span class="num">(10)</span> The men chuckle.</span></div>
+    <div class="row"><span class="sent"><span class="num">(11)</span> <span class="ung">*</span> The man chuckle.</span></div>
+    <div class="row"><span class="sent"><span class="num">(12)</span> <span class="ung">*</span> The men chuckles.</span></div>
+    <div class="row"><span class="sent"><span class="num">(13)</span> The child wails.</span></div>
+    <div class="row"><span class="sent"><span class="num">(14)</span> The children wail.</span></div>
+    <div class="row"><span class="sent"><span class="num">(15)</span> <span class="ung">*</span> The child wail.</span></div>
+    <div class="row"><span class="sent"><span class="num">(16)</span> <span class="ung">*</span> The children wails.</span>
+      <span class="ana">在詞尾（或詞首）加東西改變詞形稱 <span class="term">附加（affixation）</span>，加上的東西稱 <span class="term">詞綴（affix）</span>；在詞首者為 <span class="term">前綴（prefix）</span>，詞尾者為 <span class="term">後綴（suffix）</span>。man~men 是<strong>母音變化</strong>（foot~feet、mouse~mice 同類）。</span></div>
+  </div>
+  <span class="pgmark">書頁 24</span>
+  <p>當整個詞改變、看不出形式上的關聯時，稱 <span class="term">替補（suppletion）</span>。英語複數沒有清楚的替補例，但蘇格蘭蓋爾語 bean「妻子」→ 複數 mnaoi；中美洲語言 Tlapanec 有 a'da「孩子」→ e'he「孩子們」（上標數字代表聲調）。重點是：三組例子的<strong>形態形式各不相同，但一般模式相同</strong>。許多語言都有一致關係，但用來表現一致的形態手段差異極大（有用後綴、有用前綴如 Kiowa、有兩者並用如高加索的 Georgian）。既然一致關係是同一個，它就<strong>不能直接連結詞的外形</strong>，而必須連結某個更抽象、且能導致這些不同外形的東西——這就是 <span class="term">形態句法特徵（morphosyntactic feature）</span>，簡稱 <span class="term">特徵（feature）</span>。</p>
+  <div class="key"><b>特徵的定義：</b>形態句法特徵是「<strong>句法能感知到、且可能決定詞之特定外形</strong>」的詞之屬性。特徵是語言中連結<strong>聲音與意義</strong>的核心元素。第二、三個詞必須在某個特徵的指派上<strong>相符（agree）</strong>——傳統說法即「同為單數或同為複數」。</div>
+  <p>有些詞單複數同形，如 sheep，但它仍觸發動詞上的一致：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(17)</span> The sheep bleat.（複數解讀）</span></div>
+    <div class="row"><span class="sent"><span class="num">(18)</span> The sheep bleats.（單數解讀）</span>
+      <span class="ana">sheep 無特殊複數外形，卻仍觸發動詞一致 → 證明被連結的是<strong>抽象特徵</strong>而非外形。複數特徵不只影響形態，也影響<strong>意義</strong>（一個還是多個）。會影響語意詮釋的特徵稱 <span class="term">可解釋特徵（interpretable features）</span>；其反面 <span class="term">不可解釋特徵（uninterpretable features）</span> 在 2.4.3 詳論。</span></div>
+  </div>
+  <span class="pgmark">書頁 25</span>
+  <p><strong>標準阿拉伯語</strong>顯示：動詞與主語不只在「數」、也在「性（gender）」上一致。例 (19)(20) 介紹了 <span class="term">註解行（gloss）</span> 的排版慣例：<strong>第一行是原例，第二行是逐詞註解，第三行是翻譯</strong>。古典阿拉伯語除單／複數外還有 <span class="term">雙數（dual）</span>，指「成對」的兩個：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(19)</span> Al-awlaad-uu qadim-uu</span>
+      <span class="gloss">the-boy-[MASC.PLURAL] came-[MASC.PLURAL]　「那些男孩來了。」</span></div>
+    <div class="row"><span class="sent"><span class="num">(20)</span> Al-bint-aani qadim-ataa</span>
+      <span class="gloss">the-girl-[FEM.DUAL] came-[FEM.DUAL]　「那兩個女孩來了。」</span></div>
+    <div class="row"><span class="sent"><span class="num">(21)</span> <span class="ung">*</span> Al-awlaad-uu qadim-ataa</span>
+      <span class="gloss">the-boy-[MASC.PLURAL] came-[FEM.DUAL]</span></div>
+    <div class="row"><span class="sent"><span class="num">(22)</span> <span class="ung">*</span> Al-bint-aani qadim-uu</span>
+      <span class="gloss">the-girl-[FEM.DUAL] came-[MASC.PLURAL]</span>
+      <span class="ana">(21)(22) 把「男孩（陽複）＋來（陰雙）」或「兩女孩（陰雙）＋來（陽複）」湊在一起就不合法 → 證明動詞與主語處於<strong>一致關係</strong>，且須在「性」與「數」兩方面相符。跨語言地看，<strong>一致這個句法關係系統性地規範了詞與詞之間的依存</strong>。</span></div>
+  </div>
+  <h2 id="s23">2.3 特徵是什麼？</h2>
+  <span class="pgmark">書頁 25</span>
+  <p>特徵是<strong>詞的屬性</strong>。負責形態差異的特徵，<strong>通常</strong>也負責語意差異（複數名詞通常指「一群實體」）。但句法與語意的連結<strong>並不嚴格</strong>：scissors（剪刀）<strong>形式為複數</strong>，所指卻常被視為單一物件。除了影響形態與語意，特徵還可能影響詞的<strong>句法</strong>（如名詞與動詞的一致；2.4.3 將見特徵內容還限制詞可出現的位置）。</p>
+
+  <h2 id="s231">2.3.1 特徵系統</h2>
+  <span class="pgmark">書頁 26</span>
+  <p>最簡單的想法：特徵就是詞的屬性，如同「硬」是玻璃的屬性、「雙足」是人類的屬性。基於建構理論的精神，我們要<strong>假設盡量少的特徵</strong>來解釋詞的形態、句法、語意行為。先看英語單／複數，可用兩個特徵 [singular] 與 [plural]：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(23)</span> men [plural]・man [singular]・cat [singular]・cats [plural]・sheep [singular]・sheep [plural]</span>
+      <span class="ana">這個分析有兩個問題：① 不夠精簡；② 無法說明為何不能有同時 [singular, plural] 的詞——例 (24) <span class="ung">*</span>blurg [plural, singular]。</span></div>
+  </div>
+  <p>更精簡的做法是<strong>只用單一特徵 [plural]</strong>：有它＝複數，沒它＝單數：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(25)</span> men [plural]・man [ ]・cat [ ]・cats [plural]・sheep [ ]・sheep [plural]</span>
+      <span class="ana">這對英語很好用，但<strong>阿拉伯語有三分（單／雙／複）</strong>，單一特徵無法表達三分。用兩個特徵則可：[singular]、[plural]、[singular, plural]（＝雙數），各有自己的形態與語意。</span></div>
+  </div>
+  <span class="pgmark">書頁 28</span>
+  <p>支持「雙數＝單＋複」的證據來自亞利桑那的 <strong>Hopi 語</strong>：其雙數在形態上由「單數＋複數」拼成——名詞用複數形 ta?taq-t，動詞卻用單數形 wari：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(26)</span> Pam taaqa wari</span>
+      <span class="gloss">that man ran-[SG]　「那個人跑了。」（單數）</span></div>
+    <div class="row"><span class="sent"><span class="num">(27)</span> Puma ta?taq-t yu?ti</span>
+      <span class="gloss">those man-[PL] ran-[PL]　「那些人跑了。」（複數）</span></div>
+    <div class="row"><span class="sent"><span class="num">(28)</span> Puma ta?taq-t wari</span>
+      <span class="gloss">those man-[PL] ran-[SG]　「那兩個人跑了。」（雙數）</span>
+      <span class="ana">雙數的詮釋是把<strong>複數名詞</strong>與<strong>單數動詞</strong>放在同一結構裡得到的 → 支持「雙數＝同時帶 [singular] 與 [plural]」。但若兩特徵能自由組合，應預期<strong>四</strong>種可能，世界語言卻只見<strong>三</strong>種數，沒有平等對待四種數的語言。</span></div>
+  </div>
+  <span class="pgmark">書頁 29</span>
+  <p>解法之一：語言都有 <span class="term">預設特徵（default feature）</span>，在沒有指定數特徵時自動填入。英語只在名詞上指定 [plural]，men=[plural]、man=[ ]；再用一條規則補上預設 [singular]：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(29)</span> Add [singular] to a noun which has no other number feature.（為沒有其他數特徵的名詞補上 [singular]）</span>
+      <span class="ana">由於「已有數特徵者不再補預設」，[plural] 的詞永遠不會再被加上 [singular]，因此英語<strong>沒有雙數</strong>；也預測 Arabic/Hopi 只出現<strong>三</strong>種數（四種可能中，「無指定」必被補成單數）。</span></div>
+  </div>
+  <span class="pgmark">書頁 29–30</span>
+  <p>另一條相近思路：特徵<strong>恆有值</strong>，且值為 <span class="term">二元（binary）</span>——[+]／[−]：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(30)</span> man [+singular, −plural]</span></div>
+    <div class="row"><span class="sent"><span class="num">(31)</span> men [−singular, +plural]</span>
+      <span class="ana">有雙數的語言允許 [+singular, +plural]，並用一條普遍限制排除 [−singular, −plural]。但二元系統還需要一條額外限制：強制所有二元特徵都<strong>進入詞束且恆有值</strong>（fully valued），以排除像 (32) [+singular] 這種「只帶一半」的情形。</span></div>
+  </div>
+  <p>若同時允許二元值、又允許特徵可有可無，立刻會冒出<strong>九</strong>種可能 (33)：[+singular,+plural]、[+singular,−plural]、[−singular,−plural]、[−singular,+plural]、[+singular]、[−singular]、[+plural]、[−plural]、[ ]。自然語言沒有九種數 → 顯然不好。</p>
+  <span class="pgmark">書頁 30</span>
+  <p>最後一種做法：特徵可有 [+]/[−] 以外的值——把 [number] 當特徵，[singular]/[plural] 當它的<strong>值</strong>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(34)</span> a. [number: singular]　b. [number: plural]</span>
+      <span class="ana">這個系統較難用「單＋複」分解出雙數，但好處是提供一套記號，能指涉「數特徵」這個 <span class="term">自然類（natural class）</span>。本章後面會看到其他特徵也構成自然類。</span></div>
+  </div>
+  <div class="concept"><h4>三種特徵系統的權衡（純屬經驗問題）</h4>
+  <ul class="plain">
+    <li><span class="term">單價特徵（privative）</span>：特徵無值、可有可無——<strong>最簡單</strong>，只需一條補預設的規則。</li>
+    <li><span class="term">二元特徵（binary）</span>：可能性過多，需<strong>兩條</strong>額外限制（排除 [−sg,−pl]＋強制 fully valued）。</li>
+    <li><span class="term">屬性-值（attribute-value）</span>：[number] 帶值 [singular]/[plural]/[dual]——簡單，但<strong>無法</strong>表達「雙數由單＋複組成」。</li>
+  </ul>
+  <p>理論上應偏好最簡的單價系統；但若有現象逼迫，也可改採較複雜的做法。本書<strong>能用單價就用單價</strong>，但隨理論發展，有些特徵會以單價處理、有些則當作<strong>有值</strong>。</p></div>
+
+  <h2 id="s232">2.3.2 介面規則</h2>
+  <span class="pgmark">書頁 31</span>
+  <p>確定了需要哪些特徵後（只能靠仔細觀察語言事實來決定），就能用它們決定詞如何被<strong>發音</strong>或<strong>詮釋</strong>。亦即寫出 <span class="term">介面規則（interface rules）</span>：一邊把「由特徵構成的句法結構」映射到形態（最終語音）結構，另一邊映射到語意詮釋。</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(35)</span> Pronounce a noun specified with [plural] by pronouncing the noun stem and then s.（形態介面規則：[plural] 名詞＝詞幹＋s）</span></div>
+    <div class="row"><span class="sent"><span class="num">(36)</span> Interpret a noun specified with [plural] as referring to a group of entities.（語意介面規則：[plural] 詮釋為一群實體）</span>
+      <span class="ana">兩條規則<strong>都還不正確</strong>：(35) 忽略了 men、children 等非加 -s 的複數，會錯誤預測 *mans；(36) 也沒精確刻畫「語意複數」（如雙數的語意）。<span class="term">詞幹（stem）</span>＝未加任何詞綴的基本形。重點是：形態與語意都是<strong>詮釋型部件</strong>，會去讀取特徵——這個想法很有力。</span></div>
+  </div>
+  <span class="pgmark">書頁 32</span>
+  <p>特徵（如 [plural]）因此扮演<strong>聲音與意義之間的中介</strong>：一個特徵導致一個被發音的形態形式與一個詮釋，從而連結「句子怎麼念」與「句子是什麼意思」。句法則規範「帶某些特徵的詞」如何與「帶其他特徵的詞」相關聯。</p>
+  <div class="concept"><h4>人類語言用的特徵集是什麼？——沒有「元素週期表」</h4>
+  <p>沒有人能給出定論：語言學<strong>沒有</strong>對應於化學的元素週期表。人類語言使用的特徵五花八門，關乎核心認知能力（位置、時間、度量、計數）、語言使用核心面向（誰在說話、對誰說、話題、已提及之物）、社會文化因素（誰在對話中具權威地位），以及純屬語言系統內部、標記句法位置或關係的特徵。</p>
+  <p>關鍵觀察：有些特徵<strong>看似可能、卻不見於人類語言</strong>——例如語意為「在滿月當天說出」「在說話者母親的左邊」的特徵，或形態效果為「把詞反轉」「刪掉每個位置為質數的音節」的特徵。因此，較<strong>受限、因而解釋充分性較高</strong>的立場是：存在一套<strong>普遍特徵集</strong>，兒童的任務是<strong>選出</strong>其母語實際使用的特徵。於是該問的不是「我們用的特徵集是什麼」，而是「在某語言的具體分析中，能<strong>論證</strong>出哪些特徵」。</p></div>
+  <h2 id="s24">2.4 為特徵尋找動機</h2>
+  <span class="pgmark">書頁 33</span>
+  <p>之前論證 [singular]/[plural] 的依據是：(i) 詞的<strong>外形（形態形式）</strong>之間有關係；(ii) 對<strong>語意詮釋</strong>有影響。這是<strong>最穩固</strong>的論證基礎。也有較弱的方式：</p>
+  <div class="key"><b>論證一個特徵的四種依據（由強到弱）：</b><br>
+  ① <strong>形態 + 語意</strong>皆有效應（最穩固）。<br>
+  ② <strong>有形無義</strong>：形態形式有變化、但語意不變（form without meaning）。<br>
+  ③ <strong>有義無形</strong>：影響語意、但形態不變（meaning without form）。<br>
+  ④ <strong>皆無、但句法需要</strong>：對語意與形態都無效應，卻必須假設它，否則某個句法關係無法建立、會做出錯誤的合語法性預測。（部分<strong>格特徵</strong>屬此類。）</div>
+
+  <h2 id="s241">2.4.1 主要類別特徵</h2>
+  <span class="pgmark">書頁 33</span>
+  <p>與句法最相關的特徵是 <span class="term">類別特徵（category features）</span>，負責把詞分成傳統詞類：名詞、動詞、形容詞、介系詞等。它們有<strong>語意基礎</strong>（名詞多指物、動詞多指事件/動作），但語意判準<strong>並不可靠</strong>（race 是名詞卻指事件；exist 是動詞卻難說是事件）。更可靠的是<strong>形態理由</strong>：英語中名詞與動詞有不同的詞綴：</p>
+  <table>
+    <tr><th>名詞（-tion, -al, -ment…）</th><th>動詞（-ise, -ize, -ate, -en…）</th></tr>
+    <tr><td>destruction, elevation, elation, station, eruption, removal, arrival, rebuttal, improvement, enlargement, involvement, replacement</td><td>improvise, despise, realize, compartmentalize, computerize, enervate, elevate, deflate, relegate, widen, shorten, blacken</td></tr>
+  </table>
+  <span class="pgmark">書頁 34</span>
+  <p>這些詞尾<strong>不是絕對的</strong>（ferment 以 -ment 結尾卻是動詞；station 也可當動詞；prelate、late、chicken、flaxen 等；book、paper、clear 等大量詞無形態信號）。但足夠多的詞可用詞尾分類，使「用形態屬性建立詞類」成為合理做法。進一步：特徵的形態形式取決於詞類——emotion、kindness、removal、protest 可加 -(e)s，而 listen、destroy、knead、predict 可加 -ed：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(38)</span> emotions, kindnesses, removals, protests</span></div>
+    <div class="row"><span class="sent"><span class="num">(39)</span> listened, destroyed, kneaded, predicted</span></div>
+    <div class="row"><span class="sent"><span class="num">(40)</span> <span class="ung">*</span>emotioned, <span class="ung">*</span>kindnessed, <span class="ung">*</span>removaled, protested</span></div>
+    <div class="row"><span class="sent"><span class="num">(41)</span> listens, destroys, kneads, predicts</span>
+      <span class="ana">把 -ed 加到 (38) 的名詞，只有 protested 行 (40)；把 -s 加到 (39) 的動詞都行 (41)，但語意與 (38) 不同。只有 protest 能落入兩類（形態上兩可、語意歧義），且<strong>連重音都隨詞類改變</strong>：名詞重音在第一音節、動詞在第二音節。能取 -ed 的詞可表達 <span class="term">[past] 特徵</span>（2.4.3 詳論）。</span></div>
+  </div>
+  <span class="pgmark">書頁 35</span>
+  <p>因此可做出概括：整類詞（名詞 vs 動詞）受限於可帶哪些特徵（[past] 不能上名詞）；各類有獨特詞綴；語意大致不同。據此設立特徵 <strong>[N]</strong>（名詞）與 <strong>[V]</strong>（動詞）。複數名詞 men 的部分特徵指派為 (42) men [N, plural]。形容詞與介系詞也有形態證據自成一類——形容詞有<strong>比較級</strong>（-er）與<strong>最高級</strong>（-est）：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(43)</span> She is shorter, happier, cooler, older than he is.</span></div>
+    <div class="row"><span class="sent"><span class="num">(44)</span> <span class="ung">*</span>emotioner, <span class="ung">*</span>kindnesser, <span class="ung">*</span>removaler</span></div>
+    <div class="row"><span class="sent"><span class="num">(45)</span> She is the shortest, happiest, coolest, oldest of the lot!</span></div>
+    <div class="row"><span class="sent"><span class="num">(46)</span> <span class="ung">*</span>emotionest, <span class="ung">*</span>kindnessest, <span class="ung">*</span>removalest, <span class="ung">*</span>protestest</span></div>
+    <div class="row"><span class="sent"><span class="num">(47)</span> <span class="ung">*</span>listenest, <span class="ung">*</span>destroyest, <span class="ung">*</span>kneadest, <span class="ung">*</span>predictest</span></div>
+    <div class="row"><span class="sent"><span class="num">(48)</span> at: <span class="ung">*</span>atter, through: <span class="ung">*</span>throughs, on: <span class="ung">*</span>onned, by: <span class="ung">*</span>byest</span>
+      <span class="ana">-er/-est 不能加到名詞 (44)(46)；加到動詞 protester 意思是「抗議的人」而非「更充滿抗議」。介系詞 (48) <strong>完全不變形</strong>。→ 四大詞類確立。</span></div>
+  </div>
+  <span class="pgmark">書頁 36</span>
+  <p>四大詞類縮寫為 N、V、A、P，可用四個特徵 [N]、[V]、[A]、[P] 區分，這些稱 <span class="term">主要類別特徵（major category features）</span>。由於只有四類，也可用<strong>兩個</strong>特徵定義（更精簡），如 (49)：noun [N]、verb [V]、adjective [N, V]、preposition [ ]。此最小理論預測「名詞與形容詞會被某些句法歷程歸為一組、形容詞與動詞被另一些歷程歸為一組」，但介系詞變成<strong>沒有類別特徵</strong>（幾乎肯定不對）。替代方案是 <span class="term">二元系統</span> (50)：</p>
+  <table>
+    <tr><th>詞類</th><th>單價 (49)</th><th>二元 (50)</th></tr>
+    <tr><td>noun 名詞</td><td>[N]</td><td>[+N, −V]</td></tr>
+    <tr><td>verb 動詞</td><td>[V]</td><td>[−N, +V]</td></tr>
+    <tr><td>adjective 形容詞</td><td>[N, V]</td><td>[+N, +V]</td></tr>
+    <tr><td>preposition 介系詞</td><td>[ ]</td><td>[−N, −V]</td></tr>
+  </table>
+  <p>本書<strong>不細究</strong>哪種特徵系統正確，只採用「有四個類別特徵」這個想法。</p>
+  <h2 id="s242">2.4.2 詞的內容（詞庫與語意特徵）</h2>
+  <span class="pgmark">書頁 36</span>
+  <p>到目前為止都沒明確界定何謂「<strong>詞</strong>」——這其實很難。書寫慣例（頁面上的詞界）不適用於所有文化，且慣例會隨時間變動（梵文古文本完全不標詞界；英語在 can not / cannot 之間搖擺）。本書採取的立場：<strong>關鍵是句法特徵</strong>；各語言對「如何把句法特徵組合成更複雜結構」做出不同選擇，這些結構的通稱是 <span class="term">詞彙項（lexical items）</span>。</p>
+  <span class="pgmark">書頁 37</span>
+  <p>不同語言的詞彙項不僅在發音上不同，也在<strong>基本特徵組合</strong>上不同——這對意義也成立。因此不同語言<strong>沒有必要</strong>用詞涵蓋相同的語意概念或具相同句法特徵。以顏色詞為例：蘇格蘭蓋爾語用同一詞 <em>gorm</em> 指天空與草地。其顏色系統不對應英語的光譜切分：ruadh 與 dearg 都指紅，但 ruadh 不能是亮的、dearg 不能是暗的；glas 約等於「灰」（石頭的顏色）但也可指英語的淺綠；gorm 或 glas 可指綠色物，但僅限自然物，人工染綠則用 uaine。可見相關的是「亮/暗、人造/自然、深/淺」等屬性。這些<strong>編碼這類區分的特徵稱 <span class="term">語意特徵（semantic features）</span></strong>。</p>
+  <div class="concept"><h4>原子與分子的類比：普遍特徵 vs 語言特有的詞彙項</h4>
+  <p>語意特徵<strong>可能是普遍的</strong>（人人共有），但不同語言以<strong>不同方式組合</strong>它們，以反映各文化重要的器物與概念。文化變異不應被過度強調：人類共享的認知與生理限制使大量感知與思維相通。可能正是心智能力的普遍面向產生了<strong>基本語意特徵</strong>，這些特徵再組合成更複雜概念，並在各語言中被 <span class="term">詞彙化（lexicalize）</span>（連上發音與句法特徵）。</p>
+  <p>至此，詞具有：<strong>形態句法特徵</strong>（[N]、[plural]…）、<strong>語意特徵</strong>、以及負責發音的 <span class="term">語音特徵（phonological features）</span>。一個<strong>詞彙項</strong>＝語音特徵＋語意特徵＋形態句法特徵的集合。語音特徵也被假設為普遍集中的一部分。各語言指定自己的 <span class="term">詞庫（lexicon）</span>（其詞彙項集合），兒童的任務是依其所聽所見<strong>內化</strong>這個詞庫。</p></div>
+  <span class="pgmark">書頁 38</span>
+  <p><strong>句法的自主性（autonomy of syntax）。</strong>沒有任何規定強迫一個詞同時具備三類特徵——有些 <span class="term">句法形符</span> 沒有語音特徵，其發音完全由介面規則「拼出」句法特徵而定。關鍵問題：句法能否「看見」語音與語意特徵？<strong>標準觀點是不能</strong>——句法只能存取<strong>形態句法特徵</strong>。</p>
+  <p><strong>語音側</strong>的支持較明確：找不到「在高母音的詞之間」或「首音節鼻音化的詞之間」成立的句法關係。雖然句法關係可有語音效應——例如威爾斯語在介系詞 yn「在」與 fy「我的」之後使首輔音<strong>鼻音化</strong>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(51)</span> Dolgellau ~ yn Nolgellau</span>
+      <span class="gloss">Dolgellau ~ in Dolgellau　「在 Dolgellau（地名）」</span></div>
+    <div class="row"><span class="sent"><span class="num">(52)</span> pen ~ fy mhen</span>
+      <span class="gloss">head ~ my head</span>
+      <span class="ana">但找不到「兩詞因都有鼻音化倒數第二音節而建立某句法關係」的情形。句法<strong>不關心語音在做什麼</strong>（雖可指揮語音必須做什麼）→ 句法看不見語音特徵。</span></div>
+  </div>
+  <span class="pgmark">書頁 39</span>
+  <p><strong>語意側</strong>的論證較難，但 Adger 主張：句法存取的仍是<strong>句法特徵</strong>，而非語意特徵。scissors 語意上是單一物件，卻觸發<strong>複數</strong>一致：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(53)</span> The scissors are/<span class="ung">*</span>is lost.</span>
+      <span class="ana">一致看的是句法特徵 [plural]，不是「所指是否語意上為複數」。</span></div>
+  </div>
+  <p>古典希臘語：<strong>中性名詞</strong>（無論形態單複數）一律觸發<strong>動詞單數</strong>一致、卻觸發<strong>形容詞複數</strong>一致：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(54)</span> kala en ta sphagia</span>
+      <span class="gloss">good-[N.PL] be-[PAST.SG] the sacrifice-[N.PL]　「那些祭品是好的。」</span></div>
+  </div>
+  <span class="pgmark">書頁 39–41</span>
+  <p>最強證據來自 <span class="term">語法性別（grammatical gender）</span>——詞被指派的性別與其所指<strong>無明顯語意關係</strong>。蘇格蘭蓋爾語 boireannach「女人」在語法上是<strong>陽性</strong>。蓋爾語形容詞後置時與名詞性別一致：陰性名詞使形容詞首輔音變化（稱 <span class="term">軟音化 lenition</span>，m→mh、b→bh），陽性不變：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(55)</span> an duine mor breagha</span>
+      <span class="gloss">the man big handsome　「那個高大英俊的男人」（陽性，不軟音化）</span></div>
+    <div class="row"><span class="sent"><span class="num">(56)</span> a&rsquo; chaileag mhor bhreagha</span>
+      <span class="gloss">the girl big handsome　「那個高大美麗的女孩」（陰性，軟音化）</span></div>
+    <div class="row"><span class="sent"><span class="num">(57)</span> am boireannach mor breagha</span>
+      <span class="gloss">the woman big handsome　「那個高大美麗的女人」（boireannach 走陽性，不軟音化）</span></div>
+    <div class="row"><span class="sent"><span class="num">(58)</span> <span class="ung">*</span> am boireannach mhor bhreagha</span>
+      <span class="gloss">the woman big handsome（誤用陰性軟音化）</span></div>
+    <div class="row"><span class="sent"><span class="num">(59)</span> Thanig am boireannach mor agus shuidh i sios.</span>
+      <span class="gloss">arrive-[PAST] the woman big and sat she down　「那女人到了，然後她坐下。」</span>
+      <span class="ana">代名詞用<strong>陰性</strong> i「她」（不能用陽性 e）——因為代名詞指涉是<strong>語意</strong>的，挑出真實的女性。但形容詞一致卻走<strong>陽性</strong>。結論：boireannach 同時有<strong>句法特徵 [masculine]</strong> 與<strong>語意特徵 [feminine]</strong>；一致存取句法特徵，代名詞指涉存取語意特徵 → 一致是存取<strong>句法（非語意）特徵</strong>的句法歷程。</span></div>
+  </div>
+  <p>現代荷蘭語同型例：meisje「女孩」是<strong>中性</strong>，搭配中性冠詞、觸發關係代名詞中性一致；但回指時須用<strong>陰性</strong>代名詞：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(60)</span> De man die het boek leest</span>
+      <span class="gloss">the man that-[MASC] the book read-[PRES]　「讀那本書的男人」</span></div>
+    <div class="row"><span class="sent"><span class="num">(61)</span> Het meisje dat/<span class="ung">*</span>die het boek leest</span>
+      <span class="gloss">the girl that-[NEUT]/*that-[MASC] the book read-[PRES]　「讀那本書的女孩」</span></div>
+    <div class="row"><span class="sent"><span class="num">(62)</span> Het meisje zei dat ze het boek leest</span>
+      <span class="gloss">the girl say-[PRES] that-[NEUT] she-[FEM] the book read-[PRES]　「女孩說她讀那本書。」</span></div>
+    <div class="row"><span class="sent"><span class="num">(63)</span> <span class="ung">*</span> Het meisje zei dat het het boek leest</span>
+      <span class="gloss">the girl say that-[NEUT] it-[NEUT] the book read　（誤用中性代名詞回指）</span>
+      <span class="ana">關係代名詞與冠詞走<strong>中性</strong>（句法），回指代名詞卻須<strong>陰性</strong>（語意）→ 再次證明：一致敏感於<strong>句法</strong>而非語意特徵。<strong>結論：句法關係（如一致）存取句法特徵，不存取語音或純語意特徵。</strong>有些句法特徵對詮釋有透明效應，有些則無。</span></div>
+  </div>
+  <h2 id="s243">2.4.3 更多次要特徵</h2>
+  <h3 id="phi">φ-特徵（人稱・數・性）</h3>
+  <span class="pgmark">書頁 42</span>
+  <p>看動詞 be 的變化表（一組形式稱 <span class="term">詞形變化表 / 範式（paradigm）</span>）：</p>
+  <table>
+    <tr><th></th><th>Present 現在</th><th>Past 過去</th></tr>
+    <tr><td>1sg / 1pl</td><td>I am / we are</td><td>I was / we were</td></tr>
+    <tr><td>2sg / 2pl</td><td>you are / you are</td><td>you were / you were</td></tr>
+    <tr><td>3sg / 3pl</td><td>he/she/it is / they are</td><td>was / were</td></tr>
+    <tr><td>Imperative</td><td colspan="2">be</td></tr>
+  </table>
+  <p>(64) 表中 we、you、they 與複數名詞同形，區分它們的是 [plural]。注意：you 帶 [plural] <strong>不必</strong>指多於一個實體 → 形態句法特徵<strong>不一定</strong>有可預測的語意，再次印證「特徵的語意不被句法歷程存取」。</p>
+  <span class="pgmark">書頁 43</span>
+  <p>現在式還區分 I 與其他非複數形 → 引入與「誰在說話」相關的 <span class="term">人稱（person）</span> 特徵，傳統設三個：[first]/[second]/[third]（寫作 1/2/3）。但 (65) 三人稱特徵<strong>過度自由</strong>：若允許共現，會預期 [1]、[2]、[3]、[1,2]、[1,3]、[2,3]、[1,2,3]、[ ] 等可能；即使排除空束，仍有<strong>七</strong>種，英語卻只有三種。</p>
+  <p>更精簡的做法 (66)：只設 <strong>[1] 與 [2]</strong> 兩個特徵，<strong>第三人稱＝[ ]</strong>（既非說話者亦非受話者）。這也讓人稱系統與數系統有別：人稱可<strong>不指定</strong>，數則必須指定（靠補預設 [singular] 的規則）。如此預測<strong>四</strong>種可能（優於八），但仍允許 [1, 2] 這個束——有證據嗎？</p>
+  <span class="pgmark">書頁 44</span>
+  <p><strong>有！「第四人稱」。</strong>許多語言（北美 Dakota、非洲 Marghi、澳洲 Ngandi、馬來-玻里尼西亞 Fijian）有 <span class="term">包含式（inclusive）</span> 與 <span class="term">排除式（exclusive）</span> 代名詞之分：</p>
+  <ul class="plain">
+    <li><strong>包含式</strong>＝說話者＋其群體＋<strong>受話者</strong>（如「我們大家去看電影吧」）→ 分析為 <strong>[1, 2, plural]</strong>。</li>
+    <li><strong>排除式</strong>＝說話者＋其群體，<strong>但不含受話者</strong>（如「我們都要去，但你不去」）→ 分析為 <strong>[1, plural]</strong>。</li>
+  </ul>
+  <p>Chinook 語（Boas 1911）同時區分包含/排除與單／雙／複（(67) 全人稱-數範式，此處略去性別）。這大概是語言在人稱-數區分上最複雜的程度（Bouma Fijian 另有 <span class="term">少數（paucal）</span>）。包含/排除之分是「最小系統」的有力經驗支持；且<strong>找不到</strong>人稱區分超過四種的語言 → 三人稱特徵分析會 <span class="term">過度生成（overgenerate）</span>，最小系統<strong>觀察上更充分</strong>。</p>
+  <p>關於 she/he/it：它們觸發相同一致形式，但由<strong>性別</strong>區分。英語<strong>沒有</strong>明確指涉性別的句法規則，故假設英語的性別<strong>只是語意特徵</strong>。</p>
+  <div class="key"><b>φ-特徵（Phi-features, phi-features）：</b><strong>人稱、數、性</strong>三者合稱 φ-特徵。φ-特徵看來是<strong>可解釋的</strong>，並由語意與形態事實共同論證。一致關係確保主語上的<strong>某個 φ-特徵子集</strong>與動詞上的相符。</div>
+
+  <h3 id="case">格特徵（Case）</h3>
+  <span class="pgmark">書頁 45</span>
+  <p>代名詞也會因「一致以外的句法關係」而變形。him (68) 與 he (69) 詮釋相同，差別在 <span class="term">格（case）</span>；且特定格形受限於特定位置，不能對調：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(68)</span> We all thought him to be unhappy.</span></div>
+    <div class="row"><span class="sent"><span class="num">(69)</span> We all thought he was unhappy.</span></div>
+    <div class="row"><span class="sent"><span class="num">(70)</span> <span class="ung">*</span> We all thought he to be unhappy.</span></div>
+    <div class="row"><span class="sent"><span class="num">(71)</span> <span class="ung">*</span> We all thought him was unhappy.</span>
+      <span class="ana">英語格系統<strong>很貧乏</strong>：只在代名詞上完整區分，至多三個格形。</span></div>
+  </div>
+  <p>許多語言對所有名詞標格。古典拉丁語可<strong>不改詞序、只改格</strong>就改變意義：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(72)</span> Puer hominem vidit</span>
+      <span class="gloss">boy-[NOM] man-[ACC] saw　「那男孩看見那男人。」</span></div>
+    <div class="row"><span class="sent"><span class="num">(73)</span> Puerum homo vidit</span>
+      <span class="gloss">boy-[ACC] man-[NOM] saw　「那男人看見那男孩。」</span>
+      <span class="ana">改格改變語意，似乎暗示格是<strong>可解釋</strong>的（決定語意角色）。但這與英語例矛盾——英語 him/he 改格時所指<strong>語意角色不變</strong>（被指者都在「不快樂」）。後續章節會說明：語意角色取決於格以外的句法面向。故本書暫定：<strong>格的功能純屬句法，是不可解釋特徵（uninterpretable feature）</strong>。</span></div>
+  </div>
+  <span class="pgmark">書頁 46</span>
+  <p>俄語顯示句法結構如何影響格：六格（主格/賓格/屬格/與格/方位格/工具格）；某些動詞強制賓語的格。「讀」要求賓語賓格 (74)，但句子<strong>否定</strong>時賓語改為<strong>屬格</strong> (75)：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(74)</span> Ivan chital etu knigu</span>
+      <span class="gloss">Ivan read-[PAST] this-[ACC] book-[ACC]　「Ivan 讀了這本書。」</span></div>
+    <div class="row"><span class="sent"><span class="num">(75)</span> Ivan ne chital etoj knigi</span>
+      <span class="gloss">Ivan not read-[PAST] this-[GEN] book-[GEN]　「Ivan 沒讀這本書。」</span>
+      <span class="ana">格名稱沿用傳統文法、當標籤記即可。英語三格：<strong>主格 nominative</strong>、<strong>賓格 accusative</strong>、<strong>屬格 genitive</strong>。</span></div>
+  </div>
+  <p>(76) 英語主格/賓格代名詞表：I/me、we/us、he/him、she/her、it/it、you/you（you 不變）、they/them。可設特徵 [nom]、[acc]：I=[1, singular, nom]、me=[1, singular, acc]。更準確說，是介面規則把 [1, singular, nom] 念成 I、把 [1, singular, acc] 念成 me。由於代名詞發音無規律，假設它們<strong>沒有自己的語音特徵</strong>，發音全由介面規則決定。</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(77)</span> Pronounce a pronoun bearing [2] as <i>you</i>, irrespective of any other features.（帶 [2] 的代名詞一律念 you）</span></div>
+  </div>
+  <p>第三格<strong>屬格</strong>標於表所有的代名詞 (78)：my/our/your/his/her/its/their book。非代名詞所有者也標屬格：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(79)</span> The girl&rsquo;s book</span></div>
+    <div class="row"><span class="sent"><span class="num">(80)</span> The girls&rsquo; book</span>
+      <span class="ana">&rsquo;s 表「女孩是書的所有者」；單複數在書寫上有別、口語上（複數以 s 結尾者）無別。屬格在第 7 章名詞結構中詳論。</span></div>
+  </div>
+  <h3 id="verbal">動詞特徵（時・貌・分詞・不定式）</h3>
+  <span class="pgmark">書頁 47</span>
+  <p>時態特徵 <strong>[past]</strong>：形態上加 -(e)d（kick~kicked、push~pushed），或母音變化（sing~sang、run~ran），或兩者兼有（sleep~slept），或替補（am~was、go~went）。語意上 [past] 大致表「事件時間在說話時間<strong>之前</strong>」。一致只在<strong>現在式</strong>有形態信號，過去式沒有：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(81)</span> a. The bears snuffled.　b. <span class="ung">*</span> The bear snuffleds.</span>
+      <span class="ana">過去式 snuffled 不隨主語單複數再加一致詞綴。</span></div>
+  </div>
+  <p>英語<strong>沒有</strong>特殊形態可論證<strong>未來時態</strong>——未來都靠<span class="term">情態助動詞（modal auxiliary）</span> will (82) 或 going to (83) 表達：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(82)</span> Milena will make carbonara.</span></div>
+    <div class="row"><span class="sent"><span class="num">(83)</span> Richard is going to chop some wood.</span>
+      <span class="ana">故英語時態只是<strong>二元對立</strong>：只有 [past]，現在式為其缺席。看似現在/未來者只是「非過去 non-past」形（(82)(83) 形態上是現在式，與 would、was going to 等形態過去者對立）。</span></div>
+  </div>
+  <span class="pgmark">書頁 48–49</span>
+  <p>蓋爾語：有形態過去、有未來形、但除助動詞 bidh「be」外<strong>無現在式</strong>——同樣是<strong>過去 ~ 非過去</strong>二分，差別在「缺過去特徵」被語意規則詮釋為「未來」（英語則多用<span class="term">迂迴 periphrastic</span> 表達）：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(84)</span> Dh&rsquo;fhag mi e</span>
+      <span class="gloss">[PAST]-leave I him　「我離開了他。」</span></div>
+    <div class="row"><span class="sent"><span class="num">(85)</span> Fagaidh mi e</span>
+      <span class="gloss">leave-[FUT] I him　「我會離開他。」</span></div>
+    <div class="row"><span class="sent"><span class="num">(86)</span> Leughaidh mi dain</span>
+      <span class="gloss">read-[FUT] I poems　「我讀詩。」（非過去形可表慣常通則）</span></div>
+  </div>
+  <p>現代愛爾蘭語則<strong>三分</strong>過去/現在/未來，需至少 [past]、[future] 兩特徵（現在式對兩者皆不指定）；另有第四個簡單時態 <span class="term">未完成式（imperfect）</span>（過去慣常/反覆），可暫試分析為 <strong>[future, past]</strong>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(87)</span> togann se</span>
+      <span class="gloss">lift-[PRES.3] he　「他舉起。」</span></div>
+    <div class="row"><span class="sent"><span class="num">(88)</span> thog se</span>
+      <span class="gloss">lift-[PAST.3] he　「他舉起了。」</span></div>
+    <div class="row"><span class="sent"><span class="num">(89)</span> togfaidh se</span>
+      <span class="gloss">lift-[FUT.3] he　「他會舉起。」</span></div>
+    <div class="row"><span class="sent"><span class="num">(90)</span> thogadh se</span>
+      <span class="gloss">lift-[IMP.3] he　「他以前常舉起。」（未完成式＝[future, past]？）</span></div>
+  </div>
+  <span class="pgmark">書頁 50</span>
+  <p><strong>分詞（participles）</strong>分兩類：一類加 -ing；另一類較異質，加 -en/-ed 或母音變化。be 的形式最豐富，除現在/過去外另有三形 (91) be, being, been（後兩者為分詞）。分詞出現於時態未直接標在該動詞時（句中無時態，或時態由<span class="term">助動詞（auxiliary verb）</span>承載；第 5 章詳論）：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(92)</span> He has been happy.</span></div>
+    <div class="row"><span class="sent"><span class="num">(93)</span> I am being whipped.</span>
+      <span class="ana">-ing ＝<span class="term">現在分詞</span>，接 be 表動作<strong>進行/持續</strong>；-en/-ed/母音變化＝<span class="term">過去分詞</span>，多接 have 表動作<strong>完成</strong>。進行 vs 完成的語意區分屬 <span class="term">貌（aspect）</span>。設特徵 <strong>[part]</strong>：現在分詞 [V, part]、過去分詞 [V, past, part]。（第 5 章將以「一般屈折特徵 inflectional feature」統合時態、分詞、一致。）</span></div>
+  </div>
+  <p>其他語言的分詞可顯示一致。Friulian（義大利語方言）分詞與其後（賓語）名詞在性與數上一致：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(94)</span> Piero al a mangiats i pirus</span>
+      <span class="gloss">Piero he have-[PRES.3.SG.MASC] eat-[MASC.PL.PART] the pear-[MASC.PL]　「Piero 吃了那些梨。」</span></div>
+    <div class="row"><span class="sent"><span class="num">(95)</span> Maria e a mangiadis lis cjarameles</span>
+      <span class="gloss">Maria she have-[PRES.3.SG.FEM] eat-[FEM.PL.PART] the sweet-[FEM.PL]　「Maria 吃了那些糖。」</span></div>
+  </div>
+  <p>最後是<strong>原形（bare verb）</strong>，有時稱 <span class="term">不定式（infinitive）</span>，一般不標一致（歐洲葡語的不定式例外）。設特徵 <strong>[inf]</strong>。法語不定式依動詞類有不同詞尾：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(96)</span> I am to eat macaroni.</span></div>
+    <div class="row"><span class="sent"><span class="num">(97)</span> I want to eat macaroni.</span></div>
+    <div class="row"><span class="sent"><span class="num">(98)</span> I must eat macaroni.</span></div>
+    <div class="row"><span class="sent"><span class="num">(99)</span> a. Je pars（leave-[1.SG.PRES]）　b. partir（leave-[INF]）</span></div>
+    <div class="row"><span class="sent"><span class="num">(100)</span> a. Je mange（eat-[1.SG.PRES]）　b. manger（eat-[INF]）</span>
+      <span class="ana">不定式的句法在第 8 章詳論。</span></div>
+  </div>
+
+  <h2 id="s25">2.5 本章摘要</h2>
+  <span class="pgmark">書頁 51–53</span>
+  <p>本章涵蓋了與英語核心句法相關的許多（非全部）特徵，並以<strong>形態形式差異</strong>與<strong>語意詮釋差異</strong>為論證基礎。重要特徵整理如下：</p>
+  <table>
+    <tr><th>特徵種類</th><th>特徵</th><th>備註</th></tr>
+    <tr><td>時態 tense</td><td>[past]</td><td>愛爾蘭語還需 [future]</td></tr>
+    <tr><td>數 number</td><td>[singular] [plural]</td><td>[singular, plural] 構成雙數</td></tr>
+    <tr><td>人稱 person</td><td>[1] [2]</td><td>[1, 2] 給出「第四人稱」（包含式）</td></tr>
+    <tr><td>性 gender</td><td>[masc] [fem]</td><td>不同語言可能需其他</td></tr>
+    <tr><td>格 case</td><td>[nom] [acc] [gen]</td><td>可能還需其他</td></tr>
+    <tr><td>類別 category</td><td>[N] [V] [A] [P]</td><td>或可化約為僅 [N]、[V]</td></tr>
+    <tr><td>其他 others</td><td>[part] [inf]</td><td>出現在動詞上</td></tr>
+  </table>
+  <p>這些特徵與其他特徵<strong>捆綁</strong>成詞彙項：trees 帶語意特徵（僅語意規則存取）、（形態-）語音特徵（僅語音/形態規則存取）、句法特徵 [N]、[plural]、[acc]（被句法運算存取，產生我們識別為文法的詞語模式）。句法特徵也可被<strong>形態語音規則</strong>存取（如威爾斯語鼻音化），以及被<strong>語意詮釋規則</strong>存取——後者即 <span class="term">可解釋特徵</span>（數、人稱、性）。</p>
+  <div class="concept"><h4>可解釋 vs 不可解釋：本章的最終定調</h4>
+  <p>數與性<strong>可解釋與否視語言而定</strong>（古希臘、蘇格蘭蓋爾語、荷蘭語的例子）：蓋爾語有些詞的句法性別特徵與其語意性別<strong>不同</strong>（boireannach 句法陽性、語意陰性）→ 該句法性別特徵是<strong>不可解釋</strong>的。最清楚的不可解釋特徵是<strong>主格/賓格</strong>：它只規範詞的句法位置，對語意一無所述。</p>
+  <p><strong>註解（gloss）vs 特徵：</strong>註解是<strong>非正式</strong>的文法描述，不假裝是任何理論，只為幫助讀者；特徵則是<strong>理論系統</strong>的元素，須簡單、最小、一致。因此特徵指派與註解之間出現差異是<strong>正常的</strong>。</p></div>
+  <h2 id="sex">習題（Exercises）</h2>
+  <span class="pgmark">書頁 53–60</span>
+  <p>本章三組習題旨在訓練<strong>句法論證</strong>，環環相扣。</p>
+  <h3 id="ex1">習題 1：反身詞與 φ-特徵</h3>
+  <p>反身代名詞（myself…themselves）＝代名詞＋self。在簡單句中分布受限，且須與句中另一表達 <span class="term">共指（coreferential）</span>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(1)</span> <span class="ung">*</span> I kicked yourself.</span></div>
+    <div class="row"><span class="sent"><span class="num">(2)</span> <span class="ung">*</span> He kicked yourself.</span></div>
+    <div class="row"><span class="sent"><span class="num">(3)</span> You kicked yourself.</span></div>
+    <div class="row"><span class="sent"><span class="num">(4)</span> Anson thought that he had bought the paint stripper.</span></div>
+    <div class="row"><span class="sent"><span class="num">(5)</span> I asked Anson if he was happy.</span></div>
+    <div class="row"><span class="sent"><span class="num">(6)</span> The boy thought she was happy.</span>
+      <span class="ana">(6) she 不與 the boy 共指——因共指要求<strong>φ-特徵相符</strong>。</span></div>
+  </div>
+  <div class="key"><b>共指假設 (7)：</b>兩個表達要共指，必須帶<strong>相同的 φ-特徵</strong>。<br>
+  <b>反身詞概括（初稿）(11)：</b>反身代名詞必須與句中另一表達共指（因而具相同 φ-特徵）。</div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(8)</span> He kicked himself.　<span class="num">(9)</span> We kicked ourselves.　<span class="num">(10)</span> They kicked themselves.</span></div>
+    <div class="row"><span class="sent"><span class="num">(12)</span> You kicked yourselves.　<span class="num">(13)</span> <span class="ung">*</span>We kicked myself.　<span class="num">(14)</span> <span class="ung">*</span>They kicked himself.</span></div>
+    <div class="row"><span class="sent"><span class="num">(15)</span> <span class="ung">*</span>He kicked herself.　<span class="num">(16)</span> <span class="ung">*</span>She kicked itself.</span>
+      <span class="ana">(13)(14) 違反數一致、(15)(16) 違反性一致 → 印證共指須 φ-特徵相符（人稱、數、性）。</span></div>
+  </div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(17)</span> <span class="ung">*</span> Myself saw me.　<span class="num">(18)</span> <span class="ung">*</span> Himself saw him.</span></div>
+    <div class="row"><span class="sent"><span class="num">(19)</span> <span class="ung">*</span> I thought he liked myself.　<span class="num">(20)</span> <span class="ung">*</span> You said she liked yourself.</span>
+      <span class="ana">(17)(18) φ-特徵相符卻仍不合法 → 概括不足，須再考慮<strong>詞序</strong>或反身詞內代名詞的<strong>格</strong>。Part F 結論：反身詞分布不只由 φ-特徵決定，<strong>詞序、格</strong>等句法面向也參與——句法問題的解答鮮少侷限於文法的單一部分。</span></div>
+  </div>
+  <h3 id="ex2">習題 2：祈使句</h3>
+  <p>祈使句 (1) Close the door! (2) Eat dirt! (3) Know yourself! 似乎<strong>缺少主語</strong>。兩假設：<strong>A</strong>＝有主語但不發音；<strong>B</strong>＝根本沒有主語。</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(6)</span> Keep yourself clean!　<span class="num">(7)</span> Look after yourself!</span></div>
+    <div class="row"><span class="sent"><span class="num">(8)</span> <span class="ung">*</span> Keep myself clean!　<span class="num">(9)</span> <span class="ung">*</span> Look after herself!</span>
+      <span class="ana">祈使句只容許<strong>第二人稱反身詞</strong> → 依反身詞概括，須有一個帶第二人稱 φ-特徵的<strong>不發音主語</strong>，支持假設 A。Grammar B 須額外加「祈使句只准第二人稱反身詞」的假設才能涵蓋。</span></div>
+  </div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(10)</span> Frieda closed the door, didn't she?　<span class="num">(11)</span> I can come, can't I?　<span class="num">(12)</span> You won't be there, will you?</span></div>
+    <div class="row"><span class="sent"><span class="num">(13)</span> Close the door, won't you!　<span class="num">(14)</span> <span class="ung">*</span> Close the door, won't he!</span>
+      <span class="ana"><span class="term">附加問句（tag-question）</span>的尾標代名詞須與主語同 φ-特徵。(13) 用 you、(14) 用 he 不合法 → 祈使句的（不發音）主語是<strong>第二人稱</strong>，支持 Grammar A。</span></div>
+  </div>
+  <h3 id="ex3">習題 3：代名詞與共指</h3>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(1)</span> <span class="ung">*</span>I kicked me.　<span class="num">(2)</span> I kicked myself.　<span class="num">(3)</span> <span class="ung">*</span>You kicked you.　<span class="num">(4)</span> You kicked yourself.</span></div>
+    <div class="row"><span class="sent"><span class="num">(5)</span> <span class="ung">*</span>We kicked us.　<span class="num">(6)</span> We kicked ourselves.</span></div>
+    <div class="row"><span class="sent"><span class="num">(8)</span> He kicked him.　<span class="num">(9)</span> They kicked them.　<span class="num">(10)</span> She kicked her.</span>
+      <span class="ana"><span class="term">代名詞概括 (7)：</span>代名詞不能與另一代名詞共指。故 (8)–(10) 中 him/them/her <strong>必須</strong>指別人（與主語不共指）。</span></div>
+  </div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(11)</span> Kick me!　<span class="num">(12)</span> Kick them!　<span class="num">(13)</span> <span class="ung">*</span> Kick you!</span>
+      <span class="ana">在 Grammar A（祈使句有第二人稱不發音主語）中，(13) *Kick you! 自動被代名詞概括排除（you 與第二人稱主語共指）。Grammar B 則須額外修補。最終結論：<strong>Grammar A 更佳</strong>，因它用<strong>獨立已有</strong>的代名詞概括就解釋了資料，無須特別增補假設。</span></div>
+  </div>
+
+  <div class="key"><b>本章關鍵詞彙：</b>morphosyntactic feature / syntactic formative、morphological form、affixation (prefix / suffix)、suppletion、agreement、gloss、dual / paucal、interpretable vs uninterpretable features、feature system: privative / binary / attribute-value、fully valued、default feature、natural class、interface rules、stem、lexical item / lexicon、autonomy of syntax、phonological features / semantic features、category features (N / V / A / P)、major category features、grammatical gender / lenition、phi-features (person / number / gender)、inclusive vs exclusive、overgenerate、case (nom / acc / gen)、tense [past] / [future]、periphrastic、aspect、participle [part]、infinitive [inf]、modal auxiliary、paradigm、coreferential、tag-question。</div>
+
+  <div class="nav-bottom">
+    <a href="index.html">← 全書導覽</a>
+    <a href="Ch03_Constituency_Theta.html">第 3 章：成分性與題旨角色 →</a>
+  </div>
+</div><!-- /.wrap -->
+</div><!-- /#zh -->
+<div class="panel" id="en">
+<div class="wrap">
+  <p class="lead">English original of Chapter 2, condensed page by page from Adger (2003), <em>Core Syntax</em>, pp. 22-61 (OUP). Running prose is given as a substantive summary; numbered examples are quoted with their grammaticality marks.</p>
+
+  <span class="enpg">p.22</span>
+  <p><strong>2.1 Introduction.</strong> This chapter asks what it is that syntax regulates, such that the facts about form and order from Chapter 1 arise. It introduces the notion of the <strong>morphosyntactic feature</strong> and shows how syntacticians motivate such features. Features play a role in syntax analogous to <strong>atoms</strong> in classical physics: they are the basic building blocks, and the ways they combine and relate give rise to observed phenomena. <strong>2.2 Introducing features.</strong> What are syntactic <strong>formatives</strong>? The obvious answer is "words", but that is not quite right. Recall agreement:</p>
+  <blockquote><span class="num">(1)</span> The pig grunts.<br><span class="num">(2)</span> The pigs grunt.<br><span class="num">(3)</span> *The pig grunt.<br><span class="num">(4)</span> *The pigs grunts.</blockquote>
+
+  <span class="enpg">p.23</span>
+  <p>The same pattern holds with completely different words, so the relevant thing is not the actual word but a <strong>property</strong> of words. Perhaps it is the word shape, its <strong>morphological form</strong> (whether it ends in -s)? But that fails too: in (9)-(16) the second word changes by a vowel change (man~men) or by -ren (child~children), yet the pattern is identical. Changing a form by adding to the end/start is <strong>affixation</strong>; the added bits are <strong>affixes</strong> (<strong>prefixes</strong> / <strong>suffixes</strong>); man~men is a vowel change (cf. foot~feet, mouse~mice).</p>
+  <blockquote><span class="num">(5)</span> The bear snuffles. <span class="num">(6)</span> The bears snuffle. <span class="num">(7)</span> *The bear snuffle. <span class="num">(8)</span> *The bears snuffles.<br><span class="num">(9)</span> The man chuckles. <span class="num">(10)</span> The men chuckle. <span class="num">(11)</span> *The man chuckle. <span class="num">(12)</span> *The men chuckles.<br><span class="num">(13)</span> The child wails. <span class="num">(14)</span> The children wail. <span class="num">(15)</span> *The child wail. <span class="num">(16)</span> *The children wails.</blockquote>
+
+  <span class="enpg">p.24</span>
+  <p>When a whole word changes unrecognizably this is <strong>suppletion</strong> (Scottish Gaelic <em>bean</em>~<em>mnaoi</em> "wife"; Tlapanec child terms). The morphological forms differ wildly across the three sets, yet the pattern is the same, and across languages agreement uses suffixation (some), prefixation (Kiowa), or both (Georgian). So agreement cannot relate word shapes directly; it relates something more abstract: a <strong>morphosyntactic feature</strong> (a "feature"). A feature is a property of words the syntax is <strong>sensitive to</strong> and which may determine a word shape; features link sound and meaning. <em>Sheep</em> has no special plural form but still triggers agreement (17)-(18). The <strong>plural</strong> feature affects meaning too: features with semantic effect are <strong>interpretable features</strong> (opposite: <strong>uninterpretable</strong>).</p>
+  <blockquote><span class="num">(17)</span> The sheep bleat.<br><span class="num">(18)</span> The sheep bleats.</blockquote>
+
+  <span class="enpg">p.25</span>
+  <p>In Arabic, verb and subject agree in <strong>gender</strong> as well as number. The example layout introduces the <strong>gloss</strong> convention: line 1 = example, line 2 = gloss, line 3 = translation. Classical Arabic also has a <strong>dual</strong> (a pair). The ungrammatical (21)-(22) show the first and second words are in an <strong>agreement</strong> relation, regulating dependencies systematically across very different languages. <strong>2.3 What are features?</strong> A feature is a property of a word; it usually (not always, cf. <em>scissors</em>) correlates with a semantic difference, and may also affect a word syntax (its possible positions).</p>
+  <blockquote><span class="num">(19)</span> Al-awlaad-uu qadim-uu  "The boys came." [MASC.PL / MASC.PL]<br><span class="num">(20)</span> Al-bint-aani qadim-ataa  "The two girls came." [FEM.DUAL / FEM.DUAL]<br><span class="num">(21)</span> *Al-awlaad-uu qadim-ataa [MASC.PL / FEM.DUAL]<br><span class="num">(22)</span> *Al-bint-aani qadim-uu [FEM.DUAL / MASC.PL]</blockquote>
+
+  <span class="enpg">p.26</span>
+  <p><strong>2.3.1 Feature systems.</strong> The simplest view: a feature is just a property of a word. We posit as small a feature set as possible. For English singular/plural we could use two features [singular],[plural], but this is not as simple as it could be, and wrongly permits *blurg [plural, singular] (24).</p>
+  <blockquote><span class="num">(23)</span> a. men [plural]  b. man [singular]  c. cat [singular]  d. cats [plural]  e. sheep [singular]  f. sheep [plural]<br><span class="num">(24)</span> *blurg [plural, singular]</blockquote>
+
+  <span class="enpg">p.27</span>
+  <p>A simpler analysis uses a single feature [plural]: present = plural, absent = singular (25). This works for English, but Arabic has a three-way contrast (singular/dual/plural), which one feature cannot capture. Two features can: [singular], [plural], [singular, plural] (= dual), each with its own form and interpretation.</p>
+  <blockquote><span class="num">(25)</span> a. men [plural]  b. man [ ]  c. cat [ ]  d. cats [plural]  e. sheep [ ]  f. sheep [plural]</blockquote>
+
+  <span class="enpg">p.28</span>
+  <p>Evidence comes from <strong>Hopi</strong>: the dual is built morphologically from singular + plural (plural noun + singular verb gives dual). But two freely-combining features predict <strong>four</strong> number values; languages only show <strong>three</strong>.</p>
+  <blockquote><span class="num">(26)</span> Pam taaqa wari  "That man ran." (singular)<br><span class="num">(27)</span> Puma ta?taq-t yu?ti  "Those men ran." (plural)<br><span class="num">(28)</span> Puma ta?taq-t wari  "Those two men ran." (dual)</blockquote>
+  <span class="enpg">p.29</span>
+  <p>One solution: languages have a <strong>default feature</strong> filled in when no number feature is specified. English specifies only [plural]; rule (29) adds default [singular] to any noun lacking a number feature. Since defaults are never added to words that already have a number feature, English gets no dual, and Arabic/Hopi surface only three of the four possibilities. A related alternative: features always have <strong>binary</strong> values [+]/[-].</p>
+  <blockquote><span class="num">(29)</span> Add [singular] to a noun which has no other number feature.<br><span class="num">(30)</span> man [+singular, -plural]<br><span class="num">(31)</span> men [-singular, +plural]</blockquote>
+
+  <span class="enpg">p.30</span>
+  <p>The binary system needs an extra constraint forcing features to be <strong>fully valued</strong> (ruling out (32) [+singular]) and one ruling out [-singular,-plural]; otherwise nine possibilities arise (33), and no language has nine numbers. A final option: features take values other than +/-, e.g. [number: singular] (34), giving a notation for the <strong>natural class</strong> of number features but making dual decomposition harder. The choice is purely <strong>empirical</strong>; the simplest is the <strong>privative</strong> system. We adopt privative features where possible, but will later treat some features as valued.</p>
+  <blockquote><span class="num">(32)</span> [+singular]<br><span class="num">(33)</span> nine bundles: [+sg,+pl] / [+sg,-pl] / [-sg,-pl] / [-sg,+pl] / [+sg] / [-sg] / [+pl] / [-pl] / [ ]<br><span class="num">(34)</span> a. [number: singular]  b. [number: plural]</blockquote>
+
+  <span class="enpg">p.31</span>
+  <p><strong>2.3.2 Interface rules.</strong> Once we know the needed features, we write <strong>interface rules</strong> mapping a feature-based syntactic structure to a morphological (then phonological) form on one side and to a semantic interpretation on the other.</p>
+  <blockquote><span class="num">(35)</span> Pronounce a noun specified with [plural] by pronouncing the noun stem and then s.<br><span class="num">(36)</span> Interpret a noun specified with [plural] as referring to a group of entities.</blockquote>
+  <p>Neither rule is correct as stated: (35) wrongly predicts *<em>mans</em>; (36) does not capture dual semantics. A <strong>stem</strong> is the basic form with no affixes. Still, the idea that morphology and semantics <strong>interpret</strong> features is powerful.</p>
+
+  <span class="enpg">p.32</span>
+  <p>A feature like [plural] <strong>mediates sound and meaning</strong>. What is the full set of features human languages use? There is no answer: there is <strong>no linguistic periodic table</strong>. Languages use features relating to cognition (location, time, measure, counting), to use (speaker, addressee, topic, given information), to social factors (authority), and to purely internal syntactic positions/relations. Some conceivable features never occur ("uttered on a full moon", "reverse the word", "delete every prime-numbered syllable"). The more <strong>restrictive</strong>, more explanatorily adequate view: a <strong>universal feature set</strong> from which the child selects. The right question is which features can be <strong>motivated</strong> in an analysis, not what the whole set we use is.</p>
+
+  <span class="enpg">p.33</span>
+  <p><strong>2.4 Motivating features.</strong> The soundest basis combines (i) relations among <strong>morphological forms</strong> and (ii) effect on <strong>semantic interpretation</strong>. Weaker bases: form without meaning; meaning without form; or neither, but a feature must be posited so a syntactic relation holds (some <strong>case</strong> features). <strong>2.4.1 Major category features.</strong> <strong>Category features</strong> separate nouns, verbs, adjectives, prepositions, etc. Semantic criteria (nouns=objects, verbs=events) are not foolproof (<em>race</em>, <em>exist</em>); morphology helps: nouns end in -tion/-al/-ment, verbs in -ise/-ize/-ate/-en.</p>
+
+  <span class="enpg">p.34</span>
+  <p>These endings are not infallible (<em>ferment</em>, <em>station</em>; <em>book</em>, <em>clear</em> give no signal), but enough words can be classed morphologically. The form of features depends on word class: nouns take -(e)s (38), verbs take -ed (39). Putting -ed on the nouns fails except <em>protested</em> (40); putting -s on verbs is fine but differs in meaning (41). <em>Protest</em> falls in either class and shifts stress (noun=1st syllable, verb=2nd). Verbs can express the <strong>[past]</strong> feature (signalled by -ed).</p>
+  <blockquote><span class="num">(38)</span> emotions, kindnesses, removals, protests<br><span class="num">(39)</span> listened, destroyed, kneaded, predicted<br><span class="num">(40)</span> *emotioned, *kindnessed, *removaled, protested<br><span class="num">(41)</span> listens, destroys, kneads, predicts</blockquote>
+
+  <span class="enpg">p.35</span>
+  <p>Whole classes are restricted as to which features occur ([past] cannot occur on nouns), show distinctive endings, and have different interpretations. So we posit <strong>[N]</strong> and <strong>[V]</strong>; (42) men [N, plural]. Adjectives have <strong>comparative</strong> -er (43) and <strong>superlative</strong> -est (45), which cannot attach to nouns (44),(46) or verbs (47); <em>protester</em> = "one who protests". Prepositions do not inflect at all (48).</p>
+  <blockquote><span class="num">(42)</span> men [N, plural]<br><span class="num">(43)</span> She is shorter, happier, cooler, older than he is.<br><span class="num">(44)</span> *emotioner, *kindnesser, *removaler<br><span class="num">(45)</span> She is the shortest, happiest, coolest, oldest of the lot!<br><span class="num">(46)</span> *emotionest, *kindnessest, *removalest, *protestest<br><span class="num">(47)</span> *listenest, *destroyest, *kneadest, *predictest<br><span class="num">(48)</span> at: *atter, through: *throughs, on: *onned, by: *byest</blockquote>
+
+  <span class="enpg">p.36</span>
+  <p>Four <strong>major category features</strong> [N],[V],[A],[P]. With two features (49): noun [N], verb [V], adjective [N,V], preposition [ ], but this leaves prepositions featureless (probably wrong). The binary alternative (50) avoids that. We abstract away from the right system and just assume four category features. <strong>2.4.2 More on the content of words.</strong> Defining "word" is hard (literacy conventions vary; Sanskrit had no word boundaries; <em>can not</em>/<em>cannot</em>). We take syntactic features as crucial; languages collocate them into <strong>lexical items</strong>.</p>
+  <blockquote><span class="num">(49)</span> a. noun [N]  b. verb [V]  c. adjective [N, V]  d. preposition [ ]<br><span class="num">(50)</span> a. noun [+N,-V]  b. verb [-N,+V]  c. adjective [+N,+V]  d. preposition [-N,-V]</blockquote>
+  <span class="enpg">p.37</span>
+  <p>Languages differ in lexical items, in pronunciation and in featural groupings, including meanings. Scottish Gaelic <em>gorm</em> covers sky and grass; <em>ruadh</em>/<em>dearg</em> both "red" (shiny vs dull); <em>glas</em> "grey"/light green; <em>uaine</em> = dyed green. The relevant features (shiny/dull, man-made/natural, dark/light) are <strong>semantic features</strong>, likely universal but grouped differently across languages/cultures.</p>
+
+  <span class="enpg">p.38</span>
+  <p>Universal mental capacities may give basic semantic features, combined and <strong>lexicalized</strong> per language. A lexical item = <strong>phonological features</strong> + semantic features + morphosyntactic features. Each language specifies its <strong>lexicon</strong>; the child internalizes it. Nothing forces a word to have all three feature types; some formatives lack phonological features and are pronounced wholly by interface rules. Crucially (<strong>autonomy of syntax</strong>): syntax accesses <strong>only morphosyntactic features</strong>, not phonological or semantic ones. The phonological case is well supported: no syntactic relation holds between, say, words with high vowels. Welsh nasalization (51)-(52) is a phonological <em>effect</em> of a syntactic relation, but syntax never gets established <em>because</em> of phonology.</p>
+  <blockquote><span class="num">(51)</span> Dolgellau ~ yn Nolgellau  "in Dolgellau"<br><span class="num">(52)</span> pen ~ fy mhen  "my head"</blockquote>
+
+  <span class="enpg">p.39</span>
+  <p>The semantic case is harder. <em>Scissors</em> is semantically singular but triggers <strong>plural</strong> agreement (53), so agreement refers to the syntactic feature [plural], not semantic number. Classical Greek neuter nouns trigger singular verb agreement but plural adjective agreement (54).</p>
+  <blockquote><span class="num">(53)</span> The scissors are/*is lost.<br><span class="num">(54)</span> kala en ta sphagia  "The sacrifices were good." [N.PL] be-[PAST.SG] [N.PL]</blockquote>
+
+  <span class="enpg">p.40</span>
+  <p><strong>Grammatical gender</strong> clinches it: gender bears no obvious semantic relation to the referent. Gaelic <em>boireannach</em> "woman" is grammatically <strong>masculine</strong>. Adjectives agree by <strong>lenition</strong> (m to mh, b to bh) with feminine, not masculine, nouns. (55) masculine man (no lenition), (56) feminine girl (lenition), (57) <em>boireannach</em> patterns masculine, (58) feminine agreement fails.</p>
+  <blockquote><span class="num">(55)</span> an duine mor breagha  "the big handsome man"<br><span class="num">(56)</span> a chaileag mhor bhreagha  "the big handsome girl"<br><span class="num">(57)</span> am boireannach mor breagha  "the big handsome woman"<br><span class="num">(58)</span> *am boireannach mhor bhreagha</blockquote>
+
+  <span class="enpg">p.40-41</span>
+  <p>Yet the pronoun referring to the woman is <strong>feminine</strong> <em>i</em> "she" (not <em>e</em> "he") (59). So <em>boireannach</em> has a syntactic feature [masculine] and a semantic feature [feminine]: agreement accesses the syntactic feature, pronominal reference the semantic one. Dutch <em>meisje</em> "girl" is <strong>neuter</strong>: neuter article and relative pronoun (60)-(61), but pronominal reference requires the <strong>feminine</strong> pronoun (62)-(63). Conclusion: syntactic relations like agreement access <strong>syntactic</strong>, not phonological or purely semantic, features.</p>
+  <blockquote><span class="num">(59)</span> Thanig am boireannach mor agus shuidh i sios.  "The woman arrived and she sat down."<br><span class="num">(60)</span> De man die het boek leest  "The man who reads the book" [MASC]<br><span class="num">(61)</span> Het meisje dat/*die het boek leest  "The girl who reads the book" [NEUT]/*[MASC]<br><span class="num">(62)</span> Het meisje zei dat ze het boek leest  "The girl says that she reads the book." [FEM]<br><span class="num">(63)</span> *Het meisje zei dat het het boek leest [NEUT]</blockquote>
+
+  <span class="enpg">p.42</span>
+  <p><strong>2.4.3 Some more minor features: Phi-features.</strong> The verb <em>be</em> (64) has the richest paradigm (a set of forms = a <strong>paradigm</strong>). <em>We, you, they</em> and plural nouns share a form, distinguished by [plural]; note <em>you</em> bears [plural] without necessarily picking out more than one entity, so a feature semantics is not predictable to syntax.</p>
+  <blockquote><span class="num">(64)</span> Present: I am / you are / he,she,it is / we,you,they are. Past: I,he,she,it was / you,we,they were. Imperative: be.</blockquote>
+
+  <span class="enpg">p.43</span>
+  <p><strong>Person</strong> relates to who is speaking: traditionally [1],[2],[3]. But three person features overgenerate. A more minimal system (Ockham) uses only <strong>[1] and [2]</strong>, with third person = [ ] (66). This distinguishes person (may be unspecified) from number (must be specified, via default [singular]). It predicts four possibilities, still allowing [1, 2].</p>
+  <blockquote><span class="num">(65)</span> I [1,sg] we [1,pl] / you [2,sg] you [2,pl] / he,she,it [3,sg] they [3,pl]<br><span class="num">(66)</span> I [1,sg] we [1,pl] / you [2,sg] you [2,pl] / he,she,it [sg] they [pl]</blockquote>
+
+  <span class="enpg">p.44</span>
+  <p>Evidence for [1,2]: a "<strong>Fourth Person</strong>" in Dakota, Marghi, Ngandi, Fijian, an <strong>inclusive</strong> pronoun (speaker + group + addressee) = [1,2,plural] vs an <strong>exclusive</strong> one (speaker + group, not addressee) = [1,plural]. Chinook (67) distinguishes inclusive/exclusive and singular/dual/plural (Bouma Fijian adds <strong>paucal</strong>). No language shows more than four person distinctions, so the three-feature system <strong>overgenerates</strong>; the minimal system is observationally more adequate. <em>She/he/it</em> differ by <strong>gender</strong>; English has no syntactic gender rule, so English gender is only semantic. Person, number, gender = <strong>phi-features</strong> (interpretable, motivated semantically and morphologically); agreement matches a subset of subject phi-features with the verb.</p>
+  <blockquote><span class="num">(67)</span> Chinook person/number paradigm: [1] naika/ntaika/ntshaika; [1,2] tchaika/lchaika; [2] maika/mtaika/mshaika; [3] achka/shtachka/taska.</blockquote>
+  <span class="enpg">p.45</span>
+  <p><strong>Case features.</strong> Pronouns vary by <strong>case</strong>: <em>him</em> (68) vs <em>he</em> (69) have the same interpretation; forms are position-restricted (70)-(71). English is impoverished (only pronouns, ~three forms). Many languages mark all nouns: Classical Latin (72)-(73) swaps case without changing word order, changing meaning.</p>
+  <blockquote><span class="num">(68)</span> We all thought him to be unhappy.<br><span class="num">(69)</span> We all thought he was unhappy.<br><span class="num">(70)</span> *We all thought he to be unhappy.<br><span class="num">(71)</span> *We all thought him was unhappy.<br><span class="num">(72)</span> Puer hominem vidit  "The boy saw the man." [NOM] [ACC]<br><span class="num">(73)</span> Puerum homo vidit  "The man saw the boy." [ACC] [NOM]</blockquote>
+
+  <span class="enpg">p.46</span>
+  <p>Although Latin case looks interpretable, English him/he keeps the same semantic role, so semantic role depends on syntax other than case (later chapter): case is purely syntactic and <strong>uninterpretable</strong>. Russian (six cases) shows syntax affecting case: <em>read</em> takes accusative object (74), but under negation the object is genitive (75). English has three: <strong>nominative</strong>, <strong>accusative</strong>, <strong>genitive</strong>. Posit [nom],[acc]; I = [1,sg,nom], me = [1,sg,acc], pronounced by interface rules (pronouns lack their own phonological features).</p>
+  <blockquote><span class="num">(74)</span> Ivan chital etu knigu  "Ivan read this book." [ACC][ACC]<br><span class="num">(75)</span> Ivan ne chital etoj knigi  "Ivan did not read this book." [GEN][GEN]<br><span class="num">(76)</span> English nom/acc pronouns: I/me, you/you, he/him, she/her, it/it; we/us, you/you, they/them.</blockquote>
+
+  <span class="enpg">p.47</span>
+  <p>Rule (77): pronounce a [2] pronoun as <em>you</em>, regardless of other features. The third case, <strong>genitive</strong>, marks possession on pronouns (78) and on non-pronominal possessors (79)-(80) (the genitive s); detailed in Chapter 7. <strong>Verbal features.</strong> The tense feature <strong>[past]</strong> is marked by -(e)d (kick~kicked), vowel change (sing~sang, run~ran), both (sleep~slept), or suppletion (am~was, go~went).</p>
+  <blockquote><span class="num">(77)</span> Pronounce a pronoun bearing [2] as <em>you</em>, irrespective of any other features.<br><span class="num">(78)</span> my/your/his,her,its/our/their book<br><span class="num">(79)</span> The girl genitive book<br><span class="num">(80)</span> The girls genitive book</blockquote>
+
+  <span class="enpg">p.48</span>
+  <p>[past] = event time before utterance time. Agreement is marked only in the present, not the past (81). English has no future morphology: future uses a <strong>modal auxiliary</strong> (82) or <em>going to</em> (83). So English tense is a <strong>binary</strong> opposition: just [past], absent in non-past forms.</p>
+  <blockquote><span class="num">(81)</span> a. The bears snuffled.  b. *The bear snuffleds.<br><span class="num">(82)</span> Milena will make carbonara.<br><span class="num">(83)</span> Richard is going to chop some wood.</blockquote>
+
+  <span class="enpg">p.48-49</span>
+  <p>Scottish Gaelic has past and a future-time form but no present (except <em>bidh</em> "be"): also a two-way past ~ non-past contrast; the difference is how semantics interprets the lack of [past] (future in Gaelic, periphrastic in English). The non-past in both can express generic habit (86).</p>
+  <blockquote><span class="num">(84)</span> Dh fhag mi e  "I left him." [PAST]<br><span class="num">(85)</span> Fagaidh mi e  "I will leave him." [FUT]<br><span class="num">(86)</span> Leughaidh mi dain  "I read poetry." [FUT, generic]</blockquote>
+
+  <span class="enpg">p.49</span>
+  <p>Modern Irish marks past ~ present ~ future morphologically, needing at least [past],[future] (present = neither). Irish also has a fourth simple tense, the <strong>imperfect</strong> (generic/habitual/iterated past), tentatively [future, past].</p>
+  <blockquote><span class="num">(87)</span> togann se  "He lifts." [PRES.3]<br><span class="num">(88)</span> thog se  "He lifted." [PAST.3]<br><span class="num">(89)</span> togfaidh se  "He will lift." [FUT.3]<br><span class="num">(90)</span> thogadh se  "He used to lift." [IMPERFECT.3]</blockquote>
+
+  <span class="enpg">p.50</span>
+  <p><strong>Participles</strong>: one class suffixes -ing; the other suffixes -en/-ed or a vowel change. <em>be</em> also has (91) be, being, been (the latter two participles), appearing when tense is not on the verb (no tense, or tense on an <strong>auxiliary</strong>; Chapter 5). -ing = <strong>present participle</strong> (after <em>be</em>, ongoing); -en etc. = <strong>past participle</strong> (after <em>have</em>, completed). Ongoing vs completed = <strong>aspect</strong>. Feature <strong>[part]</strong>: present participle [V,part], past participle [V,past,part]. Friulian participles agree in gender/number with the following object (94)-(95).</p>
+  <blockquote><span class="num">(91)</span> be, being, been<br><span class="num">(92)</span> He has been happy.<br><span class="num">(93)</span> I am being whipped.<br><span class="num">(94)</span> Piero al a mangiats i pirus  "Piero has eaten the pears." [MASC.PL.PART]<br><span class="num">(95)</span> Maria e a mangiadis lis cjarameles  "Maria has eaten the sweets." [FEM.PL.PART]</blockquote>
+
+  <span class="enpg">p.50-51</span>
+  <p>The bare verb form (sometimes the <strong>infinitive</strong>) generally does not mark agreement; feature <strong>[inf]</strong>. French infinitives have class-dependent endings (99)-(100). Infinitive syntax is in Chapter 8.</p>
+  <blockquote><span class="num">(96)</span> I am to eat macaroni.<br><span class="num">(97)</span> I want to eat macaroni.<br><span class="num">(98)</span> I must eat macaroni.<br><span class="num">(99)</span> a. Je pars [1.SG.PRES]  b. partir [INF]<br><span class="num">(100)</span> a. Je mange [1.SG.PRES]  b. manger [INF]</blockquote>
+  <span class="enpg">p.51-53</span>
+  <p><strong>2.5 Summary.</strong> We covered many (not all) features of English core syntax, motivated by morphological-form and semantic-interpretation differences. Summary table: tense [past] (+[future] for Irish); number [singular],[plural] (bundle [singular,plural] = dual); person [1],[2] ([1,2] = "Fourth" person); gender [masc],[fem]; case [nom],[acc],[gen]; category [N],[V],[A],[P] (maybe reducible to [N],[V]); others [part],[inf]. Features bundle into <strong>lexical items</strong> (semantic + (morpho)phonological + syntactic features). Syntactic features are accessed by syntax, by morphophonology (Welsh nasalization), and by semantics; the latter are <strong>interpretable features</strong> (number, person, gender). Number/gender may be interpretable or not depending on the language (Greek, Gaelic, Dutch); Gaelic <em>boireannach</em> has an <strong>uninterpretable</strong> syntactic gender that differs from its semantic gender. Nominative/accusative case is clearly uninterpretable. Finally: <strong>glosses</strong> are informal descriptions, not theory; <strong>features</strong> are theoretical (simple, minimal, consistent), so gloss/feature discrepancies are expected.</p>
+
+  <span class="enpg">p.53-60</span>
+  <p><strong>Exercises.</strong> <em>Exercise 1 (Reflexives and phi-features):</em> reflexives must be <strong>coreferential</strong> with another expression (Coreferentiality Hypothesis: coreferents share phi-features; Reflexive Generalization). Data (1)-(20) show person/number/gender matching, and that word order/case are also needed.</p>
+  <blockquote><span class="num">(1)</span> *I kicked yourself. <span class="num">(2)</span> *He kicked yourself. <span class="num">(3)</span> You kicked yourself.<br><span class="num">(7)</span> For two expressions to be coreferential, they must bear the same phi-features.<br><span class="num">(11)</span> A reflexive pronoun must be coreferential with another expression in the sentence.<br><span class="num">(13)</span> *We kicked myself. <span class="num">(14)</span> *They kicked himself. <span class="num">(15)</span> *He kicked herself. <span class="num">(16)</span> *She kicked itself.<br><span class="num">(17)</span> *Myself saw me. <span class="num">(18)</span> *Himself saw him. <span class="num">(19)</span> *I thought he liked myself. <span class="num">(20)</span> *You said she liked yourself.</blockquote>
+  <p><em>Exercise 2 (Imperatives):</em> Hypothesis A (silent subject) vs B (no subject). Reflexive data (6)-(9) and tag-questions (10)-(14) argue the silent subject is <strong>second person</strong>.</p>
+  <blockquote><span class="num">(6)</span> Keep yourself clean! <span class="num">(7)</span> Look after yourself! <span class="num">(8)</span> *Keep myself clean! <span class="num">(9)</span> *Look after herself!<br><span class="num">(13)</span> Close the door, won't you! <span class="num">(14)</span> *Close the door, won't he!</blockquote>
+  <p><em>Exercise 3 (Pronouns and coreference):</em> Pronoun Generalization, a pronoun cannot be coreferential with another pronoun (1)-(10). Imperative data (11)-(13) favour <strong>Grammar A</strong>, since *Kick you! follows automatically from the independently needed Pronoun Generalization.</p>
+  <blockquote><span class="num">(1)</span> *I kicked me. <span class="num">(2)</span> I kicked myself. <span class="num">(7)</span> A pronoun cannot be coreferential with another pronoun.<br><span class="num">(8)</span> He kicked him. <span class="num">(9)</span> They kicked them. <span class="num">(10)</span> She kicked her.<br><span class="num">(11)</span> Kick me! <span class="num">(12)</span> Kick them! <span class="num">(13)</span> *Kick you!</blockquote>
+  <p><strong>Further reading:</strong> 2.2 Chomsky &amp; Halle (1968), Matthews (1974), Spencer &amp; Zwicky (1998); 2.3 Dalrymple &amp; Kaplan (2000), Harley &amp; Ritter (2001, Hopi data), Greenberg (1966), Chomsky (1970), Anderson (1992), Halle &amp; Marantz (1993), Muysken &amp; van Riemsdijk (1986); 2.4.1 Bloomfield (1933), Chomsky (1965, 1970); 2.4.2 Corbett (1991), Ritter (1993), Chomsky (1957, autonomy of syntax); 2.4.3 Corbett (2000), Comrie (1985, 1976), Paoli (1997), Kayne (2000).</p>
+
+  <div class="nav-bottom">
+    <a href="index.html">← Index</a>
+    <a href="Ch03_Constituency_Theta.html">Ch.3 Constituency →</a>
+  </div>
+</div><!-- /.wrap -->
+</div><!-- /#en -->
+
+<a href="#top" class="back-top">↑ 回頂端</a>
+<footer>Adger, D. (2003) <em>Core Syntax</em>, Ch.2 Morphosyntactic Features（書頁 22–61）· Oxford University Press · DOI:10.1093/oso/9780199243709.003.0002</footer>
+
+<script>
+function showTab(which){
+  document.getElementById('zh').classList.toggle('active', which==='zh');
+  document.getElementById('en').classList.toggle('active', which==='en');
+  document.getElementById('tab-zh').classList.toggle('active', which==='zh');
+  document.getElementById('tab-en').classList.toggle('active', which==='en');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+</script>
+</body>
+</html>

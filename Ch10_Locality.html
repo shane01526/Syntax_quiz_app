@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch.10 局域性 Locality（逐頁逐例句詳解 + 英文對照）— Adger (2003)</title>
+<style>
+  :root{--ink:#1b1b22;--muted:#5d5d6b;--line:#e3e3ec;--bg:#faf9f6;--accent:#1f4e6b;--accent2:#1f4e6b;--chip:#e9f0f4;--card:#fff;--box:#ecf2f6;}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Noto Serif TC","Songti TC",Georgia,"Times New Roman",serif;color:var(--ink);background:var(--bg);line-height:1.9}
+  header{background:linear-gradient(135deg,#1f4e6b,#102634);color:#fff;padding:54px 24px 36px}
+  header .inner{max-width:900px;margin:0 auto}
+  header .ch{font-family:system-ui,sans-serif;font-size:.8rem;letter-spacing:2px;color:#bcd2e0}
+  header h1{margin:6px 0 4px;font-size:2rem}
+  header .en{color:#d9eaf0;font-style:italic}
+  header .pg{margin-top:10px;font-size:.85rem;color:#a9c8d8;font-family:system-ui,sans-serif}
+  nav.bc{max-width:900px;margin:0 auto;padding:14px 24px 0;font-family:system-ui,sans-serif;font-size:.85rem}
+  nav.bc a{color:var(--accent2);text-decoration:none}
+  .tabbar{max-width:900px;margin:14px auto 0;padding:0 24px;display:flex;gap:10px;font-family:system-ui,sans-serif}
+  .tab{cursor:pointer;border:1px solid var(--line);border-bottom:0;background:#edf1f4;color:#43607a;padding:11px 22px;border-radius:10px 10px 0 0;font-weight:700;font-size:.95rem;transition:.15s}
+  .tab:hover{background:#e3ebef}
+  .tab.active{background:var(--card);color:var(--accent2);box-shadow:0 -2px 6px rgba(0,0,0,.04)}
+  .panel{display:none}.panel.active{display:block}
+  .toc{max-width:900px;margin:0 auto 10px;padding:18px 24px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+  .toc h2{margin:0 0 10px;font-size:1.05rem;color:var(--accent2);border:0}
+  .toc ul{columns:2;column-gap:30px;margin:0;padding-left:18px;font-family:system-ui,sans-serif;font-size:.9rem}
+  .toc a{color:#333;text-decoration:none}.toc a:hover{color:var(--accent2)}
+  .wrap{max-width:900px;margin:0 auto;padding:10px 24px 80px}
+  h2{color:var(--accent2);border-bottom:2px solid var(--line);padding-bottom:6px;margin-top:48px;font-size:1.45rem;scroll-margin-top:14px}
+  h3{color:#102634;margin-top:34px;font-size:1.18rem;border-left:5px solid var(--accent2);padding-left:12px}
+  .pgmark{display:inline-block;font-family:system-ui,sans-serif;font-size:.72rem;font-weight:700;color:#fff;background:var(--accent2);padding:2px 10px;border-radius:12px;margin:24px 0 4px}
+  p{margin:13px 0}
+  .lead{font-size:1.05rem;background:var(--box);border-left:4px solid var(--accent2);padding:16px 20px;border-radius:0 10px 10px 0}
+  .term{font-family:system-ui,sans-serif;font-weight:700;color:var(--accent2)}
+  .en-term{font-style:italic;color:var(--muted)}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:.93rem}
+  th,td{border:1px solid var(--line);padding:8px 11px;text-align:left;vertical-align:top}
+  th{background:var(--chip);font-family:system-ui,sans-serif}
+  .ex{background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 0;margin:16px 0;overflow:hidden}
+  .ex .row{padding:9px 18px;border-bottom:1px dashed #eee}
+  .ex .row:last-child{border-bottom:0}
+  .ex .sent{font-family:"Times New Roman",serif;font-size:1.05rem}
+  .ex .num{display:inline-block;min-width:40px;color:var(--muted);font-family:system-ui,sans-serif;font-size:.85rem}
+  .ex i{color:#444}
+  .g{color:#1a7a3a;font-weight:bold}.ung{color:#b32020;font-weight:bold}.qm{color:#b88a00;font-weight:bold}
+  .gloss{display:block;margin:4px 0 0 40px;font-size:.92rem;color:#555}
+  .ana{display:block;margin:5px 0 0 40px;font-size:.92rem;color:#1d3f55;background:#eef4f8;border-radius:6px;padding:8px 12px}
+  .ana::before{content:"\25B8 \8A73\89E3\3000";color:var(--accent2);font-weight:bold;font-family:system-ui,sans-serif}
+  .concept{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:16px 0;border-top:3px solid var(--accent2)}
+  .concept h4{margin:0 0 8px;color:var(--accent2);font-family:system-ui,sans-serif;font-size:1rem}
+  .key{background:#fdf6e3;border:1px solid #e9dcae;border-radius:10px;padding:14px 18px;margin:18px 0}
+  .key b{color:#8a6d00}
+  .tree{background:#1f2933;color:#e6edf3;border-radius:10px;padding:14px 18px;margin:16px 0;font-family:"Consolas","Menlo",monospace;font-size:.86rem;line-height:1.5;overflow-x:auto;white-space:pre}
+  .tree .hl{color:#ffd479}
+  .tree .mv{color:#8fd9ff}
+  .tree .x{color:#ff8f8f}
+  .deriv{counter-reset:d;margin:14px 0;padding:0;list-style:none}
+  .deriv li{counter-increment:d;background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent2);border-radius:0 8px 8px 0;padding:8px 14px 8px 40px;margin:8px 0;position:relative}
+  .deriv li::before{content:counter(d);position:absolute;left:10px;top:8px;background:var(--accent2);color:#fff;width:20px;height:20px;border-radius:50%;text-align:center;font-size:.78rem;line-height:20px;font-family:system-ui,sans-serif}
+  ul.plain{margin:13px 0;padding-left:24px}ul.plain li{margin:6px 0}
+  #en p{margin:12px 0}
+  #en .enpg{display:inline-block;font-family:system-ui,sans-serif;font-size:.72rem;font-weight:700;color:#fff;background:#888;padding:2px 9px;border-radius:12px;margin:20px 0 2px}
+  #en blockquote{margin:10px 0;padding:8px 16px;border-left:3px solid var(--line);background:#fbfbfb;font-family:"Times New Roman",serif}
+  #en .num{color:var(--muted);font-family:system-ui,sans-serif;font-size:.8rem;display:inline-block;min-width:40px}
+  .nav-bottom{display:flex;justify-content:space-between;margin-top:54px;font-family:system-ui,sans-serif;font-size:.9rem}
+  .nav-bottom a{color:var(--accent2);text-decoration:none;border:1px solid var(--line);padding:10px 16px;border-radius:8px}
+  footer{text-align:center;color:var(--muted);font-size:.8rem;padding:20px;font-family:system-ui,sans-serif}
+  .back-top{position:fixed;right:18px;bottom:18px;background:var(--accent2);color:#fff;text-decoration:none;padding:8px 13px;border-radius:20px;font-family:system-ui,sans-serif;font-size:.8rem;box-shadow:0 3px 10px rgba(0,0,0,.2)}
+  code{background:#e9f0f4;padding:1px 5px;border-radius:4px;font-family:"Consolas",monospace;font-size:.9em}
+</style>
+</head>
+<body id="top">
+<header><div class="inner">
+  <div class="ch">CHAPTER 10 · 逐頁逐例句詳解 + 英文原文對照</div>
+  <h1>局域性</h1>
+  <div class="en">Locality</div>
+  <div class="pg">書頁 376–407 · 涵蓋例句 (1)–(126) 與全部推導、跨語言證據、島嶼限制與練習</div>
+</div></header>
+<nav class="bc"><a href="index.html">← 全書導覽</a> ／ 第 10 章</nav>
+
+<div class="tabbar">
+  <div class="tab active" id="tab-zh" onclick="showTab('zh')">中文逐頁詳解</div>
+  <div class="tab" id="tab-en" onclick="showTab('en')">English Original（整章英文摘要對照）</div>
+</div>
+
+<!-- ===================== 中文 PANEL ===================== -->
+<div class="panel active" id="zh">
+<div class="toc">
+  <h2>本章導覽</h2>
+  <ul>
+    <li><a href="#s101">10.1 導論：移位為何是局域的</a></li>
+    <li><a href="#s102">10.2 局域移位的經驗證據</a></li>
+    <li><a href="#s1021">10.2.1 浮游量詞（西厄斯特英語）</a></li>
+    <li><a href="#s1022">10.2.2 補語連詞一致（蘇格蘭蓋爾語）</a></li>
+    <li><a href="#s1023">10.2.3 連續倒裝（西班牙語）</a></li>
+    <li><a href="#s103">10.3 如何「強制」連續移位</a></li>
+    <li><a href="#s1031">10.3.1 特徵匹配的局域性與 PIC</a></li>
+    <li><a href="#s1032">10.3.2 解一個舊難題（不當移位）</a></li>
+    <li><a href="#s104">10.4 島嶼現象</a></li>
+    <li><a href="#s1041">10.4.1 Wh- 島嶼</a></li>
+    <li><a href="#s1042">10.4.2 DP 島嶼（複合名詞片語）</a></li>
+    <li><a href="#s1043">10.4.3 主語島嶼</a></li>
+    <li><a href="#s1044">10.4.4 附加語島嶼</a></li>
+    <li><a href="#s105">10.5 本章摘要</a></li>
+  </ul>
+</div>
+
+<div class="wrap">
+  <p class="lead" id="s101">本章是全書<strong>最後一章</strong>，把第 9 章開頭的 wh- 移位再往前推：雖然 wh- 移位看似可以把片語移到<strong>任意遠</strong>的距離，但 Adger 要論證——這種「長距離移位」其實永遠是由<strong>一連串短的、局域的小步</strong>組成，而非一次長跳躍。為此他引入<span class="term">階段（phase）</span>的概念：句法推導是一塊一塊（chunk by chunk）進行的，每個階段一旦完成，其內部（除了「邊緣」＝指示語）就對後續運算<strong>不可見</strong>。這條原則叫 <span class="term">階段不可穿透條件（PIC）</span>。本章最後用它＋幾條補充原則，統一解釋傳統上一大堆<strong>島嶼限制（island constraints）</strong>：wh- 島嶼、複合名詞片語（DP）島嶼、主語島嶼、附加語島嶼。</p>
+
+  <div class="concept"><h4>本章的核心問題</h4>
+  <p>第 9 章末留下一個問題：當 wh- 片語跨越一個中間子句邊界時，它是<strong>一步</strong>跳到底（long swoop），還是<strong>兩步（或多步）</strong>逐層往上爬（successive cyclic）？兩種表徵如下：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(1)</span> [<sub>CP</sub> XP[wh] C[uwh*] … V [<sub>CP</sub> (XP[wh]) C … (XP[wh]) ]]　<i>← 局域、逐層的 wh- 移位</i></span></div>
+    <div class="row"><span class="sent"><span class="num">(2)</span> [<sub>CP</sub> XP[wh] C[uwh*] … V [<sub>CP</sub> C … (XP[wh]) ]]　<i>← 一步到底的長距離 wh- 移位</i></span>
+      <span class="ana">(1) 走<strong>兩步</strong>：wh-XP 先從句中某位置（甚至可以是已派生的 Spec-TP）移到<strong>內嵌 CP 的指示語</strong>，再從那裡移到<strong>主句 CP 的指示語</strong>。(2) 則「跳過」中間的 Spec-CP，一口氣移上去。Adger 在上一章已主張 (1) 才對，本章要再補強這個立論，並引入標準術語：這種逐層往上「循環」CP 的推導，叫 <span class="term">連續循環移位（successive cyclic movement）</span>。</span></div>
+  </div>
+  </div>
+
+  <!-- 10.2 -->
+  <h2 id="s102">10.2 局域移位的經驗證據</h2>
+  <span class="pgmark">書頁 377</span>
+  <p>本節提出三組互相獨立的論證，都指向「wh- 移位是連續循環的」：(i) 一種英語方言裡的<strong>浮游量詞</strong>；(ii) 蘇格蘭蓋爾語的<strong>補語連詞交替</strong>；(iii) 西班牙語的<strong>主語倒裝</strong>。三者合起來說明：wh- 移位確實是「一個 Spec-CP 接一個 Spec-CP」地往上走的。</p>
+
+  <!-- 10.2.1 -->
+  <h3 id="s1021">10.2.1 浮游量詞（West Ulster English）</h3>
+  <span class="pgmark">書頁 377–378</span>
+  <p>第一個證據來自北愛爾蘭<span class="en-term">西厄斯特（West Ulster）</span>方言。此方言可把量詞 <i>all</i> 黏附在 wh- 詞上：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(3)</span> What all did you get for Christmas?</span></div>
+    <div class="row"><span class="sent"><span class="num">(4)</span> Who all did you meet when you were in Derry?</span></div>
+    <div class="row"><span class="sent"><span class="num">(5)</span> Where all did they go for their holidays?</span></div>
+  </div>
+  <p>回想第 6 章：主語的量詞可以被<strong>遺留（strand）</strong>在 vP 內基底位置，這曾被當成「主語是 VP 內部合併」的證據。同理，黏在 wh- 詞上的 <i>all</i> 也可以被遺留：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(6)</span> What did you get all for Xmas?</span></div>
+    <div class="row"><span class="sent"><span class="num">(7)</span> Who did you meet all when you were in Derry?</span></div>
+    <div class="row"><span class="sent"><span class="num">(8)</span> Where did they go all for their holidays?</span></div>
+  </div>
+  <p>內嵌問句也一樣：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(9)</span> I don't remember [what all I said].</span></div>
+    <div class="row"><span class="sent"><span class="num">(10)</span> I don't remember [what I said all].</span>
+      <span class="ana">假設 [what all] 整個是在<strong>基底位置（θ位置）</strong>合併的成分；接著可以只把 wh- 片語 <i>what</i> 拉走，把量詞 <i>all</i> 留在原地。(6) 的結構大致是：[<sub>vP</sub> get [<sub>DP</sub> all (what)]]——<i>what</i> 上移、<i>all</i> 留下。</span></div>
+  </div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(11)</span> [<sub>vP</sub> get [<sub>DP</sub> all (what) ]]　<i>← (6) 的 vP 內結構：what 已上移、all 遺留在基底</i></span></div>
+  </div>
+  <span class="pgmark">書頁 378</span>
+  <p>關鍵來了。如果 wh- 片語在長距離移位時<strong>先停靠在中間的 Spec-CP</strong>，那我們應該也能把量詞遺留在<strong>那個中間位置</strong>。事實正是如此——下面三組對比，分別把 <i>all</i> 留在基底、整移、或留在中間 Spec-CP：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(12)</span> What all did he say [(that) he wanted]?　<i>（整移）</i></span></div>
+    <div class="row"><span class="sent"><span class="num">(13)</span> What did he say [(that) he wanted all]?　<i>（遺留在基底）</i></span></div>
+    <div class="row"><span class="sent"><span class="num">(14)</span> What did he say [all (that) he wanted]?　<i>（遺留在中間 Spec-CP！）</i></span></div>
+    <div class="row"><span class="sent"><span class="num">(15)</span> Where do you think [all they'll want to visit]?</span></div>
+    <div class="row"><span class="sent"><span class="num">(16)</span> What do they claim [all that we did]?</span>
+      <span class="ana">(14)–(16) 的 <i>all</i> 既不在主句、也不在最深的基底，而是落在<strong>內嵌子句的最前緣（中間 Spec-CP）</strong>。這只有在「wh- 片語確實先停靠過那個位置」時才解釋得通。</span></div>
+  </div>
+  <p>而且系統正確預測：被遺留的量詞應<strong>位於補語連詞 that 之前</strong>，而非其後（因為 Spec-CP 在 C 之前）：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(17)</span> <span class="ung">*</span> What did he say [that all he wanted]?</span>
+      <span class="ana">(17) 把 <i>all</i> 放在 that 之後就壞了——因為遺留位置是 <strong>Spec-CP（在 that=C 之前）</strong>，不是 C 與 TP 之間。基本結構如 (18)。</span></div>
+  </div>
+  <span class="pgmark">書頁 379</span>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(18)</span> [<sub>CP</sub> what … [<sub>CP</sub> (what) all C [<sub>TP</sub> … (what all) ]]]</span>
+      <span class="ana">這條結構同時放了<strong>兩個 (what) 痕跡</strong>：一個在中間 Spec-CP（遺留 all 的位置），一個在基底。<strong>若移位一步到底、跳過中間位置，這些句子根本生不出來</strong>——因為「all 出現在中間 Spec-CP」這個結構從未被建出來過。所以我們要嘛放棄量詞遺留分析，要嘛放棄「一步跳過中間 Spec-CP」的主張。</span></div>
+  </div>
+  <p>這個分析還預測：量詞也應能被遺留在<strong>非限定 C</strong> 的指示語。正確：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(19)</span> What were you trying all to say?</span></div>
+    <div class="row"><span class="sent"><span class="num">(20)</span> What did you mean all for me to do?</span>
+      <span class="ana">遺留的 <i>all</i> 又出現在非限定補語連詞 <i>for</i> 之前，正如「wh- 移位總會停靠 Spec-CP」所預期。<strong>但要注意</strong>：西厄斯特英語的證據只證明「<u>必須允許</u>連續循環移位」，它<strong>並沒有排除</strong>「一步到底」也存在——它只說明「一步到底」不可能是<u>唯一</u>的方式。下一個論證則更強。</span></div>
+  </div>
+
+  <!-- 10.2.2 -->
+  <h3 id="s1022">10.2.2 補語連詞一致再探（Scottish Gaelic）</h3>
+  <span class="pgmark">書頁 379–380</span>
+  <p>第 9 章提過：蘇格蘭蓋爾語裡內嵌補語連詞會「換形」，可追溯到「wh- 移位必須連續循環」。本節把這個論證加強。首先，<strong>沒有</strong> wh- 移位的句子，內嵌補語連詞是 <i>gu(n)</i>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(21)</span> Bha mi ag radh <b>gun</b> do bhuail e.</span>
+      <span class="gloss">was I asp saying that prt struck she him ／「我那時在說她打了他。」</span></div>
+    <div class="row"><span class="sent"><span class="num">(22)</span> Tha mi a' smaoineachadh <b>gu</b> bheil Iain air a mhisg.</span>
+      <span class="gloss">am I asp thinking that-is Iain on his drink ／「我認為 Iain 喝醉了。」</span>
+      <span class="ana">假設 <i>gu(n)</i> 的特徵就是 [C, finite]（限定 C，不帶 wh）。</span></div>
+  </div>
+  <span class="pgmark">書頁 380</span>
+  <p>與英語不同，蓋爾語的<strong>主句</strong> wh- 問句有一個顯性補語連詞 <i>a</i>（wh- 詞以母音結尾時不發音，否則發音）：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(23)</span> Co an duine <b>a</b> tha thu a' posadh?</span>
+      <span class="gloss">who the man C are you asp marrying ／「你要娶哪個男人？」</span></div>
+    <div class="row"><span class="sent"><span class="num">(24)</span> Co a' chaileag <b>a</b> tha thu a' pogadh?</span>
+      <span class="gloss">who the girl C are you asp kissing ／「你在親哪個女孩？」</span>
+      <span class="ana">分析：<i>a</i> 至少帶 [C, uwh*]，與英語對應的問句 C 一樣，只是缺 [Q]（因為同一個 <i>a</i> 也用於分裂句與關係子句，這些都不是問句）。據此可立下概括 (26)。</span></div>
+  </div>
+  <div class="tree">(25)            CP
+              /    \
+        Co an duine   C'
+             /          \
+   <span class="hl">a</span>[uwh*]              TP
+                       /  \
+                   tha thu  …
+                          v / VP …
+                       a' pogadh (Co an duine)</div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(26)</span> 概括：若 Spec-CP 被 wh- 片語填充，則該 CP 由補語連詞 <i>a</i> 領導；否則由 <i>gu</i> 領導。</span></div>
+  </div>
+  <span class="pgmark">書頁 381</span>
+  <p>現在看<strong>從內嵌子句抽取</strong>的情形。當成分從內嵌子句 wh- 移到主句 Spec-CP 時，原本該領導內嵌子句的 <i>gu</i> <strong>消失</strong>，改成 <i>a</i>（內嵌的 <i>a</i> 以粗體標出）：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(27)</span> Co an duine <b>a</b> bha thu ag radh <b>a</b> bhuail i?</span>
+      <span class="gloss">who the man C were you asp saying that struck she ／「你那時在說她打了哪個男人？」</span></div>
+    <div class="row"><span class="sent"><span class="num">(28)</span> Co am bodach <b>a</b> tha thu a' smaoineachadh <b>a</b> tha air a mhisg?</span>
+      <span class="gloss">who the old-man C are you asp thinking that-is on his drink ／「你認為哪個老頭喝醉了？」</span>
+      <span class="ana">概括 (26) 立刻告訴我們：移位<strong>必定停靠過內嵌 Spec-CP</strong>（否則內嵌 C 不會變成 <i>a</i>）。到此還與西厄斯特英語一樣。但蓋爾語的論證<strong>更強</strong>——見下。</span></div>
+  </div>
+  <p>關鍵：若 wh- 移位<strong>已發生但內嵌仍用 gu(n)</strong>，句子<strong>不合語法</strong>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(29)</span> <span class="ung">*</span> Co an duine a bha thu ag radh <b>gun</b> do bhuail i?</span></div>
+    <div class="row"><span class="sent"><span class="num">(30)</span> <span class="ung">*</span> Co am bodach a tha thu a' smaoineachadh <b>gu</b> bheil air a mhisg?</span>
+      <span class="ana">這顯示：停靠中間 Spec-CP <strong>不只是「可選」、而是「強制」</strong>。若不假設此停靠，就無法解釋 (29)(30) 為何不合語法。<strong>與量詞論證的差別</strong>：西厄斯特資料只「不排除」一步到底；但蓋爾語的補語連詞一致<strong>明確排除</strong>一步到底——因為若移位一步到底，就無法阻止「內嵌用 gu」的 (29)(30)。</span></div>
+  </div>
+
+  <!-- 10.2.3 -->
+  <h3 id="s1023">10.2.3 連續倒裝現象（Spanish）</h3>
+  <span class="pgmark">書頁 382</span>
+  <p>第三個論證與蓋爾語同型，來自西班牙語的<strong>主語倒裝</strong>。西班牙語（與義大利語）<strong>可選地</strong>允許主語出現在動詞片語之後：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(31)</span> Maria contestó la pregunta.</span><span class="gloss">Maria answered the question ／「Maria 回答了問題。」</span></div>
+    <div class="row"><span class="sent"><span class="num">(32)</span> Contestó la pregunta Maria.</span><span class="gloss">answered the question Maria ／（同義，主語後置）</span></div>
+  </div>
+  <p>但在 wh- 問句中，這個倒裝<strong>不是可選的，而是強制的</strong>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(33)</span> <span class="g">✓</span> Qué querían esos dos?</span><span class="gloss">what wanted those two ／「那兩個人想要什麼？」</span></div>
+    <div class="row"><span class="sent"><span class="num">(34)</span> <span class="ung">*</span> Qué esos dos querían?</span><span class="gloss">what those two wanted</span>
+      <span class="ana">概括 (35)：當 wh- 詞在 Spec-CP，倒裝強制；否則可選。我們可把它當「探針」——若倒裝強制 ⇔ Spec-CP 被填，那麼長距離問句中，<strong>每一個</strong>被 wh- 經過的子句都應出現倒裝。</span></div>
+  </div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(35)</span> 概括：當 wh- 詞在 Spec-CP 時，倒裝強制；否則可選。</span></div>
+  </div>
+  <span class="pgmark">書頁 383</span>
+  <p>先看一個多層內嵌的陳述句（主語 <i>Pedro</i>、<i>la revista</i> 都在動詞<strong>之前</strong>）：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(36)</span> Juan pensaba que Pedro le había dicho que la revista había publicado ya el artículo.</span>
+      <span class="gloss">「Juan 以為 Pedro 已告訴他那本期刊已經登了那篇文章。」</span></div>
+  </div>
+  <p>若把最深的賓語 <i>el artículo</i> wh- 抽取出來，會發現<strong>每一個中間子句都發生主語倒裝</strong>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(37)</span> <span class="g">✓</span> Qué pensaba <u>Juan</u> que le había dicho <u>Pedro</u> que había publicado <u>la revista</u>?</span>
+      <span class="gloss">「Juan 以為 Pedro 告訴他那本期刊登了什麼？」</span>
+      <span class="ana">主句主語 Juan 跟在動詞 pensaba 後、中間主語 Pedro 跟在 dicho 後、最深主語 la revista 也跟在其動詞後——<strong>三層全倒裝</strong>。</span></div>
+    <div class="row"><span class="sent"><span class="num">(38)</span> <span class="ung">*</span> Qué pensaba Juan que <u>Pedro</u> le había dicho que <u>la revista</u> había publicado?</span>
+      <span class="ana">(38) 中間子句<strong>沒有</strong>倒裝（Pedro、la revista 仍在動詞前）→ 不合語法。根據概括 (35)，(37) 的推導必須讓 wh- 片語<strong>停靠在每一個中間 Spec-CP</strong>，否則倒裝不會強制。(38) 缺倒裝即不合語法，這正說明「一步到底」的推導<strong>不可用</strong>。</span></div>
+  </div>
+  <span class="pgmark">書頁 384</span>
+  <div class="key"><b>10.2 小結：</b>三組獨立證據（浮游量詞、補語連詞一致、主語倒裝）一致指向同一結論：<strong>長距離 wh- 移位不是一步到底，而是逐層經過每一個 Spec-CP；而且這些 Spec-CP 不可跳過。</strong>不需要知道倒裝的確切機制，只要看到「強制倒裝 ⇔ Spec-CP 被填」即可外推。</div>
+
+  <!-- 10.3 -->
+  <h2 id="s103">10.3 確保連續移位的機制</h2>
+  <span class="pgmark">書頁 384</span>
+  <p>上一節的論證都指向同一方向，但<strong>怎麼用理論把它做出來</strong>、同時解決「經濟性（Economy）」問題？本節組織理論來捕捉這個想法。</p>
+
+  <!-- 10.3.1 -->
+  <h3 id="s1031">10.3.1 特徵匹配的局域性與 PIC</h3>
+  <span class="pgmark">書頁 384–385</span>
+  <p>回想：wh- 移位由 C 上一個<strong>強的、不可解讀的 wh- 特徵</strong>觸發。單句裡，這個 wh- 特徵可匹配同句中某成分的 wh- 特徵：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(39)</span> C[uwh*] … XP[wh]</span></div>
+  </div>
+  <p>但上節論證顯示：匹配運算<strong>無法伸進下層子句</strong>，至多只能「看到」那個子句的<strong>指示語</strong>。換句話說，任一 C 的<strong>補語（complement）對特徵匹配是隱形的</strong>——(40) 裡較高的 F 永遠檢核不到；除非把 XP[F] 移到 Spec-CP，匹配才成立 (41)：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(40)</span> <span class="ung">✗</span> C[uF] … [<sub>CP</sub> C [<sub>TP</sub> … XP[F] … ]]　<i>← F 藏在補語深處，看不到</i></span></div>
+    <div class="row"><span class="sent"><span class="num">(41)</span> <span class="g">✓</span> C[uF] … [<sub>CP</sub> XP[F] C [<sub>TP</sub> … (XP[F]) … ]]　<i>← F 升到 Spec-CP，可被匹配</i></span></div>
+  </div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(42)</span> 假設：c-統制下的特徵檢核，至多伸到任一內嵌 CP 的指示語。</span>
+      <span class="ana">這條 (42) 只排除了「跳過中間 Spec-CP 的長移位」，但它<strong>本身並不能「逼」任何東西先移進那個中間 Spec-CP</strong>。要逼出這個移位，需要第二個假設。</span></div>
+  </div>
+  <span class="pgmark">書頁 385</span>
+  <p>第二步：那些「顯性標記中間位置」的語言（如蓋爾語），其實是把句法特徵<strong>「寫在形態的袖子上」</strong>。正如英語 DP 帶<strong>抽象格</strong>（無語音實現的格特徵），我們假設英語的<strong>內嵌 C 可選地帶一個抽象 [uwh*]</strong>（只是英語不在形態上標記它）：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(43)</span> 內嵌 C 可選地帶 [uwh*]。（視為一條 UG 原則）</span>
+      <span class="ana">(43) 蘊涵：每個語言都有兩種（相關的）C：一種帶 [uwh*]、一種不帶。有些語言把這兩個 C 拼寫得不同（蓋爾語：a vs gu），有些不（英語），但這兩個功能中心語的<strong>選擇</strong>永遠存在。</span></div>
+  </div>
+  <span class="pgmark">書頁 385–386</span>
+  <p>把 (42) + (43) 合起來，就能<strong>強制</strong>連續移位。設想已建好一個含 wh-XP 的 CP (44)；把它嵌在動詞下、最終又被一個帶 [uwh*] 的主句 C 包住。若內嵌用<strong>不帶 [uwh*]</strong> 的 C：因為檢核看不過下一層 C 的指示語，主句 wh- 特徵永遠匹配不到 → 推導<strong>崩潰（crash）</strong>。若內嵌<strong>選用帶 [uwh*]</strong> 的 C：此強特徵會與 XP 的 wh- 特徵匹配，<strong>強制</strong> wh-XP 移進下層 Spec-CP (45)：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(44)</span> C … XP[wh]</span></div>
+    <div class="row"><span class="sent"><span class="num">(45)</span> XP[wh] C[uwh*] … (XP[wh])　<i>← 強 [uwh*] 把 XP 拉進下層 Spec-CP</i></span>
+      <span class="ana">一旦 wh-XP 站到下層 Spec-CP，它就<strong>可被上層 C 匹配</strong>——於是檢核較高那個強 wh- 特徵。這就「逼出」了連續循環移位：每一層都先用帶 [uwh*] 的 C 把 wh- 拉到自己的 Spec，再供更上層使用。</span></div>
+  </div>
+  <span class="pgmark">書頁 386</span>
+  <p>這個「特徵匹配是局域的」想法通常<strong>從 CP 推廣開來</strong>：10.4 會看到 DP 同樣如此，PP 在某些語言也是。我們把這些有此行為的範疇叫 <span class="term">階段（phase）</span>，並把概括改寫為：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(46)</span> 特徵匹配至多伸到一個內嵌<strong>階段（phase）</strong>的指示語。</span></div>
+  </div>
+  <div class="key"><b>階段不可穿透條件（Phase Impenetrability Constraint, PIC）：</b>(46) 即 PIC。Chomsky 主張：階段這個概念可從推導的一般結構導出——本質上是逼推導<strong>「記性很短」</strong>：一旦完成一個階段，就<strong>忘掉</strong>其內部（補語）的東西，只保留<strong>邊緣（指示語）</strong>可見。本書不深入此推導，而是去看「階段」如何解釋各種移位限制。</div>
+
+  <!-- 10.3.2 -->
+  <h3 id="s1032">10.3.2 解一個舊難題：不當移位</h3>
+  <span class="pgmark">書頁 386–387</span>
+  <p>第 8 章 8.2.6 看提升動詞時留下一個難題：把一個<strong>限定 CP</strong> 嵌在提升動詞 <i>seem</i> 下 (47)。若合併 T[uD*, nom] 後，讓 T 的 [nom] 與 [EPP] 跟內嵌主語 <i>Medea</i> 匹配，似乎就能把 Medea 提升到主句主語位置，得出 (48)：</p>
+  <div class="tree">(47)          vP
+            /    \
+           v      VP
+                /    \
+            seem      CP
+                    /    \
+                 that      TP
+                       Medea has poisoned Jason</div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(48)</span> <span class="ung">*</span> Medea seemed that has poisoned Jason.</span></div>
+    <div class="row"><span class="sent"><span class="num">(49)</span> [<sub>TP</sub> T[uD*] seemed [<sub>CP</sub> (that) Medea[D, nom] has poisoned Jason ]]</span>
+      <span class="ana">有了 PIC，(48) 立刻被排除：<i>Medea</i> <strong>不是 wh- 片語</strong>，不會移進下層 Spec-CP，所以永遠不在邊緣、對主句 T 的 EPP 不可見。因此 (48) 無法從 (49) 派生出來——這正是第 8 章難題的解答。</span></div>
+  </div>
+  <span class="pgmark">書頁 387</span>
+  <p>但這帶出<strong>同一問題的新版本</strong>：wh- 片語<u>確實</u>會移進中間 Spec-CP，那為何 (50) 仍不合語法？</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(50)</span> <span class="ung">*</span> Who seemed (that) had poisoned Jason?</span></div>
+  </div>
+  <p>下面的推導 (51) 表面上應該行得通：</p>
+  <ol class="deriv">
+    <li>建 TP：[<sub>TP</sub> who poisoned Jason]。</li>
+    <li>合併 C[uwh*]，把 who 升到其指示語：[<sub>CP</sub> who[D, wh, nom] C[uwh*] … ]。</li>
+    <li>合併 seem、v、T[uD*, nom]。</li>
+    <li>讓 T 的 EPP/格與 who 的 D 匹配，把 who 升到<strong>主句 Spec-TP</strong>：[<sub>TP</sub> who[D, wh, nom] T seemed [<sub>CP</sub> (who) (that) (who) had poisoned Jason ]]。</li>
+    <li>合併主句 C，把 who 升到其指示語。</li>
+  </ol>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(51)</span> 上述五步推導（見上方編號清單）。</span>
+      <span class="ana">這個推導唯一「異常」的一步，是 who <strong>從 Spec-CP 移到 Spec-TP</strong>。生成語法傳統把「從 Spec-CP 移到其他種類位置」的移位稱為 <span class="term">不當移位（improper movement）</span>。</span></div>
+  </div>
+  <span class="pgmark">書頁 388</span>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(52)</span> <strong>不當移位限制（Improper Movement Restriction）</strong>：在 Spec-CP 裡，<strong>只有 wh- 特徵可見</strong>。</span>
+      <span class="ana">這條限制排除了 (51) 中那一步：T 的 EPP 無法跟 Spec-CP 裡 who 的 D 特徵匹配（因為在 Spec-CP 只有 wh- 可見）。當然，若 who 留在 Spec-TP，則離主句 C 太遠、也匹配不到。Adger 坦言：這條限制<strong>目前仍是規約性的（stipulation），其更深的解釋是當前理論辯論的課題</strong>，但對本書夠用。</span></div>
+  </div>
+
+  <!-- 10.4 -->
+  <h2 id="s104">10.4 島嶼現象</h2>
+  <span class="pgmark">書頁 388</span>
+  <p>本節研究其他與 wh- 移位有關的局域性效應——也就是傳統所謂的<strong>島嶼（islands）</strong>：某些成分像「島」一樣，wh- 移位無法「游出去」。</p>
+
+  <!-- 10.4.1 -->
+  <h3 id="s1041">10.4.1 Wh- 島嶼</h3>
+  <span class="pgmark">書頁 388–389</span>
+  <p>第 9 章看過多個 wh- 片語的情形：<strong>最高</strong>的 wh- 片語升到主句 Spec-CP，較低者不動（匹配運算鎖定<strong>最近</strong>的 wh- 片語，即<span class="term">優越性 superiority</span>），故 (54) 不合法：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(53)</span> Who C (who) T … (who) saw what?</span></div>
+    <div class="row"><span class="sent"><span class="num">(54)</span> <span class="ung">*</span> What did who (did) … (who) see (what)?</span></div>
+  </div>
+  <p>同一效應出現在內嵌子句：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(55)</span> <span class="g">✓</span> I asked who saw what.</span></div>
+    <div class="row"><span class="sent"><span class="num">(56)</span> <span class="ung">*</span> I asked what who saw?</span></div>
+  </div>
+  <span class="pgmark">書頁 389</span>
+  <p>本章系統預測：若某個 wh- 片語<strong>已佔了內嵌 Spec-CP</strong>，那更深處的 wh- 片語就<strong>無法再往上移</strong>。相關配置如 (57)：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(57)</span> … V [<sub>CP</sub> XP1[wh] … XP2[wh] … ]</span>
+      <span class="ana">只有 XP1 能移進主句 Spec-CP，原因有二：① 主句 C 吸引<strong>最近</strong>的 wh-（優越性）；② 更深的 XP2 <strong>不在</strong> CP 階段的指示語上（被 PIC 擋住）。</span></div>
+    <div class="row"><span class="sent"><span class="num">(58)</span> <span class="ung">*</span> What did you ask who saw (what)?</span></div>
+  </div>
+  <p>雙賓動詞同理：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(59)</span> <span class="g">✓</span> I asked who Medea gave what?</span></div>
+    <div class="row"><span class="sent"><span class="num">(60)</span> <span class="ung">*</span> What did you ask who Medea gave (what)?</span></div>
+  </div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(61)</span> 概括：無法把一個 wh- 片語移出「指示語已被另一 wh- 片語佔據」的 CP。</span>
+      <span class="ana">這就是文獻中古老的 <span class="term">Wh- 島嶼限制（Wh-Island Constraint）</span>：被「指示語已有 wh-」的 CP 包住的 wh-，像被困在島上，「下不了島」。<strong>注意 island ≠ phase</strong>：phase 是理論術語（只有指示語可被匹配的範疇）；island 只是描述術語（描述「無法 wh- 移出」的成分），本身不告訴你「為什麼」。</span></div>
+  </div>
+  <span class="pgmark">書頁 389–390</span>
+  <p>用 <span class="term">D- 連結（D-linked）</span>的 wh- 表達式，島嶼效應看得更清楚（非 D- 連結時，常分不清是優越性還是 wh- 島嶼）。D- 連結可避開優越性，使低 wh- 越過高 wh-：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(62)</span> <span class="g">✓</span> I asked which king invaded which city.</span></div>
+    <div class="row"><span class="sent"><span class="num">(63)</span> <span class="g">✓</span> I asked which city which king invaded.</span></div>
+    <div class="row"><span class="sent"><span class="num">(64)</span> [<sub>CP</sub> which city C[uwh*] [<sub>TP</sub> which king invaded (which city) ]]</span>
+      <span class="ana">(63)(64) 顯示 object wh-（which city）可避開優越性、升到內嵌 Spec-CP。既然它已在<strong>階段的指示語</strong>，理論預測它應能<strong>再往上移</strong>——(65) 證實此預測（多數人覺得略降，但與 (66) 對比戲劇化）：</span></div>
+    <div class="row"><span class="sent"><span class="num">(65)</span> <span class="qm">?</span> Which city did you ask which king invaded?</span></div>
+    <div class="row"><span class="sent"><span class="num">(66)</span> <span class="ung">*</span> Which king did you ask which city invaded?</span>
+      <span class="ana">(66) 只剩「城市入侵國王」這個與題意無關（且語用怪異）的解讀；在與 (63) 同義的解讀下完全不合法。理論正確預測：內嵌<strong>主語</strong>（which king）<strong>不在</strong> CP 階段的指示語上（它在 Spec-TP，被 which city 佔了 Spec-CP），故移不出去。注意這不能歸因於優越性，因為 wh- 主語 DP 是 D- 連結的。</span></div>
+  </div>
+  <span class="pgmark">書頁 390</span>
+  <p>離開 wh- 島嶼前，理論還預測下列句子<strong>良構</strong>（把內嵌主語先升到內嵌 Spec-CP，再升到主句 Spec-CP，不違反 PIC）：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(67)</span> <span class="g">✓</span> Who did you ask saw what?</span></div>
+    <div class="row"><span class="sent"><span class="num">(68)</span> <span class="g">✓</span> Which king did you wonder invaded which city?</span>
+      <span class="ana">這兩句略難剖析，但與上面的 wh- 島嶼違規<strong>對比鮮明</strong>。結論：傳統的 wh- 島嶼限制可由 <strong>PIC</strong> 捕捉。</span></div>
+  </div>
+
+  <!-- 10.4.2 -->
+  <h3 id="s1042">10.4.2 DP 島嶼（複合名詞片語島嶼）</h3>
+  <span class="pgmark">書頁 391</span>
+  <p>另一類島嶼涉及 DP。三種情形——名詞帶 CP、PP、of-DP 論元：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(69)</span> <span class="g">✓</span> I believed [<sub>DP</sub> the claim [<sub>CP</sub> that Philip would invade the city of Athens ]].</span></div>
+    <div class="row"><span class="sent"><span class="num">(70)</span> <span class="ung">*</span> Which city do you believe [<sub>DP</sub> the claim [<sub>CP</sub> that Philip would invade ]]?</span></div>
+    <div class="row"><span class="sent"><span class="num">(71)</span> <span class="g">✓</span> Plato listened to [<sub>DP</sub> Demosthenes' oration [<sub>PP</sub> about Philip ]].</span></div>
+    <div class="row"><span class="sent"><span class="num">(72)</span> <span class="ung">*</span> Who did Plato listen to [<sub>DP</sub> Demosthenes' oration [<sub>PP</sub> about ]]?</span></div>
+    <div class="row"><span class="sent"><span class="num">(73)</span> <span class="g">✓</span> Phaedo was interested in [<sub>DP</sub> Plato's description [of geometry] ].</span></div>
+    <div class="row"><span class="sent"><span class="num">(74)</span> <span class="ung">*</span> What was Phaedo interested in [<sub>DP</sub> Plato's description [of] ]?</span>
+      <span class="ana">三例都是某 XP（CP / PP / of-DP）當<strong>名詞的論元</strong>，從中 wh- 移出都遠比理論預期糟。傳統稱 <span class="term">複合名詞片語島嶼（Complex Noun Phrase Islands）</span>（此名稱略過時，因今天視之為完整 DP 而非 NP）。</span></div>
+  </div>
+  <span class="pgmark">書頁 391–392</span>
+  <p>捕捉方式：假設 <strong>DP 與 CP 一樣是階段</strong>。如此一來，DP 內任何 wh- 表達式都對「之後合併的 [uwh*] C」不可見（PIC：除了指示語，階段內一切不可匹配）。上述案例中沒有任何 wh- 在 <strong>Spec-DP</strong>，故理論正確預測 wh- 移出不可能。以 (75) 的 CP 補語案例為例：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(75)</span> <span class="ung">*</span> Which city do you believe [<sub>DP</sub> the claim [<sub>CP</sub> that Philip would invade ]]?</span></div>
+    <div class="row"><span class="sent"><span class="num">(76)</span> [<sub>CP</sub> which city that[uwh*] [<sub>TP</sub> Philip would invade (which city) ]]</span></div>
+    <div class="row"><span class="sent"><span class="num">(77)</span> [<sub>CP</sub> [do C[Q,uwh*]] you believe [<sub>DP</sub> the claim [<sub>CP</sub> which city that[uwh*] [<sub>TP</sub> Philip would invade (which city) ]]]]</span>
+      <span class="ana">即使 which city 已升到內嵌 Spec-CP (76)，當這個 CP 被裝進 DP (the claim …)、DP 又是<strong>階段</strong>時，which city 就被埋在 DP 的補語裡（不在 Spec-DP），主句 C 的 wh- 特徵<strong>匹配不到</strong> (77) → 不合法。</span></div>
+  </div>
+  <span class="pgmark">書頁 392–393</span>
+  <p>能不能在 D 上放 [uwh*]、把 wh- 拉到 Spec-DP？以名詞的 CP 補語為例 (78)，須先把 which city 移到補語 CP 的指示語，再移到 Spec-DP (79)。但這要求 <i>the</i> 能承載 [uwh*]——而這似乎錯誤：定冠詞 DP 內找不到 DP 內部 wh- 移位：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(78)</span> <span class="ung">*</span> Which city do you believe the claim that Philip would invade?</span></div>
+    <div class="row"><span class="sent"><span class="num">(79)</span> [<sub>DP</sub> [which city] the claim that Philip would invade ]　<i>← 假想的中間結構</i></span></div>
+    <div class="row"><span class="sent"><span class="num">(80)</span> <span class="ung">*</span> Which god the statue</span></div>
+    <div class="row"><span class="sent"><span class="num">(81)</span> <span class="ung">*</span> How fierce the battle</span>
+      <span class="ana">(80)(81) 顯示 <i>the</i> 不能承載 [uwh*]。所有定冠詞（含檢核屬格的<strong>零冠詞</strong>）都一樣，都產生島嶼效應：</span></div>
+    <div class="row"><span class="sent"><span class="num">(82)</span> <span class="ung">*</span> Which poem did you hear Homer's recital of last night?</span></div>
+    <div class="row"><span class="sent"><span class="num">(83)</span> <span class="ung">*</span> Which poem did you hear those recitals of last night?</span></div>
+  </div>
+  <span class="pgmark">書頁 393</span>
+  <p>但<strong>不定冠詞</strong>不同——從不定 DP 抽取良好：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(84)</span> <span class="g">✓</span> Which poem did you go to hear a recital of last night?</span></div>
+    <div class="row"><span class="sent"><span class="num">(85)</span> <span class="g">✓</span> Who did you get an accurate description of?</span></div>
+    <div class="row"><span class="sent"><span class="num">(86)</span> <span class="g">✓</span> Who did you hear an oration about?</span>
+      <span class="ana">概括：<strong>定指 DP 是島嶼，非定指 DP 不是</strong>。兩種可能解釋：(i) 階段性取決於 D 的定指性；(ii) 不定 D 允許 wh- 指示語（如 C 一樣可選帶 [uwh*]）。</span></div>
+  </div>
+  <p>支持第二種的證據：確實找得到 DP 內部 wh- 移位，且似乎只限<strong>不定</strong> DP：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(87)</span> a fierce battle ～ <span class="g">✓</span> How fierce a battle</span></div>
+    <div class="row"><span class="sent"><span class="num">(88)</span> the fierce battle ～ <span class="ung">*</span> How fierce the battle</span></div>
+    <div class="row"><span class="sent"><span class="num">(89)</span> an oration about Philip ～ <span class="ung">*</span> Who an oration about</span>
+      <span class="ana">(89) 顯示這種 DP 內部移位<strong>不適用於名詞的論元</strong>，所以兩種解釋都還有問題。Adger 在此<strong>暫不定論</strong>，姑且假設<strong>只有定指 DP 是階段</strong>。</span></div>
+  </div>
+
+  <!-- 10.4.3 -->
+  <h3 id="s1043">10.4.3 主語島嶼</h3>
+  <span class="pgmark">書頁 393–394</span>
+  <p>第三類是<strong>主語島嶼</strong>。用形容詞 <i>obvious</i>（帶單一 CP 論元）：(90) CP 作主語、(91) 用虛主語 it：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(90)</span> That Plato loved Aster was obvious.</span></div>
+    <div class="row"><span class="sent"><span class="num">(91)</span> It was obvious that Plato loved Aster.</span></div>
+  </div>
+  <p>可從 (91) wh- 移出 <i>love</i> 的賓語，但<strong>不能</strong>從 (90)：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(92)</span> <span class="g">✓</span> Who was it obvious that Plato loved?</span></div>
+    <div class="row"><span class="sent"><span class="num">(93)</span> <span class="ung">*</span> Who was that Plato loved obvious?</span></div>
+  </div>
+  <p>CP 當動詞主語時同理：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(94)</span> That Plato loved Aster seemed to be known by everyone.</span></div>
+    <div class="row"><span class="sent"><span class="num">(95)</span> <span class="ung">*</span> Who did that Plato loved seem to be known by everyone?</span></div>
+    <div class="row"><span class="sent"><span class="num">(96)</span> That Plato loved Aster proved to be his undoing.</span></div>
+    <div class="row"><span class="sent"><span class="num">(97)</span> <span class="ung">*</span> Who did that Plato loved prove to be his undoing?</span></div>
+  </div>
+  <span class="pgmark">書頁 394</span>
+  <p>不只賓語——從 CP 主語裡<strong>什麼都抽不出來</strong>（主語、介系詞賓語、方式副詞皆然）：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(98)</span> a. That Plato loved Aster was obvious. ／ b. <span class="ung">*</span> Who was that loved Aster obvious?</span></div>
+    <div class="row"><span class="sent"><span class="num">(99)</span> a. That Plato lived in the city of Athens was well known. ／ b. <span class="ung">*</span> Which city was that Plato lived in well known?</span></div>
+    <div class="row"><span class="sent"><span class="num">(100)</span> a. That Plato loved Aster deeply was obvious. ／ b. <span class="ung">*</span> How deeply was that Plato loved Aster obvious?</span></div>
+    <div class="row"><span class="sent"><span class="num">(101)</span> <strong>句子主語島嶼限制（Sentential Subject Island Constraint）</strong>：什麼都不能移出一個子句主語。</span></div>
+  </div>
+  <span class="pgmark">書頁 394–395</span>
+  <p>從 <i>seem</i> 的<strong>非句首</strong> CP 論元抽取（如 (91)）則正確被預測為良好：先建內嵌 CP、選 C[uwh*] 把 who 移到其指示語、再與 <i>obvious</i> 合併 (102)；繼續合併 <i>be</i> 與虛主語後，who 可移到主句 Spec-CP，得良構的 (103)：</p>
+  <div class="tree">(102)           AP
+              /     \
+        obvious      CP
+                   /    \
+                 who      C'
+                        /    \
+                     that      TP
+                          Plato loved (who)</div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(103)</span> <span class="g">✓</span> Who was it obvious that Plato loved?</span></div>
+  </div>
+  <p>那麼<strong>句子主語</strong>為何是島？看兩種句子主語分析：(a) 在 Spec-TP；(b) 基底附加到 TP、Spec-TP 由空代詞填。</p>
+  <span class="pgmark">書頁 395</span>
+  <p><strong>(a) 在 Spec-TP 的分析</strong>：把 obvious 的 CP 論元移進 Spec-TP (104)，合併 C[Q,uwh*] 並升助動詞，再把（位於主語 CP 指示語、即「相關階段指示語」的）who 升到主句 Spec-CP (105)。推導<strong>收斂、所有特徵都檢核了，句子卻完全不合法</strong>——此分析下主語島嶼<strong>無解</strong>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(104)</span> [<sub>TP</sub> [who that Plato loved] was obvious ]</span></div>
+  </div>
+  <div class="tree">(105)              CP
+               /      \
+            who         C'
+                      /    \
+            C[Q,uwh*]        TP
+                          /     \
+                   [CP (who) that  T'
+                    Plato loved]  / \
+                                was  PredP
+                                    (CP) obvious
+      <span class="x">→ 推導收斂，卻完全不合語法：(a) 分析失敗</span></div>
+  <span class="pgmark">書頁 395–396</span>
+  <p><strong>(b) 替代分析</strong>：子句主語在一個<strong>特殊 CP 的指示語</strong>，Spec-TP 由空代詞 PRO 填 (106)。此結構<strong>無法</strong>再做成 wh- 問句（因為該 CP 的指示語已被子句主語佔據），也<strong>無法</strong>再被嵌套（此特殊 C 只在主句合法）。於是句子主語島嶼<strong>從獨立動機的子句主語分析自然導出</strong>——是好事：</p>
+  <div class="tree">(106)              CP
+               /      \
+            CP          C'
+          /    \      /    \
+      (who)     C'  C[Q,uwh*]  TP
+              /  \           PRO[null] was obvious
+          that    TP
+         Plato loved (who)</div>
+  <span class="pgmark">書頁 396</span>
+  <p>但句子主語其實只是<strong>主語</strong>更一般性質的一部分——一般而言，<strong>什麼都抽不出主語</strong>：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(107)</span> a. A programme about Euripides is on Radio 4 tonight. ／ b. <span class="ung">*</span> Who is a programme about on Radio 4 tonight?</span></div>
+    <div class="row"><span class="sent"><span class="num">(108)</span> a. There is a programme about Euripides on Radio 4 tonight. ／ b. <span class="g">✓</span> Who is there a programme about on Radio 4 tonight?</span>
+      <span class="ana">記得<strong>從不定 DP 可以抽取</strong>（10.4.2）。(108) 用虛主語 there 把 DP 留在低位，抽取就良好；(107) 把同一 DP 放在 Spec-TP 主語位，抽取就降格。<strong>對比顯示：從 Spec-TP 裡的成分抽取會降格。</strong></span></div>
+  </div>
+  <span class="pgmark">書頁 396–397</span>
+  <p>一種解法訴諸：主語不在「被中心語選擇／指派 θ- 角色」的位置。<strong>Spec-TP 是非 θ 位置</strong>（不像 Spec-vP 或補語位）。據此立下約束 (109)：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(109)</span> 一個階段的指示語，<strong>只有當該階段位於「被 θ- 指派中心語選擇」的位置時</strong>，才對特徵匹配可見。</span></div>
+  </div>
+  <span class="pgmark">書頁 397</span>
+  <p>運作示範。先看合法的 (110)：建內嵌 CP、who 移到其指示語、CP 與 <i>obvious</i> 合併（obvious 指派 θ- 角色給它）。因為內嵌 CP 在<strong>被 θ- 指派中心語選擇的位置</strong>，其指示語可見，who 可順利 wh- 移出 (111 樹)：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(110)</span> <span class="g">✓</span> Who is it obvious that Plato loves?</span></div>
+  </div>
+  <div class="tree">(111)        …  is  PredP
+                    /    \
+                 (is)     AP
+                        /    \
+                  obvious     CP   ← CP 被 obvious 選擇（θ位置）⇒ 指示語可見
+                            /   \
+                          who    C'
+                               /   \
+                            that     TP
+                                  Plato loves (who)</div>
+  <span class="pgmark">書頁 397–398</span>
+  <p>反之，若不合併虛主語 it，而是把內嵌 CP 移進 <strong>Spec-TP</strong> (112)：此時該 CP <strong>不在</strong>被 θ- 指派中心語選擇的位置（T 不指派 θ- 角色），故其指示語<strong>不可見</strong>，主句 C 的 wh- 特徵檢核不到 → 推導崩潰。同樣方法也預測「從 Spec-TP 的普通 DP 主語抽取」不合法 (113)，正確導出對比 (114)：</p>
+  <div class="tree">(112)          CP
+            /      \
+          C'        TP
+        /    \    /    \
+      C       [CP who   T'
+              that      / \
+              Plato    is  PredP
+              loves(who)]   AP … obvious (CP)
+      <span class="x">→ CP 在 Spec-TP（非 θ 位置）⇒ 指示語不可見 ⇒ crash</span></div>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(113)</span> a. A description of Aristotle is in the book. ／ b. <span class="ung">*</span> Who is a description of in the book?</span></div>
+    <div class="row"><span class="sent"><span class="num">(114)</span> a. There is a description of Aristotle in the book. ／ b. <span class="g">✓</span> Who is there a description of in the book?</span></div>
+  </div>
+  <span class="pgmark">書頁 398</span>
+  <p>注意：若 (b) 子句主語分析（特殊 CP）正確，則從該 CP 抽取會被<strong>兩條</strong>原則同時擋住（階段須在 θ 位置 + 特殊句法）。這是理論的<strong>冗餘（redundancy）</strong>——不理想（第 1 章說理論要最精簡），但本書暫且接受。至此，我們有<strong>三條</strong>關於 wh- 移位局域性的約束：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(115)</span> 1. 特徵匹配至多伸到內嵌<strong>階段</strong>的指示語（<strong>PIC</strong>）。<br>2. 階段指示語只有在「該階段位於被 θ- 指派中心語選擇之處」時才對特徵匹配可見。<br>3. 在 Spec-CP 中只有 wh- 特徵可見（<strong>不當移位</strong>）。</span></div>
+  </div>
+
+  <!-- 10.4.4 -->
+  <h3 id="s1044">10.4.4 附加語島嶼</h3>
+  <span class="pgmark">書頁 399</span>
+  <p>最後一類是<strong>附加語島嶼</strong>。第 8.3 節見過出現在附加語位置的 CP——時間、原因、條件子句：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(116)</span> Hephaestus had run away, before the executioner murdered Hera.</span></div>
+    <div class="row"><span class="sent"><span class="num">(117)</span> Hephaestus had run away because the executioner murdered Hera.</span></div>
+    <div class="row"><span class="sent"><span class="num">(118)</span> Hephaestus would run away if the executioner murdered Hera.</span></div>
+  </div>
+  <p>從這些附加語子句裡<strong>什麼都移不出來</strong>，可見它們是島：</p>
+  <div class="ex">
+    <div class="row"><span class="sent"><span class="num">(119)</span> <span class="ung">*</span> Who had Hephaestus run away, before the executioner murdered (Hera)?</span></div>
+    <div class="row"><span class="sent"><span class="num">(120)</span> <span class="ung">*</span> Who had Hephaestus run away, because the executioner murdered (Hera)?</span></div>
+    <div class="row"><span class="sent"><span class="num">(121)</span> <span class="ung">*</span> Who would Hephaestus run away, if the executioner murdered (Hera)?</span>
+      <span class="ana">現行理論<strong>已經</strong>預測它們不合法：<strong>附加語從不位於「被選擇中心語 θ- 標記」的位置</strong>。所以即使引導這些子句的補語連詞可選帶 [uwh*]、把 wh- 移到其指示語，該指示語對主句 C 仍<strong>不可見</strong>（因為附加語不在 θ 位置）→ 由約束 (109) 直接排除。</span></div>
+  </div>
+
+  <!-- 10.5 -->
+  <h2 id="s105">10.5 本章摘要</h2>
+  <span class="pgmark">書頁 399–401</span>
+  <p>本書最後一章探討 wh- 移位除了 Agree 上常見的<strong>介入效應（intervention effect）</strong>之外，還如何被進一步約束。</p>
+  <ul class="plain">
+    <li>先用方言英語、蘇格蘭蓋爾語、西班牙語的資料，論證 wh- 移位是<strong>連續循環</strong>的——被迫從一個 Spec-CP 走到下一個 Spec-CP。</li>
+    <li>用兩個想法在理論上捕捉它：(122) <strong>c-統制下的特徵檢核至多伸到任一內嵌 CP 的指示語</strong>；(123) <strong>內嵌 C 可選地帶強 [uwh*]</strong>。兩者皆視為 UG 的不變原則。</li>
+    <li>這解決了第 8 章留下的難題：如何排除把限定 CP 主語提升進含提升動詞的高層子句——由 (122) 排除；接著的新問題（低 wh- 升進提升動詞主語）則由<strong>不當移位限制</strong> (124)「Spec-CP 中只有 wh- 特徵可見」排除。</li>
+    <li>最後把「特徵匹配看不過內嵌 CP 指示語」推廣為<strong>階段（phase）</strong>，得 (125) <strong>階段不可穿透條件（PIC）</strong>：c-統制下的特徵檢核至多伸到任一內嵌<strong>階段</strong>的指示語。這統一了 wh- 島嶼與（某些）DP 島嶼。</li>
+    <li>再加 (126) <strong>階段須在 θ 位置，其指示語才對特徵匹配可見</strong>，把<strong>主語島嶼與附加語島嶼</strong>也納入。</li>
+  </ul>
+  <table>
+    <tr><th>現象（Phenomenon）</th><th>解釋（Explanation）</th></tr>
+    <tr><td>wh- 移位的連續循環性</td><td>PIC ＋ C 上可選的 [uwh*]</td></tr>
+    <tr><td>DP 島嶼與 wh- 島嶼</td><td>PIC</td></tr>
+    <tr><td>主語島嶼與附加語島嶼</td><td>階段須在 θ 位置才能供 Agree</td></tr>
+  </table>
+  <p><strong>誠實的自我評估。</strong>Adger 坦言本章理論比前面各章更<strong>「胚胎期（embryonic）」</strong>：很多結果是<strong>規約（stipulate）</strong>出來的，而非從更抽象的性質自然導出。理想上，我們希望理論的架構能自動產生 PIC、不當移位限制、以及「階段須在 θ 位置」這些結果。不過，至少 PIC 是經由「連續循環」的論證<strong>有獨立動機</strong>的，而後又發現它順帶對 wh- 島嶼與部分 DP 島嶼給出正確結果。此外，島嶼效應的經驗基礎（多少屬剖析、多少屬句法）只是冰山一角，跨語言變異也尚未觸及——<strong>還有大量工作要做</strong>。</p>
+
+  <div class="concept"><h4>本章四大島嶼一覽（與其解釋來源）</h4>
+  <table>
+    <tr><th>島嶼類型</th><th>典型壞例</th><th>為何是島（本章解釋）</th></tr>
+    <tr><td>Wh- 島嶼</td><td>*What did you ask who saw?</td><td>更深 wh- 不在 CP 階段指示語 ＋ 優越性 → PIC</td></tr>
+    <tr><td>DP（複合名詞片語）島嶼</td><td>*Which city do you believe the claim that Philip would invade?</td><td>定指 DP 是階段；wh- 埋在 DP 補語、不在 Spec-DP → PIC</td></tr>
+    <tr><td>主語島嶼</td><td>*Who was that Plato loved obvious? / *Who is a programme about on Radio 4?</td><td>主語在 Spec-TP（非 θ 位置）→ 違反 (109/126)</td></tr>
+    <tr><td>附加語島嶼</td><td>*Who had H. run away before the executioner murdered?</td><td>附加語不被 θ- 標記、非 θ 位置 → 違反 (109/126)</td></tr>
+  </table>
+  </div>
+
+  <div class="key"><b>本章關鍵詞彙：</b>locality（局域性）、successive cyclic movement（連續循環移位）、long swoop（一步到底）、escape hatch（逃逸艙口＝Spec-CP / Spec-vP）、floating quantifier &amp; stranding（浮游量詞與遺留）、complementizer agreement / alternation（補語連詞一致／交替，a vs gu(n)）、subject inversion（主語倒裝）、phase（階段）、Phase Impenetrability Constraint, PIC（階段不可穿透條件）、edge / specifier vs complement（邊緣＝指示語 vs 補語）、optional [uwh*] on C、improper movement &amp; Improper Movement Restriction（不當移位／限制）、island（島嶼）、Wh-Island Constraint、Complex Noun Phrase Island（DP island）、Sentential Subject Island Constraint、subject island、adjunct island、superiority（優越性）、D-linking（D- 連結）、definite vs indefinite DP、θ-position vs non-θ-position（θ 位置／非 θ 位置）、intervention effect（介入效應）、Relativized Minimality（相對最小性，文獻 Rizzi 1990）、that-trace、redundancy in theory、embryonic theory。</div>
+
+  <div class="nav-bottom">
+    <a href="Ch09_Wh_movement.html">← 第 9 章：Wh- 移位</a>
+    <a href="index.html">全書導覽 →</a>
+  </div>
+</div><!-- /.wrap -->
+</div><!-- /#zh -->
+
+<!-- ===================== ENGLISH PANEL ===================== -->
+<div class="panel" id="en">
+<div class="wrap">
+  <p class="lead">Condensed page-by-page summary of Chapter 10 of Adger (2003), <em>Core Syntax</em>, pp. 376–407 (OUP). The running prose is <strong>paraphrased / summarized</strong> (not reproduced verbatim); short numbered example sentences are quoted in blockquotes with their grammaticality marks. Key terms in <strong>bold</strong>.</p>
+
+  <span class="enpg">p.376</span>
+  <p><strong>10.1 Introduction.</strong> This chapter pushes wh-movement further. Although wh-movement can shift a phrase an apparently <strong>unbounded</strong> distance from its launch site, it always proceeds in a number of <strong>short, local steps</strong> rather than one long leap. This builds on the Gaelic complementizer-alternation data from Ch.9. A derivation proceeds in chunks called <strong>phases</strong>, which forces wh-movement into small steps, and the phase notion will explain traditional <strong>island constraints</strong>. The Ch.9 question recurs: does wh-movement across a clausal boundary happen in one step or two+? Two competing representations:</p>
+  <blockquote><span class="num">(1)</span> [CP XP[wh] C[uwh*]… V [CP (XP[wh]) C … (XP[wh])]] — local, stepwise<br><span class="num">(2)</span> [CP XP[wh] C[uwh*]… V [CP C … (XP[wh])]] — one long leap</blockquote>
+  <p>In (1) the wh-XP moves first to the embedded Spec-CP, then to the matrix Spec-CP; in (2) it skips the lower Spec-CP. The Ch.9 conclusion was that (1) is correct; the standard term for this is <strong>successive cyclic movement</strong>.</p>
+
+  <span class="enpg">p.377</span>
+  <p><strong>10.2 Empirical evidence for local movement.</strong> Three independent arguments for successive cyclicity: (i) floating quantifiers in a dialect of English; (ii) alternating complementizers in Scottish Gaelic; (iii) inversion in Spanish. <strong>10.2.1 Floating quantifiers.</strong> West Ulster English attaches the quantifier <em>all</em> to a wh-word:</p>
+  <blockquote><span class="num">(3)</span> What all did you get for Christmas?<br><span class="num">(4)</span> Who all did you meet when you were in Derry?<br><span class="num">(5)</span> Where all did they go for their holidays?</blockquote>
+  <p>As with VP-internal subject stranding (Ch.6), this <em>all</em> can be <strong>stranded</strong>:</p>
+  <blockquote><span class="num">(6)</span> What did you get all for Xmas?<br><span class="num">(7)</span> Who did you meet all when you were in Derry?<br><span class="num">(8)</span> Where did they go all for their holidays?</blockquote>
+  <p>True of embedded questions too:</p>
+  <blockquote><span class="num">(9)</span> I don't remember [what all I said].<br><span class="num">(10)</span> I don't remember [what I said all].</blockquote>
+
+  <span class="enpg">p.378</span>
+  <p>The constituent [what all] is Merged in θ-position; the wh-phrase can raise, stranding the quantifier (structure (11): [vP get [DP all (what)]]). For long-distance extraction, the quantifier can be stranded in the <strong>intermediate Spec-CP</strong> — exactly as predicted if movement stops there:</p>
+  <blockquote><span class="num">(12)</span> What all did he say [(that) he wanted]?<br><span class="num">(13)</span> What did he say [(that) he wanted all]?<br><span class="num">(14)</span> What did he say [all (that) he wanted]?<br><span class="num">(15)</span> Where do you think [all they'll want to visit]?<br><span class="num">(16)</span> What do they claim [all that we did]?<br><span class="num">(17)</span> *What did he say [that all he wanted]?</blockquote>
+  <p>The stranded quantifier correctly precedes <em>that</em> (Spec-CP is before C); (17) fails. Structure (18): [CP what … [CP (what) all C [TP … (what all)]]].</p>
+
+  <span class="enpg">p.379</span>
+  <p>The analysis also predicts stranding in the Spec of a <strong>non-finite C</strong>, before <em>for</em> — correct:</p>
+  <blockquote><span class="num">(19)</span> What were you trying all to say?<br><span class="num">(20)</span> What did you mean all for me to do?</blockquote>
+  <p>This shows we must <em>allow</em> successive steps via Spec-CP, so "one long swoop" cannot be the only option — but it does not rule out long swoop. <strong>10.2.2 Complementizer agreement again.</strong> In Scottish Gaelic, non-wh embedding uses the complementizer <em>gu(n)</em> = [C, finite]:</p>
+  <blockquote><span class="num">(21)</span> Bha mi ag radh <strong>gun</strong> do bhuail e. ('I was saying that she hit him.')<br><span class="num">(22)</span> Tha mi a' smaoineachadh <strong>gu</strong> bheil Iain air a mhisg. ('I think Iain is drunk.')</blockquote>
+
+  <span class="enpg">p.380</span>
+  <p>Matrix wh-questions in Gaelic use an overt complementizer <em>a</em> (= [C, uwh*], lacking [Q] because the same form occurs in clefts and relatives):</p>
+  <blockquote><span class="num">(23)</span> Co an duine <strong>a</strong> tha thu a' posadh? ('Which man are you marrying?')<br><span class="num">(24)</span> Co a' chaileag <strong>a</strong> tha thu a' pogadh? ('Which girl are you kissing?')</blockquote>
+  <p>Structure (25) shows <em>a</em>[uwh*] heading CP. Generalization (26): if Spec-CP holds a wh-phrase, <em>a</em> heads CP; otherwise <em>gu</em> does.</p>
+
+  <span class="enpg">p.381</span>
+  <p>Under wh-extraction from an embedded clause, the expected <em>gu</em> is replaced by <em>a</em> in the embedded clause:</p>
+  <blockquote><span class="num">(27)</span> Co an duine <strong>a</strong> bha thu ag radh <strong>a</strong> bhuail i? ('Which man were you saying she hit?')<br><span class="num">(28)</span> Co am bodach <strong>a</strong> tha thu a' smaoineachadh <strong>a</strong> tha air a mhisg? ('Which old man do you think is drunk?')</blockquote>
+  <p>This entails movement stopped at the embedded Spec-CP. Crucially, keeping <em>gu(n)</em> under wh-movement is <strong>ungrammatical</strong>:</p>
+  <blockquote><span class="num">(29)</span> *Co an duine a bha thu ag radh <strong>gun</strong> do bhuail i?<br><span class="num">(30)</span> *Co am bodach a tha thu a' smaoineachadh <strong>gu</strong> bheil air a mhisg?</blockquote>
+
+  <span class="enpg">p.382</span>
+  <p>So stopping at the intermediate Spec-CP is not merely an option, it is <strong>obligatory</strong>. Unlike the West Ulster data, this argument <em>rules out</em> one-long-swoop derivations (otherwise (29)–(30) could not be excluded). <strong>10.2.3 Successive inversion (Spanish).</strong> Spanish (and Italian) optionally allow post-VP subjects:</p>
+  <blockquote><span class="num">(31)</span> Maria contestó la pregunta.<br><span class="num">(32)</span> Contestó la pregunta Maria.</blockquote>
+  <p>In wh-questions the inversion is <strong>obligatory</strong>:</p>
+  <blockquote><span class="num">(33)</span> Qué querían esos dos?<br><span class="num">(34)</span> *Qué esos dos querían?</blockquote>
+  <p>Generalization (35): wh-word in Spec-CP ⇒ inversion obligatory; else optional. Used as a probe for long-distance questions.</p>
+
+  <span class="enpg">p.383</span>
+  <p>In a multi-clause declarative (36) the embedded subjects (Pedro, la revista) <em>precede</em> their verbs. Wh-extracting the most embedded object triggers inversion in <strong>every intermediate clause</strong>:</p>
+  <blockquote><span class="num">(37)</span> Qué pensaba Juan que le había dicho Pedro que había publicado la revista? ('What did Juan think Pedro told him the journal had published?')<br><span class="num">(38)</span> *Qué pensaba Juan que Pedro le había dicho que la revista había publicado?</blockquote>
+  <p>(37) shows inversion in main, intermediate, and most-embedded clauses; the absence in (38) is ungrammatical. So the wh-phrase must occupy each intermediate Spec-CP, ruling out one-long-swoop.</p>
+
+  <span class="enpg">p.384</span>
+  <p>We needn't know the exact inversion mechanism — just that obligatory inversion correlates with a filled Spec-CP, extrapolating to other obligatory-inversion contexts. Again: wh-movement proceeds through Spec-CPs and cannot skip them. <strong>10.3 Ensuring successive wh-movement.</strong> <strong>10.3.1 Locality in feature matching.</strong> Wh-movement is triggered by a strong uninterpretable wh-feature on C; in a single clause it matches a wh-feature on a constituent within the clause:</p>
+  <blockquote><span class="num">(39)</span> C[uwh*] … XP[wh]</blockquote>
+
+  <span class="enpg">p.385</span>
+  <p>Matching cannot reach into a lower clause beyond its specifier: the complement of any C is invisible to matching (40); moving XP[F] to Spec-CP makes it visible (41).</p>
+  <blockquote><span class="num">(40)</span> C[uF] … [CP C [TP … XP[F] …]]<br><span class="num">(41)</span> C[uF] … [CP XP[F] C [TP … (XP[F]) …]]<br><span class="num">(42)</span> Feature checking under c-command reaches no further than the specifier of any embedded CP.</blockquote>
+  <p>(42) alone won't <em>force</em> anything into the intermediate Spec-CP. Languages that overtly mark the intermediate position (Gaelic) wear their feature specifications on their morphological sleeves; just as English DPs bear abstract case, English embedding Cs may optionally bear an abstract <strong>[uwh*]</strong>:</p>
+  <blockquote><span class="num">(43)</span> Embedded C may optionally bear [uwh*]. (a UG principle)</blockquote>
+  <p>So every language has two relevant Cs (one [uwh*], one not), spelled out differently (Gaelic) or not (English).</p>
+
+  <span class="enpg">p.386</span>
+  <p>Combining (42)+(43): if an embedded CP contains a wh-XP (44) and is embedded under a C[uwh*]-headed clause, using the plain C means the wh-feature can never be matched → the derivation <strong>crashes</strong>. Using the [uwh*] embedded C forces the wh-XP into the lower Spec-CP (45), where it becomes accessible to the higher C — forcing successive steps:</p>
+  <blockquote><span class="num">(44)</span> C … XP[wh]<br><span class="num">(45)</span> XP[wh] C[uwh*] … (XP[wh])</blockquote>
+  <p>Generalizing from CPs to DPs (and some PPs), we call such categories <strong>phases</strong>:</p>
+  <blockquote><span class="num">(46)</span> Feature matching reaches no further than the specifier of an embedded phase.</blockquote>
+  <p>This is the <strong>Phase Impenetrability Constraint (PIC)</strong>. Chomsky derives phasehood from derivations having "short memories": material inside completed phases is forgotten (except the edge/specifier).</p>
+
+  <span class="enpg">p.386–387</span>
+  <p><strong>10.3.2 Solving an old puzzle.</strong> Ch.8 (8.2.6) left a puzzle with raising verbs: a finite CP embedded under <em>seem</em> (structure (47)). Matching T's [nom]/EPP with embedded <em>Medea</em> would wrongly derive:</p>
+  <blockquote><span class="num">(48)</span> *Medea seemed that has poisoned Jason.<br><span class="num">(49)</span> [TP T[uD*] seemed [CP (that) Medea[D,nom] has poisoned Jason]]</blockquote>
+  <p>PIC rules (48) out: Medea is not a wh-phrase, never reaches the lower Spec-CP, so is never accessible to matrix T's EPP.</p>
+
+  <span class="enpg">p.387–388</span>
+  <p>But a new version arises: wh-phrases <em>do</em> reach intermediate Spec-CP, so why is (50) bad?</p>
+  <blockquote><span class="num">(50)</span> *Who seemed (that) had poisoned Jason?</blockquote>
+  <p>Derivation (51) seems possible: build TP, merge C[uwh*] raising <em>who</em> to Spec-CP, merge seem/v/T, match EPP raising <em>who</em> to matrix Spec-TP, merge matrix C. The odd step is <em>who</em> moving from Spec-CP to Spec-TP — traditionally called <strong>improper movement</strong>. Captured by:</p>
+  <blockquote><span class="num">(52)</span> Improper Movement Restriction: Only wh-features are visible in the specifier of CP.</blockquote>
+  <p>This blocks T's EPP from matching <em>who</em>'s D-feature in Spec-CP. The restriction is admittedly a stipulation whose deeper explanation is under debate, but suffices here.</p>
+
+  <span class="enpg">p.388–389</span>
+  <p><strong>10.4 Island phenomena. 10.4.1 Wh-islands.</strong> With multiple wh-phrases the highest raises to matrix Spec-CP (53); the lower stays because matching targets the closest wh (superiority), ruling out (54). Same in embedded clauses:</p>
+  <blockquote><span class="num">(53)</span> Who C (who) T … (who) saw what?<br><span class="num">(54)</span> *What did who … (who) see (what)?<br><span class="num">(55)</span> I asked who saw what.<br><span class="num">(56)</span> *I asked what who saw?</blockquote>
+
+  <span class="enpg">p.389</span>
+  <p>If one wh-phrase fills the embedded Spec-CP, a more deeply embedded one can't move higher (config (57)): the matrix C attracts the closest wh, and the deeper wh isn't at the CP-phase edge. Hence by PIC:</p>
+  <blockquote><span class="num">(57)</span> … V [CP XP1[wh] … XP2[wh] …]<br><span class="num">(58)</span> *What did you ask who saw (what)?<br><span class="num">(59)</span> I asked who Medea gave what?<br><span class="num">(60)</span> *What did you ask who Medea gave (what)?<br><span class="num">(61)</span> It is impossible to move a wh-phrase out of a CP with another wh-phrase in its specifier.</blockquote>
+  <p>This is the classic <strong>Wh-Island Constraint</strong>. Note: an <strong>island</strong> (descriptive: can't wh-move out of it) is not the same as a <strong>phase</strong> (theoretical: only its specifier is accessible).</p>
+
+  <span class="enpg">p.390</span>
+  <p><strong>D-linked</strong> wh-expressions sharpen the effect (avoiding superiority confounds). D-linking lets a low wh raise over a higher one:</p>
+  <blockquote><span class="num">(62)</span> I asked which king invaded which city.<br><span class="num">(63)</span> I asked which city which king invaded.<br><span class="num">(64)</span> [CP which city C[uwh*] [TP which king invaded (which city)]]<br><span class="num">(65)</span> ?Which city did you ask which king invaded?<br><span class="num">(66)</span> *Which king did you ask which city invaded?</blockquote>
+  <p>(65) (object, slightly degraded) contrasts dramatically with (66) (subject), since the embedded subject is not at the CP-phase edge — not attributable to superiority since the wh-subject is D-linked. The theory also predicts the well-formed:</p>
+  <blockquote><span class="num">(67)</span> Who did you ask saw what?<br><span class="num">(68)</span> Which king did you wonder invaded which city?</blockquote>
+  <p>So the wh-island constraint follows from the PIC.</p>
+
+  <span class="enpg">p.391</span>
+  <p><strong>10.4.2 DP islands.</strong> A noun with a CP, PP, or of-DP argument:</p>
+  <blockquote><span class="num">(69)</span> I believed [DP the claim [CP that Philip would invade the city of Athens]].<br><span class="num">(70)</span> *Which city do you believe [DP the claim [CP that Philip would invade]]?<br><span class="num">(71)</span> Plato listened to [DP Demosthenes' oration [PP about Philip]].<br><span class="num">(72)</span> *Who did Plato listen to [DP Demosthenes' oration [PP about]]?<br><span class="num">(73)</span> Phaedo was interested in [DP Plato's description [of geometry]].<br><span class="num">(74)</span> *What was Phaedo interested in [DP Plato's description [of]]?</blockquote>
+  <p>Traditionally <strong>Complex Noun Phrase Islands</strong> (now treated as full DPs). Captured by assuming <strong>DPs are phases</strong>: nothing inside (except Spec-DP) is accessible to a later [uwh*] C. None of these have a wh in Spec-DP.</p>
+
+  <span class="enpg">p.392</span>
+  <p>Walking through the CP-complement case (75): even after raising <em>which city</em> to the embedded Spec-CP (76), embedding it in the DP <em>the claim…</em> (a phase) buries it in the DP's complement (77), so matrix C cannot match it.</p>
+  <blockquote><span class="num">(75)</span> *Which city do you believe [DP the claim [CP that Philip would invade]]?<br><span class="num">(76)</span> [CP which city that[uwh*] [TP Philip would invade (which city)]]<br><span class="num">(77)</span> [CP [do C[Q,uwh*]] you believe [DP the claim [CP which city that[uwh*]…]]]</blockquote>
+
+  <span class="enpg">p.392–393</span>
+  <p>Could D bear [uwh*], moving a wh to Spec-DP (intermediate (79))? That requires <em>the</em> to host [uwh*] — but DP-internal wh-movement under <em>the</em> is impossible:</p>
+  <blockquote><span class="num">(78)</span> *Which city do you believe the claim that Philip would invade?<br><span class="num">(79)</span> [which city] the claim that Philip would invade<br><span class="num">(80)</span> *Which god the statue<br><span class="num">(81)</span> *How fierce the battle</blockquote>
+  <p>Same for all definite Ds, including the zero determiner that checks genitive possessors:</p>
+  <blockquote><span class="num">(82)</span> *Which poem did you hear Homer's recital of last night?<br><span class="num">(83)</span> *Which poem did you hear those recitals of last night?</blockquote>
+
+  <span class="enpg">p.393</span>
+  <p>But <strong>indefinite</strong> Ds permit extraction:</p>
+  <blockquote><span class="num">(84)</span> Which poem did you go to hear a recital of last night?<br><span class="num">(85)</span> Who did you get an accurate description of?<br><span class="num">(86)</span> Who did you hear an oration about?</blockquote>
+  <p>So <strong>definite DPs are islands, indefinite ones are not</strong>. Two options: (i) phasehood depends on definiteness; (ii) indefinite Ds allow a wh-specifier. Supporting (ii), DP-internal wh-movement exists and is restricted to indefinites:</p>
+  <blockquote><span class="num">(87)</span> a fierce battle ~ How fierce a battle.<br><span class="num">(88)</span> the fierce battle ~ *How fierce the battle.<br><span class="num">(89)</span> an oration about Philip ~ *Who an oration about</blockquote>
+  <p>(89) shows this doesn't extend to noun arguments. Adger leaves it open, assuming only definite DPs are phases.</p>
+
+  <span class="enpg">p.393–394</span>
+  <p><strong>10.4.3 Subject islands.</strong> With adjective <em>obvious</em> (single CP argument):</p>
+  <blockquote><span class="num">(90)</span> That Plato loved Aster was obvious.<br><span class="num">(91)</span> It was obvious that Plato loved Aster.<br><span class="num">(92)</span> Who was it obvious that Plato loved?<br><span class="num">(93)</span> *Who was that Plato loved obvious?</blockquote>
+  <p>Same with CP subjects of a verb:</p>
+  <blockquote><span class="num">(94)</span> That Plato loved Aster seemed to be known by everyone.<br><span class="num">(95)</span> *Who did that Plato loved seem to be known by everyone?<br><span class="num">(96)</span> That Plato loved Aster proved to be his undoing.<br><span class="num">(97)</span> *Who did that Plato loved prove to be his undoing?</blockquote>
+
+  <span class="enpg">p.394</span>
+  <p>Nothing — subject, prepositional object, or manner adverb — can be extracted from a CP subject:</p>
+  <blockquote><span class="num">(98)</span> b. *Who was that loved Aster obvious?<br><span class="num">(99)</span> b. *Which city was that Plato lived in well known?<br><span class="num">(100)</span> b. *How deeply was that Plato loved Aster obvious?<br><span class="num">(101)</span> The Sentential Subject Island Constraint: Nothing can be moved out of a clausal subject.</blockquote>
+  <p>Extraction from a non-initial CP argument of <em>seem</em> (91) is fine: build CP, raise <em>who</em> via C[uwh*], merge <em>obvious</em> (structure (102)).</p>
+
+  <span class="enpg">p.395</span>
+  <blockquote><span class="num">(102)</span> [AP obvious [CP who C [that Plato loved (who)]]]<br><span class="num">(103)</span> Who was it obvious that Plato loved?</blockquote>
+  <p>Two analyses of sentential subjects: (a) in Spec-TP; (b) base-adjoined, with a null pronominal in Spec-TP. Under (a), moving the CP to Spec-TP (104), merging C[Q,uwh*], then raising <em>who</em> to matrix Spec-CP (105), the derivation <strong>converges yet is completely ungrammatical</strong> — analysis (a) fails.</p>
+  <blockquote><span class="num">(104)</span> [TP [who that Plato loved] was obvious]<br><span class="num">(105)</span> [CP who C[Q,uwh*] [TP [CP (who) that Plato loved] was (CP) obvious]]</blockquote>
+
+  <span class="enpg">p.395–396</span>
+  <p>Under (b), the clausal subject is in the specifier of a <strong>special CP</strong> and Spec-TP holds a null pronominal (106). This can't be made a wh-question (Spec-CP is taken) nor further embedded (the special C is matrix-only). So the Sentential Subject Island facts follow from the independently motivated analysis of clausal subjects.</p>
+  <blockquote><span class="num">(106)</span> [CP [CP (who) C that Plato loved (who)] C[Q,uwh*] [TP PRO[null] was obvious]]</blockquote>
+
+  <span class="enpg">p.396</span>
+  <p>But subject islands are more general — extraction from any subject is degraded:</p>
+  <blockquote><span class="num">(107)</span> a. A programme about Euripides is on Radio 4 tonight. b. *Who is a programme about on Radio 4 tonight?<br><span class="num">(108)</span> a. There is a programme about Euripides on Radio 4 tonight. b. Who is there a programme about on Radio 4 tonight?</blockquote>
+  <p>Extraction from an indefinite DP is OK (108) but degraded when the DP is in Spec-TP (107). So extraction from a Spec-TP element is degraded.</p>
+
+  <span class="enpg">p.396–397</span>
+  <p>One approach: subjects are not in selected/θ-marked positions. <strong>Spec-TP is a non-θ position</strong> (unlike Spec-vP or complement). Hence:</p>
+  <blockquote><span class="num">(109)</span> The specifier of a phase is only visible to feature matching if the phase is in a position where it is selected by a θ-assigning head.</blockquote>
+
+  <span class="enpg">p.397</span>
+  <p>For legitimate (110): the embedded CP is selected by <em>obvious</em> (θ-assigner), so its specifier is visible and <em>who</em> can move out (structure (111)).</p>
+  <blockquote><span class="num">(110)</span> Who is it obvious that Plato loves?<br><span class="num">(111)</span> [… is [PredP (is) [AP obvious [CP who C [that [TP Plato loves (who)]]]]]]</blockquote>
+
+  <span class="enpg">p.398</span>
+  <p>If instead the embedded CP moves to Spec-TP (112), T is not a θ-assigner, so the phase's specifier is invisible and the derivation crashes. Same predicts ungrammatical extraction from a normal DP subject (113)/(114):</p>
+  <blockquote><span class="num">(112)</span> [CP C [TP [CP who that Plato loves (who)] [T' is [PredP … obvious (who…)]]]]<br><span class="num">(113)</span> a. A description of Aristotle is in the book. b. *Who is a description of in the book?<br><span class="num">(114)</span> a. There is a description of Aristotle in the book. b. Who is there a description of in the book?</blockquote>
+  <p>If the special-CP analysis of clausal subjects is right, extraction is ruled out twice (θ-position condition + special syntax) — an undesirable but tolerated <strong>redundancy</strong>. Three locality constraints now:</p>
+  <blockquote><span class="num">(115)</span> 1. Feature matching reaches no further than the specifier of an embedded phase (PIC). 2. A phase's specifier is visible only if the phase is selected by a θ-assigning head. 3. Only wh-features are visible in Spec-CP (Improper Movement).</blockquote>
+
+  <span class="enpg">p.399</span>
+  <p><strong>10.4.4 Adjunct islands.</strong> Temporal/causal/conditional clausal adjuncts (cf. 8.3):</p>
+  <blockquote><span class="num">(116)</span> Hephaestus had run away, before the executioner murdered Hera.<br><span class="num">(117)</span> Hephaestus had run away because the executioner murdered Hera.<br><span class="num">(118)</span> Hephaestus would run away if the executioner murdered Hera.</blockquote>
+  <p>Nothing can be wh-moved out:</p>
+  <blockquote><span class="num">(119)</span> *Who had Hephaestus run away, before the executioner murdered (Hera)?<br><span class="num">(120)</span> *Who had Hephaestus run away, because the executioner murdered (Hera)?<br><span class="num">(121)</span> *Who would Hephaestus run away, if the executioner murdered (Hera)?</blockquote>
+  <p>Predicted already: adjuncts are never θ-marked by a selecting head, so even if their C bears [uwh*], any wh in its specifier is invisible to matrix C (constraint (109)).</p>
+
+  <span class="enpg">p.399–401</span>
+  <p><strong>10.5 Summary.</strong> Beyond the usual intervention effect on Agree, wh-movement is further constrained. Successive cyclicity was motivated from dialectal English, Scottish Gaelic, and Spanish — wh-movement proceeds Spec-CP to Spec-CP. Captured by two principles: (122) feature checking reaches no further than the specifier of any embedded CP; (123) embedded C may optionally bear [uwh*] — both invariant UG principles. This solved the Ch.8 raising puzzle ((122)) and its new variant (improper movement, (124): only wh-features visible in Spec-CP). Generalizing CP to <strong>phase</strong> gives the <strong>PIC</strong> (125), unifying wh-islands and (some) DP-islands; adding (126) that a phase must be in a θ-position for its specifier to be accessible covers subject and adjunct islands.</p>
+  <blockquote><span class="num">(122)</span> Feature checking under c-command reaches no further than the specifier of any embedded CP.<br><span class="num">(123)</span> Embedded C may optionally bear [uwh*].<br><span class="num">(124)</span> Improper Movement Restriction: Only wh-features are visible in Spec-CP.<br><span class="num">(125)</span> Phase Impenetrability Constraint: Feature checking under c-command reaches no further than the specifier of any embedded phase.<br><span class="num">(126)</span> A phase must be in a θ-position if its specifier is to be accessible for feature matching.</blockquote>
+  <table>
+    <tr><th>Phenomenon</th><th>Explanation</th></tr>
+    <tr><td>Successive cyclicity of wh-movement</td><td>PIC and optional [uwh*] on C</td></tr>
+    <tr><td>DP islands and wh-islands</td><td>PIC</td></tr>
+    <tr><td>Subject islands and adjunct islands</td><td>Phases must be in a θ-position for Agree</td></tr>
+  </table>
+
+  <span class="enpg">p.401</span>
+  <p>Adger candidly notes this chapter's theory is more <strong>embryonic</strong>: results are largely <em>stipulated</em> (PIC, Improper Movement, the θ-position condition) rather than falling out of deeper architecture — though PIC at least is independently motivated by successive-cyclicity arguments and then independently gets wh-islands and some DP-islands right. The empirical base of island effects (how much is parsing vs syntax) and cross-linguistic island variation are barely touched: much work remains.</p>
+
+  <span class="enpg">p.401–407</span>
+  <p><strong>Exercises &amp; Further reading.</strong> Eleven exercises: (1) long-distance wh-movement trees; (2) explaining island violations via phases; (3) topicalization (<em>Medea, Jason poisoned</em>, [top]/[utop*] on C) and whether it patterns with wh-movement, plus reformulating Improper Movement; (4) tough-movement (<em>Syntax is tough to teach</em>) — long-distance and island-sensitive; (5) light-verb constructions (<em>make the claim</em>, <em>have the feeling</em>) as apparent problems for DP-phasehood; (6) comparative deletion; (7) So-XP movement; (8) coordination (Coordinate Structure Constraint); (9) clefts; (10) relativization (null [Rel] operator); (11) French ECM (<em>*Je crois Georges être le meilleur</em> vs <em>Qui crois-tu être le meilleur?</em>). <strong>Further reading</strong>: locality from Chomsky (1973, 1977); West Ulster data from McCloskey (2000); Irish/Gaelic complementizers McCloskey (1990, forthcoming), Adger &amp; Ramchand (2002); Spanish inversion Torrego (1984); successive cyclicity via PIC + optional C features Chomsky (2000, 2001b); improper movement Chomsky (1981); the classic island reference Ross (1967); locality approaches Chomsky (1986a), Rizzi (1990), Cinque (1990), Manzini (1992).</p>
+
+  <div class="nav-bottom">
+    <a href="Ch09_Wh_movement.html">← Ch.9 Wh-movement</a>
+    <a href="index.html">Index →</a>
+  </div>
+</div><!-- /.wrap -->
+</div><!-- /#en -->
+
+<a href="#top" class="back-top">↑ 回頂端</a>
+<footer>Adger, D. (2003) <em>Core Syntax</em>, Ch.10 Locality · Oxford University Press · DOI:10.1093/oso/9780199243709.003.0010</footer>
+
+<script>
+function showTab(which){
+  document.getElementById('zh').classList.toggle('active', which==='zh');
+  document.getElementById('en').classList.toggle('active', which==='en');
+  document.getElementById('tab-zh').classList.toggle('active', which==='zh');
+  document.getElementById('tab-en').classList.toggle('active', which==='en');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+</script>
+</body>
+</html>
