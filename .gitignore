@@ -4,6 +4,10 @@
 # 文字萃取與產題中間檔（含整章原文）
 _txt/
 
+# 註：config.js 內只有 Supabase anon public key（設計給瀏覽器公開用），
+#     可安全 commit；真正的存取控制由 supabase_setup.sql 的 RLS + RPC 把關，
+#     故「不」忽略 config.js。
+
 # === 本機 / 工具產物 ===
 .DS_Store
 Thumbs.db

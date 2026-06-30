@@ -31,6 +31,10 @@
   .seg button.on{background:var(--accent2);color:#fff}
   .toolbtn{cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--accent);padding:6px 14px;border-radius:8px;font-size:.85rem;font-family:inherit}
   .toolbtn:hover{background:#faf2f3}
+  .synccode{font-family:inherit;font-size:.85rem;padding:6px 11px;border:1px solid var(--line);border-radius:8px;min-width:220px}
+  .syncstatus{font-size:.82rem;color:var(--muted)}
+  .syncstatus.ok{color:var(--g)} .syncstatus.err{color:var(--ung)} .syncstatus.busy{color:var(--accent2)}
+  .synchint{font-size:.78rem;color:var(--muted);flex-basis:100%;margin-top:2px}
 
   /* stats */
   .stats{display:flex;flex-wrap:wrap;gap:14px;background:#fdf6e3;border:1px solid #e9dcae;border-radius:12px;padding:14px 18px;margin:14px 0;font-family:system-ui,sans-serif;font-size:.9rem}
@@ -103,6 +107,9 @@
   .back-top{position:fixed;right:18px;bottom:18px;background:var(--accent);color:#fff;text-decoration:none;padding:8px 13px;border-radius:20px;font-family:system-ui,sans-serif;font-size:.8rem;box-shadow:0 3px 10px rgba(0,0,0,.2)}
   @media(max-width:600px){.ctl-row .lbl{min-width:100%}}
 </style>
+<!-- Supabase JS SDK (用於跨裝置雲端同步；若 config 未填則自動退回純本機模式) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="config.js"></script>
 </head>
 <body id="top">
 <header><div class="inner">
@@ -154,6 +161,15 @@
       <label class="toolbtn" style="cursor:pointer">⬆ 匯入備份<input type="file" id="importInput" accept=".json" style="display:none"></label>
       <button class="toolbtn" onclick="resetProgress()">♻ 清除進度</button>
     </div>
+    <div class="ctl-row" id="syncRow" style="margin-top:8px;border-top:1px dashed var(--line);padding-top:12px">
+      <span class="lbl">☁ 雲端同步</span>
+      <input class="synccode" id="syncCode" type="password" placeholder="輸入你的同步碼（自訂密語）">
+      <button class="toolbtn" id="syncConnectBtn" onclick="connectSync()">連結同步</button>
+      <button class="toolbtn" id="syncNowBtn" style="display:none" onclick="syncNow(true)">↻ 立即同步</button>
+      <button class="toolbtn" id="syncOffBtn" style="display:none" onclick="disconnectSync()">登出同步</button>
+      <span class="syncstatus" id="syncStatus"></span>
+      <span class="synchint" id="syncHint">輸入一組只有你知道的密語（夠長、別人猜不到），在任何裝置輸入同一組密語即可同步筆記與進度。</span>
+    </div>
   </div>
 
   <!-- stats -->
@@ -178,11 +194,12 @@ let view = [];               // filtered/ordered ids in current view
 let store = load();          // persisted state
 
 function load(){
-  try{ return JSON.parse(localStorage.getItem(NS)) || blank(); }
+  try{ const o=JSON.parse(localStorage.getItem(NS)); return o?Object.assign(blank(),o):blank(); }
   catch(e){ return blank(); }
 }
-function blank(){ return {notes:{}, answers:{}, starred:[], settings:{lang:"both",mode:"practice"}}; }
-function save(){ try{ localStorage.setItem(NS, JSON.stringify(store)); }catch(e){ console.warn("save failed",e); } }
+// timestamp maps (noteTs/starTs/settingsTs) enable per-record last-write-wins cloud merge
+function blank(){ return {notes:{}, noteTs:{}, answers:{}, starred:[], starTs:{}, settings:{lang:"both",mode:"practice"}, settingsTs:0}; }
+function save(skipPush){ try{ localStorage.setItem(NS, JSON.stringify(store)); }catch(e){ console.warn("save failed",e); } if(!skipPush) schedulePush(); }
 
 const filters = {chapters:new Set(), types:new Set(), diffs:new Set(), only:new Set()};
 let lang = "both", mode = "practice";
@@ -244,8 +261,8 @@ function syncChips(container,key){
   });
 }
 function toggleOnly(k,el){ toggleSet(filters.only,k); el.classList.toggle("on"); render(); }
-function setLang(l,el){ lang=l; document.querySelectorAll("#langSeg button").forEach(b=>b.classList.remove("on")); el.classList.add("on"); store.settings.lang=l; save(); render(); }
-function setMode(m,el){ mode=m; document.querySelectorAll("#modeSeg button").forEach(b=>b.classList.remove("on")); el.classList.add("on"); store.settings.mode=m; save(); document.getElementById("examSubmitBtn").style.display=m==="exam"?"inline-block":"none"; document.getElementById("examsummary").classList.remove("show"); render(); }
+function setLang(l,el){ lang=l; document.querySelectorAll("#langSeg button").forEach(b=>b.classList.remove("on")); el.classList.add("on"); store.settings.lang=l; store.settingsTs=stamp(); save(); render(); }
+function setMode(m,el){ mode=m; document.querySelectorAll("#modeSeg button").forEach(b=>b.classList.remove("on")); el.classList.add("on"); store.settings.mode=m; store.settingsTs=stamp(); save(); document.getElementById("examSubmitBtn").style.display=m==="exam"?"inline-block":"none"; document.getElementById("examsummary").classList.remove("show"); render(); }
 
 /* ===================== filtering ===================== */
 function passes(q){
@@ -388,13 +405,14 @@ function revealRef(id){
 const noteTimers={};
 function onNote(id){
   const v=document.getElementById("note-"+id).value;
-  store.notes[id]=v;
+  store.notes[id]=v; store.noteTs[id]=stamp();
   clearTimeout(noteTimers[id]);
   noteTimers[id]=setTimeout(()=>{ save(); const s=document.getElementById("nsaved-"+id); if(s){ s.textContent="已儲存 ✓"; setTimeout(()=>s.textContent="",1400);} }, 450);
 }
 function toggleStar(id,el){
   const i=store.starred.indexOf(id);
   if(i>=0) store.starred.splice(i,1); else store.starred.push(id);
+  store.starTs[id]=stamp();
   el.classList.toggle("on"); save(); renderStats();
   if(filters.only.has("star")) render();
 }
@@ -454,14 +472,9 @@ function handleImport(e){
   const rd=new FileReader();
   rd.onload=()=>{ try{
       const inc=JSON.parse(rd.result);
-      const mode=confirm("按「確定」= 合併匯入（保留現有並覆寫同題）\n按「取消」= 完全取代現有資料")?"merge":"replace";
-      if(mode==="replace"){ store=Object.assign(blank(),inc); }
-      else{
-        store.notes=Object.assign({},store.notes,inc.notes||{});
-        store.answers=Object.assign({},store.answers,inc.answers||{});
-        store.starred=[...new Set([...(store.starred||[]),...(inc.starred||[])])];
-        store.settings=Object.assign({},store.settings,inc.settings||{});
-      }
+      const merge=confirm("按「確定」= 合併匯入（依時間戳逐筆保留較新版本）\n按「取消」= 完全取代現有資料");
+      if(!merge){ store=Object.assign(blank(),inc); }
+      else{ mergeRemote(Object.assign(blank(),inc)); }
       save(); lang=store.settings.lang||"both"; mode=store.settings.mode||"practice"; initWith(QUESTIONS); alert("匯入完成 / import done");
     }catch(err){ alert("匯入失敗 / import failed: "+err); } };
   rd.readAsText(f); e.target.value="";
@@ -471,11 +484,116 @@ function resetProgress(){
   store=blank(); save(); render();
 }
 
+/* ===================== cloud sync (Supabase, offline-first) ===================== */
+const SYNC_KEY = NS+"_synccode";
+let sb=null, syncCode=null, pushTimer=null, pulling=false;
+
+function syncConfigured(){
+  return window.SUPABASE_URL && window.SUPABASE_ANON_KEY
+      && !/^YOUR_/.test(window.SUPABASE_URL) && !/^YOUR_/.test(window.SUPABASE_ANON_KEY)
+      && window.supabase && typeof window.supabase.createClient==="function";
+}
+function setSyncStatus(msg,cls){ const el=document.getElementById("syncStatus"); if(!el) return; el.textContent=msg; el.className="syncstatus"+(cls?" "+cls:""); }
+
+function initSyncUI(){
+  const row=document.getElementById("syncRow");
+  if(!syncConfigured()){
+    row.querySelector("#syncCode").style.display="none";
+    row.querySelector("#syncConnectBtn").style.display="none";
+    document.getElementById("syncHint").textContent="（雲端同步未設定：請填好 config.js 並建立 Supabase 後啟用。目前為純本機模式。）";
+    return;
+  }
+  sb=window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+  const saved=localStorage.getItem(SYNC_KEY);
+  if(saved){ syncCode=saved; reflectConnected(); syncNow(false); }
+}
+function reflectConnected(){
+  document.getElementById("syncCode").value=syncCode||"";
+  document.getElementById("syncCode").style.display = syncCode?"none":"";
+  document.getElementById("syncConnectBtn").style.display = syncCode?"none":"";
+  document.getElementById("syncNowBtn").style.display = syncCode?"inline-block":"none";
+  document.getElementById("syncOffBtn").style.display = syncCode?"inline-block":"none";
+  document.getElementById("syncHint").style.display = syncCode?"none":"";
+}
+function connectSync(){
+  const code=(document.getElementById("syncCode").value||"").trim();
+  if(code.length<6){ alert("同步碼至少 6 個字，建議用一句別人猜不到的密語。\nSync code must be ≥6 characters."); return; }
+  syncCode=code; localStorage.setItem(SYNC_KEY, code); reflectConnected(); syncNow(true);
+}
+function disconnectSync(){
+  syncCode=null; localStorage.removeItem(SYNC_KEY); reflectConnected(); setSyncStatus("已登出同步（資料仍保留在本機）","");
+}
+function schedulePush(){
+  if(!sb||!syncCode||pulling) return;
+  clearTimeout(pushTimer);
+  pushTimer=setTimeout(()=>pushNow(), 900);
+}
+async function pushNow(){
+  if(!sb||!syncCode) return;
+  try{
+    setSyncStatus("同步中…","busy");
+    const {error}=await sb.rpc("quiz_push",{p_code:syncCode, p_data:store});
+    if(error) throw error;
+    setSyncStatus("已同步 ✓","ok");
+  }catch(e){ console.warn(e); setSyncStatus("同步失敗（已存本機）","err"); }
+}
+async function syncNow(showAlert){
+  if(!sb||!syncCode) return;
+  try{
+    pulling=true; setSyncStatus("同步中…","busy");
+    const {data,error}=await sb.rpc("quiz_pull",{p_code:syncCode});
+    if(error) throw error;
+    const remote=data||{};
+    mergeRemote(remote);          // per-record last-write-wins
+    save(true);                   // persist merged result locally without re-triggering push
+    pulling=false;
+    await pushNow();              // push merged result back up so both sides converge
+    // refresh UI to reflect pulled data
+    lang=store.settings.lang||lang; mode=store.settings.mode||mode;
+    document.querySelectorAll("#langSeg button").forEach(b=>b.classList.toggle("on",b.dataset.l===lang));
+    document.querySelectorAll("#modeSeg button").forEach(b=>b.classList.toggle("on",b.dataset.m===mode));
+    document.getElementById("examSubmitBtn").style.display=mode==="exam"?"inline-block":"none";
+    render();
+    setSyncStatus("已同步 ✓","ok");
+    if(showAlert) alert("已連結並同步完成。其他裝置輸入同一組同步碼即可看到相同進度。");
+  }catch(e){ pulling=false; console.warn(e); setSyncStatus("同步失敗："+(e.message||e),"err"); if(showAlert) alert("同步失敗 / sync failed:\n"+(e.message||e)); }
+}
+// merge a remote snapshot into local `store`, newest-per-record wins
+function mergeRemote(r){
+  r.notes=r.notes||{}; r.noteTs=r.noteTs||{}; r.answers=r.answers||{};
+  r.starred=r.starred||[]; r.starTs=r.starTs||{}; r.settings=r.settings||{}; r.settingsTs=r.settingsTs||0;
+  // notes: compare timestamps
+  Object.keys(r.notes).forEach(id=>{
+    if((r.noteTs[id]||0) > (store.noteTs[id]||0)){ store.notes[id]=r.notes[id]; store.noteTs[id]=r.noteTs[id]||0; }
+  });
+  // answers: keep the one with the larger ts
+  Object.keys(r.answers).forEach(id=>{
+    const rt=(r.answers[id]&&r.answers[id].ts)||0, lt=(store.answers[id]&&store.answers[id].ts)||0;
+    if(rt>lt) store.answers[id]=r.answers[id];
+  });
+  // starred: union, but respect per-id toggle timestamps so an un-star can propagate
+  const ids=new Set([...Object.keys(r.starTs), ...Object.keys(store.starTs)]);
+  ids.forEach(id=>{
+    const rt=r.starTs[id]||0, lt=store.starTs[id]||0;
+    if(rt>lt){ // remote is newer for this id
+      store.starTs[id]=rt;
+      const remoteHas=r.starred.includes(id), localHas=store.starred.includes(id);
+      if(remoteHas && !localHas) store.starred.push(id);
+      if(!remoteHas && localHas) store.starred=store.starred.filter(x=>x!==id);
+    }
+  });
+  // also union any starred ids that have no timestamp on either side (legacy)
+  r.starred.forEach(id=>{ if(!store.starred.includes(id) && !(id in store.starTs) && !(id in r.starTs)) store.starred.push(id); });
+  // settings: newest wins
+  if((r.settingsTs||0) > (store.settingsTs||0)){ store.settings=Object.assign({},store.settings,r.settings); store.settingsTs=r.settingsTs; }
+}
+
 /* ===================== helpers ===================== */
 function byId(id){ return QUESTIONS.find(q=>q.id===id); }
-let _seq=0; function stamp(){ return (++_seq); }  // monotonic counter (no Date dependency)
+function stamp(){ return Date.now(); }  // real epoch ms — used for per-record last-write-wins merge
 
 boot();
+initSyncUI();
 </script>
 </body>
 </html>

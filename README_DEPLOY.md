@@ -69,7 +69,34 @@ python -m http.server 8000
 
 ---
 
-## 5. 只想公開 App、不公開詳解？（可選）
+## 5. 跨裝置雲端同步（Supabase）— 可選但建議
+
+預設進度只存在「本機瀏覽器」。要讓任何裝置點進去都同步，加一個免費的 Supabase 雲端資料庫即可（App 本身仍是純靜態，不需自架伺服器）。
+
+### 一次性設定（約 5 分鐘）
+1. 到 https://supabase.com 用 GitHub 登入 → **New project**（隨意命名、選個區域、設一組資料庫密碼）。
+2. 專案開好後，左側 **SQL Editor** → **New query** → 把本資料夾的 **`supabase_setup.sql`** 全部貼上 → **Run**。（會建立 `quiz_progress` 表與 `quiz_pull` / `quiz_push` 兩個函式，並鎖好權限。）
+3. 左側 **Project Settings → API**，複製兩個值，貼進本資料夾的 **`config.js`**：
+   - **Project URL** → `window.SUPABASE_URL`
+   - **anon public** key → `window.SUPABASE_ANON_KEY`
+4. `git add config.js && git commit -m "Enable cloud sync" && git push`，Render 自動重新部署。
+
+> `config.js` 裡的 anon key 是「設計給瀏覽器公開」的金鑰，可放心 commit。真正的安全由資料庫的 RLS（關閉直接存取）＋ 只認「完整同步碼」的 RPC 函式把關。
+
+### 使用方式
+- 打開 App → 篩選列最下方「☁ 雲端同步」→ 輸入一組**只有你知道的同步碼**（≥6 字、建議一句別人猜不到的密語）→「連結同步」。
+- 之後筆記／作答／收藏會自動上雲；在**任何裝置**輸入**同一組同步碼**即可拉下並合併進度。
+- 合併規則：**逐筆、時間戳較新的版本獲勝**，所以兩台裝置各改各的不會互相蓋掉。
+- 離線時照常運作（仍寫本機），恢復連線後自動補同步。
+
+### 安全須知（同步碼模式的本質）
+- 沒有真正的帳號密碼：**任何知道你完整同步碼的人，都能讀寫你的進度**。
+- 個人複習用足夠，但請務必設一組夠長、別人猜不到的密語；不要用 `1234`、自己的名字等。
+- 若 `config.js` 留著 `YOUR_...` 佔位字串，App 會自動退回「純本機模式」，不報錯。
+
+---
+
+## 6. 只想公開 App、不公開詳解？（可選）
 
 若不想把 `Ch01–Ch10` 詳解 HTML 一起公開：
 1. 把 `quiz.html`、`questions.json`、`index.html` 放進一個 `public/` 子資料夾；
