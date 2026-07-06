@@ -124,10 +124,10 @@
   <!-- load error fallback -->
   <div class="loaderr" id="loaderr" style="display:none">
     <h3>⚠ 無法自動載入題庫 questions.json</h3>
-    <p>用 <code>file://</code> 直接開啟時，部分瀏覽器會因安全限制擋住載入。請任選：</p>
+    <p id="loaderrDetail" style="font-size:.85rem"></p>
+    <p><b>若你是用 Render 網址開啟</b>：多半是瀏覽器快取到舊頁面，請按 <code>Ctrl+Shift+R</code> 強制重新整理，或用無痕視窗再開一次。</p>
     <p>① <b>手動載入</b>：<input type="file" id="fileInput" accept=".json"> （選擇本資料夾的 <code>questions.json</code>）</p>
-    <p>② <b>建議</b>：在本資料夾開終端機執行 <code>python -m http.server</code>，再用瀏覽器開 <code>http://localhost:8000/quiz.html</code>。<br>
-       （部署到 Render／任何 HTTPS 網站時不會有此問題。）</p>
+    <p>② 若是用 <code>file://</code> 直接開本機檔：請改用 Render 網址，或在本資料夾執行 <code>python -m http.server</code> 後開 <code>http://localhost:8000/quiz.html</code>。</p>
   </div>
 
   <!-- controls -->
@@ -209,9 +209,15 @@ function boot(){
   // restore settings
   lang = (store.settings&&store.settings.lang) || "both";
   mode = (store.settings&&store.settings.mode) || "practice";
-  fetch("questions.json").then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); })
+  // cache-bust so a freshly-deployed questions.json is never served stale from cache
+  fetch("questions.json?v="+Date.now(), {cache:"no-store"})
+    .then(r=>{ if(!r.ok) throw new Error("HTTP "+r.status+" "+r.statusText); return r.json(); })
     .then(initWith)
-    .catch(()=>{ document.getElementById("loaderr").style.display="block"; });
+    .catch(err=>{
+      const box=document.getElementById("loaderr"); box.style.display="block";
+      const d=document.getElementById("loaderrDetail");
+      if(d) d.innerHTML="目前網址：<code>"+location.href.replace(/[<>&]/g,"")+"</code><br>錯誤：<code>"+String(err.message||err).replace(/[<>&]/g,"")+"</code>";
+    });
 }
 document.getElementById("fileInput").addEventListener("change", handleFile);
 document.getElementById("importInput").addEventListener("change", handleImport);
